@@ -1,0 +1,116 @@
+import { describe, it, expect } from 'vitest';
+import { evaluateFinalDeduction } from './deductionEngine';
+import { case001 } from '../data/cases/case001';
+import { case002 } from '../data/cases/case002';
+import { case003 } from '../data/cases/case003';
+import { createInitialCaseState, calculateDetectiveRank } from './storage';
+import { FinalReportAnswers } from '../types/game';
+
+describe('Detective Investigation Game Logic Tests', () => {
+  it('Evaluates Case 001 (The Last Alibi) with 100% accuracy for canonical deduction', () => {
+    const state = createInitialCaseState('case-001');
+    state.discoveredEvidenceIds = case001.evidence.map(e => e.id);
+    
+    const answers: FinalReportAnswers = {
+      culpritId: 'suspect-02-evelyn',
+      motiveId: 'm-embezzle',
+      methodId: 'met-decanter-thread',
+      timeId: 't-2214',
+      crucialEvidenceIds: [
+        'clue-02-audited-ledger',
+        'clue-03-stopped-clock',
+        'clue-05-window-latch',
+        'clue-07-nylon-thread',
+        'clue-08-torn-envelope'
+      ],
+      falseAlibiSuspectId: 'suspect-02-evelyn',
+      detectiveTheory: 'Evelyn poisoned Arthur to prevent disclosure of $450k embezzlement and rigged the window with thread.'
+    };
+
+    const evaluation = evaluateFinalDeduction(case001, answers, state);
+
+    expect(evaluation.isCulpritCorrect).toBe(true);
+    expect(evaluation.isMotiveCorrect).toBe(true);
+    expect(evaluation.isMethodCorrect).toBe(true);
+    expect(evaluation.isTimeCorrect).toBe(true);
+    expect(evaluation.isFalseAlibiCorrect).toBe(true);
+    expect(evaluation.accuracyScore).toBe(100);
+    expect(evaluation.performanceGrade).toBe('S+');
+  });
+
+  it('Evaluates Case 002 (The Missing Witness) canonical deduction', () => {
+    const state = createInitialCaseState('case-002');
+    state.discoveredEvidenceIds = case002.evidence.map(e => e.id);
+
+    const answers: FinalReportAnswers = {
+      culpritId: 'suspect-02-navarro',
+      motiveId: 'm-syndicate-bribe',
+      methodId: 'met-staged-escape',
+      timeId: 't-2320',
+      crucialEvidenceIds: [
+        'clue-02-staged-blood',
+        'clue-02-burner-phone',
+        'clue-02-vent-grate',
+        'clue-02-torn-ticket',
+        'clue-02-tunnel-footprints'
+      ],
+      falseAlibiSuspectId: 'suspect-02-navarro',
+      detectiveTheory: 'Navarro betrayed the safehouse. Clara staged her kidnapping and fled through the steam tunnel.'
+    };
+
+    const evaluation = evaluateFinalDeduction(case002, answers, state);
+
+    expect(evaluation.isCulpritCorrect).toBe(true);
+    expect(evaluation.isMotiveCorrect).toBe(true);
+    expect(evaluation.isMethodCorrect).toBe(true);
+    expect(evaluation.isTimeCorrect).toBe(true);
+    expect(evaluation.accuracyScore).toBe(100);
+  });
+
+  it('Evaluates Case 003 (The Museum Heist) canonical deduction', () => {
+    const state = createInitialCaseState('case-003');
+    state.discoveredEvidenceIds = case003.evidence.map(e => e.id);
+
+    const answers: FinalReportAnswers = {
+      culpritId: 'suspect-03-rossi',
+      motiveId: 'm-rossi-debt',
+      methodId: 'met-rossi-swap',
+      timeId: 't-1800',
+      crucialEvidenceIds: [
+        'clue-03-cracked-scarf',
+        'clue-03-emp-capacitor',
+        'clue-03-vault-access-logs',
+        'clue-03-rossi-invoice',
+        'clue-03-lead-box'
+      ],
+      falseAlibiSuspectId: 'suspect-03-rossi',
+      detectiveTheory: 'Rossi swapped the scarab with a Florence replica at 18:00 and used an EMP capacitor to stage the 02:15 blackout.'
+    };
+
+    const evaluation = evaluateFinalDeduction(case003, answers, state);
+
+    expect(evaluation.isCulpritCorrect).toBe(true);
+    expect(evaluation.isMotiveCorrect).toBe(true);
+    expect(evaluation.isMethodCorrect).toBe(true);
+    expect(evaluation.accuracyScore).toBe(100);
+  });
+
+  it('Correctly calculates detective rank progression', () => {
+    expect(calculateDetectiveRank(0, 0)).toBe('Rookie Detective');
+    expect(calculateDetectiveRank(400, 1)).toBe('Junior Investigator');
+    expect(calculateDetectiveRank(900, 1)).toBe('Field Detective');
+    expect(calculateDetectiveRank(1600, 2)).toBe('Senior Detective');
+    expect(calculateDetectiveRank(2500, 2)).toBe('Master Detective');
+    expect(calculateDetectiveRank(3600, 3)).toBe('Legendary Investigator');
+  });
+
+  it('Ensures all 3 cases have at least 5 suspects, discoverable clues, and canon contradictions', () => {
+    [case001, case002, case003].forEach(c => {
+      expect(c.suspects.length).toBeGreaterThanOrEqual(5);
+      expect(c.evidence.length).toBeGreaterThanOrEqual(7);
+      expect(c.canonConnections.length).toBeGreaterThanOrEqual(4);
+      expect(c.timelineEvents.length).toBeGreaterThanOrEqual(6);
+      expect(c.hints.length).toBe(3);
+    });
+  });
+});

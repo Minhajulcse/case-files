@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-noir-950 text-noir-100 font-sans selection:bg-blood-700 selection:text-white;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1115;
+}
+::-webkit-scrollbar-thumb {
+  background: #262c38;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2638;
+}
+
+/* Noir Film Grain / Scanline effect */
+.scanline-effect {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+.corkboard-texture {
+  background-color: #1e1713;
+  background-image: 
+    radial-gradient(#30251c 15%, transparent 16%), 
+    radial-gradient(#271e16 15%, transparent 16%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.manila-texture {
+  background: #ece4d0;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.12);
+}
+
+.classified-stamp {
+  border: 3px solid #b83b3b;
+  color: #b83b3b;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  display: inline-block;
+  padding: 4px 12px;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0.6) 100%);
+}
