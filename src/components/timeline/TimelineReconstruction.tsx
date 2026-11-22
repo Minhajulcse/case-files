@@ -16,7 +16,16 @@ import { TimelineEvent } from '../../types/game';
 import { sound } from '../../utils/audio';
 
 export const TimelineReconstruction: React.FC = () => {
-  const { activeCase, caseState, updateTimelineOrder } = useGame();
+  const {
+    activeCase,
+    caseState,
+    updateTimelineOrder,
+    language,
+    t,
+    formatNum,
+    getLoc
+  } = useGame();
+
   const [verificationFeedback, setVerificationFeedback] = useState<{
     correctCount: number;
     totalCount: number;
@@ -25,6 +34,8 @@ export const TimelineReconstruction: React.FC = () => {
   } | null>(null);
 
   if (!activeCase || !caseState) return null;
+
+  const isBengali = language === 'bn';
 
   const currentOrderIds = caseState.timelineOrder.length > 0
     ? caseState.timelineOrder
@@ -88,16 +99,24 @@ export const TimelineReconstruction: React.FC = () => {
         correctCount,
         totalCount,
         isFlawless: true,
-        feedbackMessage:
-          'Ironclad Sequence! Every forensic timestamp, CCTV record, and witness sighting lines up flawlessly.'
+        feedbackMessage: isBengali
+          ? 'অনবদ্য সময়রেখা! প্রতিটি ফরেনসিক টাইমস্ট্যাম্প, সিসিটিভি ফুটেজ ও সাক্ষ্যের সময় নিখুঁতভাবে মিলে গেছে।'
+          : 'Ironclad Sequence! Every forensic timestamp, CCTV record, and witness sighting lines up flawlessly.'
       });
     } else {
       sound.playContradictionBuzz();
-      let guidance = 'Several events are placed out of logical sequence.';
+      let guidance = isBengali
+        ? 'বেশ কিছু ঘটনা সঠিক ক্রমানুসারে নেই।'
+        : 'Several events are placed out of logical sequence.';
+
       if (correctCount >= Math.floor(totalCount / 2)) {
-        guidance = 'You are close! Cross-examine the physical evidence timestamps against suspect movements.';
+        guidance = isBengali
+          ? 'আপনি সঠিক সমাধানের খুব কাছাকাছি! সন্দেহভাজনদের গতিবিধির সাথে ভৌত আলামতের সময়রেখা মিলিয়ে দেখুন।'
+          : 'You are close! Cross-examine the physical evidence timestamps against suspect movements.';
       } else {
-        guidance = 'Examine which actions preceded the crime versus the subsequent cover-up attempts.';
+        guidance = isBengali
+          ? 'অপরাধের আগের প্রস্তুতি ও অপরাধ পরবর্তী আলামত লোপাটের চেষ্টার সময়ের পার্থক্যগুলো ভালো করে লক্ষ্য করুন।'
+          : 'Examine which actions preceded the crime versus the subsequent cover-up attempts.';
       }
 
       setVerificationFeedback({
@@ -110,7 +129,7 @@ export const TimelineReconstruction: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-105px)] bg-noir-950 p-4 sm:p-6 font-mono select-none">
+    <div className={`min-h-[calc(100vh-105px)] bg-noir-950 p-4 sm:p-6 select-none ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header & Verification Bar */}
         <div className="bg-noir-900 border border-noir-800 rounded-lg p-5 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -118,11 +137,11 @@ export const TimelineReconstruction: React.FC = () => {
             <div className="flex items-center space-x-2">
               <Clock className="w-5 h-5 text-amber-500" />
               <h2 className="font-serif font-bold text-base text-white tracking-wide">
-                CHRONOLOGICAL TIMELINE RECONSTRUCTION
+                {t('timelineTitle')}
               </h2>
             </div>
-            <p className="text-xs text-noir-400 mt-0.5">
-              Sequence all critical events leading up to and following the crime using timestamps and evidence logs.
+            <p className="text-xs text-noir-400 mt-0.5 leading-relaxed">
+              {t('timelineSubtitle')}
             </p>
           </div>
 
@@ -130,10 +149,10 @@ export const TimelineReconstruction: React.FC = () => {
             <button
               onClick={handleReset}
               className="px-3 py-2 bg-noir-950 hover:bg-noir-800 border border-noir-700 rounded text-xs text-noir-400 hover:text-white transition-colors flex items-center gap-1.5"
-              title="Reshuffle Timeline"
+              title={t('shuffleBtn')}
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Shuffle</span>
+              <span>{t('shuffleBtn')}</span>
             </button>
 
             <button
@@ -141,7 +160,7 @@ export const TimelineReconstruction: React.FC = () => {
               className="flex-1 sm:flex-initial px-5 py-2 bg-blood-600 hover:bg-blood-500 text-white rounded text-xs font-bold shadow-lg flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5"
             >
               <FileCheck2 className="w-4 h-4" />
-              <span>Verify Sequence</span>
+              <span>{t('verifySequenceBtn')}</span>
             </button>
           </div>
         </div>
@@ -164,12 +183,12 @@ export const TimelineReconstruction: React.FC = () => {
             <div className="space-y-1">
               <div className="font-bold flex items-center gap-2">
                 <span>
-                  Chronological Analysis: {verificationFeedback.correctCount} of{' '}
-                  {verificationFeedback.totalCount} Events Properly Sequenced
+                  {isBengali ? 'ঘটনাক্রম নিরীক্ষা:' : 'Chronological Analysis:'} {formatNum(verificationFeedback.correctCount)} /{' '}
+                  {formatNum(verificationFeedback.totalCount)} {isBengali ? 'ঘটনা সঠিক ক্রমানুসারে রয়েছে' : 'Events Properly Sequenced'}
                 </span>
                 {verificationFeedback.isFlawless && (
-                  <span className="text-[10px] bg-green-600 text-white px-2 py-0.2 rounded uppercase font-bold">
-                    +150 PTS Commendation
+                  <span className="text-[10px] bg-green-600 text-white px-2 py-0.5 rounded uppercase font-bold font-mono">
+                    +{formatNum(150)} {t('pts')} {isBengali ? 'প্রশংসাপত্র' : 'Commendation'}
                   </span>
                 )}
               </div>
@@ -197,31 +216,31 @@ export const TimelineReconstruction: React.FC = () => {
               >
                 {/* Event Index & Content */}
                 <div className="flex items-start space-x-3 flex-1 min-w-0">
-                  <div className="w-8 h-8 rounded-full bg-noir-950 border border-noir-700 flex items-center justify-center font-bold text-xs text-amber-400 flex-shrink-0">
-                    {index + 1}
+                  <div className="w-8 h-8 rounded-full bg-noir-950 border border-noir-700 flex items-center justify-center font-bold text-xs text-amber-400 flex-shrink-0 font-mono">
+                    {formatNum(index + 1)}
                   </div>
 
                   <div className="space-y-1 min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs px-2 py-0.5 rounded bg-blood-950 text-blood-400 border border-blood-800 font-bold">
-                        {ev.timestamp}
+                      <span className="text-xs px-2 py-0.5 rounded bg-blood-950 text-blood-400 border border-blood-800 font-bold font-mono">
+                        {getLoc(ev.timestamp)}
                       </span>
                       <h3 className="font-serif font-bold text-sm text-white truncate">
-                        {ev.title}
+                        {getLoc(ev.title)}
                       </h3>
                     </div>
 
                     <p className="text-xs text-noir-300 leading-relaxed">
-                      {ev.description}
+                      {getLoc(ev.description)}
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-3 pt-1 text-[10px] text-noir-500">
+                    <div className="flex flex-wrap items-center gap-3 pt-1 text-[10px] text-noir-400">
                       <span>
-                        <strong className="text-noir-400">Source:</strong> {ev.source}
+                        <strong className="text-noir-300">{t('sourceLabel')}:</strong> {getLoc(ev.source)}
                       </span>
                       <span>•</span>
                       <span>
-                        <strong className="text-noir-400">Location:</strong> {ev.verifiedLocation}
+                        <strong className="text-noir-300">{isBengali ? 'ঘটনাস্থল' : 'Location'}:</strong> {getLoc(ev.verifiedLocation)}
                       </span>
                     </div>
                   </div>
@@ -233,7 +252,7 @@ export const TimelineReconstruction: React.FC = () => {
                     onClick={() => handleMoveUp(index)}
                     disabled={index === 0}
                     className="p-1.5 rounded bg-noir-950 hover:bg-noir-800 border border-noir-800 text-noir-400 hover:text-white disabled:opacity-30 disabled:hover:bg-noir-950 transition-colors"
-                    title="Move Earlier in Timeline"
+                    title={t('moveEarlier')}
                   >
                     <ArrowUp className="w-4 h-4" />
                   </button>
@@ -242,7 +261,7 @@ export const TimelineReconstruction: React.FC = () => {
                     onClick={() => handleMoveDown(index)}
                     disabled={index === orderedEvents.length - 1}
                     className="p-1.5 rounded bg-noir-950 hover:bg-noir-800 border border-noir-800 text-noir-400 hover:text-white disabled:opacity-30 disabled:hover:bg-noir-950 transition-colors"
-                    title="Move Later in Timeline"
+                    title={t('moveLater')}
                   >
                     <ArrowDown className="w-4 h-4" />
                   </button>
@@ -256,7 +275,7 @@ export const TimelineReconstruction: React.FC = () => {
         <div className="bg-noir-900/60 p-4 rounded-lg border border-noir-800 text-xs text-noir-400 flex items-start space-x-2">
           <Info className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
           <p className="text-[11px] leading-relaxed">
-            Arranging the timeline correctly provides critical deductions for your Final Indictment. Pay close attention to discrepancies between the physical evidence timestamps and suspect statements.
+            {t('timelineTip')}
           </p>
         </div>
       </div>

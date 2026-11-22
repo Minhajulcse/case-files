@@ -16,9 +16,20 @@ import { useGame } from '../../context/GameContext';
 import { EvidenceBoardNode, CanonConnection, UserConnection } from '../../types/game';
 import { AddConnectionModal } from './AddConnectionModal';
 import { sound } from '../../utils/audio';
+import { getLocalizedCategory } from '../../i18n';
 
 export const EvidenceBoard: React.FC = () => {
-  const { activeCase, caseState, addUserConnection, removeUserConnection } = useGame();
+  const {
+    activeCase,
+    caseState,
+    addUserConnection,
+    removeUserConnection,
+    language,
+    t,
+    formatNum,
+    getLoc
+  } = useGame();
+
   const [selectedSourceNodeId, setSelectedSourceNodeId] = useState<string | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [activeDeductionNote, setActiveDeductionNote] = useState<{
@@ -28,6 +39,8 @@ export const EvidenceBoard: React.FC = () => {
   } | null>(null);
 
   if (!activeCase || !caseState) return null;
+
+  const isBengali = language === 'bn';
 
   // Build the list of active board nodes (all 5 suspects + all discovered evidence items)
   const discoveredClues = activeCase.evidence.filter(e =>
@@ -39,15 +52,14 @@ export const EvidenceBoard: React.FC = () => {
 
     // 1. Suspect nodes (placed on top/sides)
     activeCase.suspects.forEach((suspect, idx) => {
-      // Circular or staggered arrangement coordinates (0 - 100%)
       const x = 12 + idx * 19;
       const y = 14 + (idx % 2 === 0 ? 0 : 8);
       list.push({
         id: `node-suspect-${suspect.id}`,
         type: 'suspect',
         targetId: suspect.id,
-        title: suspect.name,
-        subtitle: suspect.role,
+        title: getLoc(suspect.name),
+        subtitle: getLoc(suspect.role),
         x,
         y
       });
@@ -63,8 +75,8 @@ export const EvidenceBoard: React.FC = () => {
         id: `node-clue-${clue.id}`,
         type: 'evidence',
         targetId: clue.id,
-        title: clue.name,
-        subtitle: clue.category,
+        title: getLoc(clue.name),
+        subtitle: getLocalizedCategory(clue.category, language),
         category: clue.category,
         x,
         y
@@ -72,7 +84,7 @@ export const EvidenceBoard: React.FC = () => {
     });
 
     return list;
-  }, [activeCase, discoveredClues]);
+  }, [activeCase, discoveredClues, language, getLoc]);
 
   // Handle direct node click for 2-step point-and-click linking
   const handleNodeClick = (node: EvidenceBoardNode) => {
@@ -88,8 +100,8 @@ export const EvidenceBoard: React.FC = () => {
       const res = addUserConnection(selectedSourceNodeId, node.targetId);
       if (res.isCanon && res.canon) {
         setActiveDeductionNote({
-          title: res.canon.label,
-          text: res.canon.deductionNotes,
+          title: getLoc(res.canon.label),
+          text: getLoc(res.canon.deductionNotes),
           isContradiction: res.canon.isContradiction
         });
       }
@@ -101,8 +113,8 @@ export const EvidenceBoard: React.FC = () => {
     const res = addUserConnection(sourceId, targetId, note);
     if (res.isCanon && res.canon) {
       setActiveDeductionNote({
-        title: res.canon.label,
-        text: res.canon.deductionNotes,
+        title: getLoc(res.canon.label),
+        text: getLoc(res.canon.deductionNotes),
         isContradiction: res.canon.isContradiction
       });
     }
@@ -129,17 +141,17 @@ export const EvidenceBoard: React.FC = () => {
   }, [caseState.userConnections, nodes, activeCase]);
 
   return (
-    <div className="flex flex-col lg:flex-row h-[calc(100vh-105px)] bg-noir-950 font-mono select-none overflow-hidden">
+    <div className={`flex flex-col lg:flex-row h-[calc(100vh-105px)] bg-noir-950 select-none overflow-hidden ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       {/* Interactive Corkboard Surface */}
       <div className="flex-1 relative corkboard-texture overflow-auto p-4 sm:p-8 flex items-center justify-center">
         {/* Board Top Header Bar */}
         <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-none">
           <div className="bg-noir-950/90 border border-amber-900/60 px-3.5 py-1.5 rounded-lg shadow-xl backdrop-blur pointer-events-auto">
             <span className="text-[10px] uppercase font-bold text-amber-500 tracking-wider">
-              INVESTIGATION WALL
+              {t('investigationWall')}
             </span>
             <div className="font-serif font-bold text-xs sm:text-sm text-amber-100">
-              Red Thread Link Matrix
+              {t('linkMatrix')}
             </div>
           </div>
 
@@ -147,7 +159,7 @@ export const EvidenceBoard: React.FC = () => {
             {selectedSourceNodeId && (
               <div className="bg-blood-950 border border-blood-600 px-3 py-1 rounded text-xs text-white animate-pulse flex items-center gap-1.5 shadow-lg">
                 <Pin className="w-3.5 h-3.5 text-blood-400" />
-                <span>Select 2nd pin to connect...</span>
+                <span>{t('selectSecondPin')}</span>
                 <button
                   onClick={() => setSelectedSourceNodeId(null)}
                   className="ml-2 text-noir-400 hover:text-white"
@@ -162,7 +174,7 @@ export const EvidenceBoard: React.FC = () => {
               className="px-3.5 py-1.5 bg-blood-700 hover:bg-blood-600 border border-blood-500/80 rounded-lg text-xs font-bold text-white shadow-lg flex items-center space-x-1.5 transition-all transform hover:-translate-y-0.5"
             >
               <Plus className="w-4 h-4" />
-              <span>Link Nodes</span>
+              <span>{t('linkNodesBtn')}</span>
             </button>
           </div>
         </div>
@@ -174,7 +186,6 @@ export const EvidenceBoard: React.FC = () => {
             {connectionLines.map(({ conn, nodeA, nodeB, isCanon, canon }) => {
               if (!nodeA || !nodeB) return null;
 
-              // Bezier curve control points
               const x1 = `${nodeA.x}%`;
               const y1 = `${nodeA.y}%`;
               const x2 = `${nodeB.x}%`;
@@ -250,7 +261,7 @@ export const EvidenceBoard: React.FC = () => {
                       isSuspect ? 'text-amber-400' : 'text-blood-400'
                     }`}
                   >
-                    {isSuspect ? 'SUSPECT' : node.subtitle}
+                    {isSuspect ? t('suspectTag') : node.subtitle}
                   </span>
                   <div className="font-serif font-bold text-[11px] leading-tight text-white line-clamp-2">
                     {node.title}
@@ -266,11 +277,11 @@ export const EvidenceBoard: React.FC = () => {
       <div className="w-full lg:w-80 bg-noir-900 border-t lg:border-t-0 border-noir-800 p-4 flex flex-col justify-between overflow-y-auto">
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-noir-800 pb-2">
-            <span className="text-xs uppercase font-bold text-amber-400 flex items-center gap-1.5">
-              <Network className="w-4 h-4" /> Deduction Connections
+            <span className="text-xs uppercase font-bold text-amber-400 flex items-center gap-1.5 tracking-wider">
+              <Network className="w-4 h-4" /> {t('deductionConnections')}
             </span>
             <span className="text-[10px] text-noir-400 font-mono">
-              {caseState.userConnections.length} Active Strings
+              {formatNum(caseState.userConnections.length)} {t('activeStrings')}
             </span>
           </div>
 
@@ -286,11 +297,11 @@ export const EvidenceBoard: React.FC = () => {
               <div className="flex items-center justify-between font-bold text-[11px]">
                 <span className="flex items-center gap-1">
                   {activeDeductionNote.isContradiction ? (
-                    <AlertTriangle className="w-3.5 h-3.5 text-blood-400" />
+                    <AlertTriangle className="w-3.5 h-3.5 text-blood-400 flex-shrink-0" />
                   ) : (
-                    <Sparkles className="w-3.5 h-3.5 text-green-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                   )}
-                  {activeDeductionNote.title}
+                  <span>{activeDeductionNote.title}</span>
                 </span>
                 <button
                   onClick={() => setActiveDeductionNote(null)}
@@ -310,9 +321,9 @@ export const EvidenceBoard: React.FC = () => {
             {connectionLines.length === 0 ? (
               <div className="text-center py-8 text-xs text-noir-500 space-y-1">
                 <Network className="w-6 h-6 mx-auto text-noir-600" />
-                <div>No connections pinned yet.</div>
-                <div className="text-[10px] text-noir-600">
-                  Click a pin, then click another to thread a connection string.
+                <div className="text-noir-400">{t('noConnectionsYet')}</div>
+                <div className="text-[10px] text-noir-500">
+                  {t('noConnectionsHint')}
                 </div>
               </div>
             ) : (
@@ -332,22 +343,22 @@ export const EvidenceBoard: React.FC = () => {
                       {isCanon ? (
                         canon?.isContradiction ? (
                           <span className="text-blood-400 flex items-center gap-1">
-                            <AlertTriangle className="w-3 h-3" /> Contradiction Detected
+                            <AlertTriangle className="w-3 h-3" /> {t('contradictionDetected')}
                           </span>
                         ) : (
                           <span className="text-green-400 flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3" /> Corroborated Link (+{canon?.bonusPoints} PTS)
+                            <CheckCircle2 className="w-3 h-3" /> {t('corroboratedLink')} (+{formatNum(canon?.bonusPoints || 50)} {t('pts')})
                           </span>
                         )
                       ) : (
-                        'Investigative Link'
+                        t('investigativeLink')
                       )}
                     </span>
 
                     <button
                       onClick={() => removeUserConnection(conn.id)}
                       className="text-noir-500 hover:text-blood-400 p-0.5"
-                      title="Sever String Connection"
+                      title={t('severConnection')}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -359,7 +370,7 @@ export const EvidenceBoard: React.FC = () => {
 
                   {conn.note && (
                     <p className="text-[10px] text-amber-300/80 italic">
-                      Note: {conn.note}
+                      {isBengali ? 'নোট' : 'Note'}: {conn.note}
                     </p>
                   )}
                 </div>
@@ -372,10 +383,10 @@ export const EvidenceBoard: React.FC = () => {
         <div className="p-3 bg-noir-950 border-t border-noir-800 text-[11px] text-noir-400 space-y-1">
           <div className="flex items-center gap-1 text-amber-400 font-bold">
             <Info className="w-3.5 h-3.5" />
-            <span>Detective Tip:</span>
+            <span>{t('boardTip')}</span>
           </div>
-          <p className="text-[10px] text-noir-500 leading-relaxed">
-            Link physical evidence with suspect statements to uncover lies and false alibis before submitting your indictment.
+          <p className="text-[10px] text-noir-400 leading-relaxed">
+            {t('boardTipDesc')}
           </p>
         </div>
       </div>

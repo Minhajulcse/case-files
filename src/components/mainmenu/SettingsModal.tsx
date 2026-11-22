@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Sliders, Volume2, AlertOctagon, RefreshCw } from 'lucide-react';
+import { X, Sliders, Volume2, AlertOctagon, RefreshCw, Languages } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { sound } from '../../utils/audio';
+import { LanguageToggle } from '../common/LanguageToggle';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -9,7 +10,15 @@ interface SettingsModalProps {
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
-  const { resetEntireGame, resetCurrentCase, activeCase } = useGame();
+  const {
+    resetEntireGame,
+    resetCurrentCase,
+    activeCase,
+    language,
+    t,
+    formatNum
+  } = useGame();
+
   const [confirmResetAll, setConfirmResetAll] = useState(false);
   const [confirmResetCase, setConfirmResetCase] = useState(false);
 
@@ -19,18 +28,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
   if (!isOpen) return null;
 
+  const isBengali = language === 'bn';
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden font-mono text-noir-200">
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+      <div className="relative w-full max-w-lg bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Sliders className="w-5 h-5 text-amber-500" />
             <div>
               <h2 className="font-serif font-bold text-base text-amber-200 tracking-wide">
-                BUREAU CONFIGURATION
+                {t('settingsTitle')}
               </h2>
-              <span className="text-xs text-noir-400">Audio, Visual, and Game State Settings</span>
+              <span className="text-xs text-noir-400">{t('settingsSubtitle')}</span>
             </div>
           </div>
           <button
@@ -42,17 +53,40 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6 text-xs">
+        <div className="p-6 space-y-6 text-xs max-h-[75vh] overflow-y-auto">
+          {/* Language Selection Card */}
+          <div className="bg-noir-950 p-4 rounded-lg border border-noir-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Languages className="w-4 h-4 text-blood-400" />
+                <span className="font-bold text-white text-xs uppercase tracking-wider">
+                  {t('languageSelectLabel')}
+                </span>
+              </div>
+              <span className="text-[10px] text-amber-400 uppercase font-mono">
+                {language === 'bn' ? 'বাংলা সক্রিয়' : 'English Active'}
+              </span>
+            </div>
+            <p className="text-[11px] text-noir-400 leading-relaxed">
+              {isBengali
+                ? 'তদন্ত চলাকালীন যেকোনো সময় ভাষা পরিবর্তন করা যায়। কোনো অগ্রগতি নষ্ট হবে না।'
+                : 'Switch languages anytime during the investigation without resetting clues, connections, or notes.'}
+            </p>
+            <div className="pt-1">
+              <LanguageToggle variant="segmented" />
+            </div>
+          </div>
+
           {/* Audio Synthesizer Levels */}
           <div className="space-y-4">
             <h4 className="text-xs uppercase font-bold tracking-wider text-amber-400 flex items-center gap-1.5">
-              <Volume2 className="w-4 h-4" /> Synthesizer Sound Levels
+              <Volume2 className="w-4 h-4" /> {t('synthSoundLevels')}
             </h4>
 
             <div>
               <div className="flex justify-between text-noir-400 mb-1">
-                <span>Master Output</span>
-                <span>{Math.round(masterVol * 100)}%</span>
+                <span>{t('masterOutput')}</span>
+                <span className="font-mono">{formatNum(Math.round(masterVol * 100))}%</span>
               </div>
               <input
                 type="range"
@@ -71,8 +105,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             <div>
               <div className="flex justify-between text-noir-400 mb-1">
-                <span>Procedural Noir Ambience (Rain / Bass Drone)</span>
-                <span>{Math.round(ambienceVol * 100)}%</span>
+                <span>{t('noirAmbience')}</span>
+                <span className="font-mono">{formatNum(Math.round(ambienceVol * 100))}%</span>
               </div>
               <input
                 type="range"
@@ -91,8 +125,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             <div>
               <div className="flex justify-between text-noir-400 mb-1">
-                <span>Sound Effects (Typewriter, Clues, Pins)</span>
-                <span>{Math.round(sfxVol * 100)}%</span>
+                <span>{t('sfxVolume')}</span>
+                <span className="font-mono">{formatNum(Math.round(sfxVol * 100))}%</span>
               </div>
               <input
                 type="range"
@@ -113,15 +147,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           {/* Danger Zone: Reset Case / Reset All */}
           <div className="pt-4 border-t border-noir-800 space-y-3">
             <h4 className="text-xs uppercase font-bold tracking-wider text-blood-400 flex items-center gap-1.5">
-              <AlertOctagon className="w-4 h-4" /> Evidence & Progression Management
+              <AlertOctagon className="w-4 h-4" /> {t('progressionMgmt')}
             </h4>
 
             {activeCase && (
               <div className="bg-noir-950 p-3 rounded border border-noir-800 flex items-center justify-between">
                 <div>
-                  <div className="font-bold text-noir-200">Reset Current Case Progress</div>
+                  <div className="font-bold text-noir-200">{t('resetCaseTitle')}</div>
                   <div className="text-[11px] text-noir-500">
-                    Clears discovered clues and connections for {activeCase.title}.
+                    {t('resetCaseDesc')}
                   </div>
                 </div>
                 {confirmResetCase ? (
@@ -134,13 +168,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                       }}
                       className="px-2.5 py-1 bg-blood-600 hover:bg-blood-700 text-white rounded text-[11px]"
                     >
-                      Confirm
+                      {t('confirmBtn')}
                     </button>
                     <button
                       onClick={() => setConfirmResetCase(false)}
                       className="px-2.5 py-1 bg-noir-800 text-noir-300 rounded text-[11px]"
                     >
-                      Cancel
+                      {t('cancelBtn')}
                     </button>
                   </div>
                 ) : (
@@ -148,7 +182,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     onClick={() => setConfirmResetCase(true)}
                     className="px-3 py-1 bg-noir-800 hover:bg-noir-700 border border-noir-700 rounded text-amber-300 text-[11px] flex items-center gap-1"
                   >
-                    <RefreshCw className="w-3 h-3" /> Reset Case
+                    <RefreshCw className="w-3 h-3" /> {t('resetCaseBtn')}
                   </button>
                 )}
               </div>
@@ -156,9 +190,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
             <div className="bg-blood-950/30 p-3 rounded border border-blood-900/50 flex items-center justify-between">
               <div>
-                <div className="font-bold text-blood-300">Wipe All Game Data</div>
+                <div className="font-bold text-blood-300">{t('wipeAllTitle')}</div>
                 <div className="text-[11px] text-noir-400">
-                  Resets detective rank, all case files, and career scores.
+                  {t('wipeAllDesc')}
                 </div>
               </div>
               {confirmResetAll ? (
@@ -167,13 +201,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     onClick={resetEntireGame}
                     className="px-2.5 py-1 bg-blood-600 hover:bg-blood-700 text-white rounded text-[11px]"
                   >
-                    Wipe Data
+                    {t('confirmBtn')}
                   </button>
                   <button
                     onClick={() => setConfirmResetAll(false)}
                     className="px-2.5 py-1 bg-noir-800 text-noir-300 rounded text-[11px]"
                   >
-                    Cancel
+                    {t('cancelBtn')}
                   </button>
                 </div>
               ) : (
@@ -181,7 +215,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   onClick={() => setConfirmResetAll(true)}
                   className="px-3 py-1 bg-blood-900/60 hover:bg-blood-800 border border-blood-700 text-white rounded text-[11px]"
                 >
-                  Clear All
+                  {t('wipeAllBtn')}
                 </button>
               )}
             </div>
@@ -192,9 +226,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         <div className="bg-noir-950 px-6 py-3 border-t border-noir-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-noir-800 hover:bg-noir-700 text-noir-200 text-xs font-mono rounded transition-colors"
+            className="px-4 py-1.5 bg-noir-800 hover:bg-noir-700 text-noir-200 text-xs rounded transition-colors"
           >
-            Close Settings
+            {t('closeSettings')}
           </button>
         </div>
       </div>

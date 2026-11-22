@@ -16,6 +16,7 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
   onClose,
   onConnect
 }) => {
+  const { language, t } = useGame();
   const [sourceId, setSourceId] = useState<string>('');
   const [targetId, setTargetId] = useState<string>('');
   const [note, setNote] = useState<string>('');
@@ -32,9 +33,11 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
     }
   };
 
+  const isBengali = language === 'bn';
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-      <div className="relative w-full max-w-xl bg-noir-900 border-2 border-noir-700 rounded-lg shadow-2xl overflow-hidden font-mono text-noir-200">
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+      <div className="relative w-full max-w-xl bg-noir-900 border-2 border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -42,11 +45,11 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
               <Network className="w-4 h-4 text-blood-400" />
             </div>
             <div>
-              <span className="text-[10px] text-blood-400 uppercase font-bold tracking-widest">
-                EVIDENCE PINBOARD LINKAGE
+              <span className="text-[10px] text-blood-400 uppercase font-bold tracking-widest font-mono">
+                {t('investigationWall')}
               </span>
               <h2 className="font-serif font-bold text-base text-white tracking-wide">
-                Connect Two Clues or Suspects
+                {t('connectCluesTitle')}
               </h2>
             </div>
           </div>
@@ -60,25 +63,25 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
 
         {/* Form Body */}
         <div className="p-6 space-y-4 text-xs">
-          <p className="text-noir-400">
-            Link two pieces of evidence or a suspect to analyze potential contradictions, opportunity windows, or forensic correlations.
+          <p className="text-noir-400 leading-relaxed">
+            {t('connectCluesDesc')}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Primary Node */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-amber-400 block">
-                Source Clue / Suspect
+              <label className="text-[10px] uppercase font-bold text-amber-400 block tracking-wider">
+                {t('sourceItem')}
               </label>
               <select
                 value={sourceId}
                 onChange={(e) => setSourceId(e.target.value)}
                 className="w-full bg-noir-950 border border-noir-700 rounded p-2.5 text-xs text-white focus:outline-none focus:border-blood-600"
               >
-                <option value="">-- Choose Item A --</option>
+                <option value="">-- {isBengali ? 'প্রথম সূত্র নির্বাচন করুন' : 'Choose Item A'} --</option>
                 {nodes.map(node => (
                   <option key={node.targetId} value={node.targetId}>
-                    [{node.type === 'suspect' ? 'SUSPECT' : 'CLUE'}] {node.title}
+                    [{node.type === 'suspect' ? t('suspectTag') : t('clueTag')}] {node.title}
                   </option>
                 ))}
               </select>
@@ -86,20 +89,20 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
 
             {/* Target Node */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-amber-400 block">
-                Target Clue / Suspect
+              <label className="text-[10px] uppercase font-bold text-amber-400 block tracking-wider">
+                {t('targetItem')}
               </label>
               <select
                 value={targetId}
                 onChange={(e) => setTargetId(e.target.value)}
                 className="w-full bg-noir-950 border border-noir-700 rounded p-2.5 text-xs text-white focus:outline-none focus:border-blood-600"
               >
-                <option value="">-- Choose Item B --</option>
+                <option value="">-- {isBengali ? 'দ্বিতীয় সূত্র নির্বাচন করুন' : 'Choose Item B'} --</option>
                 {nodes
                   .filter(node => node.targetId !== sourceId)
                   .map(node => (
                     <option key={node.targetId} value={node.targetId}>
-                      [{node.type === 'suspect' ? 'SUSPECT' : 'CLUE'}] {node.title}
+                      [{node.type === 'suspect' ? t('suspectTag') : t('clueTag')}] {node.title}
                     </option>
                   ))}
               </select>
@@ -108,14 +111,14 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
 
           {/* Player Hypothesis Note */}
           <div className="space-y-1.5">
-            <label className="text-[10px] uppercase font-bold text-noir-400 block">
-              Deductive Hypothesis Note (Optional)
+            <label className="text-[10px] uppercase font-bold text-noir-400 block tracking-wider">
+              {t('hypothesisNote')}
             </label>
             <input
               type="text"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="e.g. Alibi contradiction, forensic match, secret motive..."
+              placeholder={t('hypothesisPlaceholder')}
               className="w-full bg-noir-950 border border-noir-700 rounded p-2.5 text-xs text-white placeholder-noir-600 focus:outline-none focus:border-amber-600"
             />
           </div>
@@ -125,18 +128,18 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
         <div className="bg-noir-950 px-6 py-4 border-t border-noir-800 flex items-center justify-between">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-noir-800 hover:bg-noir-700 text-noir-300 text-xs font-mono rounded transition-colors"
+            className="px-4 py-2 bg-noir-800 hover:bg-noir-700 text-noir-300 text-xs rounded transition-colors"
           >
-            Cancel
+            {t('cancelBtn')}
           </button>
 
           <button
             onClick={handleConnect}
             disabled={!sourceId || !targetId || sourceId === targetId}
-            className="px-5 py-2 bg-blood-600 hover:bg-blood-500 disabled:opacity-40 disabled:hover:bg-blood-600 text-white text-xs font-bold font-mono rounded shadow-lg transition-all flex items-center gap-1.5"
+            className="px-5 py-2 bg-blood-600 hover:bg-blood-500 disabled:opacity-40 disabled:hover:bg-blood-600 text-white text-xs font-bold rounded shadow-lg transition-all flex items-center gap-1.5"
           >
             <Pin className="w-3.5 h-3.5" />
-            <span>Pin String Connection</span>
+            <span>{t('pinStringBtn')}</span>
           </button>
         </div>
       </div>

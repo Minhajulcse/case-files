@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Volume2, VolumeX, Music, Sliders } from 'lucide-react';
 import { sound } from '../../utils/audio';
+import { useGame } from '../../context/GameContext';
 
 export const SoundToggle: React.FC = () => {
+  const { t, formatNum } = useGame();
   const [isOpen, setIsOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(sound.getMuted());
   const [masterVol, setMasterVol] = useState(0.7);
@@ -47,26 +49,26 @@ export const SoundToggle: React.FC = () => {
 
   return (
     <div className="relative">
-      <div className="flex items-center space-x-1 bg-noir-900/90 border border-noir-700/60 rounded px-2 py-1 shadow-md">
+      <div className="flex items-center space-x-1 bg-noir-900 border border-noir-700/70 rounded px-2 py-1 shadow-sm">
         <button
           onClick={toggleMute}
-          title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+          title={isMuted ? 'Unmute' : 'Mute'}
           className="p-1 text-noir-400 hover:text-white transition-colors"
         >
-          {isMuted ? <VolumeX className="w-4 h-4 text-blood-500" /> : <Volume2 className="w-4 h-4 text-noir-200" />}
+          {isMuted ? <VolumeX className="w-3.5 h-3.5 text-blood-500" /> : <Volume2 className="w-3.5 h-3.5 text-noir-300" />}
         </button>
 
         <button
           onClick={toggleAmbience}
-          title={isAmbienceOn ? 'Stop Noir Ambience' : 'Start Noir Rain & Drone Ambience'}
-          className={`p-1 transition-colors ${isAmbienceOn ? 'text-amber-400' : 'text-noir-500 hover:text-noir-300'}`}
+          title={isAmbienceOn ? 'Stop Noir Ambience' : 'Start Noir Rain Ambience'}
+          className={`p-1 transition-colors ${isAmbienceOn ? 'text-brass-400' : 'text-noir-500 hover:text-noir-300'}`}
         >
           <Music className="w-3.5 h-3.5" />
         </button>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          title="Sound Settings"
+          title={t('audioSettings')}
           className="p-1 text-noir-500 hover:text-noir-300 transition-colors"
         >
           <Sliders className="w-3.5 h-3.5" />
@@ -74,17 +76,19 @@ export const SoundToggle: React.FC = () => {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-noir-900/95 border border-noir-700 rounded-lg p-4 shadow-2xl z-50 backdrop-blur-md">
+        <div className="absolute right-0 mt-2 w-64 bg-noir-900 border border-noir-700 rounded p-4 shadow-2xl z-50">
           <div className="flex items-center justify-between mb-3 border-b border-noir-800 pb-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-noir-300">Audio Channels</span>
-            <span className="text-[10px] text-amber-500 font-mono">SYNTH ENGINE</span>
+            <span className="font-mono text-xs uppercase tracking-wider text-noir-300">
+              {t('synthSoundLevels')}
+            </span>
+            <span className="text-[10px] text-brass-400 font-mono">SYNTH</span>
           </div>
 
           <div className="space-y-4 text-xs font-mono">
             <div>
               <div className="flex justify-between text-noir-400 mb-1">
-                <span>Master Volume</span>
-                <span>{Math.round(masterVol * 100)}%</span>
+                <span>{t('masterOutput')}</span>
+                <span>{formatNum(Math.round(masterVol * 100))}%</span>
               </div>
               <input
                 type="range"
@@ -99,8 +103,8 @@ export const SoundToggle: React.FC = () => {
 
             <div>
               <div className="flex justify-between text-noir-400 mb-1">
-                <span>Noir Ambience (Rain & Drone)</span>
-                <span>{Math.round(ambienceVol * 100)}%</span>
+                <span>{t('noirAmbience')}</span>
+                <span>{formatNum(Math.round(ambienceVol * 100))}%</span>
               </div>
               <input
                 type="range"
@@ -109,19 +113,19 @@ export const SoundToggle: React.FC = () => {
                 step="0.05"
                 value={ambienceVol}
                 onChange={handleAmbienceChange}
-                className="w-full accent-amber-500 bg-noir-800 h-1.5 rounded cursor-pointer"
+                className="w-full accent-brass-500 bg-noir-800 h-1.5 rounded cursor-pointer"
               />
             </div>
 
             <div className="pt-2 border-t border-noir-800 flex justify-between items-center text-[11px] text-noir-400">
-              <span>Noir Drone State:</span>
+              <span>{t('noirAmbience')}:</span>
               <button
                 onClick={toggleAmbience}
                 className={`px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider ${
-                  isAmbienceOn ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-noir-800 text-noir-400'
+                  isAmbienceOn ? 'bg-brass-900/60 text-brass-300 border border-brass-600/50' : 'bg-noir-800 text-noir-400'
                 }`}
               >
-                {isAmbienceOn ? 'Active' : 'Off'}
+                {isAmbienceOn ? t('ambienceActive') : t('ambienceOff')}
               </button>
             </div>
           </div>

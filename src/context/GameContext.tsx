@@ -6,7 +6,10 @@ import {
   FinalReportAnswers,
   FinalReportEvaluation,
   CanonConnection,
-  UserConnection
+  UserConnection,
+  Language,
+  LocalizableText,
+  getLocalized
 } from '../types/game';
 import { ALL_CASES, getCaseById } from '../data/cases';
 import {
@@ -21,6 +24,7 @@ import {
 } from '../utils/storage';
 import { evaluateFinalDeduction } from '../utils/deductionEngine';
 import { sound } from '../utils/audio';
+import { translations, TranslationDict, getTranslation, formatNumber } from '../i18n';
 
 export type MainView =
   | 'menu'
@@ -39,7 +43,14 @@ export type InvestigationTab =
   | 'timeline'
   | 'report';
 
+const LANG_STORAGE_KEY = 'case_files_language_pref';
+
 interface GameContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: keyof TranslationDict) => string;
+  formatNum: (val: number | string) => string;
+  getLoc: (val: LocalizableText | undefined) => string;
   profile: DetectiveProfile;
   activeCase: CaseData | null;
   caseState: ActiveCaseState | null;
@@ -74,6 +85,16 @@ interface GameContextType {
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguageState] = useState<Language>(() => {
+    try {
+      const stored = localStorage.getItem(LANG_STORAGE_KEY);
+      if (stored === 'bn' || stored === 'en') return stored;
+      return 'en';
+    } catch {
+      return 'en';
+    }
+  });
+
   const [profile, setProfile] = useState<DetectiveProfile>(() => loadProfile());
   const [activeCase, setActiveCase] = useState<CaseData | null>(null);
   const [caseState, setCaseState] = useState<ActiveCaseState | null>(null);
@@ -82,12 +103,39 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [lastActiveCaseId, setLastActiveCaseId] = useState<string | null>(() => getLastActiveCaseId());
   const [selectedClueForInspection, setSelectedClueForInspection] = useState<string | null>(null);
 
-  // Sync profile to localStorage whenever it changes
+  // Sync language to html document tag and localStorage
+  const setLanguage = useCallback((lang: Language) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+      document.documentElement.lang = lang;
+    } catch (e) {
+      console.error('Failed to save language preference', e);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const t = useCallback((key: keyof TranslationDict): string => {
+    return getTranslation(key, language);
+  }, [language]);
+
+  const formatNum = useCallback((val: number | string): string => {
+    return formatNumber(val, language);
+  }, [language]);
+
+  const getLoc = useCallback((val: LocalizableText | undefined): string => {
+    return getLocalized(val, language);
+  }, [language]);
+
+  // Sync profile to localStorage
   useEffect(() => {
     saveProfile(profile);
   }, [profile]);
 
-  // Sync caseState to localStorage whenever it changes
+  // Sync caseState to localStorage
   useEffect(() => {
     if (caseState && activeCase) {
       saveCaseState(caseState);
@@ -100,14 +148,12 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const foundCase = getCaseById(caseId);
     if (!foundCase) return;
 
-    // Initial timeline order is shuffled
     const initialTimelineIds = [...foundCase.timelineEvents]
       .sort(() => Math.random() - 0.5)
       .map(e => e.id);
 
     const loadedState = loadCaseState(caseId, initialTimelineIds);
 
-    // If initial evidence is empty, auto-discover first 2 basic clues from the briefing
     if (loadedState.discoveredEvidenceIds.length === 0) {
       const initialClues = foundCase.evidence.slice(0, 2).map(e => e.id);
       loadedState.discoveredEvidenceIds = initialClues;
@@ -120,13 +166,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     sound.playPaper();
   }, []);
 
-  // Resume last active case
   const resumeLastCase = useCallback(() => {
     const targetId = lastActiveCaseId || 'case-001';
     startCase(targetId);
   }, [lastActiveCaseId, startCase]);
 
-  // Discover a clue (e.g. from crime scene or interrogation)
   const discoverClue = useCallback((clueId: string, hotspotId?: string) => {
     if (!caseState || !activeCase) return;
 
@@ -159,7 +203,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [caseState, activeCase]);
 
-  // Examine a hotspot
   const examineHotspot = useCallback((hotspotId: string) => {
     if (!caseState || !activeCase) return;
     if (!caseState.examinedHotspotIds.includes(hotspotId)) {
@@ -170,7 +213,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [caseState, activeCase]);
 
-  // Toggle mark clue as important
   const toggleMarkImportant = useCallback((clueId: string) => {
     if (!caseState) return;
     sound.playPin();
@@ -186,7 +228,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   }, [caseState]);
 
-  // Interrogation: Ask dialogue
   const askDialogue = useCallback((suspectId: string, dialogueId: string) => {
     if (!caseState || !activeCase) return;
     sound.playTypewriter();
@@ -208,13 +249,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
     });
 
-    // If dialogue reveals a clue
     if (dialogue?.revealsClueId && !caseState.discoveredEvidenceIds.includes(dialogue.revealsClueId)) {
       discoverClue(dialogue.revealsClueId);
     }
   }, [caseState, activeCase, discoverClue]);
 
-  // Interrogation: Present Clue
   const presentClueToSuspect = useCallback((suspectId: string, clueId: string) => {
     if (!caseState || !activeCase) return { reaction: 'No response.', lieExposed: false };
 
@@ -257,17 +296,21 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       discoverClue(reactionObj.revealsClueId);
     }
 
+    const reactionText = reactionObj
+      ? getLocalized(reactionObj.reactionText, language)
+      : language === 'bn'
+      ? `${getLocalized(suspect?.name, 'bn')} কোনো মন্তব্য না করে স্বাভাবিকভাবে তাকিয়ে রইল।`
+      : `${getLocalized(suspect?.name, 'en')} looks at the evidence with mild disinterest and offers no new comment.`;
+
     return {
-      reaction: reactionObj ? reactionObj.reactionText : `${suspect?.name || 'The suspect'} looks at the evidence with mild disinterest and offers no new comment.`,
+      reaction: reactionText,
       lieExposed: !!reactionObj?.exposesLie
     };
-  }, [caseState, activeCase, discoverClue]);
+  }, [caseState, activeCase, discoverClue, language]);
 
-  // Evidence Board: Add connection
   const addUserConnection = useCallback((sourceId: string, targetId: string, note?: string) => {
     if (!caseState || !activeCase) return { isCanon: false };
 
-    // Check if duplicate connection exists
     const exists = caseState.userConnections.some(
       c => (c.sourceId === sourceId && c.targetId === targetId) ||
            (c.sourceId === targetId && c.targetId === sourceId)
@@ -277,7 +320,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return { isCanon: false };
     }
 
-    // Check against canonical connections
     const canon = activeCase.canonConnections.find(
       c => (c.sourceId === sourceId && c.targetId === targetId) ||
            (c.sourceId === targetId && c.targetId === sourceId)
@@ -287,7 +329,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: `conn-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
       sourceId,
       targetId,
-      note: note || (canon ? canon.label : undefined),
+      note: note || (canon ? getLocalized(canon.label, language) : undefined),
       createdAt: Date.now()
     };
 
@@ -307,9 +349,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       sound.playPin();
       return { isCanon: false };
     }
-  }, [caseState, activeCase]);
+  }, [caseState, activeCase, language]);
 
-  // Evidence Board: Remove connection
   const removeUserConnection = useCallback((connectionId: string) => {
     if (!caseState) return;
     sound.playPaper();
@@ -319,7 +360,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } : null);
   }, [caseState]);
 
-  // Timeline order update
   const updateTimelineOrder = useCallback((newOrder: string[]) => {
     if (!caseState) return;
     setCaseState(prev => prev ? {
@@ -328,7 +368,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } : null);
   }, [caseState]);
 
-  // Hint unlock
   const unlockHint = useCallback((level: 1 | 2 | 3) => {
     if (!caseState || !activeCase) return;
     if (caseState.unlockedHintLevels.includes(level)) return;
@@ -348,7 +387,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }));
   }, [caseState, activeCase]);
 
-  // Update Detective Case Notes
   const updateCaseNotes = useCallback((notes: string) => {
     if (!caseState) return;
     setCaseState(prev => prev ? {
@@ -357,7 +395,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } : null);
   }, [caseState]);
 
-  // Submit Final Report Indictment
   const submitFinalReport = useCallback((answers: FinalReportAnswers): FinalReportEvaluation => {
     if (!caseState || !activeCase) {
       throw new Error('No active case loaded');
@@ -376,7 +413,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const updatedTotalPoints = profile.totalPoints + (isFirstTimeCompletion ? evaluation.pointsAwarded : Math.max(0, evaluation.pointsAwarded - existingHighScore));
     const newRank = calculateDetectiveRank(updatedTotalPoints, updatedCompleted.length);
 
-    // Achievements calculation
     const newAchievements = [...profile.achievements];
     if (evaluation.accuracyScore === 100 && !newAchievements.includes('Master Deductive Mind')) {
       newAchievements.push('Master Deductive Mind');
@@ -417,14 +453,12 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return evaluation;
   }, [caseState, activeCase, profile]);
 
-  // Reset active case
   const resetCurrentCase = useCallback(() => {
     if (!activeCase) return;
     clearCaseState(activeCase.id);
     startCase(activeCase.id);
   }, [activeCase, startCase]);
 
-  // Reset entire game
   const resetEntireGame = useCallback(() => {
     clearAllGameData();
     window.location.reload();
@@ -435,6 +469,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const value = useMemo(() => ({
+    language,
+    setLanguage,
+    t,
+    formatNum,
+    getLoc,
     profile,
     activeCase,
     caseState,
@@ -463,6 +502,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     resetEntireGame,
     updateProfileName
   }), [
+    language,
+    setLanguage,
+    t,
+    formatNum,
+    getLoc,
     profile,
     activeCase,
     caseState,

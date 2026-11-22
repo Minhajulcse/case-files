@@ -1,5 +1,20 @@
 // Core Game Types for CASE FILES
 
+export type Language = 'en' | 'bn';
+
+export interface LocalizedString {
+  en: string;
+  bn: string;
+}
+
+export type LocalizableText = LocalizedString | string;
+
+export function getLocalized(val: LocalizableText | undefined, lang: Language): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  return val[lang] || val.en || '';
+}
+
 export type DetectiveRank =
   | 'Rookie Detective'
   | 'Junior Investigator'
@@ -32,54 +47,54 @@ export type EvidenceCategory =
 
 export interface EvidenceItem {
   id: string;
-  name: string;
+  name: LocalizableText;
   category: EvidenceCategory;
-  description: string;
-  discoveryLocation: string;
-  relevance: string;
+  description: LocalizableText;
+  discoveryLocation: LocalizableText;
+  relevance: LocalizableText;
   relatedSuspectIds: string[];
   isHidden?: boolean;
   isCrucial?: boolean;
   isOptional?: boolean;
   forensicReport?: {
-    labSummary: string;
-    chemicalOrBiologicalTrace?: string;
-    microscopicDetails?: string;
+    labSummary: LocalizableText;
+    chemicalOrBiologicalTrace?: LocalizableText;
+    microscopicDetails?: LocalizableText;
   };
-  details: string[];
+  details: LocalizableText[];
   iconKey: string;
   dateDiscovered?: string;
 }
 
 export interface HotspotItem {
   id: string;
-  name: string;
+  name: LocalizableText;
   x: number; // percentage 0 - 100
   y: number; // percentage 0 - 100
   radius?: number;
-  description: string;
+  description: LocalizableText;
   detailViewImage?: string;
   revealsEvidenceId: string;
   isHidden?: boolean;
   requiresClueIdToNotice?: string;
-  discoveryNote: string;
+  discoveryNote: LocalizableText;
   iconType: 'magnifier' | 'footprint' | 'document' | 'key' | 'flask' | 'camera' | 'safe';
 }
 
 export interface DialogueOption {
   id: string;
-  prompt: string;
-  response: string;
+  prompt: LocalizableText;
+  response: LocalizableText;
   reactionMood?: 'calm' | 'nervous' | 'hostile' | 'defensive' | 'surprised';
   revealsClueId?: string;
   revealsContradictionId?: string;
-  contradictionAlert?: string;
-  conditionClueId?: string; // only shows if player has discovered this clue
+  contradictionAlert?: LocalizableText;
+  conditionClueId?: string;
 }
 
 export interface EvidenceReaction {
   evidenceId: string;
-  reactionText: string;
+  reactionText: LocalizableText;
   revealsClueId?: string;
   stressIncrease: number; // 0 to 100
   unlocksDialogueIds?: string[];
@@ -88,17 +103,17 @@ export interface EvidenceReaction {
 
 export interface Suspect {
   id: string;
-  name: string;
-  alias?: string;
-  role: string;
+  name: LocalizableText;
+  alias?: LocalizableText;
+  role: LocalizableText;
   age: number;
-  occupation: string;
-  relationshipToVictim: string;
-  motive: string;
-  alibi: string;
-  personality: string;
-  secrets: string;
-  avatarSeed: string; // Used for unique portrait generation
+  occupation: LocalizableText;
+  relationshipToVictim: LocalizableText;
+  motive: LocalizableText;
+  alibi: LocalizableText;
+  personality: LocalizableText;
+  secrets: LocalizableText;
+  avatarSeed: string;
   avatarColor: string;
   dialogueTree: DialogueOption[];
   evidenceReactions: EvidenceReaction[];
@@ -107,7 +122,7 @@ export interface Suspect {
 export interface EvidenceBoardNode {
   id: string;
   type: 'evidence' | 'suspect';
-  targetId: string; // evidenceId or suspectId
+  targetId: string;
   title: string;
   subtitle: string;
   category?: EvidenceCategory;
@@ -119,8 +134,8 @@ export interface CanonConnection {
   id: string;
   sourceId: string;
   targetId: string;
-  label: string;
-  deductionNotes: string;
+  label: LocalizableText;
+  deductionNotes: LocalizableText;
   isContradiction: boolean;
   bonusPoints: number;
 }
@@ -136,58 +151,58 @@ export interface UserConnection {
 export interface TimelineEvent {
   id: string;
   timestamp: string;
-  timeSortValue: number; // 24-hr minutes e.g. 21:30 = 1290
-  title: string;
-  description: string;
-  source: string; // e.g. "CCTV Cam #4", "Housekeeper Statement", "Smart Watch Log"
-  verifiedLocation: string;
+  timeSortValue: number;
+  title: LocalizableText;
+  description: LocalizableText;
+  source: LocalizableText;
+  verifiedLocation: LocalizableText;
   relatedSuspectId?: string;
-  correctIndex: number; // 0-based target index
+  correctIndex: number;
 }
 
 export interface CaseHint {
   level: 1 | 2 | 3;
   cost: number;
-  title: string;
-  hintText: string;
+  title: LocalizableText;
+  hintText: LocalizableText;
 }
 
 export interface CaseSolution {
   culpritId: string;
-  culpritName: string;
-  motiveDescription: string;
-  methodDescription: string;
-  approximateTime: string;
+  culpritName: LocalizableText;
+  motiveDescription: LocalizableText;
+  methodDescription: LocalizableText;
+  approximateTime: LocalizableText;
   crucialEvidenceIds: string[];
   falseAlibiSuspectId: string;
-  fullCaseDebriefing: string;
+  fullCaseDebriefing: LocalizableText;
   options: {
-    motives: { id: string; label: string }[];
-    methods: { id: string; label: string }[];
-    times: { id: string; label: string }[];
+    motives: { id: string; label: LocalizableText }[];
+    methods: { id: string; label: LocalizableText }[];
+    times: { id: string; label: LocalizableText }[];
   };
 }
 
 export interface CaseData {
   id: string;
   caseNumber: string;
-  title: string;
-  subtitle: string;
+  title: LocalizableText;
+  subtitle: LocalizableText;
   badge: 'MURDER' | 'ABDUCTION' | 'GRAND HEIST';
   difficulty: 'Standard' | 'Hard' | 'Master';
   estimatedTime: string;
-  victimOrSubject: string;
-  incidentDate: string;
-  location: string;
-  synopsis: string;
+  victimOrSubject: LocalizableText;
+  incidentDate: LocalizableText;
+  location: LocalizableText;
+  synopsis: LocalizableText;
   briefing: {
-    chiefMemo: string;
-    initialStatus: string;
-    keyObjectives: string[];
+    chiefMemo: LocalizableText;
+    initialStatus: LocalizableText;
+    keyObjectives: LocalizableText[];
   };
   crimeScene: {
-    roomTitle: string;
-    roomDescription: string;
+    roomTitle: LocalizableText;
+    roomDescription: LocalizableText;
     sceneTheme: 'victorian_study' | 'motel_safehouse' | 'museum_vault';
     hotspots: HotspotItem[];
   };
@@ -217,11 +232,11 @@ export interface FinalReportEvaluation {
   isFalseAlibiCorrect: boolean;
   crucialEvidenceMatchedCount: number;
   totalCrucialEvidenceCount: number;
-  accuracyScore: number; // 0 - 100%
+  accuracyScore: number;
   pointsAwarded: number;
   performanceGrade: 'S+' | 'A' | 'B' | 'C' | 'F';
-  feedbackNotes: string[];
-  fullDebriefing: string;
+  feedbackNotes: LocalizableText[];
+  fullDebriefing: LocalizableText;
 }
 
 export interface ActiveCaseState {
@@ -229,11 +244,11 @@ export interface ActiveCaseState {
   discoveredEvidenceIds: string[];
   examinedHotspotIds: string[];
   markedImportantClueIds: string[];
-  askedDialogueIds: Record<string, string[]>; // suspectId -> dialogueId[]
-  presentedClueIds: Record<string, string[]>; // suspectId -> clueId[]
-  suspectStressLevels: Record<string, number>; // suspectId -> 0-100
+  askedDialogueIds: Record<string, string[]>;
+  presentedClueIds: Record<string, string[]>;
+  suspectStressLevels: Record<string, number>;
   userConnections: UserConnection[];
-  timelineOrder: string[]; // eventIds in current proposed order
+  timelineOrder: string[];
   unlockedHintLevels: number[];
   revealedHiddenHotspots: string[];
   caseNotes: string;

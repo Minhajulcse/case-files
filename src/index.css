@@ -4,64 +4,101 @@
 
 @layer base {
   body {
-    @apply bg-noir-950 text-noir-100 font-sans selection:bg-blood-700 selection:text-white;
+    @apply bg-noir-950 text-[#e8edf5] font-sans selection:bg-blood-700 selection:text-white;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Bengali typography improvements: adjust line height and letter spacing for readability */
+  [lang="bn"], .font-bengali {
+    font-family: 'Hind Siliguri', 'Inter', sans-serif;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 }
 
-/* Custom scrollbars */
+/* Custom understated scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f1115;
+  background: #0d0f14;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262c38;
-  border-radius: 4px;
+  background: #252b38;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #dc2638;
+  background: #a81e28;
 }
 
-/* Noir Film Grain / Scanline effect */
+/* Atmospheric Film Grain / Noir Vignette */
 .scanline-effect {
   background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.35) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
+    rgba(14, 16, 20, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
   );
-  background-size: 100% 4px, 6px 100%;
+  background-size: 100% 4px;
   pointer-events: none;
 }
 
+/* Authentic Corkboard Texture for Evidence Board */
 .corkboard-texture {
-  background-color: #1e1713;
+  background-color: #171310;
   background-image: 
-    radial-gradient(#30251c 15%, transparent 16%), 
-    radial-gradient(#271e16 15%, transparent 16%);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+    radial-gradient(#292019 18%, transparent 19%), 
+    radial-gradient(#221a14 18%, transparent 19%);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
 }
 
-.manila-texture {
-  background: #ece4d0;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.12);
-}
-
-.classified-stamp {
-  border: 3px solid #b83b3b;
-  color: #b83b3b;
-  font-family: 'Courier Prime', monospace;
-  font-weight: 900;
-  letter-spacing: 0.25em;
+/* Authentic Red Rubber Stamp */
+.rubber-stamp {
+  border: 2px solid #a81e28;
+  color: #c92a35;
+  font-family: 'Courier Prime', 'Special Elite', monospace;
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  transform: rotate(-6deg);
+  transform: rotate(-3deg);
   display: inline-block;
-  padding: 4px 12px;
-  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0.6) 100%);
+  padding: 3px 10px;
+  box-shadow: 0 0 0 1px rgba(168, 30, 40, 0.15);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0.7) 100%);
+}
+
+.rubber-stamp-green {
+  border: 2px solid #1e7040;
+  color: #279e58;
+  font-family: 'Courier Prime', 'Special Elite', monospace;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  display: inline-block;
+  padding: 3px 10px;
+}
+
+/* Physical Crime Scene Marker Tent [1], [2], [3] */
+.marker-tent {
+  position: relative;
+  width: 28px;
+  height: 26px;
+  background: #eab308;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid #a16207;
+}
+
+/* Manila folder tab */
+.folder-tab {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
 }

@@ -2,7 +2,9 @@ import {
   CaseData,
   FinalReportAnswers,
   FinalReportEvaluation,
-  ActiveCaseState
+  ActiveCaseState,
+  LocalizableText,
+  getLocalized
 } from '../types/game';
 
 export function evaluateFinalDeduction(
@@ -16,8 +18,6 @@ export function evaluateFinalDeduction(
   const isCulpritCorrect = answers.culpritId === solution.culpritId;
 
   // 2. Check Motive
-  // The user selected an option from caseData.solution.options.motives
-  // Let's check matching against known correct answer or keyword logic
   const isMotiveCorrect =
     (caseData.id === 'case-001' && answers.motiveId === 'm-embezzle') ||
     (caseData.id === 'case-002' && answers.motiveId === 'm-syndicate-bribe') ||
@@ -51,7 +51,6 @@ export function evaluateFinalDeduction(
   const crucialRatio = totalCrucial > 0 ? matchedCrucial / totalCrucial : 1;
 
   // Calculate Accuracy Percentage
-  // Weighted: Culprit (35%), Motive (15%), Method (20%), Time (10%), False Alibi (10%), Crucial Evidence (10%)
   let accuracyPoints = 0;
   if (isCulpritCorrect) accuracyPoints += 35;
   if (isMotiveCorrect) accuracyPoints += 15;
@@ -63,16 +62,10 @@ export function evaluateFinalDeduction(
   const accuracyScore = Math.min(100, Math.max(0, accuracyPoints));
 
   // Points Calculation
-  // Base points by case difficulty: Standard 1000, Hard 1400, Master 1800
   const basePoints = caseData.difficulty === 'Master' ? 1800 : caseData.difficulty === 'Hard' ? 1400 : 1000;
-  
-  // Clue discovery bonus: 20 pts per clue discovered
   const clueBonus = caseState.discoveredEvidenceIds.length * 20;
-
-  // Connections bonus: 40 pts per valid connection
   const connectionsBonus = (caseState.userConnections.length) * 35;
 
-  // Hint penalty: Level 1 (-50), Level 2 (-100), Level 3 (-200)
   const hintPenalty = caseState.unlockedHintLevels.reduce((acc, lvl) => {
     if (lvl === 1) return acc + 50;
     if (lvl === 2) return acc + 100;
@@ -91,45 +84,87 @@ export function evaluateFinalDeduction(
   else if (accuracyScore >= 50) performanceGrade = 'C';
   else performanceGrade = 'F';
 
-  // Detailed Feedback Notes
-  const feedbackNotes: string[] = [];
+  // Localized Feedback Notes
+  const feedbackNotes: LocalizableText[] = [];
+
+  const enCulprit = getLocalized(solution.culpritName, 'en');
+  const bnCulprit = getLocalized(solution.culpritName, 'bn');
 
   if (isCulpritCorrect) {
-    feedbackNotes.push(`✓ Primary Culprit Correct: You accurately identified ${solution.culpritName}.`);
+    feedbackNotes.push({
+      en: `✓ Primary Culprit Correct: You accurately identified ${enCulprit}.`,
+      bn: `✓ মূল অপরাধী সঠিক: আপনি নির্ভুলভাবে ${bnCulprit}-কে শনাক্ত করেছেন।`
+    });
   } else {
-    feedbackNotes.push(`✗ Incorrect Culprit Identified: The evidence pointed to someone else.`);
+    feedbackNotes.push({
+      en: `✗ Incorrect Culprit Identified: The evidence pointed to someone else.`,
+      bn: `✗ ভুল অপরাধী শনাক্ত হয়েছে: সংগৃহীত প্রমাণ অন্য কারও দিকে ইঙ্গিত করছে।`
+    });
   }
 
   if (isMotiveCorrect) {
-    feedbackNotes.push(`✓ Motive Confirmed: Your theory aligns with the physical and financial records.`);
+    feedbackNotes.push({
+      en: `✓ Motive Confirmed: Your theory aligns with the physical and financial records.`,
+      bn: `✓ অপরাধের উদ্দেশ্য প্রমাণিত: আপনার যুক্তি আর্থিক ও শারীরিক প্রমাণের সাথে মিলেছে।`
+    });
   } else {
-    feedbackNotes.push(`✗ Flawed Motive: The suspect had a far more pressing and provable motivation.`);
+    feedbackNotes.push({
+      en: `✗ Flawed Motive: The suspect had a far more pressing and provable motivation.`,
+      bn: `✗ উদ্দেশ্য অনুমান ভুল: অপরাধীর আরও গুরুতর ও প্রমাণিত উদ্দেশ্য বিদ্যমান ছিল।`
+    });
   }
 
   if (isMethodCorrect) {
-    feedbackNotes.push(`✓ Modus Operandi Verified: You deduced the exact mechanics of how the crime was executed.`);
+    feedbackNotes.push({
+      en: `✓ Modus Operandi Verified: You deduced the exact mechanics of how the crime was executed.`,
+      bn: `✓ অপরাধের কৌশল ও মোডাস অপারেন্ডি প্রমাণিত: অপরাধ সংঘটনের সঠিক উপায় আপনি বের করেছেন।`
+    });
   } else {
-    feedbackNotes.push(`✗ Inaccurate Modus Operandi: Physical evidence disproves your assumed method.`);
+    feedbackNotes.push({
+      en: `✗ Inaccurate Modus Operandi: Physical evidence disproves your assumed method.`,
+      bn: `✗ অপরাধের পদ্ধতি ভুল: শারীরিক আলামত আপনার অনুমান করা কৌশলকে নাকচ করে।`
+    });
   }
 
   if (isTimeCorrect) {
-    feedbackNotes.push(`✓ Incident Time Window Confirmed: Physical timestamps match your reconstructed timeline.`);
+    feedbackNotes.push({
+      en: `✓ Incident Time Window Confirmed: Physical timestamps match your reconstructed timeline.`,
+      bn: `✓ সময়রেখা নির্ভুল: শারীরিক আলামতের ঘড়ি ও সময় আপনার তদন্তের সাথে মিলে গেছে।`
+    });
   } else {
-    feedbackNotes.push(`✗ Timeline Inaccuracy: Key forensic timestamps do not corroborate this time window.`);
+    feedbackNotes.push({
+      en: `✗ Timeline Inaccuracy: Key forensic timestamps do not corroborate this time window.`,
+      bn: `✗ সময়রেখা অসঙ্গতিপূর্ণ: ফরেনসিক প্রমাণ এই সময়ের দাবির সাথে মেলে না।`
+    });
   }
 
   if (isFalseAlibiCorrect) {
-    feedbackNotes.push(`✓ Fabricated Alibi Exposed: You shattered the false statement of the perpetrator.`);
+    feedbackNotes.push({
+      en: `✓ Fabricated Alibi Exposed: You shattered the false statement of the perpetrator.`,
+      bn: `✓ সাজানো অ্যালিবাই উন্মোচিত: অপরাধীর মিথ্যা অবস্থান ও বয়ান সফলভাবে খণ্ডন করেছেন।`
+    });
   } else {
-    feedbackNotes.push(`✗ False Alibi Missed: The real perpetrator's alibi contained an unaddressed lie.`);
+    feedbackNotes.push({
+      en: `✗ False Alibi Missed: The real perpetrator's alibi contained an unaddressed lie.`,
+      bn: `✗ মিথ্যা অ্যালিবাই ধরতে পারেননি: মূল অপরাধীর বয়ানে একটি উন্মোচনযোগ্য মিথ্যা ছিল।`
+    });
   }
 
-  feedbackNotes.push(`• Crucial Evidence Corroboration: ${matchedCrucial} of ${totalCrucial} key items correctly cited in your indictment.`);
+  feedbackNotes.push({
+    en: `• Crucial Evidence Corroboration: ${matchedCrucial} of ${totalCrucial} key items correctly cited in your indictment.`,
+    bn: `• মূল আলামতের সঠিকতা: অভিযোগপত্রে ${totalCrucial}-টির মধ্যে ${matchedCrucial}-টি মূল প্রমাণ সঠিকভাবে উদ্ধৃত হয়েছে।`
+  });
 
   if (hintPenalty > 0) {
-    feedbackNotes.push(`• Department Deduction: -${hintPenalty} points due to ${caseState.unlockedHintLevels.length} consultation hint(s) used.`);
+    feedbackNotes.push({
+      en: `• Department Deduction: -${hintPenalty} points due to ${caseState.unlockedHintLevels.length} consultation hint(s) used.`,
+      bn: `• বিভাগীয় পয়েন্ট কর্তন: ${caseState.unlockedHintLevels.length}টি ইঙ্গিত গ্রহণের কারণে -${hintPenalty} পয়েন্ট কর্তন করা হয়েছে।`
+    });
   } else {
-    feedbackNotes.push(`★ Flawless Deduction: No department hints used! +200 commendation rating.`);
+    feedbackNotes.push({
+      en: `★ Flawless Deduction: No department hints used! +200 commendation rating.`,
+      bn: `★ নিখুঁত তদন্ত: কোনো বিভাগীয় ইঙ্গিত ছাড়াই সমাধান! +২০০ বিশেষ সম্মাননা রেটিং।`
+    });
   }
 
   return {

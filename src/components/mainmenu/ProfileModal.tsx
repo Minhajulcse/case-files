@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Shield, Award, CheckCircle2, Star, Edit3, Check } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { ALL_CASES } from '../../data/cases';
+import { getLocalizedRank } from '../../i18n';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -9,11 +10,13 @@ interface ProfileModalProps {
 }
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
-  const { profile, updateProfileName } = useGame();
+  const { profile, updateProfileName, language, t, formatNum } = useGame();
   const [isEditing, setIsEditing] = useState(false);
   const [nameInput, setNameInput] = useState(profile.name);
 
   if (!isOpen) return null;
+
+  const isBengali = language === 'bn';
 
   const handleSaveName = () => {
     updateProfileName(nameInput);
@@ -21,25 +24,49 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
   };
 
   const allAchievementsList = [
-    { id: 'Badge Issued', title: 'Badge Issued', desc: 'Sworn in as a recognized detective at the bureau.' },
-    { id: 'Master Deductive Mind', title: 'Master Deductive Mind', desc: 'Achieve a 100% accuracy score on any case indictment.' },
-    { id: 'Independent Inquirer (No Hints)', title: 'Independent Inquirer', desc: 'Solve a case without consulting any department hints.' },
-    { id: 'Trilogy of Justice', title: 'Trilogy of Justice', desc: 'Successfully close all three major fictional case files.' }
+    {
+      id: 'Badge Issued',
+      title: isBengali ? 'ব্যাজ ও সনদ প্রাপ্তি' : 'Badge Issued',
+      desc: isBengali
+        ? 'মেট্রোপলিটন ব্যুরোতে আনুষ্ঠানিকভাবে শপথ গ্রহণ ও গোয়েন্দা ব্যাজ লাভ।'
+        : 'Sworn in as a recognized detective at the bureau.'
+    },
+    {
+      id: 'Master Deductive Mind',
+      title: isBengali ? 'মাস্টার ডিডাক্টিভ মাইন্ড' : 'Master Deductive Mind',
+      desc: isBengali
+        ? 'যেকোনো মামলার অভিযোগপত্রে শতভাগ (১০০%) নির্ভুল রায় অর্জন।'
+        : 'Achieve a 100% accuracy score on any case indictment.'
+    },
+    {
+      id: 'Independent Inquirer (No Hints)',
+      title: isBengali ? 'স্বাবলম্বী তদন্তকারী' : 'Independent Inquirer',
+      desc: isBengali
+        ? 'কোনো বিভাগীয় পরামর্শ বা ইঙ্গিত গ্রহণ না করেই মামলা নিষ্পত্তি।'
+        : 'Solve a case without consulting any department hints.'
+    },
+    {
+      id: 'Trilogy of Justice',
+      title: isBengali ? 'ন্যায়বিচারের ত্রয়ী' : 'Trilogy of Justice',
+      desc: isBengali
+        ? 'তিনটি প্রধান রহস্যময় মামলার সবকটি সফলভাবে নিষ্পত্তি।'
+        : 'Successfully close all three major fictional case files.'
+    }
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-2xl bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden font-mono text-noir-200 flex flex-col max-h-[85vh]">
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+      <div className="relative w-full max-w-2xl bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200 flex flex-col max-h-[85vh]">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Shield className="w-5 h-5 text-amber-500" />
             <div>
               <h2 className="font-serif font-bold text-base text-amber-200 tracking-wide">
-                BUREAU PERSONNEL DOSSIER
+                {t('profileTitle')}
               </h2>
               <span className="text-xs text-noir-400">
-                Official Credential File — ID #{profile.badgeNumber}
+                {t('profileSubtitle')} — {t('badgeNo')} #{formatNum(profile.badgeNumber)}
               </span>
             </div>
           </div>
@@ -93,13 +120,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
 
               <div className="flex items-center justify-center sm:justify-start gap-2">
                 <span className="text-xs px-2.5 py-0.5 rounded-full bg-blood-950 text-blood-300 border border-blood-800 font-bold uppercase tracking-wider">
-                  {profile.rank}
+                  {getLocalizedRank(profile.rank, language)}
                 </span>
-                <span className="text-xs text-noir-400">Badge #{profile.badgeNumber}</span>
+                <span className="text-xs text-noir-400 font-mono">{t('badgeNo')} #{formatNum(profile.badgeNumber)}</span>
               </div>
 
-              <p className="text-[11px] text-noir-500 pt-1">
-                Department of Homicide & Major Crimes Investigation Division
+              <p className="text-[11px] text-noir-400 pt-1">
+                {t('departmentHomicide')}
               </p>
             </div>
           </div>
@@ -107,29 +134,29 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
           {/* Career Metrics Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <div className="bg-noir-950 p-3.5 rounded border border-noir-800 text-center">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">Total Score</span>
-              <div className="text-xl font-bold text-amber-400 mt-1">{profile.totalPoints}</div>
+              <span className="text-[10px] text-noir-400 uppercase tracking-wider">{t('totalScoreStat')}</span>
+              <div className="text-xl font-bold text-amber-400 mt-1 font-mono">{formatNum(profile.totalPoints)}</div>
             </div>
             <div className="bg-noir-950 p-3.5 rounded border border-noir-800 text-center">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">Cases Solved</span>
-              <div className="text-xl font-bold text-green-400 mt-1">
-                {profile.completedCaseIds.length} / {ALL_CASES.length}
+              <span className="text-[10px] text-noir-400 uppercase tracking-wider">{t('casesSolvedStat')}</span>
+              <div className="text-xl font-bold text-green-400 mt-1 font-mono">
+                {formatNum(profile.completedCaseIds.length)} / {formatNum(ALL_CASES.length)}
               </div>
             </div>
             <div className="bg-noir-950 p-3.5 rounded border border-noir-800 text-center">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">Hints Used</span>
-              <div className="text-xl font-bold text-blood-400 mt-1">{profile.totalHintsUsed}</div>
+              <span className="text-[10px] text-noir-400 uppercase tracking-wider">{t('hintsUsedStat')}</span>
+              <div className="text-xl font-bold text-blood-400 mt-1 font-mono">{formatNum(profile.totalHintsUsed)}</div>
             </div>
             <div className="bg-noir-950 p-3.5 rounded border border-noir-800 text-center">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">Bonus Clues</span>
-              <div className="text-xl font-bold text-cyan-400 mt-1">{profile.totalOptionalCluesFound}</div>
+              <span className="text-[10px] text-noir-400 uppercase tracking-wider">{t('bonusCluesStat')}</span>
+              <div className="text-xl font-bold text-cyan-400 mt-1 font-mono">{formatNum(profile.totalOptionalCluesFound)}</div>
             </div>
           </div>
 
           {/* Department Commendations / Achievements */}
           <div>
             <h4 className="text-xs uppercase font-bold tracking-wider text-amber-400 flex items-center gap-1.5 mb-3">
-              <Award className="w-4 h-4" /> Official Commendations & Medals
+              <Award className="w-4 h-4" /> {t('commendationsTitle')}
             </h4>
             <div className="space-y-2">
               {allAchievementsList.map((ach) => {
@@ -155,7 +182,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
                         <span>{ach.title}</span>
                         {isEarned && (
                           <span className="text-[10px] text-green-400 flex items-center gap-0.5">
-                            <CheckCircle2 className="w-3 h-3" /> Awarded
+                            <CheckCircle2 className="w-3 h-3" /> {t('awardedLabel')}
                           </span>
                         )}
                       </div>
@@ -172,9 +199,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
         <div className="bg-noir-950 px-6 py-3 border-t border-noir-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-noir-800 hover:bg-noir-700 text-noir-200 text-xs font-mono rounded transition-colors"
+            className="px-4 py-1.5 bg-noir-800 hover:bg-noir-700 text-noir-200 text-xs rounded transition-colors"
           >
-            Dismiss Dossier
+            {t('dismissDossier')}
           </button>
         </div>
       </div>

@@ -14,9 +14,18 @@ import { useGame } from '../../context/GameContext';
 import { FinalReportAnswers, FinalReportEvaluation } from '../../types/game';
 import { CaseSolvedModal } from './CaseSolvedModal';
 import { sound } from '../../utils/audio';
+import { getLocalizedCategory } from '../../i18n';
 
 export const FinalReport: React.FC = () => {
-  const { activeCase, caseState, submitFinalReport } = useGame();
+  const {
+    activeCase,
+    caseState,
+    submitFinalReport,
+    language,
+    t,
+    formatNum,
+    getLoc
+  } = useGame();
 
   const [culpritId, setCulpritId] = useState<string>('');
   const [motiveId, setMotiveId] = useState<string>('');
@@ -34,6 +43,7 @@ export const FinalReport: React.FC = () => {
 
   if (!activeCase || !caseState) return null;
 
+  const isBengali = language === 'bn';
   const { solution } = activeCase;
   const discoveredClues = activeCase.evidence.filter(e =>
     caseState.discoveredEvidenceIds.includes(e.id)
@@ -50,27 +60,27 @@ export const FinalReport: React.FC = () => {
     e.preventDefault();
 
     if (!culpritId) {
-      setValidationError('Please identify the primary perpetrator of the crime.');
+      setValidationError(isBengali ? 'দয়া করে অপরাধের মূল অপরাধীকে চিহ্নিত করুন।' : 'Please identify the primary perpetrator of the crime.');
       return;
     }
     if (!motiveId) {
-      setValidationError('Please specify the underlying motive for the crime.');
+      setValidationError(isBengali ? 'দয়া করে অপরাধের পেছনে মূল উদ্দেশ্য নির্ধারণ করুন।' : 'Please specify the underlying motive for the crime.');
       return;
     }
     if (!methodId) {
-      setValidationError('Please select the operational method (Modus Operandi).');
+      setValidationError(isBengali ? 'দয়া করে অপরাধ সংঘটনের পদ্ধতি বা কৌশল (মোডাস অপারেন্ডি) নির্বাচন করুন।' : 'Please select the operational method (Modus Operandi).');
       return;
     }
     if (!timeId) {
-      setValidationError('Please select the verified incident time window.');
+      setValidationError(isBengali ? 'দয়া করে অপরাধ সংঘটনের সঠিক সময় নির্বাচন করুন।' : 'Please select the verified incident time window.');
       return;
     }
     if (selectedEvidenceIds.length === 0) {
-      setValidationError('Please cite at least one piece of supporting physical or digital evidence.');
+      setValidationError(isBengali ? 'অভিযোগ প্রমাণে অন্তত একটি ভৌত বা ডিজিটাল আলামত নির্বাচন করুন।' : 'Please cite at least one piece of supporting physical or digital evidence.');
       return;
     }
     if (!falseAlibiSuspectId) {
-      setValidationError('Please designate which suspect fabricated an alibi.');
+      setValidationError(isBengali ? 'কোন সন্দেহভাজন ব্যক্তি মিথ্যা বা সাজানো অ্যালিবাই দিয়েছেন তা চিহ্নিত করুন।' : 'Please designate which suspect fabricated an alibi.');
       return;
     }
 
@@ -92,7 +102,7 @@ export const FinalReport: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-105px)] bg-noir-950 p-4 sm:p-6 font-mono select-none">
+    <div className={`min-h-[calc(100vh-105px)] bg-noir-950 p-4 sm:p-6 select-none ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Indictment Header */}
         <div className="bg-noir-900 border border-noir-800 rounded-lg p-5 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -100,11 +110,11 @@ export const FinalReport: React.FC = () => {
             <div className="flex items-center space-x-2">
               <FileCheck2 className="w-5 h-5 text-blood-500" />
               <h2 className="font-serif font-bold text-base text-white tracking-wide">
-                OFFICIAL INDICTMENT & FINAL DEDUCTION REPORT
+                {t('indictmentTitle')}
               </h2>
             </div>
-            <p className="text-xs text-noir-400 mt-0.5">
-              Case #{activeCase.caseNumber} — Submit your formal findings to the District Attorney.
+            <p className="text-xs text-noir-400 mt-0.5 leading-relaxed">
+              {isBengali ? 'মামলা নং' : 'Case #'} {formatNum(activeCase.caseNumber)} — {t('indictmentSubtitle')}
             </p>
           </div>
 
@@ -114,7 +124,7 @@ export const FinalReport: React.FC = () => {
               className="px-4 py-2 bg-green-950 hover:bg-green-900 border border-green-700 text-green-300 rounded text-xs font-bold transition-colors flex items-center gap-1.5"
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>Review Solved Verdict</span>
+              <span>{t('reviewVerdictBtn')}</span>
             </button>
           )}
         </div>
@@ -133,17 +143,19 @@ export const FinalReport: React.FC = () => {
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <div className="flex items-center justify-between">
               <label className="text-xs uppercase font-bold text-amber-400 tracking-wider">
-                1. Identify the Primary Perpetrator / Culprit
+                {t('q1Culprit')}
               </label>
-              <span className="text-[10px] text-noir-500">Required</span>
+              <span className="text-[10px] text-noir-500">{t('requiredField')}</span>
             </div>
-            <p className="text-xs text-noir-400">
-              Based on the physical clues, witness statements, and contradictions, who is responsible?
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q1Desc')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-1">
               {activeCase.suspects.map(suspect => {
                 const isSelected = culpritId === suspect.id;
+                const suspectName = getLoc(suspect.name);
+                const suspectRole = getLoc(suspect.role);
 
                 return (
                   <div
@@ -159,14 +171,14 @@ export const FinalReport: React.FC = () => {
                     }`}
                   >
                     <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-white flex-shrink-0"
+                      className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-white flex-shrink-0 shadow-inner"
                       style={{ backgroundColor: suspect.avatarColor }}
                     >
-                      {suspect.name.charAt(0)}
+                      {suspectName.charAt(0)}
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-white truncate">{suspect.name}</div>
-                      <div className="text-[10px] text-noir-400 truncate">{suspect.role}</div>
+                      <div className="font-bold text-white truncate">{suspectName}</div>
+                      <div className="text-[10px] text-noir-400 truncate">{suspectRole}</div>
                     </div>
                   </div>
                 );
@@ -177,10 +189,10 @@ export const FinalReport: React.FC = () => {
           {/* Question 2: Underlying Motive */}
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <label className="text-xs uppercase font-bold text-amber-400 tracking-wider block">
-              2. True Underlying Motive
+              {t('q2Motive')}
             </label>
-            <p className="text-xs text-noir-400">
-              What compelled the perpetrator to execute this crime at this exact moment?
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q2Desc')}
             </p>
 
             <div className="space-y-2 pt-1">
@@ -209,7 +221,7 @@ export const FinalReport: React.FC = () => {
                     >
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                     </div>
-                    <span>{m.label}</span>
+                    <span>{getLoc(m.label)}</span>
                   </div>
                 );
               })}
@@ -219,10 +231,10 @@ export const FinalReport: React.FC = () => {
           {/* Question 3: Modus Operandi (Method) */}
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <label className="text-xs uppercase font-bold text-amber-400 tracking-wider block">
-              3. Modus Operandi (Execution Method & Technique)
+              {t('q3Method')}
             </label>
-            <p className="text-xs text-noir-400">
-              How did the perpetrator overcome security, poison the victim, or stage the impossible scenario?
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q3Desc')}
             </p>
 
             <div className="space-y-2 pt-1">
@@ -251,7 +263,7 @@ export const FinalReport: React.FC = () => {
                     >
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                     </div>
-                    <span>{met.label}</span>
+                    <span>{getLoc(met.label)}</span>
                   </div>
                 );
               })}
@@ -261,22 +273,22 @@ export const FinalReport: React.FC = () => {
           {/* Question 4: Incident Time Window */}
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <label className="text-xs uppercase font-bold text-amber-400 tracking-wider block">
-              4. Verified Crime / Execution Time Window
+              {t('q4Time')}
             </label>
-            <p className="text-xs text-noir-400">
-              Pinpoint the authentic time of the critical event based on physical evidence and timeline reconstruction.
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q4Desc')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-              {solution.options.times.map(t => {
-                const isSelected = timeId === t.id;
+              {solution.options.times.map(tOpt => {
+                const isSelected = timeId === tOpt.id;
 
                 return (
                   <div
-                    key={t.id}
+                    key={tOpt.id}
                     onClick={() => {
                       sound.playPaper();
-                      setTimeId(t.id);
+                      setTimeId(tOpt.id);
                     }}
                     className={`p-3 rounded-lg border cursor-pointer text-xs transition-all flex items-center space-x-3 ${
                       isSelected
@@ -293,7 +305,7 @@ export const FinalReport: React.FC = () => {
                     >
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                     </div>
-                    <span>{t.label}</span>
+                    <span>{getLoc(tOpt.label)}</span>
                   </div>
                 );
               })}
@@ -304,14 +316,14 @@ export const FinalReport: React.FC = () => {
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <div className="flex items-center justify-between">
               <label className="text-xs uppercase font-bold text-amber-400 tracking-wider">
-                5. Corroborating Physical & Digital Evidence
+                {t('q5Evidence')}
               </label>
               <span className="text-[10px] text-noir-400">
-                {selectedEvidenceIds.length} Selected
+                {formatNum(selectedEvidenceIds.length)} {t('selectedCount')}
               </span>
             </div>
-            <p className="text-xs text-noir-400">
-              Select all key pieces of evidence from your locker that substantiate this indictment in a court of law.
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q5Desc')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
@@ -335,8 +347,8 @@ export const FinalReport: React.FC = () => {
                       className="mt-0.5 accent-blood-600 rounded cursor-pointer"
                     />
                     <div className="min-w-0 flex-1">
-                      <div className="font-bold truncate text-white">{clue.name}</div>
-                      <div className="text-[10px] text-noir-500 truncate">{clue.category}</div>
+                      <div className="font-bold truncate text-white">{getLoc(clue.name)}</div>
+                      <div className="text-[10px] text-noir-500 truncate">{getLocalizedCategory(clue.category, language)}</div>
                     </div>
                   </div>
                 );
@@ -347,10 +359,10 @@ export const FinalReport: React.FC = () => {
           {/* Question 6: False Alibi Identification */}
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-3 shadow-md">
             <label className="text-xs uppercase font-bold text-amber-400 tracking-wider block">
-              6. False Alibi Exposure
+              {t('q6FalseAlibi')}
             </label>
-            <p className="text-xs text-noir-400">
-              Which suspect presented an alibi that was directly shattered by contradictions in the evidence?
+            <p className="text-xs text-noir-400 leading-relaxed">
+              {t('q6Desc')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
@@ -379,7 +391,7 @@ export const FinalReport: React.FC = () => {
                     >
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                     </div>
-                    <span className="truncate">{suspect.name}</span>
+                    <span className="truncate">{getLoc(suspect.name)}</span>
                   </div>
                 );
               })}
@@ -389,14 +401,14 @@ export const FinalReport: React.FC = () => {
           {/* Detective Freeform Case Summary Notes */}
           <div className="bg-noir-900 p-5 rounded-lg border border-noir-800 space-y-2 shadow-md">
             <label className="text-xs uppercase font-bold text-noir-300 tracking-wider block">
-              Detective Theory & Closing Argument (Optional)
+              {t('detectiveTheoryLabel')}
             </label>
             <textarea
               value={detectiveTheory}
               onChange={(e) => setDetectiveTheory(e.target.value)}
-              placeholder="Draft your overarching deductive closing argument summarizing how the evidence seals the verdict..."
+              placeholder={t('detectiveTheoryPlaceholder')}
               rows={4}
-              className="w-full bg-noir-950 border border-noir-700 rounded p-3 text-xs text-white placeholder-noir-600 focus:outline-none focus:border-blood-600"
+              className="w-full bg-noir-950 border border-noir-700 rounded p-3 text-xs text-white placeholder-noir-600 focus:outline-none focus:border-blood-600 leading-relaxed"
             />
           </div>
 
@@ -407,7 +419,7 @@ export const FinalReport: React.FC = () => {
               className="px-8 py-3.5 bg-gradient-to-r from-blood-700 to-blood-800 hover:from-blood-600 hover:to-blood-700 text-white font-serif font-bold text-sm tracking-wider uppercase rounded-lg shadow-xl border border-blood-500/80 flex items-center space-x-2 transition-all transform hover:-translate-y-0.5"
             >
               <Send className="w-4 h-4" />
-              <span>Deliver Official Indictment</span>
+              <span>{t('deliverIndictmentBtn')}</span>
             </button>
           </div>
         </form>
