@@ -9,7 +9,8 @@ import {
   UserConnection,
   Language,
   LocalizableText,
-  getLocalized
+  getLocalized,
+  CASE_AVAILABILITY
 } from '../types/game';
 import { ALL_CASES, getCaseById } from '../data/cases';
 import {
@@ -145,6 +146,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Start or switch to a case
   const startCase = useCallback((caseId: string) => {
+    // Guard against opening coming soon cases
+    if (CASE_AVAILABILITY[caseId] === 'COMING_SOON') {
+      return;
+    }
+
     const foundCase = getCaseById(caseId);
     if (!foundCase) return;
 
@@ -167,7 +173,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const resumeLastCase = useCallback(() => {
-    const targetId = lastActiveCaseId || 'case-001';
+    const targetId = lastActiveCaseId && CASE_AVAILABILITY[lastActiveCaseId] === 'AVAILABLE'
+      ? lastActiveCaseId
+      : 'case-001';
     startCase(targetId);
   }, [lastActiveCaseId, startCase]);
 

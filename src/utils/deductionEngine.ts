@@ -100,6 +100,30 @@ export function evaluateFinalDeduction(
       en: `✗ Incorrect Culprit Identified: The evidence pointed to someone else.`,
       bn: `✗ ভুল অপরাধী শনাক্ত হয়েছে: সংগৃহীত প্রমাণ অন্য কারও দিকে ইঙ্গিত করছে।`
     });
+
+    if (caseData.id === 'case-001') {
+      if (answers.culpritId === 'suspect-01-julian') {
+        feedbackNotes.push({
+          en: `• Indictment Feedback (Arman Haque Chowdhury): Arman had high debts and quarreled violently with Mahmudul, but forensic soot analysis proves the codicil was thrown into the fire at 17:00, and the muddy print beneath the window was a petite size 6. He stole the signet ring to pawn it, but was not the poisoner.`,
+          bn: `• অভিযোগপত্র পর্যালোচনা (আরমান হক চৌধুরী): দেনার দায়ে আরমানের সাথে মাহমুদুল হকের উত্তপ্ত বিতর্ক হয়েছিল, কিন্তু ফায়ারপ্লেসের ছাইয়ের স্তর প্রমাণ করে উইলটি বিকেল ৫টাতেই পোড়ানো হয়েছিল। এছাড়া জানালার নিচের জুতার ছাপটি ছিল ৬ সাইজের (মেয়েলি জুতা)। সে আংটি চুরি করেছিল কিন্তু বিষপ্রয়োগের সাথে জড়িত ছিল না।`
+        });
+      } else if (answers.culpritId === 'suspect-03-finch') {
+        feedbackNotes.push({
+          en: `• Indictment Feedback (Dr. Farhan Rahman): Dr. Farhan possessed advanced toxicology knowledge and feared disclosure of prescription irregularities, but the cyanide was commercial photographic toning reagent from a local PO box, not clinical pharmaceutical supplies.`,
+          bn: `• অভিযোগপত্র পর্যালোচনা (ডা. ফারহান রহমান): ডা. ফারহানের বিষবিজ্ঞানের গভীর জ্ঞান ছিল এবং তিনি প্রেসক্রিপশন বিতর্ক নিয়ে শঙ্কিত ছিলেন, কিন্তু ব্যবহৃত সায়ানাইড কোনো হাসপাতালের ওষুধ ছিল না বরং স্থানীয় পোস্ট বক্স থেকে কেনা বাণিজ্যিক ফটোগ্রাফিক লবণ ছিল।`
+        });
+      } else if (answers.culpritId === 'suspect-04-beatrice') {
+        feedbackNotes.push({
+          en: `• Indictment Feedback (Shahana Begum): Shahana carried the evening drink tray from the kitchen, but her kitchen assistant corroborated her movements between 22:00 and 22:45, and she had no reason to rig the exterior window latch mechanism.`,
+          bn: `• অভিযোগপত্র পর্যালোচনা (শাহানা বেগম): শাহানা পানীয়ের ট্রে আনলেও রান্নাঘরের সহকর্মী রাত ১০:০০ থেকে ১০:৪৫ পর্যন্ত তার উপস্থিতি নিশ্চিত করেছে এবং জানালার কার্নিশ দিয়ে সুতো টেনে পালানোর কোনো আলামত তার সাথে মেলেনি।`
+        });
+      } else if (answers.culpritId === 'suspect-05-marcus') {
+        feedbackNotes.push({
+          en: `• Indictment Feedback (Rashed Karim): Rashed Karim desperately wanted the ancient manuscript and lingered at the manor gates, but he wears size 11 shoes, incompatible with the slender size 6 footprint beneath the rigged bay window.`,
+          bn: `• অভিযোগপত্র পর্যালোচনা (রাশেদ করিম): রাশেদ করিম প্রাচীন পাণ্ডুলিপি নিয়ে মরিয়া ছিল, তবে তার জুতার সাইজ ১১, যা জানালার নিচে পাওয়া ৬ সাইজের সরু পদচিহ্নের সাথে সম্পূর্ণ অসঙ্গতিপূর্ণ।`
+        });
+      }
+    }
   }
 
   if (isMotiveCorrect) {

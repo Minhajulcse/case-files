@@ -47,10 +47,16 @@ export interface TranslationDict {
   badgeMurder: string;
   badgeAbduction: string;
   badgeHeist: string;
+  comingSoonTitle: string;
+  comingSoonDesc: string;
+  comingSoonBadge: string;
   // Crime Scene
   locationLog: string;
   flashlightToggle: string;
   revealZones: string;
+  revealClues: string;
+  hideClues: string;
+  cleanSceneNotice: string;
   zoomIn: string;
   zoomOut: string;
   pointsOfInterest: string;
@@ -88,6 +94,14 @@ export interface TranslationDict {
   runningReagentTest: string;
   reagentVerified: string;
   associatedSuspects: string;
+  initialObservation: string;
+  forensicObservation: string;
+  boardLeads: string;
+  noBoardLeads: string;
+  magnifierToggle: string;
+  connectedByPlayer: string;
+  corroboratedDeduction: string;
+  requiresClue: string;
   connectOnBoard: string;
   doneBtn: string;
   slotLabel: string;
@@ -305,9 +319,15 @@ export const translations: Record<Language, TranslationDict> = {
     badgeMurder: 'HOMICIDE',
     badgeAbduction: 'ABDUCTION',
     badgeHeist: 'GRAND HEIST',
+    comingSoonTitle: 'Coming Soon',
+    comingSoonDesc: 'This case is currently under development. Stay tuned for its release!',
+    comingSoonBadge: 'COMING SOON',
     locationLog: 'LOCATION LOG',
     flashlightToggle: 'Toggle Flashlight',
     revealZones: 'Reveal Investigation Points',
+    revealClues: 'Reveal Clues',
+    hideClues: 'Hide Clues',
+    cleanSceneNotice: 'Clues Hidden • Click the Eye icon to reveal forensic points of interest.',
     zoomIn: 'Zoom In',
     zoomOut: 'Zoom Out',
     pointsOfInterest: 'Scene Points of Interest',
@@ -344,6 +364,14 @@ export const translations: Record<Language, TranslationDict> = {
     runningReagentTest: 'Running Mass Spectrometry & Chemical Analysis...',
     reagentVerified: 'Reagent Scan Verified',
     associatedSuspects: 'Associated Suspects',
+    initialObservation: 'Initial Physical Observation',
+    forensicObservation: 'Detailed Forensic Observations',
+    boardLeads: 'Detective Board Leads',
+    noBoardLeads: 'No suspects linked to this clue yet on the Evidence Board.',
+    magnifierToggle: 'Toggle Detailed Magnifier',
+    connectedByPlayer: 'Linked on Board',
+    corroboratedDeduction: 'Corroborated Deduction',
+    requiresClue: 'Requires Evidence Discovery',
     connectOnBoard: 'Connect on Evidence Board',
     doneBtn: 'Done',
     slotLabel: 'Slot #',
@@ -549,9 +577,15 @@ export const translations: Record<Language, TranslationDict> = {
     badgeMurder: 'হত্যাকাণ্ড',
     badgeAbduction: 'অপহরণ',
     badgeHeist: 'দুর্ধর্ষ চুরি',
+    comingSoonTitle: 'খুব শীঘ্রই আসছে',
+    comingSoonDesc: 'এই কেসটি বর্তমানে তৈরি হচ্ছে। খুব শীঘ্রই আসছে!',
+    comingSoonBadge: 'শীঘ্রই আসছে',
     locationLog: 'ঘটনাস্থল বিবরণ',
     flashlightToggle: 'টর্চলাইট অন/অফ',
     revealZones: 'তদন্ত এলাকা চিহ্নিত করুন',
+    revealClues: 'ক্লু উন্মোচন করুন',
+    hideClues: 'ক্লু লুকান',
+    cleanSceneNotice: 'ক্লু লুকানো রয়েছে • ফরেনসিক পয়েন্টগুলো দেখতে উপরের চোখের বোতামে ক্লিক করুন।',
     zoomIn: 'বড় করুন',
     zoomOut: 'ছোট করুন',
     pointsOfInterest: 'গুরুত্বপূর্ণ তদন্ত কেন্দ্র',
@@ -588,6 +622,14 @@ export const translations: Record<Language, TranslationDict> = {
     runningReagentTest: 'রাসায়নিক ও বর্ণালী বিশ্লেষণ চলছে...',
     reagentVerified: 'রিএজেন্ট পরীক্ষা সফলভাবে যাচাইকৃত',
     associatedSuspects: 'সংশ্লিষ্ট সন্দেহভাজন',
+    initialObservation: 'প্রাথমিক বাহ্যিক পর্যবেক্ষণ',
+    forensicObservation: 'বিস্তারিত ফরেনসিক পর্যবেক্ষণ',
+    boardLeads: 'গোয়েন্দা বোর্ডে যুক্ত সূত্র',
+    noBoardLeads: 'তদন্ত বোর্ডে এখনও কোনো সন্দেহভাজনকে এই আলামতের সাথে যুক্ত করা হয়নি।',
+    magnifierToggle: 'আতশকাচ টগল করুন',
+    connectedByPlayer: 'বোর্ডে সংযুক্ত',
+    corroboratedDeduction: 'প্রমাণিত সিদ্ধান্ত',
+    requiresClue: 'পূর্ববর্তী আলামত প্রয়োজন',
     connectOnBoard: 'প্রমাণ বোর্ডে যুক্ত করুন',
     doneBtn: 'সম্পন্ন',
     slotLabel: 'স্থান নং',

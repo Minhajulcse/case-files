@@ -387,7 +387,28 @@ export const InterrogationRoom: React.FC = () => {
           <div className="space-y-1.5 max-h-44 overflow-y-auto">
             {currentSuspect.dialogueTree.map((d) => {
               const isAsked = askedDialogueIds.includes(d.id);
+              const isLocked = d.conditionClueId && !caseState.discoveredEvidenceIds.includes(d.conditionClueId);
               const promptText = getLoc(d.prompt);
+
+              if (isLocked) {
+                return (
+                  <div
+                    key={d.id}
+                    className="w-full p-2 rounded-lg text-left text-xs bg-noir-950/60 border border-noir-850 text-noir-600 flex items-center justify-between select-none"
+                    title={`${isBengali ? 'আলামত উন্মোচন প্রয়োজন' : 'Evidence required to unlock'}: #${d.conditionClueId}`}
+                  >
+                    <div className="flex items-center space-x-2 pr-2 min-w-0">
+                      <Lock className="w-3.5 h-3.5 text-noir-600 flex-shrink-0" />
+                      <span className="truncate italic">
+                        {t('requiresClue')} (#{d.conditionClueId})
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-noir-600 font-mono">
+                      {isBengali ? 'লক করা' : 'LOCKED'}
+                    </span>
+                  </div>
+                );
+              }
 
               return (
                 <button

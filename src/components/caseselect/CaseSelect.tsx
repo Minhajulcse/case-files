@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ArrowLeft,
   FolderLock,
@@ -6,24 +6,39 @@ import {
   Clock,
   ChevronRight,
   FileQuestion,
-  Target
+  Target,
+  Lock,
+  Sparkles
 } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { ALL_CASES } from '../../data/cases';
+import { CASE_AVAILABILITY } from '../../types/game';
 import { sound } from '../../utils/audio';
 import { LanguageToggle } from '../common/LanguageToggle';
 import { getLocalizedDifficulty, getLocalizedBadge } from '../../i18n';
+import { ComingSoonModal } from './ComingSoonModal';
 
 export const CaseSelect: React.FC = () => {
   const { setCurrentView, startCase, profile, language, t, getLoc, formatNum } = useGame();
+  const [comingSoonCase, setComingSoonCase] = useState<{ id: string; title: string; number: string } | null>(null);
 
-  const handleSelectCase = (caseId: string) => {
+  const handleSelectCase = (caseItem: (typeof ALL_CASES)[0]) => {
     sound.playPaper();
-    startCase(caseId);
+    if (CASE_AVAILABILITY[caseItem.id] === 'COMING_SOON') {
+      setComingSoonCase({
+        id: caseItem.id,
+        title: getLoc(caseItem.title),
+        number: caseItem.caseNumber
+      });
+      return;
+    }
+    startCase(caseItem.id);
   };
 
+  const isBengali = language === 'bn';
+
   return (
-    <div className="min-h-screen bg-[#0a0b0e] text-noir-200 flex flex-col font-mono select-none">
+    <div className={`min-h-screen bg-[#0a0b0e] text-noir-200 flex flex-col select-none ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       {/* Top Header */}
       <header className="bg-noir-900 border-b border-noir-800 py-4 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -36,7 +51,7 @@ export const CaseSelect: React.FC = () => {
               className="flex items-center space-x-1.5 px-3 py-1.5 bg-noir-850 hover:bg-noir-800 border border-noir-750 rounded text-xs text-noir-300 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>{language === 'bn' ? 'মেনু' : 'Menu'}</span>
+              <span>{isBengali ? 'মেনু' : 'Menu'}</span>
             </button>
             <div className="h-4 w-px bg-noir-800" />
             <div>
@@ -67,12 +82,16 @@ export const CaseSelect: React.FC = () => {
           {ALL_CASES.map((caseItem) => {
             const isCompleted = profile.completedCaseIds.includes(caseItem.id);
             const highScore = profile.caseHighScores[caseItem.id];
+            const isComingSoon = CASE_AVAILABILITY[caseItem.id] === 'COMING_SOON';
 
             return (
               <div
                 key={caseItem.id}
-                className={`relative rounded border flex flex-col justify-between transition-all duration-200 shadow-case-folder overflow-hidden ${
-                  isCompleted
+                onClick={isComingSoon ? () => handleSelectCase(caseItem) : undefined}
+                className={`relative rounded-lg border flex flex-col justify-between transition-all duration-200 shadow-case-folder overflow-hidden ${
+                  isComingSoon
+                    ? 'bg-[#0e1117] border-[#222834] opacity-90 hover:opacity-100 hover:border-amber-600/50 cursor-pointer group'
+                    : isCompleted
                     ? 'bg-[#12151b] border-[#1e482d] hover:border-[#2b6942]'
                     : 'bg-[#12151b] border-[#292f3c] hover:border-[#825f27]'
                 }`}
@@ -80,23 +99,30 @@ export const CaseSelect: React.FC = () => {
                 {/* Dossier Folder Top Tab */}
                 <div className="bg-[#181d26] px-5 py-3 border-b border-[#292f3c] flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <FolderLock className="w-4 h-4 text-brass-400" />
+                    <FolderLock className={`w-4 h-4 ${isComingSoon ? 'text-amber-500' : 'text-amber-400'}`} />
                     <span className="text-xs font-bold tracking-widest text-blood-400 uppercase">
                       {caseItem.caseNumber}
                     </span>
                   </div>
 
-                  <span
-                    className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded ${
-                      caseItem.difficulty === 'Master'
-                        ? 'bg-purple-950 text-purple-300 border border-purple-800'
-                        : caseItem.difficulty === 'Hard'
-                        ? 'bg-blood-950 text-blood-300 border border-blood-800'
-                        : 'bg-noir-850 text-noir-300 border border-noir-700'
-                    }`}
-                  >
-                    {getLocalizedDifficulty(caseItem.difficulty, language)}
-                  </span>
+                  {isComingSoon ? (
+                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-700/60 flex items-center gap-1 shadow-sm">
+                      <Lock className="w-2.5 h-2.5" />
+                      <span>{t('comingSoonBadge')}</span>
+                    </span>
+                  ) : (
+                    <span
+                      className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded ${
+                        caseItem.difficulty === 'Master'
+                          ? 'bg-purple-950 text-purple-300 border border-purple-800'
+                          : caseItem.difficulty === 'Hard'
+                          ? 'bg-blood-950 text-blood-300 border border-blood-800'
+                          : 'bg-noir-850 text-noir-300 border border-noir-700'
+                      }`}
+                    >
+                      {getLocalizedDifficulty(caseItem.difficulty, language)}
+                    </span>
+                  )}
                 </div>
 
                 {/* Dossier Body */}
@@ -104,7 +130,7 @@ export const CaseSelect: React.FC = () => {
                   {/* Title & Badge */}
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] text-brass-400 uppercase tracking-wider font-bold">
+                      <span className="text-[10px] text-amber-400 uppercase tracking-wider font-bold">
                         {getLocalizedBadge(caseItem.badge, language)}
                       </span>
                       <span className="text-[10px] text-noir-400 flex items-center gap-1">
@@ -152,32 +178,55 @@ export const CaseSelect: React.FC = () => {
                 {/* Dossier Footer / Action */}
                 <div className="bg-[#161a22] p-4 border-t border-[#292f3c] flex items-center justify-between">
                   <div>
-                    {isCompleted ? (
+                    {isComingSoon ? (
+                      <div className="flex items-center space-x-1 text-xs text-amber-400/90 font-mono">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{t('comingSoonTitle')}</span>
+                      </div>
+                    ) : isCompleted ? (
                       <div className="flex items-center space-x-1.5 text-xs text-green-400">
                         <CheckCircle2 className="w-4 h-4" />
                         <span>{t('solved')} ({formatNum(highScore || 1000)} {t('pts')})</span>
                       </div>
                     ) : (
-                      <div className="text-xs text-brass-400 flex items-center gap-1">
+                      <div className="text-xs text-amber-400 flex items-center gap-1">
                         <FileQuestion className="w-3.5 h-3.5" />
                         <span>{t('unsolvedMystery')}</span>
                       </div>
                     )}
                   </div>
 
-                  <button
-                    onClick={() => handleSelectCase(caseItem.id)}
-                    className="px-4 py-2 bg-blood-800 hover:bg-blood-700 text-white rounded text-xs font-bold font-mono shadow-md flex items-center space-x-1.5 transition-all transform hover:-translate-y-0.5"
-                  >
-                    <span>{isCompleted ? t('reopenCaseFile') : t('openCaseFile')}</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
+                  {isComingSoon ? (
+                    <button
+                      onClick={() => handleSelectCase(caseItem)}
+                      className="px-4 py-2 bg-noir-850 hover:bg-noir-800 border border-amber-600/50 hover:border-amber-400 text-amber-300 rounded text-xs font-bold font-mono shadow-md flex items-center space-x-1.5 transition-all group-hover:scale-105"
+                    >
+                      <Lock className="w-3 h-3 text-amber-400" />
+                      <span>{t('comingSoonTitle')}</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleSelectCase(caseItem)}
+                      className="px-4 py-2 bg-blood-800 hover:bg-blood-700 text-white rounded text-xs font-bold font-mono shadow-md flex items-center space-x-1.5 transition-all transform hover:-translate-y-0.5"
+                    >
+                      <span>{isCompleted ? t('reopenCaseFile') : t('openCaseFile')}</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
       </main>
+
+      {/* Coming Soon Modal */}
+      <ComingSoonModal
+        isOpen={!!comingSoonCase}
+        onClose={() => setComingSoonCase(null)}
+        caseTitle={comingSoonCase?.title}
+        caseNumber={comingSoonCase?.number}
+      />
     </div>
   );
 };

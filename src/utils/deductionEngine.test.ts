@@ -25,7 +25,7 @@ describe('Detective Investigation Game Logic Tests', () => {
         'clue-08-torn-envelope'
       ],
       falseAlibiSuspectId: 'suspect-02-evelyn',
-      detectiveTheory: 'Evelyn poisoned Arthur to prevent disclosure of $450k embezzlement and rigged the window with thread.'
+      detectiveTheory: 'Nawrin poisoned Mahmudul to prevent disclosure of $450k embezzlement and rigged the window with thread.'
     };
 
     const evaluation = evaluateFinalDeduction(case001, answers, state);
@@ -56,7 +56,7 @@ describe('Detective Investigation Game Logic Tests', () => {
         'clue-02-tunnel-footprints'
       ],
       falseAlibiSuspectId: 'suspect-02-navarro',
-      detectiveTheory: 'Navarro betrayed the safehouse. Clara staged her kidnapping and fled through the steam tunnel.'
+      detectiveTheory: 'Inspector Rayhan Kabir betrayed the safehouse. Farzana staged her kidnapping and fled through the steam tunnel.'
     };
 
     const evaluation = evaluateFinalDeduction(case002, answers, state);
@@ -85,7 +85,7 @@ describe('Detective Investigation Game Logic Tests', () => {
         'clue-03-lead-box'
       ],
       falseAlibiSuspectId: 'suspect-03-rossi',
-      detectiveTheory: 'Rossi swapped the scarab with a Florence replica at 18:00 and used an EMP capacitor to stage the 02:15 blackout.'
+      detectiveTheory: 'Dr. Humaira Rashid swapped the scarab with a Florence replica at 18:00 and used an EMP capacitor to stage the 02:15 blackout.'
     };
 
     const evaluation = evaluateFinalDeduction(case003, answers, state);

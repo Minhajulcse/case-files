@@ -15,8 +15,8 @@ export const case002: CaseData = {
   difficulty: 'Hard',
   estimatedTime: '30-40 mins',
   victimOrSubject: {
-    en: 'Clara Thorne (Age 31, Chief Forensic Accountant & Crown Whistleblower)',
-    bn: 'ক্লারা থর্ন (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)'
+    en: 'Farzana Haque (Age 31, Chief Forensic Accountant & Crown Whistleblower)',
+    bn: 'ফারজানা হক (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)'
   },
   incidentDate: {
     en: 'November 03, 2024 — 01:15 Hours',
@@ -27,13 +27,13 @@ export const case002: CaseData = {
     bn: 'ফেডারেল সেফহাউস ৪০৪, সেন্ট জুড অ্যাপার্টমেন্টস, ইস্ট ডকস'
   },
   synopsis: {
-    en: 'Hours before she was scheduled to testify against the ruthless Blackwood Crime Syndicate, key whistleblower Clara Thorne disappeared from her 4th-floor guarded safehouse. The door was forced, furniture overturned, blood splattered on the rug, and her police escort unconscious in the hallway. Did the mob abduct her, or did she execute a daring escape?',
-    bn: 'কুখ্যাত ব্ল্যাকউড অপরাধ সিন্ডিকেটের বিরুদ্ধে আদালতে সাক্ষ্য দেওয়ার ঠিক কয়েক ঘণ্টা আগে ৪ তলার সুরক্ষিত সেফহাউস থেকে নিখোঁজ হন প্রধান সাক্ষী ক্লারা থর্ন। দরজা ভাঙা, আসবাবপত্র ওলটপালট, মেঝেতে ছোপ ছোপ রক্ত এবং পুলিশ পাহারাদার করিডোরে অচেতন অবস্থায় পড়ে ছিল। অপরাধীরা কি তাকে অপহরণ করেছে, নাকি সে নিজেই পালিয়ে গেছে?'
+    en: 'Hours before she was scheduled to testify against the ruthless Blackwood Crime Syndicate, key whistleblower Farzana Haque disappeared from her 4th-floor guarded safehouse. The door was forced, furniture overturned, blood splattered on the rug, and her police escort unconscious in the hallway. Did the mob abduct her, or did she execute a daring escape?',
+    bn: 'কুখ্যাত ব্ল্যাকউড অপরাধ সিন্ডিকেটের বিরুদ্ধে আদালতে সাক্ষ্য দেওয়ার ঠিক কয়েক ঘণ্টা আগে ৪ তলার সুরক্ষিত সেফহাউস থেকে নিখোঁজ হন প্রধান সাক্ষী ফারজানা হক। দরজা ভাঙা, আসবাবপত্র ওলটপালট, মেঝেতে ছোপ ছোপ রক্ত এবং পুলিশ পাহারাদার করিডোরে অচেতন অবস্থায় পড়ে ছিল। অপরাধীরা কি তাকে অপহরণ করেছে, নাকি সে নিজেই পালিয়ে গেছে?'
   },
   briefing: {
     chiefMemo: {
-      en: 'Detective, the Blackwood trial collapses in 10 hours unless we recover Clara Thorne or prove what occurred in that apartment. Officer Ray Navarro claims he was ambushed from behind by masked men. But something smells foul. Search the apartment, examine communication logs, cross-examine the protection detail, and reconstruct the true sequence of events.',
-      bn: 'গোয়েন্দা, আগামী ১০ ঘণ্টার মধ্যে ক্লারা থর্নকে খুঁজে না পেলে বা সত্য উন্মোচন না হলে সিন্ডিকেটের বিচার বাতিল হয়ে যাবে। অফিসার রে নাভারোর দাবি মুখোশধারীরা তাকে পেছন থেকে আঘাত করেছে। কিন্তু কিছু একটা গোলমেলে ঠেকছে। অ্যাপার্টমেন্টটি তল্লাশি করুন, কল রেকর্ড ও ডিজিটাল যোগাযোগ পরীক্ষা করুন এবং সত্য উদঘাটন করুন।'
+      en: 'Detective, the Blackwood trial collapses in 10 hours unless we recover Farzana Haque or prove what occurred in that apartment. Officer Rayhan Kabir claims he was ambushed from behind by masked men. But something smells foul. Search the apartment, examine communication logs, cross-examine the protection detail, and reconstruct the true sequence of events.',
+      bn: 'গোয়েন্দা, আগামী ১০ ঘণ্টার মধ্যে ফারজানা হককে খুঁজে না পেলে বা সত্য উন্মোচন না হলে সিন্ডিকেটের বিচার বাতিল হয়ে যাবে। অফিসার রায়হান কবীরর দাবি মুখোশধারীরা তাকে পেছন থেকে আঘাত করেছে। কিন্তু কিছু একটা গোলমেলে ঠেকছে। অ্যাপার্টমেন্টটি তল্লাশি করুন, কল রেকর্ড ও ডিজিটাল যোগাযোগ পরীক্ষা করুন এবং সত্য উদঘাটন করুন।'
     },
     initialStatus: {
       en: 'Safehouse cordoned off by State Marshals. Syndicate trial scheduled for 10:00 AM.',
@@ -53,8 +53,8 @@ export const case002: CaseData = {
         bn: 'ভবনের সিসিটিভি ফুটেজ এবং ভূগর্ভস্থ কয়লা ও বাষ্প বয়লারের সুড়ঙ্গপথ পরীক্ষা করুন।'
       },
       {
-        en: 'Determine who leaked the safehouse location and what truly happened to Clara Thorne.',
-        bn: 'কে সেফহাউসের গোপন ঠিকানা ফাঁস করেছিল এবং ক্লারা থর্নের সাথে আসলে কী ঘটেছে তা প্রমাণ করুন।'
+        en: 'Determine who leaked the safehouse location and what truly happened to Farzana Haque.',
+        bn: 'কে সেফহাউসের গোপন ঠিকানা ফাঁস করেছিল এবং ফারজানা হকের সাথে আসলে কী ঘটেছে তা প্রমাণ করুন।'
       },
       {
         en: 'Submit the final indictment with ironclad physical and digital evidence.',
@@ -83,8 +83,8 @@ export const case002: CaseData = {
         y: 42,
         radius: 28,
         description: {
-          en: 'The steel door has outward splintering on the jamb. Officer Navarro was found slumped in the hallway outside.',
-          bn: 'দরজার ফ্রেম বাইরে থেকে ভাঙা। বাইরে করিডোরে অফিসার নাভারোকে অচেতন অবস্থায় পাওয়া যায়।'
+          en: 'The steel door has outward splintering on the jamb. Officer Rayhan Kabir was found slumped in the hallway outside.',
+          bn: 'দরজার ফ্রেম বাইরে থেকে ভাঙা। বাইরে করিডোরে অফিসার রায়হান কবীরকে অচেতন অবস্থায় পাওয়া যায়।'
         },
         revealsEvidenceId: 'clue-02-forced-door',
         discoveryNote: {
@@ -128,8 +128,8 @@ export const case002: CaseData = {
         },
         revealsEvidenceId: 'clue-02-burner-phone',
         discoveryNote: {
-          en: 'Concealed in the hollow gap behind the radiator: an active disposable burner phone with text messages coordinates matching Officer Ray Navarro\'s unit.',
-          bn: 'রেডিয়েটরের পেছনে লুকিয়ে রাখা একটি সস্তা বার্নার ফোন পাওয়া গেছে, যাতে অফিসার রে নাভারোর সাথে বার্তা আদান-প্রদানের রেকর্ড রয়েছে।'
+          en: 'Concealed in the hollow gap behind the radiator: an active disposable burner phone with text messages coordinates matching Officer Rayhan Kabir\'s unit.',
+          bn: 'রেডিয়েটরের পেছনে লুকিয়ে রাখা একটি সস্তা বার্নার ফোন পাওয়া গেছে, যাতে অফিসার রায়হান কবীরর সাথে বার্তা আদান-প্রদানের রেকর্ড রয়েছে।'
         },
         iconType: 'magnifier'
       },
@@ -168,7 +168,7 @@ export const case002: CaseData = {
         },
         revealsEvidenceId: 'clue-02-torn-ticket',
         discoveryNote: {
-          en: 'Recovered a torn sleeper car train ticket for the 23:45 Night Express to Montreal under the alias "Rachel Campbell".',
+          en: 'Recovered a torn sleeper car train ticket for the 23:45 Night Express to Montreal under the alias "Rehana Karim".',
           bn: 'মন্ট্রিয়লগামী রাত ১১:৪৫ ট্রেনের একটি ছেঁড়া টিকিট পাওয়া গেছে, যা "র‍্যাচেল ক্যাম্পবেল" ছদ্মনামে কেনা।'
         },
         iconType: 'document'
@@ -189,8 +189,8 @@ export const case002: CaseData = {
         isHidden: true,
         revealsEvidenceId: 'clue-02-sister-scarf',
         discoveryNote: {
-          en: 'Tucked inside the coat pocket: a silk lavender floral scarf smelling of French perfume, belonging to Clara\'s sister Maya Lin.',
-          bn: 'কোটের পকেটে ল্যাভেন্ডার ফুলের সুগন্ধি মাখা একটি রেশমি স্কার্ফ পাওয়া গেছে, যা ক্লারার বোন মায়া লিনের।'
+          en: 'Tucked inside the coat pocket: a silk lavender floral scarf smelling of French perfume, belonging to Farzana\'s sister Mousumi Das.',
+          bn: 'কোটের পকেটে ল্যাভেন্ডার ফুলের সুগন্ধি মাখা একটি রেশমি স্কার্ফ পাওয়া গেছে, যা ফারজানার বোন মৌসুমী দাসের।'
         },
         iconType: 'magnifier'
       },
@@ -221,8 +221,8 @@ export const case002: CaseData = {
     {
       id: 'suspect-02-navarro',
       name: {
-        en: 'Detective Ray Navarro',
-        bn: 'ডিটেকটিভ রে নাভারো'
+        en: 'Inspector Rayhan Kabir',
+        bn: 'ইন্সপেক্টর রায়হান কবীর'
       },
       alias: {
         en: 'The Compromised Guard',
@@ -254,10 +254,10 @@ export const case002: CaseData = {
         bn: 'উদ্ধত কিন্তু চোখে ভীতি, ঘাড় চুলকাচ্ছে, বারবার নজর এড়িয়ে যাচ্ছে।'
       },
       secrets: {
-        en: 'Sold the safehouse address and access codes to Viktor Kozlov for $50,000.',
+        en: 'Sold the safehouse address and access codes to Bakhtiar Alam for $50,000.',
         bn: '৫০ হাজার ডলারের বিনিময়ে সেফহাউসের ঠিকানা ও শিফট পরিবর্তনের সময় সিন্ডিকেটের কাছে বিক্রি করেছিল।'
       },
-      avatarSeed: 'Navarro',
+      avatarSeed: 'Kabir',
       avatarColor: '#dc2626',
       dialogueTree: [
         {
@@ -267,8 +267,8 @@ export const case002: CaseData = {
             bn: 'করিডোরের হামলার বিবরণ দিন।'
           },
           response: {
-            en: 'I heard a noise by the fire escape stairs. As I stepped out to investigate, someone clocked me with a pipe. When I woke up, Thorne was gone and the door was kicked in.',
-            bn: 'সিঁড়ির কাছে শব্দ শুনে বের হয়েছিলাম। মুহূর্তের মধ্যে কেউ একজন লোহার পাইপ দিয়ে আমার মাথায় মারে। জ্ঞান ফিরলে দেখি দরজা ভাঙা আর ক্লারা উধাও।'
+            en: 'I heard a noise by the fire escape stairs. As I stepped out to investigate, someone clocked me with a pipe. When I woke up, Farzana was gone and the door was kicked in.',
+            bn: 'সিঁড়ির কাছে শব্দ শুনে বের হয়েছিলাম। মুহূর্তের মধ্যে কেউ একজন লোহার পাইপ দিয়ে আমার মাথায় মারে। জ্ঞান ফিরলে দেখি দরজা ভাঙা আর ফারজানা উধাও।'
           },
           reactionMood: 'hostile'
         },
@@ -291,8 +291,8 @@ export const case002: CaseData = {
             bn: 'হিটারের পেছনে লুকিয়ে রাখা ফোনটি কার সাথে বার্তা আদান-প্রদান করছিল?'
           },
           response: {
-            en: 'Burner phone? I know nothing about that. Thorne was forbidden from having electronic devices. If she had a phone, she smuggled it in herself.',
-            bn: 'বার্নার ফোন? আমি ওসবের কিছুই জানি না। ক্লারার কোনো ডিভাইস রাখার নিয়ম ছিল না। ওটা থাকলে সে নিজেই লুকিয়ে এনেছে।'
+            en: 'Burner phone? I know nothing about that. Farzana was forbidden from having electronic devices. If she had a phone, she smuggled it in herself.',
+            bn: 'বার্নার ফোন? আমি ওসবের কিছুই জানি না। ফারজানার কোনো ডিভাইস রাখার নিয়ম ছিল না। ওটা থাকলে সে নিজেই লুকিয়ে এনেছে।'
           },
           reactionMood: 'nervous'
         }
@@ -301,8 +301,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-navarro-deposit',
           reactionText: {
-            en: 'Navarro sweats heavily: "That $25,000? That was... a private loan from my brother-in-law to clear casino debts! It has nothing to do with this assignment!"',
-            bn: 'নাভারো ঘেমে ওঠে: "ওই ২৫,০০০ ডলার? ওটা আমার শ্যালকের কাছ থেকে নেওয়া ব্যক্তিগত ধার! এই সেফহাউসের সাথে ওর কোনো সম্পর্ক নেই!"'
+            en: 'Kabir sweats heavily: "That $25,000? That was... a private loan from my brother-in-law to clear casino debts! It has nothing to do with this assignment!"',
+            bn: 'কবীর ঘেমে ওঠে: "ওই ২৫,০০০ ডলার? ওটা আমার শ্যালকের কাছ থেকে নেওয়া ব্যক্তিগত ধার! এই সেফহাউসের সাথে ওর কোনো সম্পর্ক নেই!"'
           },
           stressIncrease: 45,
           exposesLie: true
@@ -310,8 +310,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-burner-phone',
           reactionText: {
-            en: 'Navarro\'s jaw tightens: "The IMEI on that burner matches the phone seized from my locker? I... I need to consult my union attorney immediately."',
-            bn: 'নাভারোর চোয়াল শক্ত হয়ে যায়: "ওই ফোনের আইএমইআই আমার লকারের ফোনের সাথে মিলে গেছে? আমি... আমি আমার আইনজীবীর সাথে কথা না বলে আর কিছু বলব না।"'
+            en: 'Kabir\'s jaw tightens: "The IMEI on that burner matches the phone seized from my locker? I... I need to consult my union attorney immediately."',
+            bn: 'কবীর সাহেবের চোয়াল শক্ত হয়ে যায়: "ওই ফোনের আইএমইআই আমার লকারের ফোনের সাথে মিলে গেছে? আমি... আমি আমার আইনজীবীর সাথে কথা না বলে আর কিছু বলব না।"'
           },
           stressIncrease: 50,
           exposesLie: true
@@ -321,8 +321,8 @@ export const case002: CaseData = {
     {
       id: 'suspect-02-sterling',
       name: {
-        en: 'Thomas Sterling',
-        bn: 'টমাস স্টার্লিং'
+        en: 'Tanvir Shikder',
+        bn: 'তানভীর শিকদার'
       },
       alias: {
         en: 'The Syndicate Consigliere',
@@ -338,12 +338,12 @@ export const case002: CaseData = {
         bn: 'প্রভাবশালী ফৌজদারি আইনজীবী'
       },
       relationshipToVictim: {
-        en: 'Adversary in court; cross-examined Clara in depositions',
+        en: 'Adversary in court; cross-examined Farzana in depositions',
         bn: 'আদালতের প্রতিপক্ষ উকিল'
       },
       motive: {
-        en: 'If Clara testifies, his billionaire client goes to federal penitentiary for life and Sterling loses his retainer.',
-        bn: 'ক্লারা সাক্ষ্য দিলে সিন্ডিকেট প্রধানের যাবজ্জীবন জেল হবে এবং স্টার্লিংয়ের কোটি টাকার ক্যারিয়ার ধ্বংস হবে।'
+        en: 'If Farzana testifies, his billionaire client goes to federal penitentiary for life and Shikder loses his retainer.',
+        bn: 'ফারজানা সাক্ষ্য দিলে সিন্ডিকেট প্রধানের যাবজ্জীবন জেল হবে এবং শিকদারের কোটি টাকার ক্যারিয়ার ধ্বংস হবে।'
       },
       alibi: {
         en: 'Claims he was in his downtown penthouse drafting legal motions until 02:00 with his junior associates.',
@@ -354,10 +354,10 @@ export const case002: CaseData = {
         bn: 'মার্জিত, দামি স্যুট পরা, মুখে বাঁকা বিদ্রূপের হাসি।'
       },
       secrets: {
-        en: 'Communicated with Navarro via encrypted Signal app to coordinate Kozlov\'s breach.',
-        bn: 'নাভারোর সাথে গোপন সংকেতে যোগাযোগ করে খুনিদের অভিযানের সময় ঠিক করেছিল।'
+        en: 'Communicated with Kabir via encrypted Signal app to coordinate Alam\'s breach.',
+        bn: 'কবীর সাহেবের সাথে গোপন সংকেতে যোগাযোগ করে খুনিদের অভিযানের সময় ঠিক করেছিল।'
       },
-      avatarSeed: 'Sterling',
+      avatarSeed: 'Shikder',
       avatarColor: '#475569',
       dialogueTree: [
         {
@@ -375,12 +375,12 @@ export const case002: CaseData = {
         {
           id: 'dlg-s-2',
           prompt: {
-            en: 'Did you make financial offers to Detective Navarro?',
-            bn: 'আপনি কি অফিসার নাভারোকে কোনো আর্থিক প্রস্তাব দিয়েছিলেন?'
+            en: 'Did you make financial offers to Detective Kabir?',
+            bn: 'আপনি কি অফিসার রায়হান কবীরকে কোনো আর্থিক প্রস্তাব দিয়েছিলেন?'
           },
           response: {
-            en: 'I don\'t know any Detective Navarro. My dealings are strictly with the Attorney General. If you imply bribery without evidence, I will sue your department for slander.',
-            bn: 'আমি নাভারো নামের কাউকে চিনি না। প্রমাণ ছাড়া ঘুষের অভিযোগ আনলে আমি পুরো পুলিশ ডিপার্টমেন্টের বিরুদ্ধে মানহানির মামলা করব।'
+            en: 'I don\'t know any Detective Kabir. My dealings are strictly with the Attorney General. If you imply bribery without evidence, I will sue your department for slander.',
+            bn: 'আমি কবীর নামের কাউকে চিনি না। প্রমাণ ছাড়া ঘুষের অভিযোগ আনলে আমি পুরো পুলিশ ডিপার্টমেন্টের বিরুদ্ধে মানহানির মামলা করব।'
           },
           reactionMood: 'defensive'
         }
@@ -389,8 +389,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-burner-phone',
           reactionText: {
-            en: 'Sterling smiles thinly: "A burner phone? Numbers registered to anonymous offshore shell accounts prove nothing in a court of law, detective."',
-            bn: 'স্টার্লিং মুচকি হাসে: "বেনামী বার্নার ফোনের মেসেজ আদালতে কারও অপরাধ প্রমাণ করতে পারে না, গোয়েন্দা।"'
+            en: 'Shikder smiles thinly: "A burner phone? Numbers registered to anonymous offshore shell accounts prove nothing in a court of law, detective."',
+            bn: 'শিকদার মুচকি হাসে: "বেনামী বার্নার ফোনের মেসেজ আদালতে কারও অপরাধ প্রমাণ করতে পারে না, গোয়েন্দা।"'
           },
           stressIncrease: 10
         }
@@ -399,16 +399,16 @@ export const case002: CaseData = {
     {
       id: 'suspect-02-maya',
       name: {
-        en: 'Maya Lin',
-        bn: 'মায়া লিন'
+        en: 'Mousumi Das',
+        bn: 'মৌসুমী দাস'
       },
       alias: {
         en: 'The Loyal Sister',
         bn: 'বিশ্বস্ত বোন'
       },
       role: {
-        en: 'Clara Thorne\'s Half-Sister',
-        bn: 'ক্লারার সৎ বোন'
+        en: 'Farzana Haque\'s Half-Sister',
+        bn: 'ফারজানার সৎ বোন'
       },
       age: 27,
       occupation: {
@@ -420,29 +420,29 @@ export const case002: CaseData = {
         bn: 'অত্যন্ত ঘনিষ্ঠ সহোদরা'
       },
       motive: {
-        en: 'Believed the State Police protection was incompetent and that Clara would be assassinated inside the safehouse.',
-        bn: 'বিশ্বাস করত পুলিশ পাহারা সম্পূর্ণ ব্যর্থ এবং ক্লারাকে সেফহাউসের ভেতরেই হত্যা করা হবে।'
+        en: 'Believed the State Police protection was incompetent and that Farzana would be assassinated inside the safehouse.',
+        bn: 'বিশ্বাস করত পুলিশ পাহারা সম্পূর্ণ ব্যর্থ এবং ফারজানাকে সেফহাউসের ভেতরেই হত্যা করা হবে।'
       },
       alibi: {
         en: 'Claims she was at home in Queens all night watching television alone.',
         bn: 'দাবি করেছিল সে সারারাত নিজের কুইন্সের ফ্ল্যাটে একা টিভি দেখছিল।'
       },
       personality: {
-        en: 'Guarded, anxious, highly protective of Clara, sharp-witted.',
-        bn: 'উদ্বিগ্ন, ক্লারার প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।'
+        en: 'Guarded, anxious, highly protective of Farzana, sharp-witted.',
+        bn: 'উদ্বিগ্ন, ফারজানার প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।'
       },
       secrets: {
-        en: 'Smuggled civilian clothes, fake Canadian passports, and a bug detector to Clara at 19:30.',
-        bn: 'সন্ধ্যা ৭:৩০-এ ক্লারার জন্য সাধারণ জামাকাপড় ও জাল কানাডিয়ান পাসপোর্ট লুকিয়ে পৌঁছে দিয়েছিল।'
+        en: 'Smuggled civilian clothes, fake Canadian passports, and a bug detector to Farzana at 19:30.',
+        bn: 'সন্ধ্যা ৭:৩০-এ ফারজানার জন্য সাধারণ জামাকাপড় ও জাল কানাডিয়ান পাসপোর্ট লুকিয়ে পৌঁছে দিয়েছিল।'
       },
-      avatarSeed: 'Maya',
+      avatarSeed: 'Mousumi',
       avatarColor: '#ec4899',
       dialogueTree: [
         {
           id: 'dlg-ml-1',
           prompt: {
-            en: 'Did you visit Clara at Safehouse 404 this evening?',
-            bn: 'আজ সন্ধ্যায় কি আপনি ক্লারার সেফহাউসে গিয়েছিলেন?'
+            en: 'Did you visit Farzana at Safehouse 404 this evening?',
+            bn: 'আজ সন্ধ্যায় কি আপনি ফারজানার সেফহাউসে গিয়েছিলেন?'
           },
           response: {
             en: 'The Marshals strictly forbade me from seeing her! I haven\'t seen my sister in two weeks since they locked her in that cage! I\'ve been worried sick!',
@@ -453,12 +453,12 @@ export const case002: CaseData = {
         {
           id: 'dlg-ml-2',
           prompt: {
-            en: 'Did Clara express fear about her police escorts?',
-            bn: 'ক্লারা কি তার পুলিশ পাহারাদারদের নিয়ে কোনো আশঙ্কার কথা বলেছিল?'
+            en: 'Did Farzana express fear about her police escorts?',
+            bn: 'ফারজানা কি তার পুলিশ পাহারাদারদের নিয়ে কোনো আশঙ্কার কথা বলেছিল?'
           },
           response: {
-            en: 'Clara told me on a payphone three days ago that Detective Navarro was constantly whispering on a second phone and asking about her encrypted financial backups. She didn\'t trust him!',
-            bn: 'তিন দিন আগে পে-ফোন থেকে ক্লারা বলেছিল নাভারো সবসময় চুপিচুপি অন্য ফোনে ফিসফিস করে এবং মূল এভিডেন্স ড্রাইভের পাসওয়ার্ড জানতে চায়। ক্লারা ওকে একদম বিশ্বাস করেনি!'
+            en: 'Farzana told me on a payphone three days ago that Detective Kabir was constantly whispering on a second phone and asking about her encrypted financial backups. She didn\'t trust him!',
+            bn: 'তিন দিন আগে পে-ফোন থেকে ফারজানা বলেছিল কবীর সবসময় চুপিচুপি অন্য ফোনে ফিসফিস করে এবং মূল এভিডেন্স ড্রাইভের পাসওয়ার্ড জানতে চায়। ফারজানা ওকে একদম বিশ্বাস করেনি!'
           },
           reactionMood: 'nervous'
         }
@@ -467,8 +467,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-sister-scarf',
           reactionText: {
-            en: 'Maya\'s breath catches: "My lavender scarf? All right! I went there at 19:30 disguised as a food courier. Clara found Navarro\'s burner wiretap. She knew the mob was coming for her tonight!"',
-            bn: 'মায়ার দম বন্ধ হয়ে আসে: "আমার স্কার্ফ? ঠিক আছে! আমি খাবার ডেলিভারির ছদ্মবেশে সন্ধ্যা ৭:৩০-এ গিয়েছিলাম। ক্লারা নাভারোর ফোনে সিন্ডিকেটের মেসেজ দেখে ফেলেছিল। সে নিশ্চিত জেনে গিয়েছিল আজ রাতেই ওকে মেরে ফেলা হবে!"'
+            en: 'Mousumi\'s breath catches: "My lavender scarf? All right! I went there at 19:30 disguised as a food courier. Farzana found Kabir\'s burner wiretap. She knew the mob was coming for her tonight!"',
+            bn: 'মৌসুমীর দম বন্ধ হয়ে আসে: "আমার স্কার্ফ? ঠিক আছে! আমি খাবার ডেলিভারির ছদ্মবেশে সন্ধ্যা ৭:৩০-এ গিয়েছিলাম। ফারজানা কবীর সাহেবের ফোনে সিন্ডিকেটের মেসেজ দেখে ফেলেছিল। সে নিশ্চিত জেনে গিয়েছিল আজ রাতেই ওকে মেরে ফেলা হবে!"'
           },
           stressIncrease: 35,
           exposesLie: true,
@@ -477,7 +477,7 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-tunnel-footprints',
           reactionText: {
-            en: 'Maya exhales: "Yes! I helped her escape through the maintenance tunnel! We had to stage the room to buy time until her train crosses the Canadian border!"',
+            en: 'Mousumi exhales: "Yes! I helped her escape through the maintenance tunnel! We had to stage the room to buy time until her train crosses the Canadian border!"',
             bn: 'মায়া দীর্ঘশ্বাস ফেলে: "হ্যাঁ! আমিই ওকে মাটির নিচের সুড়ঙ্গ দিয়ে পালিয়ে যেতে সাহায্য করেছি! ওর ট্রেন সীমান্ত পার হওয়ার আগ পর্যন্ত সময় নেওয়ার জন্য আমাদের এই নাটক সাজাতে হয়েছিল!"'
           },
           stressIncrease: 50,
@@ -488,8 +488,8 @@ export const case002: CaseData = {
     {
       id: 'suspect-02-kozlov',
       name: {
-        en: 'Viktor Kozlov',
-        bn: 'ভিক্টর কজলভ'
+        en: 'Bakhtiar Alam',
+        bn: 'বখতিয়ার আলম'
       },
       alias: {
         en: 'The Syndicate Enforcer',
@@ -509,8 +509,8 @@ export const case002: CaseData = {
         bn: 'সাক্ষীকে চিরতরে স্তব্ধ করতে আসা আততায়ী'
       },
       motive: {
-        en: 'Under direct orders to eliminate Clara Thorne before 08:00 AM court opening.',
-        bn: 'সকাল ৮টার আগে ক্লারাকে পৃথিবী থেকে সরিয়ে দেওয়ার সরাসরি নির্দেশ ছিল।'
+        en: 'Under direct orders to eliminate Farzana Haque before 08:00 AM court opening.',
+        bn: 'সকাল ৮টার আগে ফারজানাকে পৃথিবী থেকে সরিয়ে দেওয়ার সরাসরি নির্দেশ ছিল।'
       },
       alibi: {
         en: 'Claims he was playing poker at the Red Dragon Club in Chinatown until 02:00.',
@@ -524,7 +524,7 @@ export const case002: CaseData = {
         en: 'Arrived at Room 404 at 00:30, found it already empty, and kicked down the door in rage.',
         bn: 'রাত ১২:৩০-এ সেফহাউসের দরজা ভেঙে ঢুকে কাউকে না পেয়ে রাগে আসবাব ভেঙে চলে যায়।'
       },
-      avatarSeed: 'Kozlov',
+      avatarSeed: 'Alam',
       avatarColor: '#0f766e',
       dialogueTree: [
         {
@@ -556,8 +556,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-forced-door',
           reactionText: {
-            en: 'Kozlov sneers: "Look at the door strike! The steel lock was kicked open, yes. But whoever did that found NOTHING inside. The bird had already flown the coop."',
-            bn: 'কজলভ ব্যঙ্গ করে: "দরজাটা ভালো করে দেখুন! দরজা লাথি দিয়ে ভাঙা হয়েছিল সত্যি, কিন্তু ভেতরে ঢোকার পর সেখানে কেউ ছিল না। পাখি খাঁচা ভেঙে আগেই উড়ে গিয়েছিল।"'
+            en: 'Alam sneers: "Look at the door strike! The steel lock was kicked open, yes. But whoever did that found NOTHING inside. The bird had already flown the coop."',
+            bn: 'আলম ব্যঙ্গ করে: "দরজাটা ভালো করে দেখুন! দরজা লাথি দিয়ে ভাঙা হয়েছিল সত্যি, কিন্তু ভেতরে ঢোকার পর সেখানে কেউ ছিল না। পাখি খাঁচা ভেঙে আগেই উড়ে গিয়েছিল।"'
           },
           stressIncrease: 20
         }
@@ -566,8 +566,8 @@ export const case002: CaseData = {
     {
       id: 'suspect-02-isaac',
       name: {
-        en: 'Isaac Vance',
-        bn: 'আইজ্যাক ভ্যান্স'
+        en: 'Iqbal Hossain',
+        bn: 'ইকবাল হোসেন'
       },
       alias: {
         en: 'The Building Superintendent',
@@ -599,10 +599,10 @@ export const case002: CaseData = {
         bn: 'তেলচিটে ওভারঅল পরা, হাতে চাবির গোছা, কাশির আওয়াজ।'
       },
       secrets: {
-        en: 'Gave Clara Thorne the master padlock key to the underground boiler steam conduit.',
-        bn: 'ক্লারার কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।'
+        en: 'Gave Farzana Haque the master padlock key to the underground boiler steam conduit.',
+        bn: 'ফারজানার কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।'
       },
-      avatarSeed: 'Isaac',
+      avatarSeed: 'Iqbal',
       avatarColor: '#ca8a04',
       dialogueTree: [
         {
@@ -634,8 +634,8 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-tunnel-footprints',
           reactionText: {
-            en: 'Isaac scratches his chin: "Miss Thorne... she was a kind girl. She came down to my shop yesterday crying, saying she knew she was going to be killed tonight. I didn\'t stop her from taking the tunnel key. She deserved a fighting chance."',
-            bn: 'আইজ্যাক মাথা নিচু করে: "মেয়েটা কাল বিকেলে আমার কাছে এসে কাঁদতে কাঁদতে বলেছিল ওকে আজ রাতে পুলিশ আর গুন্ডারা মিলে মেরে ফেলবে। আমি ওকে চাবি নিতে বারণ করিনি। বাঁচবার একটা সুযোগ ওর প্রাপ্য ছিল।"'
+            en: 'Iqbal scratches his chin: "Miss Farzana... she was a kind girl. She came down to my shop yesterday crying, saying she knew she was going to be killed tonight. I didn\'t stop her from taking the tunnel key. She deserved a fighting chance."',
+            bn: 'ইকবাল মাথা নিচু করে: "মেয়েটা কাল বিকেলে আমার কাছে এসে কাঁদতে কাঁদতে বলেছিল ওকে আজ রাতে পুলিশ আর গুন্ডারা মিলে মেরে ফেলবে। আমি ওকে চাবি নিতে বারণ করিনি। বাঁচবার একটা সুযোগ ওর প্রাপ্য ছিল।"'
           },
           stressIncrease: 30,
           exposesLie: true
@@ -666,16 +666,16 @@ export const case002: CaseData = {
       relatedSuspectIds: ['suspect-02-navarro', 'suspect-02-kozlov'],
       details: [
         {
-          en: 'Boot heel scuff on door panel matches Viktor Kozlov\'s heavy combat boots.',
-          bn: 'দরজায় থাকা বুটের ছাপ ভিক্টর কজলভের ভারী কমব্যাট বুটের সাথে মিলে যায়।'
+          en: 'Boot heel scuff on door panel matches Bakhtiar Alam\'s heavy combat boots.',
+          bn: 'দরজায় থাকা বুটের ছাপ বখতিয়ার আলমের ভারী কমব্যাট বুটের সাথে মিলে যায়।'
         },
         {
           en: 'Pry marks on the jamb show blunt force entry at approximately 00:30.',
           bn: 'দরজায় রাত ১২:৩০ টার দিকে বলপ্রয়োগের দাগ রয়েছে।'
         },
         {
-          en: 'The deadbolt bolt was retracted when the door swung inward; Clara was already gone.',
-          bn: 'ভেতরের লকটি আগেই বন্ধমুক্ত ছিল; ক্লারা ইতিপূর্বেই ঘর ছেড়ে পালিয়েছিল।'
+          en: 'The deadbolt bolt was retracted when the door swung inward; Farzana was already gone.',
+          bn: 'ভেতরের লকটি আগেই বন্ধমুক্ত ছিল; ফারজানা ইতিপূর্বেই ঘর ছেড়ে পালিয়েছিল।'
         }
       ],
       iconKey: 'door'
@@ -733,19 +733,19 @@ export const case002: CaseData = {
         bn: 'হিটারের পেছনের ফাঁকা স্থান'
       },
       relevance: {
-        en: 'Direct digital link proving Officer Navarro leaked the location to Kozlov.',
-        bn: 'নাভারো কর্তৃক খুনিদের কাছে সেফহাউস ফাঁসের ডিজিটাল প্রমাণ।'
+        en: 'Direct digital link proving Officer Rayhan Kabir leaked the location to Alam.',
+        bn: 'কবীর কর্তৃক খুনিদের কাছে সেফহাউস ফাঁসের ডিজিটাল প্রমাণ।'
       },
       relatedSuspectIds: ['suspect-02-navarro'],
       isCrucial: true,
       details: [
         {
-          en: 'Outgoing SMS at 23:10 to Viktor Kozlov\'s device: "Room 404. Shift change at 00:30. Strike fast."',
-          bn: 'রাত ১১:১০ মিনিটে কজলভকে পাঠানো মেসেজ: "রুম ৪০৪। রাত ১২:৩০-এ গার্ড পরিবর্তন। দ্রুত আঘাত করো।"'
+          en: 'Outgoing SMS at 23:10 to Bakhtiar Alam\'s device: "Room 404. Shift change at 00:30. Strike fast."',
+          bn: 'রাত ১১:১০ মিনিটে আলমকে পাঠানো মেসেজ: "রুম ৪০৪। রাত ১২:৩০-এ গার্ড পরিবর্তন। দ্রুত আঘাত করো।"'
         },
         {
-          en: 'Stored audio recording: Clara Thorne recorded Navarro whispering his bribe demands.',
-          bn: 'রেকর্ডিং ক্লারা নিজের ফোনে ধারণ করেছিল যাতে নাভারোর ঘুষের দাবি শোনা যায়।'
+          en: 'Stored audio recording: Farzana Haque recorded Kabir whispering his bribe demands.',
+          bn: 'রেকর্ডিং ফারজানা নিজের ফোনে ধারণ করেছিল যাতে কবীর সাহেবের ঘুষের দাবি শোনা যায়।'
         },
         {
           en: 'Confirms the protection detail was compromised.',
@@ -770,8 +770,8 @@ export const case002: CaseData = {
         bn: 'রান্নাঘরের দেয়ালের নিচে'
       },
       relevance: {
-        en: 'Reveals Clara\'s actual escape route out of the locked apartment.',
-        bn: 'ক্লারার আসল পলায়নের সুড়ঙ্গপথ উন্মোচন করে।'
+        en: 'Reveals Farzana\'s actual escape route out of the locked apartment.',
+        bn: 'ফারজানার আসল পলায়নের সুড়ঙ্গপথ উন্মোচন করে।'
       },
       relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
       isCrucial: true,
@@ -803,14 +803,14 @@ export const case002: CaseData = {
         bn: 'ফোল্ডিং টেবিলের নিচের ডাস্টবিন'
       },
       relevance: {
-        en: 'Pinpoints Clara Thorne\'s true destination and timeline.',
-        bn: 'ক্লারার আসল গন্তব্য ও সময়রেখা নির্ধারণ করে।'
+        en: 'Pinpoints Farzana Haque\'s true destination and timeline.',
+        bn: 'ফারজানার আসল গন্তব্য ও সময়রেখা নির্ধারণ করে।'
       },
       relatedSuspectIds: ['suspect-02-maya'],
       isCrucial: true,
       details: [
         {
-          en: 'Passenger: "Rachel Campbell" (alias confirmed on forged Canadian passport).',
+          en: 'Passenger: "Rehana Karim" (alias confirmed on forged Canadian passport).',
           bn: 'যাত্রীর নাম: "র‍্যাচেল ক্যাম্পবেল" (জাল কানাডিয়ান পাসপোর্টের নাম)।'
         },
         {
@@ -818,8 +818,8 @@ export const case002: CaseData = {
           bn: 'ছাড়ার সময়: রাত ১১:৪৫ মিনিট, প্ল্যাটফর্ম ৩।'
         },
         {
-          en: 'Purchased with Maya Lin\'s credit card 48 hours prior.',
-          bn: '৪৮ ঘণ্টা আগে মায়া লিনের ক্রেডিট কার্ড দিয়ে কেনা হয়েছিল।'
+          en: 'Purchased with Mousumi Das\'s credit card 48 hours prior.',
+          bn: '৪৮ ঘণ্টা আগে মৌসুমী দাসের ক্রেডিট কার্ড দিয়ে কেনা হয়েছিল।'
         }
       ],
       iconKey: 'document'
@@ -827,8 +827,8 @@ export const case002: CaseData = {
     {
       id: 'clue-02-sister-scarf',
       name: {
-        en: 'Maya\'s Silk Floral Scarf',
-        bn: 'মায়ার রেশমি সুগন্ধি স্কার্ফ'
+        en: 'Mousumi\'s Silk Floral Scarf',
+        bn: 'মৌসুমীর রেশমি সুগন্ধি স্কার্ফ'
       },
       category: 'Physical',
       description: {
@@ -840,18 +840,18 @@ export const case002: CaseData = {
         bn: 'রুম ৪০৪-এর কোট হ্যাঙ্গার'
       },
       relevance: {
-        en: 'Proves Maya Lin was inside the safehouse earlier in the evening helping Clara prepare.',
-        bn: 'প্রমাণ করে মায়া সন্ধ্যায় সেফহাউসে এসে ক্লারাকে পলায়নে সাহায্য করেছিল।'
+        en: 'Proves Mousumi Das was inside the safehouse earlier in the evening helping Farzana prepare.',
+        bn: 'প্রমাণ করে মায়া সন্ধ্যায় সেফহাউসে এসে ফারজানাকে পলায়নে সাহায্য করেছিল।'
       },
       relatedSuspectIds: ['suspect-02-maya'],
       details: [
         {
-          en: 'Scented with distinctive lavender perfume registered to Maya Lin.',
-          bn: 'মায়া লিনের ব্যবহৃত ল্যাভেন্ডার পারফিউমের পরিচিত সুবাসযুক্ত।'
+          en: 'Scented with distinctive lavender perfume registered to Mousumi Das.',
+          bn: 'মৌসুমী দাসের ব্যবহৃত ল্যাভেন্ডার পারফিউমের পরিচিত সুবাসযুক্ত।'
         },
         {
-          en: 'Refutes Maya\'s initial claim that she had not visited Clara in weeks.',
-          bn: 'মায়ার সেই প্রাথমিক দাবি মিথ্যা প্রমাণ করে যে সে দুই সপ্তাহ ধরে আসেনি।'
+          en: 'Refutes Mousumi\'s initial claim that she had not visited Farzana in weeks.',
+          bn: 'মৌসুমীর সেই প্রাথমিক দাবি মিথ্যা প্রমাণ করে যে সে দুই সপ্তাহ ধরে আসেনি।'
         }
       ],
       iconKey: 'scissors'
@@ -872,19 +872,19 @@ export const case002: CaseData = {
         bn: 'রেল ইয়ার্ডে যাওয়া ভূগর্ভস্থ সুড়ঙ্গ'
       },
       relevance: {
-        en: 'Shows Clara and Maya evacuated together at 23:20 through the underground conduit.',
-        bn: 'প্রমাণ করে ক্লারা ও মায়া রাত ১১:২০-এ সুড়ঙ্গ দিয়ে একসাথে পালিয়ে যায়।'
+        en: 'Shows Farzana and Mousumi evacuated together at 23:20 through the underground conduit.',
+        bn: 'প্রমাণ করে ফারজানা ও মায়া রাত ১১:২০-এ সুড়ঙ্গ দিয়ে একসাথে পালিয়ে যায়।'
       },
       relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
       isCrucial: true,
       details: [
         {
-          en: 'Track 1: Women\'s size 7 running sneaker (Clara Thorne).',
-          bn: 'চিহ্ন ১: মহিলাদের সাইজ ৭ স্নিকার্স (ক্লারা থর্ন)।'
+          en: 'Track 1: Women\'s size 7 running sneaker (Farzana Haque).',
+          bn: 'চিহ্ন ১: মহিলাদের সাইজ ৭ স্নিকার্স (ফারজানা হক)।'
         },
         {
-          en: 'Track 2: Women\'s size 8 designer flat (Maya Lin).',
-          bn: 'চিহ্ন ২: মহিলাদের সাইজ ৮ ফ্ল্যাট জুতো (মায়া লিন)।'
+          en: 'Track 2: Women\'s size 8 designer flat (Mousumi Das).',
+          bn: 'চিহ্ন ২: মহিলাদের সাইজ ৮ ফ্ল্যাট জুতো (মৌসুমী দাস)।'
         },
         {
           en: 'Leads directly through the steam conduit to the rear rail yard platform.',
@@ -896,8 +896,8 @@ export const case002: CaseData = {
     {
       id: 'clue-02-navarro-deposit',
       name: {
-        en: 'Navarro\'s $25,000 Midnight Wire Slip',
-        bn: 'নাভারোর অ্যাকাউন্টে ২৫,০০০ ডলার জমার রসিদ'
+        en: 'Kabir\'s $25,000 Midnight Wire Slip',
+        bn: 'কবীর সাহেবের অ্যাকাউন্টে ২৫,০০০ ডলার জমার রসিদ'
       },
       category: 'Documents',
       description: {
@@ -909,14 +909,14 @@ export const case002: CaseData = {
         bn: 'পুলিশের অভ্যন্তরীণ গোয়েন্দা ইন্টারসেপ্ট'
       },
       relevance: {
-        en: 'Direct financial motive for Officer Navarro\'s betrayal of the safehouse.',
-        bn: 'অফিসার নাভারোর বিশ্বাসঘাতকতার সরাসরি আর্থিক প্রমাণ।'
+        en: 'Direct financial motive for Officer Rayhan Kabir\'s betrayal of the safehouse.',
+        bn: 'অফিসার রায়হান কবীরর বিশ্বাসঘাতকতার সরাসরি আর্থিক প্রমাণ।'
       },
       relatedSuspectIds: ['suspect-02-navarro'],
       details: [
         {
-          en: 'Deposited at 23:00 into a Grand Cayman account controlled by Navarro.',
-          bn: 'রাত ১১টায় নাভারোর কেম্যান আইল্যান্ডসের অ্যাকাউন্টে জমা হয়।'
+          en: 'Deposited at 23:00 into a Grand Cayman account controlled by Kabir.',
+          bn: 'রাত ১১টায় কবীর সাহেবের কেম্যান আইল্যান্ডসের অ্যাকাউন্টে জমা হয়।'
         },
         {
           en: 'Originated from a Panamanian shell corporation funded by the Blackwood Syndicate.',
@@ -929,26 +929,26 @@ export const case002: CaseData = {
       id: 'clue-02-escape-plan-memo',
       name: {
         en: 'Encrypted USB Drive & Escape Note',
-        bn: 'এনক্রিপ্টেড পেনড্রাইভ ও ক্লারার গোপন চিঠি'
+        bn: 'এনক্রিপ্টেড পেনড্রাইভ ও ফারজানার গোপন চিঠি'
       },
       category: 'Digital',
       description: {
-        en: 'A high-security encrypted USB stick with a handwritten note in Clara\'s handwriting.',
-        bn: 'ক্লারার হস্তাক্ষরে লেখা চিঠি সহ একটি এনক্রিপ্ট করা ইউএসবি ড্রাইভ।'
+        en: 'A high-security encrypted USB stick with a handwritten note in Farzana\'s handwriting.',
+        bn: 'ফারজানার হস্তাক্ষরে লেখা চিঠি সহ একটি এনক্রিপ্ট করা ইউএসবি ড্রাইভ।'
       },
       discoveryLocation: {
         en: 'Under floorboard near steam vent',
         bn: 'রান্নাঘরের মেঝের তক্তা তোলার নিচে'
       },
       relevance: {
-        en: 'Clara\'s personal explanation of why she fled and instructions for the federal prosecutor.',
-        bn: 'ক্লারা কেন পালিয়ে যেতে বাধ্য হয়েছিল তার নিজস্ব বক্তব্য ও মামলার মূল নথি।'
+        en: 'Farzana\'s personal explanation of why she fled and instructions for the federal prosecutor.',
+        bn: 'ফারজানা কেন পালিয়ে যেতে বাধ্য হয়েছিল তার নিজস্ব বক্তব্য ও মামলার মূল নথি।'
       },
       relatedSuspectIds: ['suspect-02-navarro'],
       details: [
         {
-          en: 'Note reads: "Navarro sold me out. Kozlov is coming tonight. I am taking the evidence drive to the federal courthouse via rail. Do not trust state police."',
-          bn: 'চিঠিতে লেখা: "নাভারো আমাকে বিক্রি করে দিয়েছে। আজ রাতেই কজলভ আসছে। আমি প্রমাণ ড্রাইভ নিয়ে ট্রেনে করে সরাসরি ফেডারেল আদালতে যাচ্ছি। স্থানীয় পুলিশকে বিশ্বাস করবেন না।"'
+          en: 'Note reads: "Kabir sold me out. Alam is coming tonight. I am taking the evidence drive to the federal courthouse via rail. Do not trust state police."',
+          bn: 'চিঠিতে লেখা: "কবীর আমাকে বিক্রি করে দিয়েছে। আজ রাতেই আলম আসছে। আমি প্রমাণ ড্রাইভ নিয়ে ট্রেনে করে সরাসরি ফেডারেল আদালতে যাচ্ছি। স্থানীয় পুলিশকে বিশ্বাস করবেন না।"'
         },
         {
           en: 'Contains complete accounting ledgers proving Blackwood\'s criminal racketeering.',
@@ -968,8 +968,8 @@ export const case002: CaseData = {
         bn: 'সাজানো অপহরণের নাটক'
       },
       deductionNotes: {
-        en: 'The blood in Room 404 is synthetic theatrical prop blood brought in by Maya Lin. Clara was never harmed or kidnapped; she staged the scene to delay pursuit!',
-        bn: 'রুম ৪০৪-এ পাওয়া রক্ত কৃত্রিম থিয়েটার প্রপ রক্ত, যা মায়া লিন নিয়ে এসেছিল। ক্লারা অপহৃত হয়নি; সে সময় পাওয়ার জন্য এই নাটক সাজিয়েছিল!'
+        en: 'The blood in Room 404 is synthetic theatrical prop blood brought in by Mousumi Das. Farzana was never harmed or kidnapped; she staged the scene to delay pursuit!',
+        bn: 'রুম ৪০৪-এ পাওয়া রক্ত কৃত্রিম থিয়েটার প্রপ রক্ত, যা মৌসুমী দাস নিয়ে এসেছিল। ফারজানা অপহৃত হয়নি; সে সময় পাওয়ার জন্য এই নাটক সাজিয়েছিল!'
       },
       isContradiction: true,
       bonusPoints: 200
@@ -983,8 +983,8 @@ export const case002: CaseData = {
         bn: 'ঘুষ নিয়ে বিশ্বাসঘাতকতা'
       },
       deductionNotes: {
-        en: 'The SMS sent to hitman Kozlov came from the burner phone linked to Detective Navarro. Navarro sold the safehouse location to the syndicate for $25,000!',
-        bn: 'খুনি কজলভকে পাঠানো মেসেজটি নাভারোর সাথে যুক্ত। নাভারো ২৫ হাজার ডলারের বিনিময়ে সেফহাউসের ঠিকানা অপরাধীদের কাছে বিক্রি করেছিল!'
+        en: 'The SMS sent to hitman Alam came from the burner phone linked to Detective Kabir. Kabir sold the safehouse location to the syndicate for $25,000!',
+        bn: 'খুনি আলমকে পাঠানো মেসেজটি কবীর সাহেবের সাথে যুক্ত। কবীর ২৫ হাজার ডলারের বিনিময়ে সেফহাউসের ঠিকানা অপরাধীদের কাছে বিক্রি করেছিল!'
       },
       isContradiction: false,
       bonusPoints: 200
@@ -998,8 +998,8 @@ export const case002: CaseData = {
         bn: 'সুড়ঙ্গপথে পলায়ন'
       },
       deductionNotes: {
-        en: 'Clara crawled through the kitchenette maintenance duct into the basement steam tunnel and escaped with Maya to the rail yard at 23:20.',
-        bn: 'ক্লারা রান্নাঘরের ডাক্ট দিয়ে বয়লার রুমে নেমে মায়ার সাথে রাত ১১:২০-এ সুড়ঙ্গ বেয়ে রেল ইয়ার্ডে নিরাপদে পালিয়ে যায়।'
+        en: 'Farzana crawled through the kitchenette maintenance duct into the basement steam tunnel and escaped with Mousumi to the rail yard at 23:20.',
+        bn: 'ফারজানা রান্নাঘরের ডাক্ট দিয়ে বয়লার রুমে নেমে মৌসুমীর সাথে রাত ১১:২০-এ সুড়ঙ্গ বেয়ে রেল ইয়ার্ডে নিরাপদে পালিয়ে যায়।'
       },
       isContradiction: false,
       bonusPoints: 175
@@ -1013,8 +1013,8 @@ export const case002: CaseData = {
         bn: 'আসল গন্তব্য ট্রেন স্টেশন'
       },
       deductionNotes: {
-        en: 'Clara boarded the 23:45 Night Express with the master evidence drive to deliver it directly to the Federal District Court, bypassing compromised local officers.',
-        bn: 'ক্লারা রাত ১১:৪৫-এর ট্রেনে চড়ে সমস্ত প্রমাণ নিয়ে নিজেই সরাসরি আদালতে সাক্ষ্য দিতে পৌঁছানোর পরিকল্পনা করেছিল।'
+        en: 'Farzana boarded the 23:45 Night Express with the master evidence drive to deliver it directly to the Federal District Court, bypassing compromised local officers.',
+        bn: 'ফারজানা রাত ১১:৪৫-এর ট্রেনে চড়ে সমস্ত প্রমাণ নিয়ে নিজেই সরাসরি আদালতে সাক্ষ্য দিতে পৌঁছানোর পরিকল্পনা করেছিল।'
       },
       isContradiction: false,
       bonusPoints: 150
@@ -1026,16 +1026,16 @@ export const case002: CaseData = {
       timestamp: '19:30',
       timeSortValue: 1170,
       title: {
-        en: 'Maya Smuggles Escape Gear to Clara',
-        bn: 'মায়া ক্লারার কাছে ছদ্মবেশের পোশাক ও জিনিস পৌঁছে দেয়'
+        en: 'Mousumi Smuggles Escape Gear to Farzana',
+        bn: 'মায়া ফারজানার কাছে ছদ্মবেশের পোশাক ও জিনিস পৌঁছে দেয়'
       },
       description: {
-        en: 'Maya Lin visits Safehouse 404 disguised as a delivery courier, providing Clara with fake Canadian ID, theatrical blood, and clothes.',
-        bn: 'মায়া ডেলিভারি কর্মীর ছদ্মবেশে ক্লারার জন্য কানাডার জাল পাসপোর্ট, থিয়েটারের রক্ত ও পোশাক নিয়ে আসে।'
+        en: 'Mousumi Das visits Safehouse 404 disguised as a delivery courier, providing Farzana with fake Canadian ID, theatrical blood, and clothes.',
+        bn: 'মায়া ডেলিভারি কর্মীর ছদ্মবেশে ফারজানার জন্য কানাডার জাল পাসপোর্ট, থিয়েটারের রক্ত ও পোশাক নিয়ে আসে।'
       },
       source: {
-        en: 'Maya\'s Admission & Scarf Discovery',
-        bn: 'মায়ার স্বীকারোক্তি ও স্কার্ফের সন্ধান'
+        en: 'Mousumi\'s Admission & Scarf Discovery',
+        bn: 'মৌসুমীর স্বীকারোক্তি ও স্কার্ফের সন্ধান'
       },
       verifiedLocation: {
         en: 'Safehouse 404',
@@ -1049,20 +1049,20 @@ export const case002: CaseData = {
       timestamp: '23:00',
       timeSortValue: 1380,
       title: {
-        en: 'Navarro Receives $25,000 Wire Deposit',
-        bn: 'নাভারোর অ্যাকাউন্টে ঘুষের ২৫,০০০ ডলার জমা'
+        en: 'Kabir Receives $25,000 Wire Deposit',
+        bn: 'কবীর সাহেবের অ্যাকাউন্টে ঘুষের ২৫,০০০ ডলার জমা'
       },
       description: {
-        en: 'Blackwood Syndicate wire transfers $25,000 into Detective Navarro\'s offshore account to betray the safehouse coordinates.',
-        bn: 'সিন্ডিকেট নাভারোর গোপন অফশোর অ্যাকাউন্টে সেফহাউসের ঠিকানা পাওয়ার জন্য ২৫,০০০ ডলার পাঠায়।'
+        en: 'Blackwood Syndicate wire transfers $25,000 into Detective Kabir\'s offshore account to betray the safehouse coordinates.',
+        bn: 'সিন্ডিকেট কবীর সাহেবের গোপন অফশোর অ্যাকাউন্টে সেফহাউসের ঠিকানা পাওয়ার জন্য ২৫,০০০ ডলার পাঠায়।'
       },
       source: {
         en: 'FinCEN Wire Intercept',
         bn: 'ব্যাংক ইন্টারসেপ্ট রেকর্ড'
       },
       verifiedLocation: {
-        en: 'Offshore Server / Navarro Mobile',
-        bn: 'নাভারোর গোপন অ্যাকাউন্ট'
+        en: 'Offshore Server / Kabir Mobile',
+        bn: 'কবীর সাহেবের গোপন অ্যাকাউন্ট'
       },
       relatedSuspectId: 'suspect-02-navarro',
       correctIndex: 1
@@ -1072,12 +1072,12 @@ export const case002: CaseData = {
       timestamp: '23:10',
       timeSortValue: 1390,
       title: {
-        en: 'Navarro Texts Coordinates to Kozlov',
-        bn: 'নাভারো কজলভকে ঘরের নম্বর ও সময় মেসেজ করে'
+        en: 'Kabir Texts Coordinates to Alam',
+        bn: 'কবীর আলমকে ঘরের নম্বর ও সময় মেসেজ করে'
       },
       description: {
-        en: 'Navarro transmits Room 404 and shift change details to enforcer Viktor Kozlov via burner phone. Clara overhears the transmission.',
-        bn: 'নাভারো কজলভকে রুম ৪০৪ এবং গার্ড পরিবর্তনের সময় জানায়। ক্লারা দেয়ালের ওপাশ থেকে তা শুনে ফেলে।'
+        en: 'Kabir transmits Room 404 and shift change details to enforcer Bakhtiar Alam via burner phone. Farzana overhears the transmission.',
+        bn: 'কবীর আলমকে রুম ৪০৪ এবং গার্ড পরিবর্তনের সময় জানায়। ফারজানা দেয়ালের ওপাশ থেকে তা শুনে ফেলে।'
       },
       source: {
         en: 'Radiator Burner Phone SMS Log',
@@ -1095,12 +1095,12 @@ export const case002: CaseData = {
       timestamp: '23:20',
       timeSortValue: 1400,
       title: {
-        en: 'Clara & Maya Flee via Steam Tunnel',
-        bn: 'ক্লারা নাটক সাজিয়ে সুড়ঙ্গ দিয়ে পালায়'
+        en: 'Farzana & Mousumi Flee via Steam Tunnel',
+        bn: 'ফারজানা নাটক সাজিয়ে সুড়ঙ্গ দিয়ে পালায়'
       },
       description: {
-        en: 'Clara splatters theatrical stage blood, overturns furniture to stage a struggle, and crawls through the kitchenette vent into the basement with Maya.',
-        bn: 'ক্লারা কৃত্রিম রক্ত ছড়িয়ে ও আসবাব উল্টে ধস্তাধস্তির নাটক সাজিয়ে রান্নাঘরের ডাক্ট দিয়ে সুড়ঙ্গে পালায়।'
+        en: 'Farzana splatters theatrical stage blood, overturns furniture to stage a struggle, and crawls through the kitchenette vent into the basement with Mousumi.',
+        bn: 'ফারজানা কৃত্রিম রক্ত ছড়িয়ে ও আসবাব উল্টে ধস্তাধস্তির নাটক সাজিয়ে রান্নাঘরের ডাক্ট দিয়ে সুড়ঙ্গে পালায়।'
       },
       source: {
         en: 'Synthetic Blood Test & Conduit Footprints',
@@ -1117,12 +1117,12 @@ export const case002: CaseData = {
       timestamp: '23:45',
       timeSortValue: 1425,
       title: {
-        en: 'Clara Boards the Night Express',
-        bn: 'ক্লারা মন্ট্রিয়লগামী রাতের ট্রেনে ওঠে'
+        en: 'Farzana Boards the Night Express',
+        bn: 'ফারজানা মন্ট্রিয়লগামী রাতের ট্রেনে ওঠে'
       },
       description: {
-        en: 'Clara boards the 23:45 sleeper train to Montreal carrying the master encrypted USB drive to reach federal prosecutors safely.',
-        bn: 'ক্লারা মূল প্রমাণের ড্রাইভ নিয়ে নিরাপদে আদালতে পৌঁছাতে রাতের ট্রেনে ওঠে।'
+        en: 'Farzana boards the 23:45 sleeper train to Montreal carrying the master encrypted USB drive to reach federal prosecutors safely.',
+        bn: 'ফারজানা মূল প্রমাণের ড্রাইভ নিয়ে নিরাপদে আদালতে পৌঁছাতে রাতের ট্রেনে ওঠে।'
       },
       source: {
         en: 'Torn Train Boarding Pass & Rail Logs',
@@ -1139,12 +1139,12 @@ export const case002: CaseData = {
       timestamp: '00:30',
       timeSortValue: 1470,
       title: {
-        en: 'Kozlov Breaches the Empty Apartment',
-        bn: 'কজলভ দরজা ভেঙে ঢুকে শূন্য ঘর পায়'
+        en: 'Alam Breaches the Empty Apartment',
+        bn: 'আলম দরজা ভেঙে ঢুকে শূন্য ঘর পায়'
       },
       description: {
-        en: 'Viktor Kozlov kicks down the door of Room 404 to execute the hit, finds the apartment completely vacant, and knocks over the lamp in frustration.',
-        bn: 'কজলভ খুনের উদ্দেশ্যে দরজা ভেঙে ঢুকে দেখে ঘর সম্পূর্ণ ফাঁকা, রাগে সে বাতি আছড়ে ফেলে।'
+        en: 'Bakhtiar Alam kicks down the door of Room 404 to execute the hit, finds the apartment completely vacant, and knocks over the lamp in frustration.',
+        bn: 'আলম খুনের উদ্দেশ্যে দরজা ভেঙে ঢুকে দেখে ঘর সম্পূর্ণ ফাঁকা, রাগে সে বাতি আছড়ে ফেলে।'
       },
       source: {
         en: 'Door Frame Boot Scuff & Forensic Reagent',
@@ -1162,12 +1162,12 @@ export const case002: CaseData = {
       timestamp: '00:45',
       timeSortValue: 1485,
       title: {
-        en: 'Navarro Fakes His Unconscious State',
-        bn: 'নাভারো আঘাতের ভান করে অজ্ঞান হয়ে পড়ে থাকে'
+        en: 'Kabir Fakes His Unconscious State',
+        bn: 'কবীর আঘাতের ভান করে অজ্ঞান হয়ে পড়ে থাকে'
       },
       description: {
-        en: 'Officer Navarro lies down in the hallway, staging an ambush with a self-inflicted contusion to feign innocence before backup arrives.',
-        bn: 'নাভারো নিজেকে নির্দোষ প্রমাণ করতে নিজে নিজেই মাথায় টর্চ দিয়ে সামান্য আঘাত করে করিডোরে পড়ে থাকে।'
+        en: 'Officer Rayhan Kabir lies down in the hallway, staging an ambush with a self-inflicted contusion to feign innocence before backup arrives.',
+        bn: 'কবীর নিজেকে নির্দোষ প্রমাণ করতে নিজে নিজেই মাথায় টর্চ দিয়ে সামান্য আঘাত করে করিডোরে পড়ে থাকে।'
       },
       source: {
         en: 'Medical Pathology Report & Hallway Review',
@@ -1214,24 +1214,24 @@ export const case002: CaseData = {
         bn: 'আসল পলায়নের রহস্য'
       },
       hintText: {
-        en: 'Clara Thorne was never kidnapped. She discovered Navarro\'s betrayal, staged the scene with sister Maya, and fled via the sub-basement conduit to catch the 23:45 train.',
-        bn: 'ক্লারা অপহৃত হয়নি। সে পাহারাদারের বিশ্বাসঘাতকতা ধরে ফেলে বোনের সাহায্যে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে রাত ১১:৪৫-এর ট্রেনে চড়ে নিরাপদে সরে পড়ে।'
+        en: 'Farzana Haque was never kidnapped. She discovered Kabir\'s betrayal, staged the scene with sister Mousumi, and fled via the sub-basement conduit to catch the 23:45 train.',
+        bn: 'ফারজানা অপহৃত হয়নি। সে পাহারাদারের বিশ্বাসঘাতকতা ধরে ফেলে বোনের সাহায্যে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে রাত ১১:৪৫-এর ট্রেনে চড়ে নিরাপদে সরে পড়ে।'
       }
     }
   ],
   solution: {
     culpritId: 'suspect-02-navarro',
     culpritName: {
-      en: 'Detective Ray Navarro (Betrayal & Corruption)',
-      bn: 'ডিটেকটিভ রে নাভারো (ঘুষ ও বিশ্বাসঘাতকতা)'
+      en: 'Inspector Rayhan Kabir (Betrayal & Corruption)',
+      bn: 'ইন্সপেক্টর রায়হান কবীর (ঘুষ ও বিশ্বাসঘাতকতা)'
     },
     motiveDescription: {
-      en: 'Accepted a $25,000 syndicate bribe to pay off gambling debts by leaking the safehouse location to hitman Viktor Kozlov.',
+      en: 'Accepted a $25,000 syndicate bribe to pay off gambling debts by leaking the safehouse location to hitman Bakhtiar Alam.',
       bn: 'জুয়ার দেনা মেটাতে ব্ল্যাকউড সিন্ডিকেটের কাছ থেকে ২৫,০০০ ডলার ঘুষ নিয়ে খুনিদের কাছে সেফহাউসের গোপন ঠিকানা ফাঁস করেছিল।'
     },
     methodDescription: {
-      en: 'Navarro transmitted room coordinates to the syndicate. Clara discovered the betrayal, staged an abduction with theatrical blood, and escaped through the steam conduit to catch the 23:45 Night Express.',
-      bn: 'নাভারো গোপন মেসেজে তথ্য ফাঁস করে। ক্লারা বিষয়টি টের পেয়ে কৃত্রিম রক্ত দিয়ে অপহরণের দৃশ্য সাজায় এবং সুড়ঙ্গপথ দিয়ে পালিয়ে ট্রেনে চড়ে রক্ষা পায়।'
+      en: 'Kabir transmitted room coordinates to the syndicate. Farzana discovered the betrayal, staged an abduction with theatrical blood, and escaped through the steam conduit to catch the 23:45 Night Express.',
+      bn: 'কবীর গোপন মেসেজে তথ্য ফাঁস করে। ফারজানা বিষয়টি টের পেয়ে কৃত্রিম রক্ত দিয়ে অপহরণের দৃশ্য সাজায় এবং সুড়ঙ্গপথ দিয়ে পালিয়ে ট্রেনে চড়ে রক্ষা পায়।'
     },
     approximateTime: {
       en: '23:20 (Escape) / 00:30 (Breach)',
@@ -1246,8 +1246,8 @@ export const case002: CaseData = {
     ],
     falseAlibiSuspectId: 'suspect-02-navarro',
     fullCaseDebriefing: {
-      en: 'Detective Ray Navarro was corrupted by high-stakes sports gambling debts. For $25,000 wired into an offshore Cayman account, he agreed to sell out protected witness Clara Thorne to the Blackwood Syndicate, texting the room number and guard rotation to hitman Viktor Kozlov.\n\nHowever, Clara was sharp. She intercepted Navarro\'s burner radio chatter and realized she was a dead woman if she stayed. With the assistance of her sister Maya Lin and superintendent Isaac Vance, Clara formulated a daring plan: at 23:20, she splattered theatrical prop blood on the carpet, kicked over furniture, and crawled through the kitchenette maintenance vent into the 1920s underground steam conduit. She emerged onto the freight rail platform and boarded the 23:45 Night Express carrying the master encrypted fraud drive to deliver it directly to federal prosecutors.\n\nWhen Kozlov arrived at 00:30, he kicked open the door to find the room empty and fled. Navarro, realizing his bribe scheme had imploded, struck himself in the head with a flashlight and played the unconscious victim in the hallway. Thanks to your deduction of the synthetic blood, the radiator burner phone, and the underground boiler tracks, Navarro was arrested for criminal conspiracy and Clara Thorne\'s testimony was preserved.',
-      bn: 'ডিটেকটিভ রে নাভারো জুয়ার দেনার কারণে নীতিভ্রষ্ট হয়েছিল। কেম্যান আইল্যান্ডসের ব্যাংক অ্যাকাউন্টে ২৫,০০০ ডলারের বিনিময়ে সে সরকারি সুরক্ষিত সাক্ষী ক্লারা থর্নকে সিন্ডিকেটের হাতে তুলে দেওয়ার চুক্তি করে এবং খুনি ভিক্টর কজলভকে ঘরের নম্বর ও সময় মেসেজ করে।\n\nকিন্তু ক্লারা অত্যন্ত তীক্ষ্ণ বুদ্ধিসম্পন্ন ছিল। সে নাভারোর কথোপকথন ধরে ফেলে এবং বুঝতে পারে এখানে থাকলে তার নিশ্চিত মৃত্যু। সৎ বোন মায়া লিন ও কেয়ারটেকার আইজ্যাকের সহায়তায় সে এক সাহসী পরিকল্পনা করে: রাত ১১:২০-এ কার্পেটে থিয়েটারের কৃত্রিম রক্ত ছড়িয়ে, আসবাবপত্র ওলটপালট করে সে রান্নাঘরের ডাক্ট বেয়ে মাটির নিচের পুরনো বাষ্প সুড়ঙ্গে নেমে পড়ে। সেখান থেকে রেল প্ল্যাটফর্মে গিয়ে রাত ১১:৪৫-এর নাইট এক্সপ্রেসে চড়ে সে সমস্ত আর্থিক জালিয়াতির মাস্টার ইউএসবি ড্রাইভ নিয়ে আদালতের উদ্দেশ্যে রওয়ানা দেয়।\n\nরাত ১২:৩০-এ খুনি কজলভ দরজা ভেঙে ভেতরে ঢুকে কাউকে না পেয়ে রাগে আসবাব ভেঙে পালায়। নাভারো পরিস্থিতি বেগতিক দেখে নিজের মাথায় নিজেই আঘাত করে করিডোরে অজ্ঞান হওয়ার ভান করে পড়ে থাকে। আপনার নিখুঁত তদন্তে কৃত্রিম রক্তের রহস্য, বার্নার ফোনের এসএমএস এবং মাটির নিচের সুড়ঙ্গের পায়ের ছাপ উদঘাটিত হওয়ায় নাভারো গ্রেপ্তার হয় এবং ক্লারা থর্নের মূল্যবান সাক্ষ্য সুরক্ষিত থাকে।'
+      en: 'Inspector Rayhan Kabir was corrupted by high-stakes sports gambling debts. For $25,000 wired into an offshore Cayman account, he agreed to sell out protected witness Farzana Haque to the Blackwood Syndicate, texting the room number and guard rotation to hitman Bakhtiar Alam.\n\nHowever, Farzana was sharp. She intercepted Kabir\'s burner radio chatter and realized she was a dead woman if she stayed. With the assistance of her sister Mousumi Das and superintendent Iqbal Hossain, Farzana formulated a daring plan: at 23:20, she splattered theatrical prop blood on the carpet, kicked over furniture, and crawled through the kitchenette maintenance vent into the 1920s underground steam conduit. She emerged onto the freight rail platform and boarded the 23:45 Night Express carrying the master encrypted fraud drive to deliver it directly to federal prosecutors.\n\nWhen Alam arrived at 00:30, he kicked open the door to find the room empty and fled. Kabir, realizing his bribe scheme had imploded, struck himself in the head with a flashlight and played the unconscious victim in the hallway. Thanks to your deduction of the synthetic blood, the radiator burner phone, and the underground boiler tracks, Kabir was arrested for criminal conspiracy and Farzana Haque\'s testimony was preserved.',
+      bn: 'ইন্সপেক্টর রায়হান কবীর জুয়ার দেনার কারণে নীতিভ্রষ্ট হয়েছিল। কেম্যান আইল্যান্ডসের ব্যাংক অ্যাকাউন্টে ২৫,০০০ ডলারের বিনিময়ে সে সরকারি সুরক্ষিত সাক্ষী ফারজানা হককে সিন্ডিকেটের হাতে তুলে দেওয়ার চুক্তি করে এবং খুনি বখতিয়ার আলমকে ঘরের নম্বর ও সময় মেসেজ করে।\n\nকিন্তু ফারজানা অত্যন্ত তীক্ষ্ণ বুদ্ধিসম্পন্ন ছিল। সে কবীর সাহেবের কথোপকথন ধরে ফেলে এবং বুঝতে পারে এখানে থাকলে তার নিশ্চিত মৃত্যু। সৎ বোন মৌসুমী দাস ও কেয়ারটেকার ইকবালের সহায়তায় সে এক সাহসী পরিকল্পনা করে: রাত ১১:২০-এ কার্পেটে থিয়েটারের কৃত্রিম রক্ত ছড়িয়ে, আসবাবপত্র ওলটপালট করে সে রান্নাঘরের ডাক্ট বেয়ে মাটির নিচের পুরনো বাষ্প সুড়ঙ্গে নেমে পড়ে। সেখান থেকে রেল প্ল্যাটফর্মে গিয়ে রাত ১১:৪৫-এর নাইট এক্সপ্রেসে চড়ে সে সমস্ত আর্থিক জালিয়াতির মাস্টার ইউএসবি ড্রাইভ নিয়ে আদালতের উদ্দেশ্যে রওয়ানা দেয়।\n\nরাত ১২:৩০-এ খুনি আলম দরজা ভেঙে ভেতরে ঢুকে কাউকে না পেয়ে রাগে আসবাব ভেঙে পালায়। কবীর পরিস্থিতি বেগতিক দেখে নিজের মাথায় নিজেই আঘাত করে করিডোরে অজ্ঞান হওয়ার ভান করে পড়ে থাকে। আপনার নিখুঁত তদন্তে কৃত্রিম রক্তের রহস্য, বার্নার ফোনের এসএমএস এবং মাটির নিচের সুড়ঙ্গের পায়ের ছাপ উদঘাটিত হওয়ায় কবীর গ্রেপ্তার হয় এবং ফারজানা হকের মূল্যবান সাক্ষ্য সুরক্ষিত থাকে।'
     },
     options: {
       motives: [
@@ -1261,14 +1261,14 @@ export const case002: CaseData = {
         {
           id: 'm-revenge',
           label: {
-            en: 'Personal vengeance against the Thorne family for prior criminal convictions',
-            bn: 'পূর্ববর্তী শত্রুতার জেরে থর্ন পরিবারের ওপর ব্যক্তিগত প্রতিশোধ নেওয়া'
+            en: 'Personal vengeance against the Haque family for prior criminal convictions',
+            bn: 'পূর্ববর্তী শত্রুতার জেরে হক পরিবারের ওপর ব্যক্তিগত প্রতিশোধ নেওয়া'
           }
         },
         {
           id: 'm-silence-witness',
           label: {
-            en: 'Preventing Clara from exposing police precinct corruption in trial',
+            en: 'Preventing Farzana from exposing police precinct corruption in trial',
             bn: 'থানার নিজস্ব কর্মকর্তাদের দুর্নীতি প্রকাশ ঠেকানো'
           }
         },
@@ -1284,15 +1284,15 @@ export const case002: CaseData = {
         {
           id: 'met-staged-escape',
           label: {
-            en: 'Navarro leaked location; Clara discovered it, staged kidnapping with prop blood, and escaped via steam tunnel',
-            bn: 'নাভারো তথ্য ফাঁস করে; ক্লারা তা ধরে ফেলে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে পালিয়ে যায়'
+            en: 'Kabir leaked location; Farzana discovered it, staged kidnapping with prop blood, and escaped via steam tunnel',
+            bn: 'কবীর তথ্য ফাঁস করে; ফারজানা তা ধরে ফেলে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে পালিয়ে যায়'
           }
         },
         {
           id: 'met-forced-abduction',
           label: {
-            en: 'Kozlov stormed room, chloroformed Clara, and carried her out the fire escape',
-            bn: 'কজলভ ঘরে ঢুকে ক্লোরোফর্ম দিয়ে অজ্ঞান করে ফায়ার এসকেপ দিয়ে ক্লারাকে তুলে নিয়ে যায়'
+            en: 'Alam stormed room, chloroformed Farzana, and carried her out the fire escape',
+            bn: 'আলম ঘরে ঢুকে ক্লোরোফর্ম দিয়ে অজ্ঞান করে ফায়ার এসকেপ দিয়ে ফারজানাকে তুলে নিয়ে যায়'
           }
         },
         {
@@ -1314,22 +1314,22 @@ export const case002: CaseData = {
         {
           id: 't-2320',
           label: {
-            en: 'Between 23:20 and 23:45 (Clara\'s tunnel evacuation and train departure)',
+            en: 'Between 23:20 and 23:45 (Farzana\'s tunnel evacuation and train departure)',
             bn: 'রাত ১১:২০ থেকে ১১:৪৫-এর মধ্যে (সুড়ঙ্গ দিয়ে পলায়ন ও ট্রেনে চড়া)'
           }
         },
         {
           id: 't-0030',
           label: {
-            en: 'At 00:30 (when Kozlov breached the empty doorway)',
-            bn: 'রাত ১২:৩০ মিনিটে (কজলভ শূন্য ঘরে দরজা ভেঙে ঢোকার সময়)'
+            en: 'At 00:30 (when Alam breached the empty doorway)',
+            bn: 'রাত ১২:৩০ মিনিটে (আলম শূন্য ঘরে দরজা ভেঙে ঢোকার সময়)'
           }
         },
         {
           id: 't-0045',
           label: {
-            en: 'At 00:45 (when Navarro staged his unconsciousness)',
-            bn: 'রাত ১২:৪৫ মিনিটে (নাভারোর অজ্ঞান হওয়ার নাটক সাজানোর সময়)'
+            en: 'At 00:45 (when Kabir staged his unconsciousness)',
+            bn: 'রাত ১২:৪৫ মিনিটে (কবীর সাহেবের অজ্ঞান হওয়ার নাটক সাজানোর সময়)'
           }
         },
         {

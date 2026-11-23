@@ -128,8 +128,8 @@ export const case003: CaseData = {
         },
         revealsEvidenceId: 'clue-03-vault-access-logs',
         discoveryNote: {
-          en: 'Terminal audit log shows only ONE person accessed the pedestal lock today: Chief Curator Dr. Helena Rossi at 18:00 for "curatorial inspection".',
-          bn: 'টার্মিনাল লগ বলছে আজ সারাদিনে শুধুমাত্র একজনই বেদিটি খুলেছিলেন: সন্ধ্যা ৬টায় প্রধান কিউরেটর ডা. হেলেনা রসি।'
+          en: 'Terminal audit log shows only ONE person accessed the pedestal lock today: Chief Curator Dr. Humaira Rashid at 18:00 for "curatorial inspection".',
+          bn: 'টার্মিনাল লগ বলছে আজ সারাদিনে শুধুমাত্র একজনই বেদিটি খুলেছিলেন: সন্ধ্যা ৬টায় প্রধান কিউরেটর ডা. হুমায়রা রশীদ।'
         },
         iconType: 'document'
       },
@@ -169,8 +169,8 @@ export const case003: CaseData = {
         isHidden: true,
         revealsEvidenceId: 'clue-03-rossi-invoice',
         discoveryNote: {
-          en: 'Inside Dr. Helena Rossi\'s locker: an invoice from an artisan resin casting workshop in Florence, Italy, for a "museum-grade lapis lazuli scarab replica".',
-          bn: 'ডা. হেলেনা রসির লকার থেকে ইতালির ফ্লোরেন্সের একটি কর্মশালা থেকে হুবহু নকল স্কারাব তৈরির একটি রসিদ পাওয়া গেছে।'
+          en: 'Inside Dr. Humaira Rashid\'s locker: an invoice from an artisan resin casting workshop in Florence, Italy, for a "museum-grade lapis lazuli scarab replica".',
+          bn: 'ডা. হুমায়রা রশীদর লকার থেকে ইতালির ফ্লোরেন্সের একটি কর্মশালা থেকে হুবহু নকল স্কারাব তৈরির একটি হুমায়রাদ পাওয়া গেছে।'
         },
         iconType: 'document'
       },
@@ -201,8 +201,8 @@ export const case003: CaseData = {
     {
       id: 'suspect-03-rossi',
       name: {
-        en: 'Dr. Helena Rossi',
-        bn: 'ডা. হেলেনা রসি'
+        en: 'Dr. Humaira Rashid',
+        bn: 'ডা. হুমায়রা রশীদ'
       },
       alias: {
         en: 'The Disgraced Curator',
@@ -237,7 +237,7 @@ export const case003: CaseData = {
         en: 'Had a master replica fabricated in Florence 3 months ago and swapped it hours before the gala.',
         bn: '৩ মাস আগেই ইতালি থেকে নকল রত্ন বানিয়ে রেখেছিল এবং গালা শুরুর আগেই সন্ধ্যা ৬টায় আসলটা বদলে ফেলেছিল।'
       },
-      avatarSeed: 'Rossi',
+      avatarSeed: 'Humaira',
       avatarColor: '#8b5cf6',
       dialogueTree: [
         {
@@ -282,8 +282,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-cracked-scarf',
           reactionText: {
-            en: 'Dr. Rossi stumbles: "The counterfeit cracked from the display lighting? That... that is impossible, the artisan guaranteed it withstood 40 degrees Celsius!" She instantly catches herself and falls silent.',
-            bn: 'ডা. রসি তোতলিয়ে ফেলে: "বাতির তাপে নকলটা ফেটে গেছে? কিন্তু ওটা তো ৪০ ডিগ্রি তাপমাত্রা সহ্য করার কথা ছিল!" সে হঠাৎ নিজের ভুল বুঝতে পেরে চুপ হয়ে যায়।'
+            en: 'Dr. Humaira stumbles: "The counterfeit cracked from the display lighting? That... that is impossible, the artisan guaranteed it withstood 40 degrees Celsius!" She instantly catches herself and falls silent.',
+            bn: 'ডা. হুমায়রা তোতলিয়ে ফেলে: "বাতির তাপে নকলটা ফেটে গেছে? কিন্তু ওটা তো ৪০ ডিগ্রি তাপমাত্রা সহ্য করার কথা ছিল!" সে হঠাৎ নিজের ভুল বুঝতে পেরে চুপ হয়ে যায়।'
           },
           stressIncrease: 45,
           exposesLie: true
@@ -291,8 +291,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-lead-box',
           reactionText: {
-            en: 'Dr. Rossi goes dead pale, grasping the table: "You found the lead case? In the laundry hamper? But... Tariq was supposed to take the cart to the catering van at 03:00!"',
-            bn: 'ডা. রসি টেবিল খামচে ধরে ফ্যাকাশে হয়ে পড়ে: "সিসার বাক্সটা পেয়ে গেছেন? লন্ড্রি ট্রলি থেকে? কিন্তু তারিক তো রাত ৩টায় কেটারিং ভ্যানে ওটা তোলার কথা ছিল!"'
+            en: 'Dr. Humaira goes dead pale, grasping the table: "You found the lead case? In the laundry hamper? But... Tareq was supposed to take the cart to the catering van at 03:00!"',
+            bn: 'ডা. হুমায়রা টেবিল খামচে ধরে ফ্যাকাশে হয়ে পড়ে: "সিসার বাক্সটা পেয়ে গেছেন? লন্ড্রি ট্রলি থেকে? কিন্তু তারেক তো রাত ৩টায় কেটারিং ভ্যানে ওটা তোলার কথা ছিল!"'
           },
           stressIncrease: 60,
           exposesLie: true
@@ -302,8 +302,8 @@ export const case003: CaseData = {
     {
       id: 'suspect-03-cross',
       name: {
-        en: 'Nathan Cross',
-        bn: 'নাথান ক্রস'
+        en: 'Nasir Uddin',
+        bn: 'নাসির উদ্দিন'
       },
       alias: {
         en: 'The Security Chief',
@@ -338,7 +338,7 @@ export const case003: CaseData = {
         en: 'Was caught sleeping on duty 3 weeks ago; disabled sensor alert sounders to avoid false alarms.',
         bn: 'কয়েক সপ্তাহ আগে অ্যালার্মের শব্দ বন্ধ করে রেখেছিল যাতে মিথ্যা অ্যালার্মে ঘুম না ভাঙে।'
       },
-      avatarSeed: 'Cross',
+      avatarSeed: 'Nasir',
       avatarColor: '#1e293b',
       dialogueTree: [
         {
@@ -370,8 +370,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-emp-capacitor',
           reactionText: {
-            en: 'Cross examines the capacitor: "This isn\'t amateur work. This is a capacitor array wired directly into the secondary bus bar. Whoever planted this knew the HVAC duct layout."',
-            bn: 'ক্রস ক্যাপাসিটরটি দেখে বলে: "এটা কোনো আনাড়ির কাজ নয়। বিদ্যুৎ লাইনের সাথে এটা নিখুঁতভাবে টাইমার দিয়ে জোড়া হয়েছিল। যে করেছে সে ভবনের প্রতিটি তারের খবর জানত।"'
+            en: 'Nasir examines the capacitor: "This isn\'t amateur work. This is a capacitor array wired directly into the secondary bus bar. Whoever planted this knew the HVAC duct layout."',
+            bn: 'নাসির ক্যাপাসিটরটি দেখে বলে: "এটা কোনো আনাড়ির কাজ নয়। বিদ্যুৎ লাইনের সাথে এটা নিখুঁতভাবে টাইমার দিয়ে জোড়া হয়েছিল। যে করেছে সে ভবনের প্রতিটি তারের খবর জানত।"'
           },
           stressIncrease: 10
         }
@@ -380,8 +380,8 @@ export const case003: CaseData = {
     {
       id: 'suspect-03-chloe',
       name: {
-        en: 'Chloe Dupuis',
-        bn: 'ক্লোয়ি দুপুই'
+        en: 'Sharmin Jahan',
+        bn: 'শারমীন জাহান'
       },
       alias: {
         en: 'The Laser Systems Engineer',
@@ -413,10 +413,10 @@ export const case003: CaseData = {
         bn: 'অতিরিক্ত কথা বলে, হাতে রেঞ্চ নিয়ে নাড়াচাড়া করে, সামান্য চঞ্চল।'
       },
       secrets: {
-        en: 'Was paid $5,000 cash by Dr. Rossi yesterday to "align the prisms for a photo shoot".',
-        bn: 'গতকাল ডা. রসি তাকে ছবি তোলার অজুহাতে প্রিজম সেট করে দেওয়ার জন্য ৫০০০ ডলার নগদ দিয়েছিলেন।'
+        en: 'Was paid $5,000 cash by Dr. Humaira yesterday to "align the prisms for a photo shoot".',
+        bn: 'গতকাল ডা. হুমায়রা তাকে ছবি তোলার অজুহাতে প্রিজম সেট করে দেওয়ার জন্য ৫০০০ ডলার নগদ দিয়েছিলেন।'
       },
-      avatarSeed: 'Chloe',
+      avatarSeed: 'Sharmin',
       avatarColor: '#06b6d4',
       dialogueTree: [
         {
@@ -438,8 +438,8 @@ export const case003: CaseData = {
             bn: 'লেজারের মুখে প্রিজম বসাতে আপনাকে কে বলেছিল?'
           },
           response: {
-            en: 'Prisms? Wait... Dr. Rossi asked me yesterday if quartz prisms could diffuse the beam so the glare wouldn\'t ruin high-res documentary photography. I told her it would bypass the alarm if misaligned!',
-            bn: 'প্রিজম? দাঁড়ান... গতকাল ডা. রসি জানতে চেয়েছিলেন প্রিজম বসালে লেজারের আলো বাঁকানো যাবে কিনা যাতে ক্যামেরায় ঝিলিক না মারে। আমি তাকে বলেছিলাম এতে কিন্তু অ্যালার্ম বাইপাস হয়ে যেতে পারে!'
+            en: 'Prisms? Wait... Dr. Humaira asked me yesterday if quartz prisms could diffuse the beam so the glare wouldn\'t ruin high-res documentary photography. I told her it would bypass the alarm if misaligned!',
+            bn: 'প্রিজম? দাঁড়ান... গতকাল ডা. হুমায়রা জানতে চেয়েছিলেন প্রিজম বসালে লেজারের আলো বাঁকানো যাবে কিনা যাতে ক্যামেরায় ঝিলিক না মারে। আমি তাকে বলেছিলাম এতে কিন্তু অ্যালার্ম বাইপাস হয়ে যেতে পারে!'
           },
           reactionMood: 'nervous'
         }
@@ -448,8 +448,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-optical-prism',
           reactionText: {
-            en: 'Chloe inspects the prism: "This is a 45-degree total internal reflection prism! It was slotted right into Pillar 3 to bounce the beam directly into the receiver! That allowed Dr. Rossi to reach in without triggering the alarm!"',
-            bn: 'ক্লোয়ি আঁতকে ওঠে: "এটা ৪৫ ডিগ্রির অপটিক্যাল প্রিজম! এটা দিয়ে রশ্মিকে সরাসরি রিসিভারে ঘুরিয়ে দেওয়া হয়েছে! এর ফলেই কোনো অ্যালার্ম না বাজিয়ে শোকেসে হাত ঢোকানো সম্ভব হয়েছিল!"'
+            en: 'Sharmin inspects the prism: "This is a 45-degree total internal reflection prism! It was slotted right into Pillar 3 to bounce the beam directly into the receiver! That allowed Dr. Humaira to reach in without triggering the alarm!"',
+            bn: 'শারমীন আঁতকে ওঠে: "এটা ৪৫ ডিগ্রির অপটিক্যাল প্রিজম! এটা দিয়ে রশ্মিকে সরাসরি রিসিভারে ঘুরিয়ে দেওয়া হয়েছে! এর ফলেই কোনো অ্যালার্ম না বাজিয়ে শোকেসে হাত ঢোকানো সম্ভব হয়েছিল!"'
           },
           stressIncrease: 20
         }
@@ -458,8 +458,8 @@ export const case003: CaseData = {
     {
       id: 'suspect-03-tariq',
       name: {
-        en: 'Tariq Al-Mansoor',
-        bn: 'তারিক আল-মনসুর'
+        en: 'Tareq Al-Mamun',
+        bn: 'তারেক আল-মামুন'
       },
       alias: {
         en: 'The Billionaire Collector',
@@ -491,10 +491,10 @@ export const case003: CaseData = {
         bn: 'অভিজাত রেশমি স্যুট, সোনার ঘড়ি, আত্মবিশ্বাসী, পুলিশের প্রশ্নে মুচকি হাসে।'
       },
       secrets: {
-        en: 'Agreed to wire $10M to Rossi\'s Swiss account once the scarab was smuggled past customs in the laundry cart.',
-        bn: 'লন্ড্রি ভ্যানে রত্নটি বাইরে নিয়ে আসতে পারলে রসিকে ১০ মিলিয়ন ডলার দেওয়ার চুক্তি হয়েছিল।'
+        en: 'Agreed to wire $10M to Humaira\'s Swiss account once the scarab was smuggled past customs in the laundry cart.',
+        bn: 'লন্ড্রি ভ্যানে রত্নটি বাইরে নিয়ে আসতে পারলে হুমায়রাকে ১০ মিলিয়ন ডলার দেওয়ার চুক্তি হয়েছিল।'
       },
-      avatarSeed: 'Tariq',
+      avatarSeed: 'Tareq',
       avatarColor: '#eab308',
       dialogueTree: [
         {
@@ -512,12 +512,12 @@ export const case003: CaseData = {
         {
           id: 'dlg-t-2',
           prompt: {
-            en: 'Did you communicate with Dr. Rossi prior to the gala?',
-            bn: 'অনুষ্ঠানের আগে ডা. রসির সাথে আপনার কি কোনো যোগাযোগ হয়েছিল?'
+            en: 'Did you communicate with Dr. Humaira prior to the gala?',
+            bn: 'অনুষ্ঠানের আগে ডা. হুমায়রার সাথে আপনার কি কোনো যোগাযোগ হয়েছিল?'
           },
           response: {
-            en: 'Dr. Rossi is a brilliant Egyptologist. She gives private tours of the catacombs to my foundation. That is the extent of our relationship.',
-            bn: 'ডা. রসি একজন বিদগ্ধ গবেষক। তিনি আমার ফাউন্ডেশনের মেহমানদের মিউজিয়াম ঘুরিয়ে দেখান। এর বাইরে কোনো ব্যক্তিগত সম্পর্ক নেই।'
+            en: 'Dr. Humaira is a brilliant Egyptologist. She gives private tours of the catacombs to my foundation. That is the extent of our relationship.',
+            bn: 'ডা. হুমায়রা একজন বিদগ্ধ গবেষক। তিনি আমার ফাউন্ডেশনের মেহমানদের মিউজিয়াম ঘুরিয়ে দেখান। এর বাইরে কোনো ব্যক্তিগত সম্পর্ক নেই।'
           },
           reactionMood: 'defensive'
         }
@@ -526,8 +526,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-lead-box',
           reactionText: {
-            en: 'Tariq\'s confident smile freezes: "A lead-lined case in the laundry cart? I... I know nothing of museum laundry logistics. Talk to the cleaning staff."',
-            bn: 'তারিকের হাসি নিমেষে মিলিয়ে যায়: "লন্ড্রি ট্রলিতে সিসার বাক্স? আমি... মিউজিয়ামের কাপড় ধোয়ার বিষয়ের আমি কী জানি? ওটা পরিচ্ছন্নতাকর্মীদের জিজ্ঞেস করুন।"'
+            en: 'Tareq\'s confident smile freezes: "A lead-lined case in the laundry cart? I... I know nothing of museum laundry logistics. Talk to the cleaning staff."',
+            bn: 'তারেকের হাসি নিমেষে মিলিয়ে যায়: "লন্ড্রি ট্রলিতে সিসার বাক্স? আমি... মিউজিয়ামের কাপড় ধোয়ার বিষয়ের আমি কী জানি? ওটা পরিচ্ছন্নতাকর্মীদের জিজ্ঞেস করুন।"'
           },
           stressIncrease: 35
         }
@@ -536,8 +536,8 @@ export const case003: CaseData = {
     {
       id: 'suspect-03-simon',
       name: {
-        en: 'Simon Bell',
-        bn: 'সাইমন বেল'
+        en: 'Shafiqul Islam',
+        bn: 'শফিকুল ইসলাম'
       },
       alias: {
         en: 'The Night Janitor',
@@ -572,7 +572,7 @@ export const case003: CaseData = {
         en: 'Found the lead box hidden in his laundry bin 20 minutes ago and was terrified he would be framed.',
         bn: 'ট্রলিতে ভারী সিসার বাক্স দেখে ভয়ে পাথর হয়ে গিয়েছিলেন যেন তাকে চোর না বানানো হয়।'
       },
-      avatarSeed: 'Simon',
+      avatarSeed: 'Shafiqul',
       avatarColor: '#14b8a6',
       dialogueTree: [
         {
@@ -582,8 +582,8 @@ export const case003: CaseData = {
             bn: 'ব্ল্যাকআউটের আগে সাব-লেভেল ২-এ কাউকে ঢুকতে দেখেছিলেন?'
           },
           response: {
-            en: 'Around 17:50, Dr. Rossi came down with a heavy leather briefcase. She stayed inside the vault room alone for twenty minutes. She told me not to enter because she was handling fragile artifacts.',
-            bn: 'বিকেল ৫:৫০ নাগাদ ডা. রসি বড় ব্রিফকেস নিয়ে নিচে নেমেছিলেন। তিনি প্রায় ২০ মিনিট ভল্টের ভেতর একা ছিলেন। তিনি আমাকে বলেছিলেন ভেতরে কাজ চলছে, আমি যেন না ঢুকি।'
+            en: 'Around 17:50, Dr. Humaira came down with a heavy leather briefcase. She stayed inside the vault room alone for twenty minutes. She told me not to enter because she was handling fragile artifacts.',
+            bn: 'বিকেল ৫:৫০ নাগাদ ডা. হুমায়রা বড় ব্রিফকেস নিয়ে নিচে নেমেছিলেন। তিনি প্রায় ২০ মিনিট ভল্টের ভেতর একা ছিলেন। তিনি আমাকে বলেছিলেন ভেতরে কাজ চলছে, আমি যেন না ঢুকি।'
           },
           reactionMood: 'calm'
         },
@@ -594,8 +594,8 @@ export const case003: CaseData = {
             bn: 'এসি আর বিদ্যুৎ বক্সের কাছে কাউকে কিছু করতে দেখেছিলেন?'
           },
           response: {
-            en: 'Yesterday morning, I saw Dr. Rossi standing on a step ladder near the ventilation duct with a toolkit. She said the air conditioner was vibrating the display vitrine.',
-            bn: 'গতকাল সকালে ডা. রসিকে আমি মইয়ে চড়ে এসি ভেন্টের কাছে তারের কাজ করতে দেখি। উনি বলেছিলেন এসির কাঁপুনির কারণে কাচ নড়ছে।'
+            en: 'Yesterday morning, I saw Dr. Humaira standing on a step ladder near the ventilation duct with a toolkit. She said the air conditioner was vibrating the display vitrine.',
+            bn: 'গতকাল সকালে ডা. হুমায়রাকে আমি মইয়ে চড়ে এসি ভেন্টের কাছে তারের কাজ করতে দেখি। উনি বলেছিলেন এসির কাঁপুনির কারণে কাচ নড়ছে।'
           },
           reactionMood: 'surprised',
           revealsClueId: 'clue-03-janitor-testimony'
@@ -605,8 +605,8 @@ export const case003: CaseData = {
         {
           evidenceId: 'clue-03-lead-box',
           reactionText: {
-            en: 'Simon raises his hands: "Thank God you found it! I swear on my mother\'s grave, someone threw that heavy metal box into my dirty laundry cart right as the alarms went off! I didn\'t touch it!"',
-            bn: 'সাইমন দুই হাত তোলে: "ঈশ্বরকে ধন্যবাদ আপনারা ওটা পেয়েছেন! মায়ের কসম বলছি, সাইরেন বাজার ঠিক মুখে কেউ ওটা আমার ময়লা কাপড়ের ট্রলিতে গুঁজে দিয়েছিল! আমি ওতে হাতও দিইনি!"'
+            en: 'Shafiqul raises his hands: "Thank God you found it! I swear on my mother\'s grave, someone threw that heavy metal box into my dirty laundry cart right as the alarms went off! I didn\'t touch it!"',
+            bn: 'শফিকুল দুই হাত তোলে: "ঈশ্বরকে ধন্যবাদ আপনারা ওটা পেয়েছেন! মায়ের কসম বলছি, সাইরেন বাজার ঠিক মুখে কেউ ওটা আমার ময়লা কাপড়ের ট্রলিতে গুঁজে দিয়েছিল! আমি ওতে হাতও দিইনি!"'
           },
           stressIncrease: 10
         }
@@ -682,8 +682,8 @@ export const case003: CaseData = {
           bn: '২০০০ ভোল্টের তীব্র স্পাইক তৈরি করে মূল ব্রেকারকে ২৪০ সেকেন্ডের জন্য ট্রিপ করিয়েছিল।'
         },
         {
-          en: 'Fingerprints on the casing: Dr. Helena Rossi.',
-          bn: 'যন্ত্রের আবরণে ডা. হেলেনা রসির আঙুলের স্পষ্ট ছাপ পাওয়া গেছে।'
+          en: 'Fingerprints on the casing: Dr. Humaira Rashid.',
+          bn: 'যন্ত্রের আবরণে ডা. হুমায়রা রশীদর আঙুলের স্পষ্ট ছাপ পাওয়া গেছে।'
         }
       ],
       iconKey: 'zap'
@@ -704,15 +704,15 @@ export const case003: CaseData = {
         bn: 'ভল্টের মূল প্রবেশদ্বার'
       },
       relevance: {
-        en: 'Shows the vault was never opened during the 02:15 blackout; Rossi was the sole entrant at 18:00.',
-        bn: 'প্রমাণ করে রাত ২:১৫ এর অন্ধকারে ভল্ট খোলাই হয়নি; সন্ধ্যা ৬টায় রসিই একমাত্র ব্যক্তি ছিলেন।'
+        en: 'Shows the vault was never opened during the 02:15 blackout; Humaira was the sole entrant at 18:00.',
+        bn: 'প্রমাণ করে রাত ২:১৫ এর অন্ধকারে ভল্ট খোলাই হয়নি; সন্ধ্যা ৬টায় হুমায়রাই একমাত্র ব্যক্তি ছিলেন।'
       },
       relatedSuspectIds: ['suspect-03-rossi', 'suspect-03-cross'],
       isCrucial: true,
       details: [
         {
-          en: '18:00:22 - Dr. Helena Rossi (Biometric + Retina Approved). Exit at 18:22:15.',
-          bn: 'সন্ধ্যা ১৮:০০:২২ - ডা. হেলেনা রসি (রেটিনা স্ক্যান অনুমোদিত)। প্রস্থান ১৮:২২:১৫।'
+          en: '18:00:22 - Dr. Humaira Rashid (Biometric + Retina Approved). Exit at 18:22:15.',
+          bn: 'সন্ধ্যা ১৮:০০:২২ - ডা. হুমায়রা রশীদ (রেটিনা স্ক্যান অনুমোদিত)। প্রস্থান ১৮:২২:১৫।'
         },
         {
           en: '02:15 to 02:19 - BLACKOUT: Zero biometric scans registered; acrylic hood remained sealed.',
@@ -765,7 +765,7 @@ export const case003: CaseData = {
       },
       category: 'Documents',
       description: {
-        en: 'An invoice from "Bottega d\'Arte Fiorentina" found in Rossi\'s locker.',
+        en: 'An invoice from "Bottega d\'Arte Fiorentina" found in Humaira\'s locker.',
         bn: 'ইতালির ফ্লোরেন্সের আর্ট কর্মশালার ১৮,৫০০ ইউরোর বিল।'
       },
       discoveryLocation: {
@@ -773,8 +773,8 @@ export const case003: CaseData = {
         bn: 'কিউরেটরদের ৪ নম্বর লকার'
       },
       relevance: {
-        en: 'Direct documentary proof that Dr. Rossi commissioned a counterfeit scarab 3 months ago.',
-        bn: 'ডা. রসি যে ৩ মাস আগে থেকেই নিখুঁত নকল তৈরির ব্যবস্থা করেছিলেন তার দালিলিক প্রমাণ।'
+        en: 'Direct documentary proof that Dr. Humaira commissioned a counterfeit scarab 3 months ago.',
+        bn: 'ডা. হুমায়রা যে ৩ মাস আগে থেকেই নিখুঁত নকল তৈরির ব্যবস্থা করেছিলেন তার দালিলিক প্রমাণ।'
       },
       relatedSuspectIds: ['suspect-03-rossi'],
       isCrucial: true,
@@ -810,7 +810,7 @@ export const case003: CaseData = {
         bn: 'মালবাহী লিফটের সামনে লন্ড্রি ট্রলি'
       },
       relevance: {
-        en: 'The stolen artifact itself, recovered before it could be smuggled out to Tariq Al-Mansoor.',
+        en: 'The stolen artifact itself, recovered before it could be smuggled out to Tareq Al-Mamun.',
         bn: 'চোরাই মাল পাচারের ঠিক আগমুহূর্তে উদ্ধারকৃত আসল অমূল্য প্রত্নতত্ত্ব।'
       },
       relatedSuspectIds: ['suspect-03-rossi', 'suspect-03-tariq', 'suspect-03-simon'],
@@ -834,27 +834,27 @@ export const case003: CaseData = {
     {
       id: 'clue-03-janitor-testimony',
       name: {
-        en: 'Simon Bell\'s Witness Statement',
-        bn: 'সাইমন বেলের জবানবন্দি'
+        en: 'Shafiqul Islam\'s Witness Statement',
+        bn: 'শফিকুল ইসলামের জবানবন্দি'
       },
       category: 'Witness Statements',
       description: {
-        en: 'Testimony regarding Rossi installing electrical devices by the HVAC vent.',
-        bn: 'ডা. রসি কর্তৃক এসি ভেন্টে ডিভাইস লাগানোর প্রত্যক্ষদর্শীর বিবরণ।'
+        en: 'Testimony regarding Humaira installing electrical devices by the HVAC vent.',
+        bn: 'ডা. হুমায়রা কর্তৃক এসি ভেন্টে ডিভাইস লাগানোর প্রত্যক্ষদর্শীর বিবরণ।'
       },
       discoveryLocation: {
         en: 'Security Holding Room',
         bn: 'নিরাপত্তা কক্ষে নেওয়া সাক্ষ্য'
       },
       relevance: {
-        en: 'Links Dr. Rossi directly to the surge capacitor installation.',
-        bn: 'ডা. রসিকে সরাসরি ব্ল্যাকআউটের ক্যাপাসিটর বসানোর সাথে যুক্ত করে।'
+        en: 'Links Dr. Humaira directly to the surge capacitor installation.',
+        bn: 'ডা. হুমায়রাকে সরাসরি ব্ল্যাকআউটের ক্যাপাসিটর বসানোর সাথে যুক্ত করে।'
       },
       relatedSuspectIds: ['suspect-03-rossi', 'suspect-03-simon'],
       details: [
         {
-          en: 'Witnessed Rossi working on the HVAC vent ladder with wire strippers yesterday morning.',
-          bn: 'গতকাল সকালে রসিকে তার কাটার প্লাস নিয়ে ভেন্টে কাজ করতে দেখেছিলেন।'
+          en: 'Witnessed Humaira working on the HVAC vent ladder with wire strippers yesterday morning.',
+          bn: 'গতকাল সকালে হুমায়রাকে তার কাটার প্লাস নিয়ে ভেন্টে কাজ করতে দেখেছিলেন।'
         }
       ],
       iconKey: 'message'
@@ -870,8 +870,8 @@ export const case003: CaseData = {
         bn: 'ভুয়া ব্ল্যাকআউট বিভ্রম'
       },
       deductionNotes: {
-        en: 'The display vitrine was never opened during the 02:15 blackout! The resin fake was swapped at 18:00 by Dr. Rossi; the blackout was merely a theatrical smoke screen!',
-        bn: 'রাত ২:১৫ এর ব্ল্যাকআউটের সময় কাচের শোকেস খোলাই হয়নি! সন্ধ্যা ৬টায় রসি আগেই আসলটা বদলে ফেলেছিল; ব্ল্যাকআউট ছিল নিছক চোখের ধুলো!'
+        en: 'The display vitrine was never opened during the 02:15 blackout! The resin fake was swapped at 18:00 by Dr. Humaira; the blackout was merely a theatrical smoke screen!',
+        bn: 'রাত ২:১৫ এর ব্ল্যাকআউটের সময় কাচের শোকেস খোলাই হয়নি! সন্ধ্যা ৬টায় হুমায়রা আগেই আসলটা বদলে ফেলেছিল; ব্ল্যাকআউট ছিল নিছক চোখের ধুলো!'
       },
       isContradiction: true,
       bonusPoints: 200
@@ -885,8 +885,8 @@ export const case003: CaseData = {
         bn: 'সাজানো বিদ্যুৎ বিভ্রাট'
       },
       deductionNotes: {
-        en: 'The surge capacitor on the emergency relay bears Dr. Rossi\'s fingerprints and was planted during her HVAC "inspection" yesterday.',
-        bn: 'বিদ্যুৎ লাইনে লাগানো ক্যাপাসিটরে ডা. রসির আঙুলের ছাপ রয়েছে যা তিনি আগের দিন লুকিয়ে লাগিয়েছিলেন।'
+        en: 'The surge capacitor on the emergency relay bears Dr. Humaira\'s fingerprints and was planted during her HVAC "inspection" yesterday.',
+        bn: 'বিদ্যুৎ লাইনে লাগানো ক্যাপাসিটরে ডা. হুমায়রার আঙুলের ছাপ রয়েছে যা তিনি আগের দিন লুকিয়ে লাগিয়েছিলেন।'
       },
       isContradiction: false,
       bonusPoints: 175
@@ -900,8 +900,8 @@ export const case003: CaseData = {
         bn: 'পূর্বপরিকল্পিত নকল তৈরির প্রমাণ'
       },
       deductionNotes: {
-        en: 'The invoice in Rossi\'s locker proves she commissioned an identical polymer replica from Florence 3 months ago to execute this exact substitution.',
-        bn: 'লকারের রসিদ প্রমাণ করে ৩ মাস আগেই ইতালি থেকে নকল রেপ্লিকা তৈরি করে রাখা হয়েছিল এই অদলবদলের জন্য।'
+        en: 'The invoice in Humaira\'s locker proves she commissioned an identical polymer replica from Florence 3 months ago to execute this exact substitution.',
+        bn: 'লকারের হুমায়রাদ প্রমাণ করে ৩ মাস আগেই ইতালি থেকে নকল রেপ্লিকা তৈরি করে রাখা হয়েছিল এই অদলবদলের জন্য।'
       },
       isContradiction: false,
       bonusPoints: 200
@@ -915,8 +915,8 @@ export const case003: CaseData = {
         bn: 'চোরাচালানের নেটওয়ার্ক'
       },
       deductionNotes: {
-        en: 'The lead-lined case was hidden in the custodial cart destined for the catering dock, where Tariq Al-Mansoor\'s private transport was waiting to receive it.',
-        bn: 'লন্ড্রি ট্রলিতে লুকিয়ে রাখা বাক্সটি কেটারিং ডকে নিয়ে যাওয়ার কথা ছিল যেখানে তারিক আল-মনসুরের গাড়ি প্রস্তুত ছিল।'
+        en: 'The lead-lined case was hidden in the custodial cart destined for the catering dock, where Tareq Al-Mamun\'s private transport was waiting to receive it.',
+        bn: 'লন্ড্রি ট্রলিতে লুকিয়ে রাখা বাক্সটি কেটারিং ডকে নিয়ে যাওয়ার কথা ছিল যেখানে তারেক আল-মামুনের গাড়ি প্রস্তুত ছিল।'
       },
       isContradiction: false,
       bonusPoints: 175
@@ -928,16 +928,16 @@ export const case003: CaseData = {
       timestamp: 'Yesterday 10:00',
       timeSortValue: 600,
       title: {
-        en: 'Rossi Plants the Surge Capacitor',
-        bn: 'রসি এসি ভেন্টে ক্যাপাসিটর স্থাপন করে'
+        en: 'Humaira Plants the Surge Capacitor',
+        bn: 'হুমায়রা এসি ভেন্টে ক্যাপাসিটর স্থাপন করে'
       },
       description: {
-        en: 'Dr. Rossi climbs the HVAC maintenance ladder and clips the timed pulse capacitor into the emergency generator relay bus.',
-        bn: 'ডা. রসি মইয়ে চড়ে এসি ভেন্টের লাইনে টাইমারসহ ক্যাপাসিটর জুড়ে দেয়।'
+        en: 'Dr. Humaira climbs the HVAC maintenance ladder and clips the timed pulse capacitor into the emergency generator relay bus.',
+        bn: 'ডা. হুমায়রা মইয়ে চড়ে এসি ভেন্টের লাইনে টাইমারসহ ক্যাপাসিটর জুড়ে দেয়।'
       },
       source: {
-        en: 'Simon Bell\'s Statement & Breaker Forensics',
-        bn: 'সাইমনের সাক্ষ্য ও ব্রেকারের আলামত'
+        en: 'Shafiqul Islam\'s Statement & Breaker Forensics',
+        bn: 'শফিকুলের সাক্ষ্য ও ব্রেকারের আলামত'
       },
       verifiedLocation: {
         en: 'HVAC Vent / Sub-Level 2',
@@ -955,12 +955,12 @@ export const case003: CaseData = {
         bn: 'লেজারের মুখে প্রিজম লাগিয়ে রশ্মি ঘোরানো'
       },
       description: {
-        en: 'Under the pretense of photographic glare reduction, Rossi attaches the quartz optical deflection prism to Pillar 3, looping the laser beam.',
-        bn: 'ছবি তোলার অজুহাতে রসি লেজারের মুখে প্রিজম বসিয়ে রশ্মিকে ঘুরিয়ে দেয়।'
+        en: 'Under the pretense of photographic glare reduction, Humaira attaches the quartz optical deflection prism to Pillar 3, looping the laser beam.',
+        bn: 'ছবি তোলার অজুহাতে হুমায়রা লেজারের মুখে প্রিজম বসিয়ে রশ্মিকে ঘুরিয়ে দেয়।'
       },
       source: {
-        en: 'Chloe Dupuis\'s Technical Audit',
-        bn: 'ক্লোয়ি দুপুইয়ের কারিগরি রিপোর্ট'
+        en: 'Sharmin Jahan\'s Technical Audit',
+        bn: 'শারমীন জাহানয়ের কারিগরি রিপোর্ট'
       },
       verifiedLocation: {
         en: 'Vault Pillar #3',
@@ -974,12 +974,12 @@ export const case003: CaseData = {
       timestamp: '18:00',
       timeSortValue: 1080,
       title: {
-        en: 'The Real Theft: Rossi Swaps the Relic',
-        bn: 'আসল চুরি: সন্ধ্যা ৬টায় রসি রত্ন বদলে ফেলে'
+        en: 'The Real Theft: Humaira Swaps the Relic',
+        bn: 'আসল চুরি: সন্ধ্যা ৬টায় হুমায়রা রত্ন বদলে ফেলে'
       },
       description: {
-        en: 'Dr. Rossi enters the vault for her pre-gala inspection, unlocks the pedestal vitrine, substitutes the Florence resin counterfeit, and hides the genuine scarab in her briefcase.',
-        bn: 'রসি পরিদর্শনের নাম করে ভল্টে ঢুকে কাচ খুলে ইতালির নকলটি বেদিতে রেখে আসল রত্নটি ব্যাগে লুকিয়ে ফেলে।'
+        en: 'Dr. Humaira enters the vault for her pre-gala inspection, unlocks the pedestal vitrine, substitutes the Florence resin counterfeit, and hides the genuine scarab in her briefcase.',
+        bn: 'হুমায়রা পরিদর্শনের নাম করে ভল্টে ঢুকে কাচ খুলে ইতালির নকলটি বেদিতে রেখে আসল রত্নটি ব্যাগে লুকিয়ে ফেলে।'
       },
       source: {
         en: 'Biometric Access Logs & Thermal Stress Analysis',
@@ -997,12 +997,12 @@ export const case003: CaseData = {
       timestamp: '01:45',
       timeSortValue: 1545,
       title: {
-        en: 'Rossi Takes the Stage in the Ballroom',
-        bn: 'রসি বলরুমের মঞ্চে বক্তব্য শুরু করে'
+        en: 'Humaira Takes the Stage in the Ballroom',
+        bn: 'হুমায়রা বলরুমের মঞ্চে বক্তব্য শুরু করে'
       },
       description: {
-        en: 'Dr. Rossi begins her keynote speech in the Grand Ballroom upstairs in front of 200 donors, establishing her public alibi.',
-        bn: '২০০ অতিথির সামনে বক্তব্য দিতে মঞ্চে উঠে রসি নিজের প্রকাশ্য অ্যালিবাই তৈরি করে।'
+        en: 'Dr. Humaira begins her keynote speech in the Grand Ballroom upstairs in front of 200 donors, establishing her public alibi.',
+        bn: '২০০ অতিথির সামনে বক্তব্য দিতে মঞ্চে উঠে হুমায়রা নিজের প্রকাশ্য অ্যালিবাই তৈরি করে।'
       },
       source: {
         en: 'Ballroom Video & Donor Witnesses',
@@ -1068,7 +1068,7 @@ export const case003: CaseData = {
         bn: 'রত্নটি লন্ড্রি ট্রলিতে লুকিয়ে রাখা'
       },
       description: {
-        en: 'The genuine scarab in its lead-lined box is planted into Simon Bell\'s laundry cart to be wheeled out through the loading bay to Tariq\'s courier.',
+        en: 'The genuine scarab in its lead-lined box is planted into Shafiqul Islam\'s laundry cart to be wheeled out through the loading bay to Tareq\'s courier.',
         bn: 'আসল রত্নটি সিসার বাক্সে ভরে লন্ড্রি ট্রলিতে রাখা হয় যাতে কেটারিং ডকে পাচার করা যায়।'
       },
       source: {
@@ -1116,20 +1116,20 @@ export const case003: CaseData = {
         bn: 'আসল বদলের রহস্য'
       },
       hintText: {
-        en: 'Dr. Helena Rossi swapped the real scarab with an Italian polymer replica during her private 18:00 inspection, eight hours before the gala blackout!',
-        bn: 'ডা. হেলেনা রসি গালা ব্ল্যাকআউটের পুরো আট ঘণ্টা আগে, সন্ধ্যা ৬টার ব্যক্তিগত পরিদর্শনের সময় ইতালি থেকে আনা প্লাস্টিকের নকলটি রেখে আসলটি চুরি করে নিয়েছিল!'
+        en: 'Dr. Humaira Rashid swapped the real scarab with an Italian polymer replica during her private 18:00 inspection, eight hours before the gala blackout!',
+        bn: 'ডা. হুমায়রা রশীদ গালা ব্ল্যাকআউটের পুরো আট ঘণ্টা আগে, সন্ধ্যা ৬টার ব্যক্তিগত পরিদর্শনের সময় ইতালি থেকে আনা প্লাস্টিকের নকলটি রেখে আসলটি চুরি করে নিয়েছিল!'
       }
     }
   ],
   solution: {
     culpritId: 'suspect-03-rossi',
     culpritName: {
-      en: 'Dr. Helena Rossi (Chief Curator)',
-      bn: 'ডা. হেলেনা রসি (প্রধান কিউরেটর)'
+      en: 'Dr. Humaira Rashid (Chief Curator)',
+      bn: 'ডা. হুমায়রা রশীদ (প্রধান কিউরেটর)'
     },
     motiveDescription: {
-      en: 'Facing personal bankruptcy and $2.4M in excavation debts, she conspired to sell the genuine Eye of Osiris to private buyer Tariq Al-Mansoor for $10,000,000.',
-      bn: 'ব্যক্তিগত ২৪ লাখ ডলারের খনন ঋণের দেউলিয়া দশা কাটাতে ১০ মিলিয়ন ডলারের বিনিময়ে ধনকুবের তারিক আল-মনসুরের কাছে আসল রত্ন বিক্রির ষড়যন্ত্র।'
+      en: 'Facing personal bankruptcy and $2.4M in excavation debts, she conspired to sell the genuine Eye of Osiris to private buyer Tareq Al-Mamun for $10,000,000.',
+      bn: 'ব্যক্তিগত ২৪ লাখ ডলারের খনন ঋণের দেউলিয়া দশা কাটাতে ১০ মিলিয়ন ডলারের বিনিময়ে ধনকুবের তারেক আল-মামুনের কাছে আসল রত্ন বিক্রির ষড়যন্ত্র।'
     },
     methodDescription: {
       en: 'Swapped the real scarab for a Florence resin replica at 18:00 using a deflecting optical prism. Staged the 02:15 blackout with a timed EMP capacitor while she was on stage to establish an unbreakable alibi.',
@@ -1148,8 +1148,8 @@ export const case003: CaseData = {
     ],
     falseAlibiSuspectId: 'suspect-03-rossi',
     fullCaseDebriefing: {
-      en: 'Dr. Helena Rossi executed what seemed like the perfect crime. Plagued by $2.4M in catastrophic excavation debts, she conspired to steal the $18,000,000 Eye of Osiris and sell it to billionaire collector Tariq Al-Mansoor.\n\nThree months prior, Rossi commissioned an exact polymer resin replica from an artisan atelier in Florence. Yesterday, she placed a quartz deflection prism over laser Pillar 3 to blind the optical security grid, and wired a timed high-voltage pulse capacitor into the HVAC emergency circuit.\n\nThe real heist took place at 18:00 during her official pre-gala inspection. With the laser deflected, Rossi unlocked the acrylic vitrine, swapped the authentic ancient relic for the polyurethane counterfeit, and walked out with the genuine scarab in her briefcase. At 02:15, while Rossi stood prominently on stage in front of 200 guests delivering her keynote speech, the timer triggered the electrical capacitor, cutting museum power for 4 minutes.\n\nRossi assumed police would deduce the theft took place during the 4-minute blackout while she had a crowd of 200 witnesses. However, spectroscopic analysis proved the fake scarab had been under the display lights for over 8 hours (causing thermal cracking), and the biometric terminal confirmed the vitrine was never opened during the blackout. When detectives recovered the genuine scarab in the lead box intended for Tariq\'s courier, Rossi\'s master plan collapsed.',
-      bn: 'ডা. হেলেনা রসি আপাতদৃষ্টিতে একটি নিখুঁত অপরাধের পরিকল্পনা করেছিল। মিশরের খননকাজে ২৪ লাখ ডলার দেনার দায়ে জর্জরিত হয়ে সে ১৮ মিলিয়ন ডলারের "আই অব ওসাইরিস" চুরি করে ধনকুবের তারিক আল-মনসুরের কাছে বিক্রি করার চক্রান্ত করে।\n\nতিন মাস আগেই রসি ইতালির ফ্লোরেন্স থেকে নিখুঁত এক পলিমার রেপ্লিকা তৈরি করিয়ে আনে। গতকাল সে লেজার পিলারে প্রিজম বসিয়ে অ্যালার্ম বোকা বানানোর ব্যবস্থা করে এবং এসি ভেন্টে একটি টাইমারযুক্ত হাই-ভোল্টেজ ক্যাপাসিটর লাগিয়ে রাখে।\n\nআসল চুরিটি ঘটেছিল সন্ধ্যা ৬টায় আনুষ্ঠানিক পরিদর্শনের সময়। প্রিজমের কারণে লেজার নিষ্ক্রিয় থাকায় রসি শোকেস খুলে আসল রত্নটি নিজের ব্যাগে পুরে নকলটি রেখে দেয়। রাত ২:১৫-এ যখন সে ২০০ বিশিষ্ট অতিথির সামনে মঞ্চে বক্তব্য দিচ্ছিল, ঠিক তখনই টাইমারটি চালু হয়ে জাদুঘরের বিদ্যুৎ ৪ মিনিটের জন্য বিচ্ছিন্ন করে দেয়।\n\nরসি ভেবেছিল পুলিশ ধরে নেবে ব্ল্যাকআউটের ৪ মিনিটেই চুরি হয়েছে, যার ফলে তার পক্ষে ২০০ জন চাক্ষুষ সাক্ষীর শক্ত অ্যালিবাই থাকবে। কিন্তু রাসায়নিক পরীক্ষায় দেখা যায় নকল রত্নটি অন্তত ৮ ঘণ্টা ধরে হ্যালোজেন বাতির তাপে থাকার কারণেই ফেটে গেছে, এবং বায়োমেট্রিক লগে দেখা যায় ব্ল্যাকআউটের সময় শোকেস খোলাই হয়নি। পরিশেষে লন্ড্রি ট্রলিতে তারিকের কুরিয়ারের জন্য রাখা সিসার বাক্সে আসল রত্নটি উদ্ধার হওয়ায় রসির সমস্ত সাজানো নাটক ভেঙে পড়ে।'
+      en: 'Dr. Humaira Rashid executed what seemed like the perfect crime. Plagued by $2.4M in catastrophic excavation debts, she conspired to steal the $18,000,000 Eye of Osiris and sell it to billionaire collector Tareq Al-Mamun.\n\nThree months prior, Humaira commissioned an exact polymer resin replica from an artisan atelier in Florence. Yesterday, she placed a quartz deflection prism over laser Pillar 3 to blind the optical security grid, and wired a timed high-voltage pulse capacitor into the HVAC emergency circuit.\n\nThe real heist took place at 18:00 during her official pre-gala inspection. With the laser deflected, Humaira unlocked the acrylic vitrine, swapped the authentic ancient relic for the polyurethane counterfeit, and walked out with the genuine scarab in her briefcase. At 02:15, while Humaira stood prominently on stage in front of 200 guests delivering her keynote speech, the timer triggered the electrical capacitor, cutting museum power for 4 minutes.\n\nHumaira assumed police would deduce the theft took place during the 4-minute blackout while she had a crowd of 200 witnesses. However, spectroscopic analysis proved the fake scarab had been under the display lights for over 8 hours (causing thermal cracking), and the biometric terminal confirmed the vitrine was never opened during the blackout. When detectives recovered the genuine scarab in the lead box intended for Tareq\'s courier, Humaira\'s master plan collapsed.',
+      bn: 'ডা. হুমায়রা রশীদ আপাতদৃষ্টিতে একটি নিখুঁত অপরাধের পরিকল্পনা করেছিল। মিশরের খননকাজে ২৪ লাখ ডলার দেনার দায়ে জর্জরিত হয়ে সে ১৮ মিলিয়ন ডলারের "আই অব ওসাইরিস" চুরি করে ধনকুবের তারেক আল-মামুনের কাছে বিক্রি করার চক্রান্ত করে।\n\nতিন মাস আগেই হুমায়রা ইতালির ফ্লোরেন্স থেকে নিখুঁত এক পলিমার রেপ্লিকা তৈরি করিয়ে আনে। গতকাল সে লেজার পিলারে প্রিজম বসিয়ে অ্যালার্ম বোকা বানানোর ব্যবস্থা করে এবং এসি ভেন্টে একটি টাইমারযুক্ত হাই-ভোল্টেজ ক্যাপাসিটর লাগিয়ে রাখে।\n\nআসল চুরিটি ঘটেছিল সন্ধ্যা ৬টায় আনুষ্ঠানিক পরিদর্শনের সময়। প্রিজমের কারণে লেজার নিষ্ক্রিয় থাকায় হুমায়রা শোকেস খুলে আসল রত্নটি নিজের ব্যাগে পুরে নকলটি রেখে দেয়। রাত ২:১৫-এ যখন সে ২০০ বিশিষ্ট অতিথির সামনে মঞ্চে বক্তব্য দিচ্ছিল, ঠিক তখনই টাইমারটি চালু হয়ে জাদুঘরের বিদ্যুৎ ৪ মিনিটের জন্য বিচ্ছিন্ন করে দেয়।\n\nহুমায়রা ভেবেছিল পুলিশ ধরে নেবে ব্ল্যাকআউটের ৪ মিনিটেই চুরি হয়েছে, যার ফলে তার পক্ষে ২০০ জন চাক্ষুষ সাক্ষীর শক্ত অ্যালিবাই থাকবে। কিন্তু রাসায়নিক পরীক্ষায় দেখা যায় নকল রত্নটি অন্তত ৮ ঘণ্টা ধরে হ্যালোজেন বাতির তাপে থাকার কারণেই ফেটে গেছে, এবং বায়োমেট্রিক লগে দেখা যায় ব্ল্যাকআউটের সময় শোকেস খোলাই হয়নি। পরিশেষে লন্ড্রি ট্রলিতে তারেকের কুরিয়ারের জন্য রাখা সিসার বাক্সে আসল রত্নটি উদ্ধার হওয়ায় হুমায়রার সমস্ত সাজানো নাটক ভেঙে পড়ে।'
     },
     options: {
       motives: [

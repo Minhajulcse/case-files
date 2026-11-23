@@ -66,6 +66,13 @@ export interface EvidenceItem {
   dateDiscovered?: string;
 }
 
+export interface HotspotFocusRect {
+  x: number; // percentage 0 - 100
+  y: number; // percentage 0 - 100
+  width: number; // percentage 0 - 100
+  height: number; // percentage 0 - 100
+}
+
 export interface HotspotItem {
   id: string;
   name: LocalizableText;
@@ -79,6 +86,7 @@ export interface HotspotItem {
   requiresClueIdToNotice?: string;
   discoveryNote: LocalizableText;
   iconType: 'magnifier' | 'footprint' | 'document' | 'key' | 'flask' | 'camera' | 'safe';
+  focusRect?: HotspotFocusRect;
 }
 
 export interface DialogueOption {
@@ -183,6 +191,14 @@ export interface CaseSolution {
   };
 }
 
+export type CaseAvailability = 'AVAILABLE' | 'COMING_SOON';
+
+export const CASE_AVAILABILITY: Record<string, CaseAvailability> = {
+  'case-001': 'AVAILABLE',
+  'case-002': 'COMING_SOON',
+  'case-003': 'COMING_SOON'
+};
+
 export interface CaseData {
   id: string;
   caseNumber: string;
@@ -204,6 +220,7 @@ export interface CaseData {
     roomTitle: LocalizableText;
     roomDescription: LocalizableText;
     sceneTheme: 'victorian_study' | 'motel_safehouse' | 'museum_vault';
+    imageUrl?: string;
     hotspots: HotspotItem[];
   };
   suspects: Suspect[];
