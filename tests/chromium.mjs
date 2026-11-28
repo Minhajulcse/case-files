@@ -4,14 +4,10 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { runBrowserFlow } from './browser-flow.mjs';
-import ts from 'typescript';
+import { runnerImport } from 'vite';
 
-// Use the project's compiler so the runner also works on Node builds without native TS support.
-const cases = await Promise.all(['001', '002', '003'].map(async n => {
-  const source = await readFile(new URL('../src/data/cases/case' + n + '.ts', import.meta.url), 'utf8');
-  const js = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-  return (await import('data:text/javascript;base64,' + Buffer.from(js).toString('base64')))['case' + n];
-}));
+// Load the same case modules and character references used by the game.
+const { module: { ALL_CASES: cases } } = await runnerImport('./src/data/cases/index.ts');
 
 const dist = path.resolve('dist');
 await readFile(path.join(dist, 'index.html'));

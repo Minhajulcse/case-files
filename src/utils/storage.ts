@@ -1,11 +1,13 @@
 import { DetectiveProfile, ActiveCaseState, DetectiveRank } from '../types/game';
+import { playerDetective } from '../data/characters';
 
 const PROFILE_KEY = 'case_files_detective_profile_v1';
 const CASE_STATE_PREFIX = 'case_files_active_case_';
 const LAST_ACTIVE_CASE_KEY = 'case_files_last_active_case_id';
 
 export const INITIAL_PROFILE: DetectiveProfile = {
-  name: 'Detective Cole',
+  name: playerDetective.name.en,
+  usesDefaultName: true,
   badgeNumber: 'SH-8409',
   rank: 'Rookie Detective',
   totalPoints: 0,
@@ -22,7 +24,11 @@ export function loadProfile(): DetectiveProfile {
   try {
     const raw = localStorage.getItem(PROFILE_KEY);
     if (!raw) return INITIAL_PROFILE;
-    return { ...INITIAL_PROFILE, ...JSON.parse(raw) };
+    const stored = JSON.parse(raw);
+    // Older profiles stored the English default directly in the editable field.
+    const usesDefaultName = stored.usesDefaultName ??
+      (!stored.name || stored.name === 'Detective Cole' || stored.name === 'Detective');
+    return { ...INITIAL_PROFILE, ...stored, usesDefaultName };
   } catch {
     return INITIAL_PROFILE;
   }

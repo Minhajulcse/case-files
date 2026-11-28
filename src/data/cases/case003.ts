@@ -1,4 +1,7 @@
 import type { CaseData } from '../../types/game';
+import { museumCast } from '../characters';
+
+const { curator, securityChief, engineer, collector, custodian } = museumCast;
 
 export const case003: CaseData = {
   id: 'case-003',
@@ -243,13 +246,10 @@ export const case003: CaseData = {
     ],
     plates: ['vault', 'dispatch']
   },
+  otherCharacters: [],
   suspects: [
     {
-      id: 'suspect-03-rossi',
-      name: {
-        en: 'Dr. Helena Rossi',
-        bn: 'ডা. হেলেনা রসি'
-      },
+      ...curator,
       alias: {
         en: 'The keynote speaker',
         bn: 'প্রধান বক্তা'
@@ -347,11 +347,7 @@ export const case003: CaseData = {
       ]
     },
     {
-      id: 'suspect-03-cross',
-      name: {
-        en: 'Nathan Cross',
-        bn: 'নাথান ক্রস'
-      },
+      ...securityChief,
       alias: {
         en: 'The Security Chief',
         bn: 'নিরাপত্তা প্রধান'
@@ -426,11 +422,7 @@ export const case003: CaseData = {
       ]
     },
     {
-      id: 'suspect-03-chloe',
-      name: {
-        en: 'Chloe Dupuis',
-        bn: 'ক্লোয়ি দুপুই'
-      },
+      ...engineer,
       alias: {
         en: 'The Laser Systems Engineer',
         bn: 'লেজার অপটিক্যাল ইঞ্জিনিয়ার'
@@ -505,11 +497,7 @@ export const case003: CaseData = {
       ]
     },
     {
-      id: 'suspect-03-tariq',
-      name: {
-        en: 'Tariq Al-Mansoor',
-        bn: 'তারিক আল-মনসুর'
-      },
+      ...collector,
       alias: {
         en: 'The Billionaire Collector',
         bn: 'ধনকুবের প্রত্নতত্ত্ব সংগ্রাহক'
@@ -584,11 +572,7 @@ export const case003: CaseData = {
       ]
     },
     {
-      id: 'suspect-03-simon',
-      name: {
-        en: 'Simon Bell',
-        bn: 'সাইমন বেল'
-      },
+      ...custodian,
       alias: {
         en: 'The Night Janitor',
         bn: 'রাতের পরিচ্ছন্নতাকর্মী'
@@ -910,8 +894,8 @@ export const case003: CaseData = {
       },
       category: 'Witness Statements',
       description: {
-        en: 'Bell kept the original shift carbon. Freight sessions change hands during the day. The times on this copy are independent of the display roll.',
-        bn: 'বেল পালার মূল কপি রেখেছেন। দিনের মধ্যে পার্সেলের দায়িত্ব বদলায়। এই কপির সময় প্রদর্শনীর ফিতা থেকে স্বাধীন।'
+        en: `${custodian.family.en} kept the original shift carbon. Freight sessions change hands during the day. The times on this copy are independent of the display roll.`,
+        bn: `${custodian.family.bn} পালার মূল কপি রেখেছেন। দিনের মধ্যে পার্সেলের দায়িত্ব বদলায়। এই কপির সময় প্রদর্শনীর ফিতা থেকে স্বাধীন।`
       },
       discoveryLocation: {
         en: 'Security Holding Room',
@@ -924,12 +908,12 @@ export const case003: CaseData = {
       relatedSuspectIds: ['suspect-03-rossi', 'suspect-03-cross', 'suspect-03-chloe', 'suspect-03-simon'],
       details: [
         {
-          en: 'F17 was assigned to Dupuis until 17:40, Rossi from 17:40 to 18:20 and Cross thereafter. Each handover was witnessed.',
-          bn: '১৭:৪০ পর্যন্ত F17 ডুপুইয়ের, ১৭:৪০–১৮:২০ রসির, পরে ক্রসের। প্রতিটি হস্তান্তরে সাক্ষী ছিল।'
+          en: `F17 was assigned to ${engineer.family.en} until 17:40, ${curator.family.en} from 17:40 to 18:20 and ${securityChief.family.en} thereafter. Each handover was witnessed.`,
+          bn: `১৭:৪০ পর্যন্ত F17 ${engineer.family.bn}ের, ১৭:৪০–১৮:২০ ${curator.family.bn}র, পরে ${securityChief.family.bn}ের। প্রতিটি হস্তান্তরে সাক্ষী ছিল।`
         },
         {
-          en: 'Bell collected sealed carts at 02:45. The gala roll places the keynote speaker upstairs from 01:45.',
-          bn: 'বেল ০২:৪৫-এ সিল করা ট্রলি নেন। অনুষ্ঠানের খাতায় প্রধান বক্তা ০১:৪৫ থেকে ওপরে।'
+          en: `${custodian.family.en} collected sealed carts at 02:45. The gala roll places the keynote speaker upstairs from 01:45.`,
+          bn: `${custodian.family.bn} ০২:৪৫-এ সিল করা ট্রলি নেন। অনুষ্ঠানের খাতায় প্রধান বক্তা ০১:৪৫ থেকে ওপরে।`
         }
       ],
       iconKey: 'message',
@@ -1288,8 +1272,8 @@ export const case003: CaseData = {
   solution: {
     culpritId: 'suspect-03-rossi',
     culpritName: {
-      en: 'Dr. Helena Rossi (Chief Curator)',
-      bn: 'ডা. হেলেনা রসি (প্রধান কিউরেটর)'
+      en: `${curator.name.en} (Chief Curator)`,
+      bn: `${curator.name.bn} (প্রধান কিউরেটর)`
     },
     motiveDescription: {
       en: 'Pay off an excavation debt through a private lot',
@@ -1313,8 +1297,8 @@ export const case003: CaseData = {
     ],
     falseAlibiSuspectId: 'suspect-03-rossi',
     fullCaseDebriefing: {
-      en: 'Rossi certified that the original remained during her inspection. The display roll records the only 86-to-42 g change at 18:00. The crack identifies resin; the genuine 86 g mount was sealed in Q9. The live F17 check and the separately witnessed freight carbon put that session in Rossi’s hands then, between Dupuis and Cross. The Q9 settlement would discharge her excavation debt.\n\nThe teaching order explains the existence of a cast, the photo work explains the prism, and Bell collected a box that had already been sealed. The scheduled lighting failure drew attention eight hours later while Rossi was genuinely on stage. Her whereabouts at the gala were true. Her condition report was false.',
-      bn: 'রসি নিজের পরীক্ষার সময় আসলটি প্রদর্শনীতে ছিল বলে প্রত্যয়ন করেন। ৮৬ থেকে ৪২ গ্রাম হওয়ার একমাত্র রেকর্ড ১৮:০০-তে। ফাটলে রেজিন ধরা পড়ে, আসল ৮৬ গ্রামের মাউন্ট Q9-এ সিল করা। সচল F17 যাচাই ও স্বতন্ত্র সাক্ষরিত কপি অনুযায়ী ডুপুই ও ক্রসের মাঝের ওই পালায় রসির দায়িত্ব ছিল। Q9-এর অর্থে তাঁর খননের ঋণ মিটত।\n\nশিক্ষামূলক কাজ মডেলটির, আর ছবির কাজ প্রিজমটির ব্যাখ্যা দেয়। বেল আগেই সিল করা বাক্স তুলেছেন। আট ঘণ্টা পরে রসি সত্যিই মঞ্চে থাকার সময়ে নির্ধারিত আলোর বিভ্রাট সবার মনোযোগ টানে। অনুষ্ঠানে তাঁর অবস্থান সত্য, পরীক্ষার রিপোর্ট মিথ্যা।'
+      en: `${curator.family.en} certified that the original remained during her inspection. The display roll records the only 86-to-42 g change at 18:00. The crack identifies resin; the genuine 86 g mount was sealed in Q9. The live F17 check and the separately witnessed freight carbon put that session in ${curator.family.en}’s hands then, between ${engineer.family.en} and ${securityChief.family.en}. The Q9 settlement would discharge her excavation debt.\n\nThe teaching order explains the existence of a cast, the photo work explains the prism, and ${custodian.family.en} collected a box that had already been sealed. The scheduled lighting failure drew attention eight hours later while ${curator.family.en} was genuinely on stage. Her whereabouts at the gala were true. Her condition report was false.`,
+      bn: `${curator.family.bn} নিজের পরীক্ষার সময় আসলটি প্রদর্শনীতে ছিল বলে প্রত্যয়ন করেন। ৮৬ থেকে ৪২ গ্রাম হওয়ার একমাত্র রেকর্ড ১৮:০০-তে। ফাটলে রেজিন ধরা পড়ে, আসল ৮৬ গ্রামের মাউন্ট Q9-এ সিল করা। সচল F17 যাচাই ও স্বতন্ত্র সাক্ষরিত কপি অনুযায়ী ${engineer.family.bn} ও ${securityChief.family.bn}ের মাঝের ওই পালায় ${curator.family.bn}র দায়িত্ব ছিল। Q9-এর অর্থে তাঁর খননের ঋণ মিটত।\n\nশিক্ষামূলক কাজ মডেলটির, আর ছবির কাজ প্রিজমটির ব্যাখ্যা দেয়। ${custodian.family.bn} আগেই সিল করা বাক্স তুলেছেন। আট ঘণ্টা পরে ${curator.family.bn} সত্যিই মঞ্চে থাকার সময়ে নির্ধারিত আলোর বিভ্রাট সবার মনোযোগ টানে। অনুষ্ঠানে তাঁর অবস্থান সত্য, পরীক্ষার রিপোর্ট মিথ্যা।`
     },
     options: {
       motives: [

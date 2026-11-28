@@ -11,9 +11,9 @@ interface ProfileModalProps {
 }
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
-  const { profile, updateProfileName, language, t, formatNum } = useGame();
+  const { profile, detectiveName, updateProfileName, language, t, formatNum } = useGame();
   const [isEditing, setIsEditing] = useState(false);
-  const [nameInput, setNameInput] = useState(profile.name);
+  const [nameInput, setNameInput] = useState('');
 
   if (!isOpen) return null;
 
@@ -94,6 +94,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
                     <input
                       type="text"
                       value={nameInput}
+                      placeholder={detectiveName}
                       onChange={(e) => setNameInput(e.target.value)}
                       className="bg-noir-900 border border-amber-600 rounded px-2 py-0.5 text-sm text-white focus:outline-none"
                     />
@@ -107,10 +108,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
                 ) : (
                   <>
                     <h3 className="font-serif font-bold text-lg text-white tracking-wide">
-                      {profile.name}
+                      {detectiveName}
                     </h3>
                     <button
-                      onClick={() => setIsEditing(true)}
+                      onClick={() => {
+                        setNameInput(profile.usesDefaultName ? '' : profile.name);
+                        setIsEditing(true);
+                      }}
                       className="text-noir-500 hover:text-amber-400 p-0.5"
                     >
                       <Edit3 className="w-3.5 h-3.5" />

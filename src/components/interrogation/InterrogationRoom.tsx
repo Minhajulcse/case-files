@@ -16,7 +16,7 @@ import {
   Mic
 } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
-import { Suspect, DialogueOption } from '../../types/game';
+import { Suspect, DialogueOption, LocalizableText } from '../../types/game';
 import { PresentEvidenceModal } from './PresentEvidenceModal';
 import { SuspectComparison } from './SuspectComparison';
 import { sound } from '../../utils/audio';
@@ -39,9 +39,9 @@ export const InterrogationRoom: React.FC = () => {
   const [compare,setCompare] = useState(false);
   const [isPresentModalOpen, setIsPresentModalOpen] = useState(false);
   const [lastConfrontationResult, setLastConfrontationResult] = useState<{
-    reaction: string;
+    reaction: LocalizableText;
     lieExposed: boolean;
-    evidenceName: string;
+    evidenceName: LocalizableText;
   } | null>(null);
 
   if (!activeCase || !caseState) return null;
@@ -60,11 +60,12 @@ export const InterrogationRoom: React.FC = () => {
 
   const handleConfrontEvidence = (evidenceId: string) => {
     const clueObj = activeCase.evidence.find(e => e.id === evidenceId);
+    if (!clueObj) return;
     const result = presentClueToSuspect(currentSuspect.id, evidenceId);
     setLastConfrontationResult({
-      reaction: getLoc(result.reaction),
+      reaction: result.reaction,
       lieExposed: result.lieExposed,
-      evidenceName: clueObj ? getLoc(clueObj.name) : (language === 'bn' ? 'প্রমাণ আলামত' : 'Evidence Item')
+      evidenceName: clueObj.name
     });
     setIsPresentModalOpen(false);
   };
@@ -313,7 +314,7 @@ export const InterrogationRoom: React.FC = () => {
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="text-[10px] uppercase font-bold tracking-widest flex items-center gap-1.5">
-                  <AlertTriangle className="w-4 h-4 text-blood-400" /> {t('confrontEvidenceTitle')}: {lastConfrontationResult.evidenceName}
+                  <AlertTriangle className="w-4 h-4 text-blood-400" /> {t('confrontEvidenceTitle')}: {getLoc(lastConfrontationResult.evidenceName)}
                 </span>
                 {lastConfrontationResult.lieExposed && (
                   <span className="text-[10px] bg-blood-600 text-white font-bold px-2 py-0.5 rounded uppercase">
@@ -322,7 +323,7 @@ export const InterrogationRoom: React.FC = () => {
                 )}
               </div>
               <p className="text-xs leading-relaxed italic bg-black/40 p-3 rounded mt-2 text-noir-200">
-                "{lastConfrontationResult.reaction}"
+                "{getLoc(lastConfrontationResult.reaction)}"
               </p>
             </div>
           )}

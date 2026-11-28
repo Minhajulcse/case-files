@@ -36,7 +36,7 @@ To exercise the built application in Chromium, run the following after building.
 npm run test:browser
 ```
 
-The browser suite opens every image region with hints unused, changes viewport and zoom, collects the exhibits, interviews the suspects, builds the board and files both an incorrect and a supported report in all three cases.
+The browser suite plays Case 001 through a verdict, switches languages during the investigation, reopens a legacy save, and checks the two upcoming archive entries. The unit tests cover evidence, solutions and character names in all three case files.
 
 ## Android
 
@@ -60,3 +60,29 @@ The default application ID is `com.casefiles.detective`. Confirm the ID used for
 Each file in `src/data/cases` owns its bilingual text, evidence, scene regions, locations, interviews, timeline sources, deductions and solution. Region coordinates are percentages of the complete image. A rectangle uses a centre and dimensions. A polygon uses absolute percentage vertices. Both use the same geometry for interaction and drawing.
 
 Each deduction specifies the supporting exhibit IDs and accepted board connections. Suspect connections can require additional independent evidence before they register as contradictions. The investigation tests check exhibit reachability from an empty save, link references, coverage of the solution, and hotspot hit testing at different sizes and zoom levels.
+
+## Character names
+
+The cast in `src/data/characters.ts` supplies the names for dossiers and case prose. Each locale can refer to a person by their full name, given name, surname or initials. Case logic and saved progress refer to the same IDs in both languages. Players who enter their own detective name see it as entered.
+
+| Case | Character | Stable ID | English | বাংলা |
+| --- | --- | --- | --- | --- |
+| All | Player detective | `player-detective` | Detective Cole | গোয়েন্দা আদিল হাসান |
+| 001 | Manor owner | `victim-01-arthur` | Lord Arthur Pendelton | লর্ড অনিরুদ্ধ রায়চৌধুরী |
+| 001 | Nephew | `suspect-01-julian` | Julian Pendelton | অর্ক রায়চৌধুরী |
+| 001 | Archivist | `suspect-02-evelyn` | Evelyn Vance | মাধবী বৈদ্য |
+| 001 | Family physician | `suspect-03-finch` | Dr. Alistair Finch | ডা. আনিস ফারুক |
+| 001 | Housekeeper | `suspect-04-beatrice` | Beatrice Moore | বীণা গোমেজ |
+| 001 | Antiquities dealer | `suspect-05-marcus` | Marcus Kane | কামাল করিম |
+| 002 | Missing witness | `witness-02-clara` | Clara Thorne | নুসরাত হক |
+| 002 | Defendant | `defendant-02-blackwood` | Blackwood | মজুমদার |
+| 002 | Protection officer | `suspect-02-navarro` | Detective Ray Nolan | গোয়েন্দা রাশেদ খান |
+| 002 | Defense counsel | `suspect-02-sterling` | Thomas Sterling | অমিতাভ সেন |
+| 002 | Witness’s half-sister | `suspect-02-maya` | Lily Foster | তুলি দাশ |
+| 002 | Syndicate enforcer | `suspect-02-kozlov` | Victor Shaw | বিপ্লব শিকদার |
+| 002 | Building superintendent | `suspect-02-isaac` | Isaac Vance | ইদ্রিস মণ্ডল |
+| 003 | Curator | `suspect-03-rossi` | Dr. Helena Ross | ড. লাবণী বসু |
+| 003 | Security chief | `suspect-03-cross` | Nathan Cross | প্রদীপ পাল |
+| 003 | Optical engineer | `suspect-03-chloe` | Chloe Bennett | তন্বী ঘোষ |
+| 003 | Collector | `suspect-03-tariq` | Edmund Ashford | মাহবুব সিদ্দিকী |
+| 003 | Custodian | `suspect-03-simon` | Simon Bell | হরিপদ নন্দী |

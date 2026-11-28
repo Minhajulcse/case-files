@@ -11,7 +11,7 @@ import { SettingsModal } from './SettingsModal';
 import { CreditsModal } from './CreditsModal';
 
 export function MainMenu() {
-  const { profile, allCases, lastActiveCaseId, resumeLastCase, getLoc, formatNum, language, t, setCurrentView } = useGame();
+  const { profile, detectiveName, allCases, lastActiveCaseId, resumeLastCase, getLoc, formatNum, language, t, setCurrentView } = useGame();
   const [panel, setPanel] = useState<'profile' | 'settings' | 'credits' | null>(null);
   const [brief, setBrief] = useState<CaseData | null>(null);
   const bn = language === 'bn';
@@ -37,7 +37,7 @@ export function MainMenu() {
         <button className="officer" onClick={() => setPanel('profile')}>
           <ShieldCheck size={19} />
           <span>
-            {profile.name}
+            {detectiveName}
             <small>{getLocalizedRank(profile.rank, language)}</small>
           </span>
         </button>

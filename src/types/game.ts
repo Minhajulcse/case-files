@@ -25,6 +25,7 @@ export type DetectiveRank =
 
 export interface DetectiveProfile {
   name: string;
+  usesDefaultName: boolean;
   badgeNumber: string;
   rank: DetectiveRank;
   totalPoints: number;
@@ -107,9 +108,12 @@ export interface EvidenceReaction {
   requiresEvidenceIds?: string[];
 }
 
-export interface Suspect {
+export interface NamedCharacter {
   id: string;
-  name: LocalizableText;
+  name: LocalizedString;
+}
+
+export interface Suspect extends NamedCharacter {
   alias?: LocalizableText;
   role: LocalizableText;
   age: number;
@@ -230,6 +234,7 @@ export interface CaseData {
     hotspots: HotspotItem[];
   };
   suspects: Suspect[];
+  otherCharacters: NamedCharacter[];
   evidence: EvidenceItem[];
   deductions: Deduction[];
   canonConnections: CanonConnection[];

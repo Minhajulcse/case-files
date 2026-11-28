@@ -31,12 +31,24 @@ export async function runBrowserFlow(cases, drive) {
   const plateNames = { study: 'Private study', apartment: 'Room 404', conduit: 'Boiler passage', vault: 'Display vault', dispatch: 'Dispatch room' };
   const statistics = { files: 0, inspections: 0, enquiries: 0, viewportChecks: 0, lockedCardTaps: 0 };
   const firstCase = cases.find(file => file.id === 'case-001');
-  const tapCard = async (card, kind) => {
-    const title = all('h3', card)[0];
-    title.scrollIntoView({ block: 'center', inline: 'center' });
+  const checkLocalized = (value, lang, scope = document.body) => {
+    const other = lang === 'en' ? 'bn' : 'en';
+    check(scope.textContent.includes(value[lang]), 'Missing localized text: ' + value[lang]);
+    check(!scope.textContent.includes(value[other]), 'Stale localized text: ' + value[other]);
+  };
+  const changeCaseLanguage = async lang => {
+    const progress = localStorage.getItem('case_files_active_case_' + firstCase.id);
+    await press(lang === 'bn' ? 'Settings & Audio' : 'সেটিংস ও সাউন্ড');
+    await press(lang === 'bn' ? 'বাংলা' : 'EN');
+    await press(lang === 'bn' ? 'বন্ধ করুন' : 'Close');
+    check(document.documentElement.lang === lang && localStorage.getItem('case_files_language_pref') === lang, 'Language preference lost');
+    check(localStorage.getItem('case_files_active_case_' + firstCase.id) === progress, 'Language change modified investigation progress');
+  };
+  const tapElement = async (element, kind) => {
+    element.scrollIntoView({ block: 'center', inline: 'center' });
     await wait();
-    const rect = title.getBoundingClientRect();
-    await drive.tap(rect.left + rect.width / 2, rect.top + rect.height / 2, kind, title);
+    const rect = element.getBoundingClientRect();
+    await drive.tap(rect.left + rect.width / 2, rect.top + rect.height / 2, kind, element);
     await wait();
   };
   const checkLockedCard = async file => {
@@ -45,7 +57,7 @@ export async function runBrowserFlow(cases, drive) {
     const before = localStorage.getItem('case_files_active_case_' + file.id);
     for (const [width, height, kind] of [[360, 740, 'touch'], [1100, 800, 'mouse']]) {
       await drive.resize(width, height);
-      await tapCard(card, kind);
+      await tapElement(all('h3', card)[0], kind);
       card.click();
       await wait();
       check(!dialog() && document.body.contains(card), 'Locked card navigated: ' + file.id);
@@ -64,8 +76,18 @@ export async function runBrowserFlow(cases, drive) {
   }
   await press('বাংলায় পরিবর্তন করুন');
   check(document.documentElement.lang === 'bn', 'Bengali selection');
+  const detective = { en: 'Detective Cole', bn: 'গোয়েন্দা আদিল হাসান' };
+  checkLocalized(detective, 'bn');
+  await press('গোয়েন্দা প্রোফাইল');
+  checkLocalized(detective, 'bn', dialog());
+  await press('বন্ধ করুন');
+  await press('মামলার বিবরণ');
+  checkLocalized(firstCase.victimOrSubject, 'bn', dialog());
+  checkLocalized(firstCase.synopsis, 'bn', dialog());
+  await press('বন্ধ করুন');
   check(all('button').filter(card => card.disabled && card.textContent.includes('COMING SOON')).length === cases.length - 1, 'Missing upcoming status in Bangla');
   await press('Switch to English');
+  checkLocalized(detective, 'en');
   for (const file of cases.filter(c => c !== firstCase)) await checkLockedCard(file);
   await press('Open case file');
   check(dialog()?.textContent.includes(firstCase.briefing.chiefMemo.en), 'Incorrect desk briefing');
@@ -80,10 +102,17 @@ export async function runBrowserFlow(cases, drive) {
     await drive.resize(360, 740);
     const card = button(file.caseNumber, true);
     check(!card.disabled, 'Level 001 is locked');
-    await tapCard(card, 'touch');
+    await tapElement(all('h3', card)[0], 'touch');
     check(!dialog() && all('g').some(el => el.getAttribute('data-hotspot') === file.crimeScene.hotspots[0].id), 'Level 001 did not open its crime scene');
     noOverflow();
     check(state(file.id).discoveredEvidenceIds.length === 0, 'New investigation must start empty');
+    const jacket = file.crimeScene.hotspots.find(h => h.id === 'hs-case-001-pulse-strip');
+    await changeCaseLanguage('bn');
+    check(all('[data-hotspot]').find(el => el.dataset.hotspot === jacket.id).getAttribute('aria-label') === jacket.name.bn, 'Stale named hotspot');
+    await press(jacket.name.bn, true);
+    checkLocalized(jacket.description, 'bn', dialog());
+    await press('বন্ধ করুন');
+    await changeCaseLanguage('en');
     await press('Timeline');
     for (const event of file.timelineEvents) check(!document.body.textContent.includes(event.title.en), 'Early timeline leak');
     await press('Accusation');
@@ -110,15 +139,15 @@ export async function runBrowserFlow(cases, drive) {
           await drive.tap(rect.left + spot.x * rect.width / 100, rect.top + spot.y * rect.height / 100, kind, target);
           await wait();
           const panel = dialog();
-          check(panel?.getAttribute('aria-label') === spot.name.en, 'Wrong inspection: ' + spot.id);
+          check(panel?.getAttribute('aria-label') === spot.name.en,
+            `Inspection ${spot.id} at ${width}×${height}, ${zoom}× opened ${panel?.getAttribute('aria-label')}`);
           check(panel.textContent.includes(spot.description.en) && panel.textContent.includes(spot.discoveryNote.en), 'Missing observation ' + spot.id);
           noOverflow();
           const exhibit = file.evidence.find(e => e.id === spot.revealsEvidenceId);
           check(panel.textContent.includes(exhibit.name.en), 'Wrong exhibit');
           const before = state(file.id).examinedHotspotIds;
           check(before[before.length - 1] === spot.id, 'Revisited object missing from recent observations');
-          if (!index) await press('Collect into Evidence Locker');
-          else await press('Return to Scene');
+          await tapElement(button(index ? 'Return to Scene' : 'Collect into Evidence Locker'), kind);
           check(!dialog() && JSON.stringify(state(file.id).examinedHotspotIds) === JSON.stringify(before), 'Popup activated another object');
           check(state(file.id).unlockedHintLevels.length === 0, 'Direct investigation consumed a hint');
           statistics.inspections++;
@@ -142,6 +171,23 @@ export async function runBrowserFlow(cases, drive) {
     await press('Mark as Key Evidence');
     await press('Close');
     await press('Suspects');
+    const heir = file.suspects[0];
+    // This exhibit has no scripted reaction for the heir. The generic response names him.
+    await press('Confront Suspect with Evidence');
+    await press(first.name.en, true);
+    await press('Confront', true);
+    await changeCaseLanguage('bn');
+    for (const suspect of file.suspects) checkLocalized(suspect.name, 'bn');
+    check(document.body.textContent.includes(heir.name.bn + ' আলামতটির'), 'Stale confrontation response');
+    checkLocalized(first.name, 'bn');
+    await press('বয়ান তুলনা');
+    const compared = all('select', dialog())[1];
+    await choose(compared, file.suspects[2].id);
+    check(compared.selectedOptions[0].textContent === file.suspects[2].name.bn, 'Wrong localized comparison');
+    checkLocalized(file.suspects[2].motive, 'bn', dialog());
+    await press('বন্ধ করুন');
+    await changeCaseLanguage('en');
+    check(document.body.textContent.includes(heir.name.en + ' looks at the evidence'), 'English reaction not restored');
     await press('Compare statements');
     noOverflow();
     const selects = all('select', dialog());
@@ -164,7 +210,22 @@ export async function runBrowserFlow(cases, drive) {
       }
     }
     check(state(file.id).discoveredEvidenceIds.length === file.evidence.length, 'Inaccessible record in ' + file.id);
-    await press('Timeline');
+    const physician = file.suspects.find(s => s.id === 'suspect-03-finch');
+    await press(physician.name.en, true);
+    await changeCaseLanguage('bn');
+    const interview = physician.dialogueTree.find(line => line.id === 'dlg-f-1');
+    checkLocalized(interview.prompt, 'bn');
+    checkLocalized(interview.response, 'bn');
+    await press('প্রমাণাগার');
+    const register = file.evidence.find(e => e.id === 'clue-10-handwriting-sample');
+    await press(register.name.bn);
+    checkLocalized(register.details[0], 'bn', dialog());
+    checkLocalized(file.suspects.find(s => s.dialogueTree.some(line => line.revealsClueId === register.id)).name, 'bn', dialog());
+    await press('বন্ধ করুন');
+    await press('ঘটনাক্রম');
+    const accounts = file.timelineEvents.find(event => event.id === 'tl-02');
+    checkLocalized(accounts.verifiedLocation, 'bn');
+    await changeCaseLanguage('en');
     await press('Verify Sequence');
     noOverflow();
     await press('Evidence Board');
@@ -178,6 +239,11 @@ export async function runBrowserFlow(cases, drive) {
       await press('Pin String Connection');
       check(document.body.textContent.includes(link.deductionNotes.en), 'Link not recognised');
     }
+    await changeCaseLanguage('bn');
+    for (const suspect of file.suspects) checkLocalized(suspect.name, 'bn');
+    const lastLink = file.canonConnections.find(c => c.id === file.deductions.at(-1).connectionId);
+    checkLocalized(lastLink.deductionNotes, 'bn');
+    await changeCaseLanguage('en');
     await press('Accusation');
     noOverflow();
     const s = file.solution;
@@ -207,15 +273,41 @@ export async function runBrowserFlow(cases, drive) {
     check(!state(file.id).isCompleted && !dialog().textContent.includes(s.fullCaseDebriefing.en), 'Wrong answer closed the case');
     await press('Review Investigation');
     await chooseOption('culprit', file.suspects.find(p => p.id === s.culpritId).name.en);
-    await press('Deliver Official Indictment');
-    check(state(file.id).isCompleted && dialog().textContent.includes(s.fullCaseDebriefing.en), 'Supported solution rejected');
+    await changeCaseLanguage('bn');
+    for (const suspect of file.suspects) checkLocalized(suspect.name, 'bn');
+    const selected = all('input[name="culprit"]').find(el => el.checked);
+    check(selected.closest('label').textContent.trim() === file.suspects.find(p => p.id === s.culpritId).name.bn, 'Accused identity changed');
+    await press('আনুষ্ঠানিক অভিযোগপত্র দাখিল করুন');
+    check(state(file.id).isCompleted, 'Supported solution rejected');
+    checkLocalized(s.fullCaseDebriefing, 'bn', dialog());
     noOverflow();
+    await press('তদন্ত পর্যালোচনা করুন');
+    await changeCaseLanguage('en');
+    await press('Review Solved Verdict');
+    checkLocalized(s.fullCaseDebriefing, 'en', dialog());
     await press('Cases');
     statistics.files++;
   }
   // Reopen the playable case from the archive and check its saved investigation.
+  const completed = state(firstCase.id);
+  // Earlier releases saved literal name-bearing verdicts and feedback.
+  delete completed.evaluation.accepted;
+  completed.evaluation.fullDebriefing = { en: 'Original reconstruction', bn: 'ইভলিন ভ্যান্সের হেফাজতে ছিল।' };
+  completed.evaluation.feedbackNotes = [{
+    en: '✓ Primary Culprit Correct: You accurately identified Evelyn Vance.',
+    bn: '✓ মূল অপরাধী সঠিক: আপনি নির্ভুলভাবে ইভলিন ভ্যান্স-কে শনাক্ত করেছেন।'
+  }];
+  localStorage.setItem('case_files_active_case_' + firstCase.id, JSON.stringify(completed));
   await press(firstCase.caseNumber, true);
   check(state(firstCase.id).isCompleted, 'Level 001 progress lost on reentry');
+  await changeCaseLanguage('bn');
+  await press('অভিযোগ');
+  await press('নিষ্পন্ন রায় দেখুন');
+  checkLocalized(firstCase.solution.fullCaseDebriefing, 'bn', dialog());
+  check(dialog().textContent.includes('মাধবী বৈদ্যকে') && !dialog().textContent.includes('ইভলিন'), 'Old verdict contains stale names');
+  check(dialog().textContent.includes(completed.evaluation.performanceGrade), 'Legacy grade lost');
+  await press('তদন্ত পর্যালোচনা করুন');
+  await changeCaseLanguage('en');
   await press('Hints');
   for (const level of [1, 2, 3]) {
     await press('Unlock Level ' + level, true);

@@ -12,6 +12,7 @@ import {
   getLocalized
 } from '../types/game';
 import { ALL_CASES, PLAYABLE_CASE_ID, getCaseById } from '../data/cases';
+import { playerDetective } from '../data/characters';
 import {
   loadProfile,
   saveProfile,
@@ -52,6 +53,7 @@ interface GameContextType {
   formatNum: (val: number | string) => string;
   getLoc: (val: LocalizableText | undefined) => string;
   profile: DetectiveProfile;
+  detectiveName: string;
   activeCase: CaseData | null;
   caseState: ActiveCaseState | null;
   currentView: MainView;
@@ -70,7 +72,7 @@ interface GameContextType {
   examineHotspot: (hotspotId: string) => void;
   toggleMarkImportant: (clueId: string) => void;
   askDialogue: (suspectId: string, dialogueId: string) => void;
-  presentClueToSuspect: (suspectId: string, clueId: string) => { reaction: string; lieExposed: boolean };
+  presentClueToSuspect: (suspectId: string, clueId: string) => { reaction: LocalizableText; lieExposed: boolean };
   addUserConnection: (sourceId: string, targetId: string, note?: string) => { isCanon: boolean; canon?: CanonConnection };
   removeUserConnection: (connectionId: string) => void;
   updateTimelineOrder: (newOrder: string[]) => void;
@@ -274,7 +276,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [caseState, activeCase, discoverClue]);
 
   const presentClueToSuspect = useCallback((suspectId: string, clueId: string) => {
-    if (!caseState || !activeCase) return { reaction: 'No response.', lieExposed: false };
+    if (!caseState || !activeCase) return { reaction: { en: 'No response.', bn: 'কোনো জবাব নেই।' }, lieExposed: false };
 
     const suspect = activeCase.suspects.find(s => s.id === suspectId);
     if (!suspect || !caseState.discoveredEvidenceIds.includes(clueId)) return { reaction: '', lieExposed: false };
@@ -319,17 +321,16 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       discoverClue(reactionObj.revealsClueId);
     }
 
-    const reactionText = reactionObj
-      ? getLocalized(reactionObj.reactionText, language)
-      : language === 'bn'
-      ? `${getLocalized(suspect?.name, 'bn')} কোনো মন্তব্য না করে স্বাভাবিকভাবে তাকিয়ে রইল।`
-      : `${getLocalized(suspect?.name, 'en')} looks at the evidence with mild disinterest and offers no new comment.`;
+    const reactionText = reactionObj?.reactionText ?? {
+      en: `${suspect.name.en} looks at the evidence with mild disinterest and offers no new comment.`,
+      bn: `${suspect.name.bn} আলামতটির দিকে নির্লিপ্তভাবে তাকিয়ে রইলেন। কোনো মন্তব্য করলেন না।`
+    };
 
     return {
       reaction: reactionText,
       lieExposed
     };
-  }, [caseState, activeCase, discoverClue, language]);
+  }, [caseState, activeCase, discoverClue]);
 
   const addUserConnection = useCallback((sourceId: string, targetId: string, note?: string) => {
     if (!caseState || !activeCase) return { isCanon: false };
@@ -500,7 +501,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const updateProfileName = useCallback((name: string) => {
-    setProfile(prev => ({ ...prev, name: name.trim() || 'Detective' }));
+    const customName = name.trim();
+    setProfile(prev => ({ ...prev, name: customName || playerDetective.name.en, usesDefaultName: !customName }));
   }, []);
 
   const value = useMemo(() => ({
@@ -510,6 +512,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     formatNum,
     getLoc,
     profile,
+    detectiveName: profile.usesDefaultName ? playerDetective.name[language] : profile.name,
     activeCase,
     caseState,
     currentView,

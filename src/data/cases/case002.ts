@@ -1,4 +1,7 @@
 import type { CaseData } from '../../types/game';
+import { safehouseCast } from '../characters';
+
+const { witness, defendant, officer, counsel, sister, enforcer, superintendent } = safehouseCast;
 
 export const case002: CaseData = {
   id: 'case-002',
@@ -15,8 +18,8 @@ export const case002: CaseData = {
   difficulty: 'Hard',
   estimatedTime: '30-40 mins',
   victimOrSubject: {
-    en: 'Clara Thorne (Age 31, Chief Forensic Accountant & Crown Whistleblower)',
-    bn: 'ক্লারা থর্ন (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)'
+    en: `${witness.name.en} (Age 31, Chief Forensic Accountant & Crown Whistleblower)`,
+    bn: `${witness.name.bn} (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)`
   },
   incidentDate: {
     en: 'November 03, 2024 — 01:15 Hours',
@@ -27,8 +30,8 @@ export const case002: CaseData = {
     bn: 'ফেডারেল সেফহাউস ৪০৪, সেন্ট জুড অ্যাপার্টমেন্টস, ইস্ট ডকস'
   },
   synopsis: {
-    en: 'Clara Thorne is missing from Room 404 on the eve of the Blackwood trial. A guard lies in the hall. Inside the room a lamp has fallen across a dark stain.',
-    bn: 'ব্ল্যাকউড বিচারের আগের রাতে ৪০৪ থেকে ক্লারা থর্ন নিখোঁজ। করিডোরে এক প্রহরী পড়ে আছেন। ঘরে গাঢ় দাগের ওপর বাতি উল্টে আছে।'
+    en: `${witness.name.en} is missing from Room 404 on the eve of the ${defendant.name.en} trial. A guard lies in the hall. Inside the room a lamp has fallen across a dark stain.`,
+    bn: `${defendant.name.bn}ের বিচারের আগের রাতে ৪০৪ থেকে ${witness.name.bn} নিখোঁজ। করিডোরে এক প্রহরী পড়ে আছেন। ঘরে গাঢ় দাগের ওপর বাতি উল্টে আছে।`
   },
   briefing: {
     chiefMemo: {
@@ -305,13 +308,10 @@ export const case002: CaseData = {
     ],
     plates: ['apartment', 'conduit']
   },
+  otherCharacters: [witness, defendant],
   suspects: [
     {
-      id: 'suspect-02-navarro',
-      name: {
-        en: 'Detective Ray Navarro',
-        bn: 'ডিটেকটিভ রে নাভারো'
-      },
+      ...officer,
       alias: {
         en: 'The duty officer',
         bn: 'ডিউটি অফিসার'
@@ -334,8 +334,8 @@ export const case002: CaseData = {
         bn: 'বাজির পাওনাদার থানায় ফোন করেছিল। ডিউটি প্রধান ও বিকল্প ডেস্ক সুরক্ষিত বার্তা নিয়ন্ত্রণ করত।'
       },
       alibi: {
-        en: 'I saw Clara inside just before I went down at 00:45. The door was still undamaged then.',
-        bn: '০০:৪৫-এ পড়ে যাওয়ার ঠিক আগে ক্লারাকে ঘরে দেখি। তখনও দরজা অক্ষত।'
+        en: `I saw ${witness.given.en} inside just before I went down at 00:45. The door was still undamaged then.`,
+        bn: `০০:৪৫-এ পড়ে যাওয়ার ঠিক আগে ${witness.given.bn}কে ঘরে দেখি। তখনও দরজা অক্ষত।`
       },
       personality: {
         en: 'Defensive, rubbing the back of his neck, aggressive posture, evasive eyes.',
@@ -410,18 +410,14 @@ export const case002: CaseData = {
       ]
     },
     {
-      id: 'suspect-02-sterling',
-      name: {
-        en: 'Thomas Sterling',
-        bn: 'টমাস স্টার্লিং'
-      },
+      ...counsel,
       alias: {
         en: 'The Syndicate Consigliere',
         bn: 'সিন্ডিকেটের কৌশলী আইনজীবী'
       },
       role: {
-        en: 'Chief Defense Counsel for Blackwood',
-        bn: 'ব্ল্যাকউডের প্রধান আইনজীবী'
+        en: `Chief Defense Counsel for ${defendant.name.en}`,
+        bn: `${defendant.name.bn}ের প্রধান আইনজীবী`
       },
       age: 55,
       occupation: {
@@ -429,8 +425,8 @@ export const case002: CaseData = {
         bn: 'প্রভাবশালী ফৌজদারি আইনজীবী'
       },
       relationshipToVictim: {
-        en: 'Adversary in court; cross-examined Clara in depositions',
-        bn: 'আদালতের প্রতিপক্ষ উকিল'
+        en: `Adversary in court; cross-examined ${witness.given.en} in depositions`,
+        bn: `আদালতে প্রতিপক্ষের আইনজীবী। জবানবন্দির সময় ${witness.given.bn}কে জেরা করেছিলেন।`
       },
       motive: {
         en: 'His client stood to lose the trial and his retainer with it. He could authorise the courier fund.',
@@ -489,18 +485,14 @@ export const case002: CaseData = {
       ]
     },
     {
-      id: 'suspect-02-maya',
-      name: {
-        en: 'Maya Lin',
-        bn: 'মায়া লিন'
-      },
+      ...sister,
       alias: {
         en: 'The Loyal Sister',
         bn: 'বিশ্বস্ত বোন'
       },
       role: {
-        en: 'Clara Thorne\'s Half-Sister',
-        bn: 'ক্লারার সৎ বোন'
+        en: `${witness.name.en}'s Half-Sister`,
+        bn: `${witness.given.bn}ের সৎ বোন`
       },
       age: 27,
       occupation: {
@@ -512,16 +504,16 @@ export const case002: CaseData = {
         bn: 'অত্যন্ত ঘনিষ্ঠ সহোদরা'
       },
       motive: {
-        en: 'Clara had asked for clothes and wanted her evidence delivered without a police escort.',
-        bn: 'ক্লারা পোশাক চেয়েছিলেন এবং পুলিশ পাহারা ছাড়া প্রমাণ পৌঁছাতে চেয়েছিলেন।'
+        en: `${witness.given.en} had asked for clothes and wanted her evidence delivered without a police escort.`,
+        bn: `${witness.given.bn} পোশাক চেয়েছিলেন এবং পুলিশ পাহারা ছাড়া প্রমাণ পৌঁছাতে চেয়েছিলেন।`
       },
       alibi: {
         en: 'No visit appears under my name. My sister was frightened that people were reading the visitor book.',
         bn: 'আমার নামে সাক্ষাতের নথি নেই। দর্শনার্থীর খাতা অন্যরা পড়ছে বলে বোনের ভয় ছিল।'
       },
       personality: {
-        en: 'Guarded, anxious, highly protective of Clara, sharp-witted.',
-        bn: 'উদ্বিগ্ন, ক্লারার প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।'
+        en: `Guarded, anxious, highly protective of ${witness.given.en}, sharp-witted.`,
+        bn: `উদ্বিগ্ন, ${witness.given.bn}ের প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।`
       },
       secrets: {
         en: 'She delivered clothes and pigment under a courier booking.',
@@ -545,8 +537,8 @@ export const case002: CaseData = {
         {
           id: 'dlg-ml-2',
           prompt: {
-            en: 'What did Clara fear losing?',
-            bn: 'ক্লারা কী হারাতে ভয় করতেন?'
+            en: `What did ${witness.given.en} fear losing?`,
+            bn: `${witness.given.bn} কী হারাতে ভয় করতেন?`
           },
           response: {
             en: 'The original drive. She wanted a clerk to receive it in person.',
@@ -578,18 +570,14 @@ export const case002: CaseData = {
       ]
     },
     {
-      id: 'suspect-02-kozlov',
-      name: {
-        en: 'Viktor Kozlov',
-        bn: 'ভিক্টর কজলভ'
-      },
+      ...enforcer,
       alias: {
         en: 'The Syndicate Enforcer',
         bn: 'সিন্ডিকেটের ভাড়াটে খুনি'
       },
       role: {
-        en: 'Blackwood Enforcer',
-        bn: 'সিন্ডিকেটের শুটার ও জল্লাদ'
+        en: `${defendant.name.en} Enforcer`,
+        bn: `${defendant.name.bn}ের সিন্ডিকেটের শুটার ও জল্লাদ`
       },
       age: 38,
       occupation: {
@@ -601,8 +589,8 @@ export const case002: CaseData = {
         bn: 'আসামিপক্ষের প্রতিষ্ঠানে নিরাপত্তার কাজ করতেন'
       },
       motive: {
-        en: 'His employer wanted Clara absent from court. A street camera placed his car outside after midnight.',
-        bn: 'তাঁর নিয়োগকর্তা চেয়েছিলেন ক্লারা আদালতে অনুপস্থিত থাকুন। মধ্যরাতের পর বাইরে তাঁর গাড়ির ছবি আছে।'
+        en: `His employer wanted ${witness.given.en} absent from court. A street camera placed his car outside after midnight.`,
+        bn: `তাঁর নিয়োগকর্তা চেয়েছিলেন ${witness.given.bn} আদালতে অনুপস্থিত থাকুন। মধ্যরাতের পর বাইরে তাঁর গাড়ির ছবি আছে।`
       },
       alibi: {
         en: 'I reached the building after midnight. The street camera can give you the minute.',
@@ -657,11 +645,7 @@ export const case002: CaseData = {
       ]
     },
     {
-      id: 'suspect-02-isaac',
-      name: {
-        en: 'Isaac Vance',
-        bn: 'আইজ্যাক ভ্যান্স'
-      },
+      ...superintendent,
       alias: {
         en: 'The Building Superintendent',
         bn: 'ভবনের বয়োবৃদ্ধ তত্ত্বাবধায়ক'
@@ -692,8 +676,8 @@ export const case002: CaseData = {
         bn: 'তেলচিটে ওভারঅল পরা, হাতে চাবির গোছা, কাশির আওয়াজ।'
       },
       secrets: {
-        en: 'Gave Clara Thorne the master padlock key to the underground boiler steam conduit.',
-        bn: 'ক্লারার কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।'
+        en: `Gave ${witness.name.en} the master padlock key to the underground boiler steam conduit.`,
+        bn: `${witness.given.bn}ের কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।`
       },
       avatarSeed: 'Isaac',
       avatarColor: '#ca8a04',
@@ -727,8 +711,8 @@ export const case002: CaseData = {
           conditionClueId: 'clue-02-escape-plan-memo',
           prompt: { en: 'Who initialled the slip around the returned key?', bn: 'ফেরত চাবির কাগজে কার আদ্যক্ষর?' },
           response: {
-            en: 'I did. After the courier brought it back, I lent it to Clara. A second loan outside the log would cost me my post.',
-            bn: 'আমার। কুরিয়ার চাবি ফেরত দিলে আমি ক্লারাকে দিই। খাতায় না লিখে দ্বিতীয়বার চাবি দেওয়ার কথা জানলে আমার চাকরি যেত।'
+            en: `I did. After the courier brought it back, I lent it to ${witness.given.en}. A second loan outside the log would cost me my post.`,
+            bn: `আমার। কুরিয়ার চাবি ফেরত দিলে আমি ${witness.given.bn}কে দিই। খাতায় না লিখে দ্বিতীয়বার চাবি দেওয়ার কথা জানলে আমার চাকরি যেত।`
           },
           reactionMood: 'defensive'
         }
@@ -783,8 +767,8 @@ export const case002: CaseData = {
           bn: '০০:৩০-এ প্রথম জোর করে খোলার সংকেত ধরা পড়ে। স্বাভাবিক প্রবেশে এই যন্ত্রের সংকেত হয় না।'
         },
         {
-          en: 'At the roster check Navarro retained personal dispatch seal 6, relief seal 8 stayed in the safe. The supervisor witnessed both at 23:00 and 23:15.',
-          bn: '২৩:০০ ও ২৩:১৫-র তদারকিতে নাভারোর ব্যক্তিগত ডিসপ্যাচ সিল ৬ তাঁর কাছে, বিকল্প সিল ৮ সিন্দুকে ছিল।'
+          en: `At the roster check ${officer.family.en} retained personal dispatch seal 6, relief seal 8 stayed in the safe. The supervisor witnessed both at 23:00 and 23:15.`,
+          bn: `২৩:০০ ও ২৩:১৫-র তদারকিতে ${officer.family.bn}ের ব্যক্তিগত ডিসপ্যাচ সিল ৬ তাঁর কাছে, বিকল্প সিল ৮ সিন্দুকে ছিল।`
         }
       ],
       iconKey: 'door',
@@ -973,8 +957,8 @@ export const case002: CaseData = {
       relatedSuspectIds: ['suspect-02-maya'],
       details: [
         {
-          en: 'The hem bears Maya’s initials. The fibres have no tears.',
-          bn: 'পাড়ে মায়ার আদ্যক্ষর। তন্তু ছেঁড়েনি।'
+          en: `The hem bears ${sister.given.en}’s initials. The fibres have no tears.`,
+          bn: `পাড়ে ${sister.given.bn}র আদ্যক্ষর। তন্তু ছেঁড়েনি।`
         },
         {
           en: 'The bag carried clothing as well as printed sheets.',
@@ -1036,8 +1020,8 @@ export const case002: CaseData = {
       },
       category: 'Documents',
       description: {
-        en: 'Internal affairs obtained a $25,000 transfer authorised at 23:00 against a betting balance. The payer was the Blackwood courier fund.',
-        bn: 'অভ্যন্তরীণ তদন্তে বাজির বকেয়া মেটাতে ২৩:০০-তে অনুমোদিত ২৫,০০০ ডলারের লেনদেন পাওয়া গেছে। প্রেরক ব্ল্যাকউড কুরিয়ার তহবিল।'
+        en: `Internal affairs obtained a $25,000 transfer authorised at 23:00 against a betting balance. The payer was the ${defendant.name.en} courier fund.`,
+        bn: `অভ্যন্তরীণ তদন্তে বাজির বকেয়া মেটাতে ২৩:০০-তে অনুমোদিত ২৫,০০০ ডলারের লেনদেন পাওয়া গেছে। প্রেরক ${defendant.name.bn}ের কুরিয়ার তহবিল।`
       },
       discoveryLocation: {
         en: 'State Police Internal Affairs Intercept',
@@ -1088,23 +1072,23 @@ export const case002: CaseData = {
       relatedSuspectIds: ['suspect-02-maya'],
       details: [
         {
-          en: 'The clerk verified Clara’s identity on the departing train and saw her board on foot by choice.',
-          bn: 'ট্রেন ছাড়ার সময় কর্মী ক্লারার পরিচয় যাচাই করেন, তাঁকে স্বেচ্ছায় হেঁটে উঠতে দেখেন।'
+          en: `The clerk verified ${witness.given.en}’s identity on the departing train and saw her board on foot by choice.`,
+          bn: `ট্রেন ছাড়ার সময় কর্মী ${witness.given.bn}ের পরিচয় যাচাই করেন, তাঁকে স্বেচ্ছায় হেঁটে উঠতে দেখেন।`
         },
         {
           en: 'The accompanying note records an overheard room release. It gives no sender’s name.',
           bn: 'সঙ্গে থাকা নোটে ঘরের অবস্থান ফাঁস হতে শোনার উল্লেখ। প্রেরকের নাম নেই।'
         },
         {
-          en: 'The clerk also logged the return of service key P, wrapped in a loan slip initialled I.V.',
-          bn: 'কর্মী P চিহ্নিত সার্ভিস চাবি ফেরতের কথাও লিখেছেন। চাবিটির ধার দেওয়ার কাগজে I.V. আদ্যক্ষর।'
+          en: `The clerk also logged the return of service key P, wrapped in a loan slip initialled ${superintendent.given.en[0]}.${superintendent.family.en[0]}.`,
+          bn: `কর্মী P চিহ্নিত সার্ভিস চাবি ফেরতের কথাও লিখেছেন। চাবি ধার দেওয়ার কাগজে ‘${superintendent.given.bn[0]}. ${superintendent.family.bn[0]}.’ আদ্যক্ষর।`
         }
       ],
       iconKey: 'usb',
       forensicReport: {
         labSummary: {
-          en: 'The signature on the receipt matches Clara’s court deposition.',
-          bn: 'রসিদের স্বাক্ষর ক্লারার আদালতের জবানবন্দির সঙ্গে মেলে।'
+          en: `The signature on the receipt matches ${witness.given.en}’s court deposition.`,
+          bn: `রসিদের স্বাক্ষর ${witness.given.bn}ের আদালতের জবানবন্দির সঙ্গে মেলে।`
         }
       }
     },
@@ -1557,8 +1541,8 @@ export const case002: CaseData = {
   solution: {
     culpritId: 'suspect-02-navarro',
     culpritName: {
-      en: 'Detective Ray Navarro (Betrayal & Corruption)',
-      bn: 'ডিটেকটিভ রে নাভারো (ঘুষ ও বিশ্বাসঘাতকতা)'
+      en: `${officer.name.en} (Betrayal & Corruption)`,
+      bn: `${officer.name.bn} (ঘুষ ও বিশ্বাসঘাতকতা)`
     },
     motiveDescription: {
       en: 'A paid disclosure to a creditor',
@@ -1590,8 +1574,8 @@ export const case002: CaseData = {
       bn: 'প্ল্যাটফর্মের ফটক পার হওয়ার সময় মিলিয়ে দেখলে কার অ্যালিবাই খণ্ডিত হয়?'
     },
     fullCaseDebriefing: {
-      en: 'Navarro sold the protected room assignment. Only his live seal 6 authenticated the 23:10 release. Its K31 acknowledgement matches the syndicate payment to a betting creditor. Sterling could fund a payment and Kozlov could receive the address. Neither controlled that seal.\n\nClara overheard the traffic. Maya brought clothes and pigment. Isaac hid a second loan of key P to Clara. The porter stamped his parcel at 19:34, hours before the crossing he claimed to have witnessed. The dry stain predates the forced opening. Two people left tracks down the service passage. At 23:20 the gate opened toward the platform. Voucher 71 and the clerk place Clara voluntarily on the 23:45 train with her drive. Kozlov arrived at 00:30. Navarro’s account of an undamaged door and Clara still inside at 00:45 cannot stand.',
-      bn: 'নাভারো সুরক্ষিত ঘরের তথ্য বিক্রি করেন। ২৩:১০-এর বার্তা তাঁর ব্যক্তিগত ৬ নম্বর সিলে অনুমোদিত। K31 স্বীকৃতি সিন্ডিকেটের বাজির পাওনা মেটানোর রসিদের সঙ্গে মেলে। স্টার্লিং অর্থ দিতে এবং কোজলভ ঠিকানা পেতে পারতেন, সিলটি তাঁদের ছিল না।\n\nক্লারা বার্তা শুনেছিলেন। মায়া পোশাক ও রং আনেন। আইজ্যাক P চাবিটি দ্বিতীয়বার ক্লারাকে ধার দেওয়ার কথা লুকিয়েছিলেন। কর্মী তাঁর পার্সেলে ১৯:৩৪-এ সিল দেন, ফটক পার হওয়ার যে সময়ের কথা তিনি দাবি করেছিলেন তার কয়েক ঘণ্টা আগে। দরজা ভাঙার আগেই দাগ শুকিয়েছে। সার্ভিস পথে দুজনের হাঁটার ছাপ পাওয়া গেছে। ২৩:২০-তে ফটকটি প্ল্যাটফর্মের দিকে খোলে। ভাউচার ৭১ ও কর্মীর সাক্ষ্যে ক্লারা ড্রাইভ নিয়ে ২৩:৪৫-এর ট্রেনে স্বেচ্ছায় ওঠেন। কোজলভ আসেন ০০:৩০-এ। ০০:৪৫-এ অক্ষত দরজা ও ঘরে ক্লারাকে দেখার দাবি মিথ্যা।'
+      en: `${officer.family.en} sold the protected room assignment. Only his live seal 6 authenticated the 23:10 release. Its K31 acknowledgement matches the syndicate payment to a betting creditor. ${counsel.family.en} could fund a payment and ${enforcer.family.en} could receive the address. Neither controlled that seal.\n\n${witness.given.en} overheard the traffic. ${sister.given.en} brought clothes and pigment. ${superintendent.given.en} hid a second loan of key P to ${witness.given.en}. The porter stamped his parcel at 19:34, hours before the crossing he claimed to have witnessed. The dry stain predates the forced opening. Two people left tracks down the service passage. At 23:20 the gate opened toward the platform. Voucher 71 and the clerk place ${witness.given.en} voluntarily on the 23:45 train with her drive. ${enforcer.family.en} arrived at 00:30. ${officer.family.en}’s account of an undamaged door and ${witness.given.en} still inside at 00:45 cannot stand.`,
+      bn: `${officer.family.bn} সুরক্ষিত ঘরের তথ্য বিক্রি করেন। ২৩:১০-এর বার্তা তাঁর ব্যক্তিগত ৬ নম্বর সিলে অনুমোদিত। K31 স্বীকৃতি সিন্ডিকেটের বাজির পাওনা মেটানোর রসিদের সঙ্গে মেলে। ${counsel.family.bn} অর্থ দিতে এবং ${enforcer.family.bn} ঠিকানা পেতে পারতেন, সিলটি তাঁদের ছিল না।\n\n${witness.given.bn} বার্তা শুনেছিলেন। ${sister.given.bn} পোশাক ও রং আনেন। ${superintendent.given.bn} P চাবিটি দ্বিতীয়বার ${witness.given.bn}কে ধার দেওয়ার কথা লুকিয়েছিলেন। কর্মী তাঁর পার্সেলে ১৯:৩৪-এ সিল দেন, ফটক পার হওয়ার যে সময়ের কথা তিনি দাবি করেছিলেন তার কয়েক ঘণ্টা আগে। দরজা ভাঙার আগেই দাগ শুকিয়েছে। সার্ভিস পথে দুজনের হাঁটার ছাপ পাওয়া গেছে। ২৩:২০-তে ফটকটি প্ল্যাটফর্মের দিকে খোলে। ভাউচার ৭১ ও কর্মীর সাক্ষ্যে ${witness.given.bn} ড্রাইভ নিয়ে ২৩:৪৫-এর ট্রেনে স্বেচ্ছায় ওঠেন। ${enforcer.family.bn} আসেন ০০:৩০-এ। ০০:৪৫-এ অক্ষত দরজা ও ঘরে ${witness.given.bn}কে দেখার যে দাবি ${officer.family.bn} করেছেন, তা মিথ্যা।`
     },
     options: {
       motives: [

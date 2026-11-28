@@ -169,38 +169,38 @@ describe('Case files and the Level 001 investigation', () => {
   it.each([
     {
       file: case001,
-      subject: ['Lord Arthur Pendelton', 'লর্ড আর্থার পেন্ডেলটন'],
+      subject: ['Lord Arthur Pendelton', 'লর্ড অনিরুদ্ধ রায়চৌধুরী'],
       suspects: [
-        ['suspect-01-julian', 'Julian Pendelton', 'জুলিয়ান পেন্ডেলটন'],
-        ['suspect-02-evelyn', 'Evelyn Vance', 'ইভলিন ভ্যান্স'],
-        ['suspect-03-finch', 'Dr. Alistair Finch', 'ডা. অ্যালিস্টার ফিঞ্চ'],
-        ['suspect-04-beatrice', 'Beatrice Morales', 'বিয়াট্রিস মোরালেস'],
-        ['suspect-05-marcus', 'Marcus Kane', 'মার্কাস কেন']
+        ['suspect-01-julian', 'Julian Pendelton', 'অর্ক রায়চৌধুরী'],
+        ['suspect-02-evelyn', 'Evelyn Vance', 'মাধবী বৈদ্য'],
+        ['suspect-03-finch', 'Dr. Alistair Finch', 'ডা. আনিস ফারুক'],
+        ['suspect-04-beatrice', 'Beatrice Moore', 'বীণা গোমেজ'],
+        ['suspect-05-marcus', 'Marcus Kane', 'কামাল করিম']
       ]
     },
     {
       file: case002,
-      subject: ['Clara Thorne', 'ক্লারা থর্ন'],
+      subject: ['Clara Thorne', 'নুসরাত হক'],
       suspects: [
-        ['suspect-02-navarro', 'Detective Ray Navarro', 'ডিটেকটিভ রে নাভারো'],
-        ['suspect-02-sterling', 'Thomas Sterling', 'টমাস স্টার্লিং'],
-        ['suspect-02-maya', 'Maya Lin', 'মায়া লিন'],
-        ['suspect-02-kozlov', 'Viktor Kozlov', 'ভিক্টর কজলভ'],
-        ['suspect-02-isaac', 'Isaac Vance', 'আইজ্যাক ভ্যান্স']
+        ['suspect-02-navarro', 'Detective Ray Nolan', 'গোয়েন্দা রাশেদ খান'],
+        ['suspect-02-sterling', 'Thomas Sterling', 'অমিতাভ সেন'],
+        ['suspect-02-maya', 'Lily Foster', 'তুলি দাশ'],
+        ['suspect-02-kozlov', 'Victor Shaw', 'বিপ্লব শিকদার'],
+        ['suspect-02-isaac', 'Isaac Vance', 'ইদ্রিস মণ্ডল']
       ]
     },
     {
       file: case003,
       subject: ['The Eye of Osiris', 'আই অব ওসাইরিস'],
       suspects: [
-        ['suspect-03-rossi', 'Dr. Helena Rossi', 'ডা. হেলেনা রসি'],
-        ['suspect-03-cross', 'Nathan Cross', 'নাথান ক্রস'],
-        ['suspect-03-chloe', 'Chloe Dupuis', 'ক্লোয়ি দুপুই'],
-        ['suspect-03-tariq', 'Tariq Al-Mansoor', 'তারিক আল-মনসুর'],
-        ['suspect-03-simon', 'Simon Bell', 'সাইমন বেল']
+        ['suspect-03-rossi', 'Dr. Helena Ross', 'ড. লাবণী বসু'],
+        ['suspect-03-cross', 'Nathan Cross', 'প্রদীপ পাল'],
+        ['suspect-03-chloe', 'Chloe Bennett', 'তন্বী ঘোষ'],
+        ['suspect-03-tariq', 'Edmund Ashford', 'মাহবুব সিদ্দিকী'],
+        ['suspect-03-simon', 'Simon Bell', 'হরিপদ নন্দী']
       ]
     }
-  ])('preserves the English and Bengali names in $file.id', ({ file, subject, suspects }) => {
+  ])('maps the original suspect IDs to their English and Bengali names in $file.id', ({ file, subject, suspects }) => {
     expect(getLocalized(file.victimOrSubject, 'en')).toContain(subject[0]);
     expect(getLocalized(file.victimOrSubject, 'bn')).toContain(subject[1]);
     for (const [id, en, bn] of suspects) {

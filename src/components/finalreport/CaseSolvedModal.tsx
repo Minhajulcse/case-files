@@ -1,5 +1,5 @@
 import { Award, ArrowRight, RotateCcw } from 'lucide-react';
-import { FinalReportEvaluation, CaseData } from '../../types/game';
+import { FinalReportEvaluation, CaseData, getLocalized } from '../../types/game';
 import { useGame } from '../../context/GameContext';
 import { getLocalizedRank } from '../../i18n';
 import { Dialog } from '../common/Dialog';
@@ -42,9 +42,18 @@ export function CaseSolvedModal({ isOpen, evaluation, activeCase, onClose }: { i
           </div>
         </div>}
 
-        {evaluation.feedbackNotes.map((note, i) => <p key={i}>{getLoc(note)}</p>)}
+        {evaluation.feedbackNotes.map((note, i) => {
+          // The original verdict format embedded the culprit name in this note.
+          if (getLocalized(note, 'en').startsWith('✓ Primary Culprit Correct:')) {
+            const name = getLoc(activeCase.solution.culpritName);
+            return <p key={i}>{language === 'bn'
+              ? `✓ মূল অপরাধী সঠিক: আপনি নির্ভুলভাবে ${name}কে শনাক্ত করেছেন।`
+              : `✓ Primary Culprit Correct: You accurately identified ${name}.`}</p>;
+          }
+          return <p key={i}>{getLoc(note)}</p>;
+        })}
 
-        {accepted && <><h3>{t('canonicalDebriefing')}</h3><p className="whitespace-pre-line">{getLoc(evaluation.fullDebriefing)}</p><small>{getLocalizedRank(profile.rank, language)}</small></>}
+        {accepted && <><h3>{t('canonicalDebriefing')}</h3><p className="whitespace-pre-line">{getLoc(activeCase.solution.fullCaseDebriefing)}</p><small>{getLocalizedRank(profile.rank, language)}</small></>}
 
       </div>
       <footer className="sheet-actions">

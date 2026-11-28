@@ -34,11 +34,7 @@ export const EvidenceBoard: React.FC = () => {
 
   const [selectedSourceNodeId, setSelectedSourceNodeId] = useState<string | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
-  const [activeDeductionNote, setActiveDeductionNote] = useState<{
-    title: string;
-    text: string;
-    isContradiction: boolean;
-  } | null>(null);
+  const [activeDeductionNote, setActiveDeductionNote] = useState<CanonConnection | null>(null);
 
   const isBengali = language === 'bn';
   const discoveredIds = caseState?.discoveredEvidenceIds;
@@ -97,11 +93,7 @@ export const EvidenceBoard: React.FC = () => {
       // Connect Source to Target
       const res = addUserConnection(selectedSourceNodeId, node.targetId);
       if (res.isCanon && res.canon) {
-        setActiveDeductionNote({
-          title: getLoc(res.canon.label),
-          text: getLoc(res.canon.deductionNotes),
-          isContradiction: res.canon.isContradiction
-        });
+        setActiveDeductionNote(res.canon);
       }
       setSelectedSourceNodeId(null);
     }
@@ -110,11 +102,7 @@ export const EvidenceBoard: React.FC = () => {
   const handleModalConnect = (sourceId: string, targetId: string, note?: string) => {
     const res = addUserConnection(sourceId, targetId, note);
     if (res.isCanon && res.canon) {
-      setActiveDeductionNote({
-        title: getLoc(res.canon.label),
-        text: getLoc(res.canon.deductionNotes),
-        isContradiction: res.canon.isContradiction
-      });
+      setActiveDeductionNote(res.canon);
     }
   };
 
@@ -301,7 +289,7 @@ export const EvidenceBoard: React.FC = () => {
                   ) : (
                     <Sparkles className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
                   )}
-                  <span>{activeDeductionNote.title}</span>
+                  <span>{getLoc(activeDeductionNote.label)}</span>
                 </span>
                 <button
                   onClick={() => setActiveDeductionNote(null)}
@@ -311,7 +299,7 @@ export const EvidenceBoard: React.FC = () => {
                 </button>
               </div>
               <p className="text-[11px] leading-relaxed text-noir-200 italic">
-                "{activeDeductionNote.text}"
+                "{getLoc(activeDeductionNote.deductionNotes)}"
               </p>
             </div>
           )}

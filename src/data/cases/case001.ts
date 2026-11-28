@@ -1,4 +1,7 @@
 import type { CaseData } from '../../types/game';
+import { manorCast } from '../characters';
+
+const { owner, heir, archivist, physician, housekeeper, dealer } = manorCast;
 
 export const case001: CaseData = {
   id: 'case-001',
@@ -15,20 +18,20 @@ export const case001: CaseData = {
   difficulty: 'Hard',
   estimatedTime: '25-35 mins',
   victimOrSubject: {
-    en: 'Lord Arthur Pendelton (Age 64, Industrialist & Antiquities Collector)',
-    bn: 'লর্ড আর্থার পেন্ডেলটন (বয়স ৬৪, শিল্পপতি ও প্রাচীন প্রত্নতত্ত্ব সংগ্রাহক)'
+    en: `${owner.name.en} (Age 64, Industrialist & Antiquities Collector)`,
+    bn: `${owner.name.bn} (বয়স ৬৪, শিল্পপতি ও প্রাচীন প্রত্নতত্ত্ব সংগ্রাহক)`
   },
   incidentDate: {
     en: '14 October 2024 · Discovered 23:05',
     bn: '১৪ অক্টোবর ২০২৪ · সন্ধান ২৩:০৫'
   },
   location: {
-    en: 'Pendelton Manor, Private Study, Blackthorn Ridge',
-    bn: 'পেন্ডেলটন ম্যানর, ব্যক্তিগত পড়ার ঘর, ব্ল্যাকথর্ন রিজ'
+    en: `${owner.family.en} Manor, Private Study, Blackthorn Ridge`,
+    bn: `${owner.family.bn} বাড়ি, ব্যক্তিগত পড়ার ঘর, ব্ল্যাকথর্ন রিজ`
   },
   synopsis: {
-    en: 'At 23:05 the staff force the study door. Arthur Pendelton lies over his accounts. Both the bolt and the garden catch are fastened. Someone says they heard him half an hour earlier.',
-    bn: 'রাত ২৩:০৫-এ কর্মীরা দরজা ভেঙে আর্থার পেন্ডেলটনকে হিসাবখাতার ওপর নিথর অবস্থায় পান। দরজার খিল ও বাগানের জানালার ছিটকিনি আটকানো। এক সাক্ষীর দাবি, আধঘণ্টা আগেও তাঁর কণ্ঠ শোনা গেছে।'
+    en: `At 23:05 the staff force the study door. ${owner.given.en} ${owner.family.en} lies over his accounts. Both the bolt and the garden catch are fastened. Someone says they heard him half an hour earlier.`,
+    bn: `রাত ২৩:০৫-এ কর্মীরা দরজা ভেঙে ${owner.given.bn} ${owner.family.bn}কে হিসাবখাতার ওপর নিথর অবস্থায় পান। দরজার খিল ও বাগানের জানালার ছিটকিনি আটকানো। এক সাক্ষীর দাবি, আধঘণ্টা আগেও তাঁর কণ্ঠ শোনা গেছে।`
   },
   briefing: {
     chiefMemo: {
@@ -74,8 +77,8 @@ export const case001: CaseData = {
         x: 47.2,
         y: 61,
         description: {
-          en: 'The overturned snifter rests beside Arthur’s hand.',
-          bn: 'আর্থারের হাতের পাশে গ্লাসটি উল্টে আছে।'
+          en: `The overturned snifter rests beside ${owner.given.en}’s hand.`,
+          bn: `${owner.given.bn}ের হাতের পাশে গ্লাসটি উল্টে আছে।`
         },
         revealsEvidenceId: 'clue-01-brandy-snifter',
         discoveryNote: {
@@ -279,12 +282,12 @@ export const case001: CaseData = {
             [40.1, 57.2], [40, 59.4], [37.8, 58.8]]
         },
         name: {
-          en: 'Arthur’s jacket',
-          bn: 'আর্থারের জামা'
+          en: `${owner.given.en}’s jacket`,
+          bn: `${owner.given.bn}ের জামা`
         },
         description: {
-          en: 'A portable monitor is clipped beneath Arthur’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.',
-          bn: 'আর্থারের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।'
+          en: `A portable monitor is clipped beneath ${owner.given.en}’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.`,
+          bn: `${owner.given.bn}ের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।`
         },
         discoveryNote: {
           en: 'The monitor has a time interval, but no wall-clock setting.',
@@ -321,13 +324,10 @@ export const case001: CaseData = {
     ],
     plates: ['study']
   },
+  otherCharacters: [owner],
   suspects: [
     {
-      id: 'suspect-01-julian',
-      name: {
-        en: 'Julian Pendelton',
-        bn: 'জুলিয়ান পেন্ডেলটন'
-      },
+      ...heir,
       alias: {
         en: 'The Disinherited Nephew',
         bn: 'সম্পত্তিচ্যুত ভাইপো'
@@ -346,8 +346,8 @@ export const case001: CaseData = {
         bn: 'উইল ও ভাতার ওপর নির্ভরশীল দূরবর্তী ভাইপো'
       },
       motive: {
-        en: 'A loan instalment falls due at midnight. Arthur threatened his inheritance that afternoon.',
-        bn: 'মধ্যরাতে কিস্তি দিতে হবে। বিকেলে আর্থার উত্তরাধিকার বাতিলের হুমকি দেন।'
+        en: `A loan instalment falls due at midnight. ${owner.given.en} threatened his inheritance that afternoon.`,
+        bn: `মধ্যরাতে কিস্তি দিতে হবে। বিকেলে ${owner.given.bn} উত্তরাধিকার বাতিলের হুমকি দেন।`
       },
       alibi: {
         en: 'I spent the evening in the billiard room. Nobody kept score.',
@@ -358,7 +358,7 @@ export const case001: CaseData = {
         bn: 'নার্ভাস, দাম্ভিক, কপালে ঘামের ফোঁটা, ঘন ঘন সিগারেট টানে।'
       },
       secrets: {
-        en: 'Stole Arthur\'s diamond signet ring earlier that afternoon to pawn it.',
+        en: `Stole ${owner.given.en}'s diamond signet ring earlier that afternoon to pawn it.`,
         bn: 'সেদিন বিকেলে কাকার আলমারি থেকে পারিবারিক হীরার আংটি চুরি করে বন্ধক দিয়েছিল।'
       },
       avatarSeed: 'Julian',
@@ -424,11 +424,7 @@ export const case001: CaseData = {
       ]
     },
     {
-      id: 'suspect-02-evelyn',
-      name: {
-        en: 'Evelyn Vance',
-        bn: 'ইভলিন ভ্যান্স'
-      },
+      ...archivist,
       alias: {
         en: 'The Quiet Archivist',
         bn: 'শান্ত স্বভাবের মহাফেজ'
@@ -447,12 +443,12 @@ export const case001: CaseData = {
         bn: '৭ বছর ধরে বিশ্বস্ত ব্যক্তিগত সহকারী'
       },
       motive: {
-        en: 'Arthur had reopened accounts administered jointly by the library and household staff.',
-        bn: 'গ্রন্থাগার ও গৃহকর্মীদের যৌথ হিসাব আর্থার আবার খুলেছিলেন।'
+        en: `${owner.given.en} had reopened accounts administered jointly by the library and household staff.`,
+        bn: `গ্রন্থাগার ও গৃহকর্মীদের যৌথ হিসাব ${owner.given.bn} আবার খুলেছিলেন।`
       },
       alibi: {
-        en: 'I was at the library desk. At the half-hour I heard the study clock strike and Arthur answer from inside.',
-        bn: 'গ্রন্থাগারের ডেস্কে ছিলাম। সাড়ে দশটায় পাঠকক্ষের ঘণ্টা আর ভেতর থেকে আর্থারের জবাব শুনি।'
+        en: `I was at the library desk. At the half-hour I heard the study clock strike and ${owner.given.en} answer from inside.`,
+        bn: `গ্রন্থাগারের ডেস্কে ছিলাম। সাড়ে দশটায় পাঠকক্ষের ঘণ্টা আর ভেতর থেকে ${owner.given.bn}ের জবাব শুনি।`
       },
       personality: {
         en: 'Composed, articulate, wearing prim spectacles, remarkably calm under pressure.',
@@ -536,11 +532,7 @@ export const case001: CaseData = {
       ]
     },
     {
-      id: 'suspect-03-finch',
-      name: {
-        en: 'Dr. Alistair Finch',
-        bn: 'ডা. অ্যালিস্টার ফিঞ্চ'
-      },
+      ...physician,
       alias: {
         en: 'The Family Physician',
         bn: 'পারিবারিক চিকিৎসক'
@@ -559,8 +551,8 @@ export const case001: CaseData = {
         bn: 'আজীবন বন্ধু ও চিকিৎসক'
       },
       motive: {
-        en: 'Arthur was considering reporting disputed prescriptions. Finch also signed for conservation supplies.',
-        bn: 'বিতর্কিত ব্যবস্থাপত্র নিয়ে আর্থার অভিযোগ করার কথা ভাবছিলেন। সংরক্ষণ সামগ্রীর জন্যও ফিঞ্চ স্বাক্ষর করতেন।'
+        en: `${owner.given.en} was considering reporting disputed prescriptions. ${physician.family.en} also signed for conservation supplies.`,
+        bn: `বিতর্কিত ব্যবস্থাপত্র নিয়ে ${owner.given.bn} অভিযোগ করার কথা ভাবছিলেন। সংরক্ষণ সামগ্রীর জন্যও ${physician.family.bn} স্বাক্ষর করতেন।`
       },
       alibi: {
         en: 'I kept a telephone appointment from the guest room. The switchboard recorded the call, though earlier I was downstairs.',
@@ -580,8 +572,8 @@ export const case001: CaseData = {
         {
           id: 'dlg-f-1',
           prompt: {
-            en: 'When was Arthur last fit to write?',
-            bn: 'আর্থার শেষ কখন লিখতে সক্ষম ছিলেন?'
+            en: `When was ${owner.given.en} last fit to write?`,
+            bn: `${owner.given.bn} শেষ কখন লিখতে সক্ষম ছিলেন?`
           },
           response: {
             en: 'His hand was steady at supper. A blotter may tell you more about his last entry.',
@@ -637,11 +629,7 @@ export const case001: CaseData = {
       ]
     },
     {
-      id: 'suspect-04-beatrice',
-      name: {
-        en: 'Beatrice Morales',
-        bn: 'বিয়াট্রিস মোরালেস'
-      },
+      ...housekeeper,
       alias: {
         en: 'The Devoted Housekeeper',
         bn: 'একনিষ্ঠ গৃহপরিচারিকা'
@@ -729,11 +717,7 @@ export const case001: CaseData = {
       ]
     },
     {
-      id: 'suspect-05-marcus',
-      name: {
-        en: 'Marcus Kane',
-        bn: 'মার্কাস কেন'
-      },
+      ...dealer,
       alias: {
         en: 'The Cutthroat Rival',
         bn: 'নিষ্ঠুর প্রতিদ্বন্দ্বী'
@@ -752,8 +736,8 @@ export const case001: CaseData = {
         bn: 'ব্যবসায়িক শত্রু'
       },
       motive: {
-        en: 'His firm needed Arthur’s codex to honour a sale already promised. He waited beyond the terrace after being dismissed.',
-        bn: 'আগাম বিক্রির শর্ত পূরণে আর্থারের পুঁথি তাঁর দরকার ছিল। বিদায়ের পরও টেরেসের বাইরে অপেক্ষা করেন।'
+        en: `His firm needed ${owner.given.en}’s codex to honour a sale already promised. He waited beyond the terrace after being dismissed.`,
+        bn: `আগাম বিক্রির শর্ত পূরণে ${owner.given.bn}ের পুঁথি তাঁর দরকার ছিল। বিদায়ের পরও টেরেসের বাইরে অপেক্ষা করেন।`
       },
       alibi: {
         en: 'I left the house at 21:15. I did not say my car had left the grounds.',
@@ -764,8 +748,8 @@ export const case001: CaseData = {
         bn: 'অহংকারী, সিগারের গন্ধ, দামি স্যুট পরিহিত, ব্যঙ্গাত্মক হাসি।'
       },
       secrets: {
-        en: 'Parked his Bentley down the driveway gate until 22:40 waiting to see if Arthur would change his mind.',
-        bn: 'রাত ১০:৪০ পর্যন্ত গেটের বাইরে গাড়ি থামিয়ে অপেক্ষা করছিল যদি আর্থার মত বদলায়।'
+        en: `Parked his Bentley down the driveway gate until 22:40 waiting to see if ${owner.given.en} would change his mind.`,
+        bn: `রাত ১০:৪০ পর্যন্ত গেটের বাইরে গাড়ি থামিয়ে অপেক্ষা করছিল যদি ${owner.given.bn} মত বদলায়।`
       },
       avatarSeed: 'Marcus',
       avatarColor: '#b45309',
@@ -777,8 +761,8 @@ export const case001: CaseData = {
             bn: 'ম্যানরে এসেছিলেন কেন?'
           },
           response: {
-            en: 'I offered to buy the codex. Arthur refused to let me handle it.',
-            bn: 'পুঁথি কিনতে চেয়েছি। আর্থার ধরতেও দেননি।'
+            en: `I offered to buy the codex. ${owner.given.en} refused to let me handle it.`,
+            bn: `পুঁথি কিনতে চেয়েছি। ${owner.given.bn} ধরতেও দেননি।`
           },
           reactionMood: 'hostile'
         },
@@ -830,8 +814,8 @@ export const case001: CaseData = {
       },
       category: 'Physical',
       description: {
-        en: 'A narrow spill crosses Arthur’s last entry. The ink had barely dried when the glass fell.',
-        bn: 'আর্থারের শেষ লেখার ওপর পানীয় ছড়িয়েছে। গ্লাস পড়ার সময় কালিও পুরো শুকায়নি।'
+        en: `A narrow spill crosses ${owner.given.en}’s last entry. The ink had barely dried when the glass fell.`,
+        bn: `${owner.given.bn}ের শেষ লেখার ওপর পানীয় ছড়িয়েছে। গ্লাস পড়ার সময় কালিও পুরো শুকায়নি।`
       },
       discoveryLocation: {
         en: 'Study Desk, beside victim\'s right arm',
@@ -848,8 +832,8 @@ export const case001: CaseData = {
           bn: 'ডেস্কের কালি শোষক কাগজে ২২:১৩-এর ঘণ্টার ফিতার ভেজা ছাপ।'
         },
         {
-          en: 'Only Arthur’s ridge marks are clear on the rim.',
-          bn: 'কিনারায় কেবল আর্থারের আঙুলের ছাপ স্পষ্ট।'
+          en: `Only ${owner.given.en}’s ridge marks are clear on the rim.`,
+          bn: `কিনারায় কেবল ${owner.given.bn}ের আঙুলের ছাপ স্পষ্ট।`
         }
       ],
       iconKey: 'glass',
@@ -868,12 +852,12 @@ export const case001: CaseData = {
       },
       category: 'Documents',
       description: {
-        en: 'Six reimbursements share one collection code, V6. Arthur underlined their total and marked the page for the morning examiner.',
-        bn: 'ছয়টি খরচ ফেরতের কোড V6। আর্থার মোট অঙ্কের নিচে দাগ দিয়ে পাতাটি সকালের নিরীক্ষকের জন্য রেখেছেন।'
+        en: `Six reimbursements share one collection code, V6. ${owner.given.en} underlined their total and marked the page for the morning examiner.`,
+        bn: `ছয়টি খরচ ফেরতের কোড V6। ${owner.given.bn} মোট অঙ্কের নিচে দাগ দিয়ে পাতাটি সকালের নিরীক্ষকের জন্য রেখেছেন।`
       },
       discoveryLocation: {
-        en: 'Open on Arthur\'s desk under his hands',
-        bn: 'আর্থারের হাতের নিচে টেবিলের ওপর খোলা'
+        en: `Open on ${owner.given.en}'s desk under his hands`,
+        bn: `${owner.given.bn}ের হাতের নিচে টেবিলের ওপর খোলা`
       },
       relevance: {
         en: 'Who controlled the code when the money went missing?',
@@ -1144,12 +1128,12 @@ export const case001: CaseData = {
       },
       category: 'Documents',
       description: {
-        en: 'The nephew pawned Arthur’s ring that afternoon. The shop issued a cash advance against it.',
-        bn: 'বিকেলে ভাইপো আর্থারের আংটি বন্ধক দিয়ে অগ্রিম টাকা পেয়েছেন।'
+        en: `The nephew pawned ${owner.given.en}’s ring that afternoon. The shop issued a cash advance against it.`,
+        bn: `বিকেলে ভাইপো ${owner.given.bn}ের আংটি বন্ধক দিয়ে অগ্রিম টাকা পেয়েছেন।`
       },
       discoveryLocation: {
-        en: 'Julian\'s coat pocket in billiard room',
-        bn: 'বিলিয়ার্ড রুমে ঝুলিয়ে রাখা জুলিয়ানের কোটের পকেট'
+        en: `${heir.given.en}'s coat pocket in billiard room`,
+        bn: `বিলিয়ার্ড রুমে ঝুলিয়ে রাখা ${heir.given.bn}ের কোটের পকেট`
       },
       relevance: {
         en: 'Which debt could the advance settle?',
@@ -1196,8 +1180,8 @@ export const case001: CaseData = {
       relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       details: [
         {
-          en: 'V6 was signed to Evelyn, B2 to Beatrice and F1 to Finch. All three keys and seals were checked back after the alarm.',
-          bn: 'V6 ইভলিনের, B2 বিট্রিসের, F1 ফিঞ্চের। সতর্কতার পর তিনটি চাবি ও সিল ফেরত মেলে।'
+          en: `V6 was signed to ${archivist.given.en}, B2 to ${housekeeper.given.en} and F1 to ${physician.family.en}. All three keys and seals were checked back after the alarm.`,
+          bn: `V6 ${archivist.given.bn}র, B2 ${housekeeper.given.bn}র, F1 ${physician.family.bn}ের। সতর্কতার পর তিনটি চাবি ও সিল ফেরত মেলে।`
         },
         {
           en: 'Countermarks identify holders. They do not identify what was in a parcel.',
@@ -1220,8 +1204,8 @@ export const case001: CaseData = {
       },
       category: 'Witness Statements',
       description: {
-        en: 'Beatrice recorded B4 sealed at 21:45. A maid witnessed its return band being marked by the one person who carried it from the hatch to Arthur.',
-        bn: 'বিট্রিস ২১:৪৫-এ B4 সিল করা অবস্থায় নথিভুক্ত করেন। এক পরিচারিকা দেখেন, জানালা থেকে আর্থারের কাছে একমাত্র বাহকই ফেরত ফিতায় ছাপ দেন।'
+        en: `${housekeeper.given.en} recorded B4 sealed at 21:45. A maid witnessed its return band being marked by the one person who carried it from the hatch to ${owner.given.en}.`,
+        bn: `${housekeeper.given.bn} ২১:৪৫-এ B4 সিল করা অবস্থায় নথিভুক্ত করেন। এক পরিচারিকা দেখেন, জানালা থেকে ${owner.given.bn}ের কাছে একমাত্র বাহকই ফেরত ফিতায় ছাপ দেন।`
       },
       discoveryLocation: {
         en: 'Kitchen Interrogation',
@@ -1258,8 +1242,8 @@ export const case001: CaseData = {
       },
       category: 'Witness Statements',
       description: {
-        en: 'Kane waited outside after being shown out. At 22:20 a single figure crossed the gravel away from the study window.',
-        bn: 'বের করে দেওয়ার পর কেইন বাইরে অপেক্ষা করছিলেন। ২২:২০-তে জানালা থেকে এক অবয়ব নুড়িপথ পেরোয়।'
+        en: `${dealer.family.en} waited outside after being shown out. At 22:20 a single figure crossed the gravel away from the study window.`,
+        bn: `বের করে দেওয়ার পর ${dealer.family.bn} বাইরে অপেক্ষা করছিলেন। ২২:২০-তে জানালা থেকে এক অবয়ব নুড়িপথ পেরোয়।`
       },
       discoveryLocation: {
         en: 'Driveway Interrogation',
@@ -1276,8 +1260,8 @@ export const case001: CaseData = {
           bn: 'বৃষ্টিতে মুখ ও পোশাক দেখা যায়নি।'
         },
         {
-          en: 'A gate image confirms Kane beside his car at the time of the sighting.',
-          bn: 'ফটকের ছবিতে ওই সময়ে কেইন নিজের গাড়ির পাশে।'
+          en: `A gate image confirms ${dealer.family.en} beside his car at the time of the sighting.`,
+          bn: `ফটকের ছবিতে ওই সময়ে ${dealer.family.bn} নিজের গাড়ির পাশে।`
         }
       ],
       iconKey: 'eye',
@@ -1296,8 +1280,8 @@ export const case001: CaseData = {
       },
       category: 'Forensic Reports',
       description: {
-        en: 'A portable monitor is clipped beneath Arthur’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.',
-        bn: 'আর্থারের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।'
+        en: `A portable monitor is clipped beneath ${owner.given.en}’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.`,
+        bn: `${owner.given.bn}ের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।`
       },
       discoveryLocation: {
         en: 'Desk chair, jacket pocket',
@@ -1537,8 +1521,8 @@ export const case001: CaseData = {
         bn: 'তহবিলের দৈনিক খাতা'
       },
       verifiedLocation: {
-        en: 'Open on Arthur\'s desk under his hands',
-        bn: 'আর্থারের হাতের নিচে টেবিলের ওপর খোলা'
+        en: `Open on ${owner.given.en}'s desk under his hands`,
+        bn: `${owner.given.bn}ের হাতের নিচে টেবিলের ওপর খোলা`
       },
       correctIndex: 1,
       evidenceId: 'clue-02-audited-ledger'
@@ -1722,10 +1706,7 @@ export const case001: CaseData = {
   ],
   solution: {
     culpritId: 'suspect-02-evelyn',
-    culpritName: {
-      en: 'Evelyn Vance',
-      bn: 'ইভলিন ভ্যান্স'
-    },
+    culpritName: archivist.name,
     motiveDescription: {
       en: 'Suppress an audit of diverted funds',
       bn: 'সরানো অর্থের নিরীক্ষা চাপা দেওয়া'
@@ -1752,8 +1733,8 @@ export const case001: CaseData = {
     ],
     falseAlibiSuspectId: 'suspect-02-evelyn',
     fullCaseDebriefing: {
-      en: 'Evelyn Vance controlled V6 throughout the six transfers. Arthur’s morning audit threatened to expose her. The same personal seal marks the torn B4 band. The kitchen witness followed its sole carrier from the sealed handover to the study. The kitchen control was clean. B4, the glass and the marked return strip share the trace.\n\nArthur made his last desk call at 22:13. The monitor records his last pulse one minute later, at the impact that stopped the chime. Evelyn stayed inside, bolted the door and left through the garden window. Matching binding wax on the catch and the thorn accounts for the closed window. Her half-hour chime was impossible and the kitchen heard only the voice outside. Julian’s pawn advance and Kane’s waiting car explain their separate evasions.',
-      bn: 'ছয়টি লেনদেনের সময় V6 ইভলিন ভ্যান্সের হেফাজতে ছিল। সকালের নিরীক্ষায় তা ধরা পড়ত। ছেঁড়া B4 ফিতাতেও তাঁর ব্যক্তিগত সিল। পরিচারিকা সিল করা হস্তান্তর থেকে পাঠকক্ষ পর্যন্ত একমাত্র বাহককে দেখেছেন। রান্নাঘরের নমুনা পরিষ্কার। B4, গ্লাস ও প্রতিচিহ্নযুক্ত ফেরত ফিতায় একই অবশিষ্টাংশ।\n\n২২:১৩-তে আর্থারের শেষ ডাক। এক মিনিট পর মনিটরে শেষ স্পন্দন, একই আঘাতে ঘণ্টা থেমে যায়। ভেতরে থাকা ইভলিন দরজায় খিল দিয়ে বাগানের জানালা দিয়ে বের হন। ছিটকিনি ও কাঁটার মোম তার প্রমাণ। তাঁর কথিত আধঘণ্টার ঘণ্টা বাজেনি, রান্নাঘরে শুধু বাইরের কণ্ঠ শোনা যায়। জুলিয়ানের বন্ধক ও কেইনের অপেক্ষমাণ গাড়ি তাঁদের গোপন আচরণের ব্যাখ্যা দেয়।'
+      en: `${archivist.name.en} controlled V6 throughout the six transfers. ${owner.given.en}’s morning audit threatened to expose her. The same personal seal marks the torn B4 band. The kitchen witness followed its sole carrier from the sealed handover to the study. The kitchen control was clean. B4, the glass and the marked return strip share the trace.\n\n${owner.given.en} made his last desk call at 22:13. The monitor records his last pulse one minute later, at the impact that stopped the chime. ${archivist.given.en} stayed inside, bolted the door and left through the garden window. Matching binding wax on the catch and the thorn accounts for the closed window. Her half-hour chime was impossible and the kitchen heard only the voice outside. ${heir.given.en}’s pawn advance and ${dealer.family.en}’s waiting car explain their separate evasions.`,
+      bn: `ছয়টি লেনদেনের সময় V6 ${archivist.name.bn}ের হেফাজতে ছিল। ${owner.given.bn}ের সকালের নিরীক্ষায় তা ধরা পড়ত। ছেঁড়া B4 ফিতাতেও তাঁর ব্যক্তিগত সিল। পরিচারিকা সিল করা হস্তান্তর থেকে পাঠকক্ষ পর্যন্ত একমাত্র বাহককে দেখেছেন। রান্নাঘরের নমুনা পরিষ্কার। B4, গ্লাস ও প্রতিচিহ্নযুক্ত ফেরত ফিতায় একই অবশিষ্টাংশ।\n\n২২:১৩-তে ${owner.given.bn}ের শেষ ডাক। এক মিনিট পর মনিটরে শেষ স্পন্দন, একই আঘাতে ঘণ্টা থেমে যায়। ভেতরে থাকা ${archivist.given.bn} দরজায় খিল দিয়ে বাগানের জানালা দিয়ে বের হন। ছিটকিনি ও কাঁটার মোম তার প্রমাণ। তাঁর কথিত আধঘণ্টার ঘণ্টা বাজেনি, রান্নাঘরে শুধু বাইরের কণ্ঠ শোনা যায়। ${heir.given.bn}ের বন্ধক ও ${dealer.family.bn}ের অপেক্ষমাণ গাড়ি তাঁদের গোপন আচরণের ব্যাখ্যা দেয়।`
     },
     options: {
       motives: [
@@ -1852,8 +1833,8 @@ export const case001: CaseData = {
     timeId: 't-2214'
   },
   site: {
-    en: 'Pendelton Manor',
-    bn: 'পেন্ডেলটন ম্যানর'
+    en: `${owner.family.en} Manor`,
+    bn: `${owner.family.bn} বাড়ি`
   },
   deductions: [
     {
