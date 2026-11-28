@@ -47,6 +47,8 @@ export interface TranslationDict {
   badgeMurder: string;
   badgeAbduction: string;
   badgeHeist: string;
+  comingSoonTitle: string;
+  comingSoonDesc: string;
   // Crime Scene
   locationLog: string;
   flashlightToggle: string;
@@ -305,6 +307,8 @@ export const translations: Record<Language, TranslationDict> = {
     badgeMurder: 'HOMICIDE',
     badgeAbduction: 'ABDUCTION',
     badgeHeist: 'GRAND HEIST',
+    comingSoonTitle: 'Coming Soon',
+    comingSoonDesc: 'This case is currently under development. Stay tuned for its release!',
     locationLog: 'LOCATION LOG',
     flashlightToggle: 'Toggle Flashlight',
     revealZones: 'Reveal Investigation Points',
@@ -549,6 +553,8 @@ export const translations: Record<Language, TranslationDict> = {
     badgeMurder: 'হত্যাকাণ্ড',
     badgeAbduction: 'অপহরণ',
     badgeHeist: 'দুর্ধর্ষ চুরি',
+    comingSoonTitle: 'খুব শীঘ্রই আসছে',
+    comingSoonDesc: 'এই কেসটি বর্তমানে তৈরি হচ্ছে। খুব শীঘ্রই আসছে!',
     locationLog: 'ঘটনাস্থল বিবরণ',
     flashlightToggle: 'টর্চলাইট অন/অফ',
     revealZones: 'তদন্ত এলাকা চিহ্নিত করুন',

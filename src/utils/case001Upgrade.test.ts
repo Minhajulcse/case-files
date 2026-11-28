@@ -1,56 +1,38 @@
 import { describe, it, expect } from 'vitest';
+import { plates, plateUrl } from '../components/common/CaseArtwork';
+import { ALL_CASES, PLAYABLE_CASE_ID } from '../data/cases';
 import { case001 } from '../data/cases/case001';
 import { case002 } from '../data/cases/case002';
 import { case003 } from '../data/cases/case003';
 import { evaluateFinalDeduction } from './deductionEngine';
+import { hitTest, vertices } from './hotspots';
 import { createInitialCaseState } from './storage';
-import { FinalReportAnswers, HotspotFocusRect, getLocalized, CASE_AVAILABILITY } from '../types/game';
+import { getLocalized } from '../types/game';
 
-describe('Case 001 4K Crime Scene & Mystery Rebalancing Tests', () => {
-  it('Verifies image asset availability for Case 001 and SVG preservation for Case 002/003', () => {
-    // Case 001 must have the new runtime image URL
-    expect(case001.crimeScene.imageUrl).toBe('/assets/cases/case001.png');
-
-    // Case 002 and Case 003 must retain their SVG configurations without image overrides
-    expect(case002.crimeScene.imageUrl).toBeUndefined();
-    expect(case003.crimeScene.imageUrl).toBeUndefined();
+describe('Case files and the Level 001 investigation', () => {
+  it('uses the study photograph for Case 001 and the illustrated plates for Cases 002 and 003', () => {
+    const scenes = `${import.meta.env.BASE_URL}scenes/`;
+    expect(case001.crimeScene.plates.map(plateUrl)).toEqual([scenes + 'study.webp']);
+    expect(case002.crimeScene.plates.map(plateUrl)).toEqual([scenes + 'safehouse.svg', scenes + 'conduit.svg']);
+    expect(case003.crimeScene.plates.map(plateUrl)).toEqual([scenes + 'vault.svg', scenes + 'dispatch.svg']);
     expect(case002.crimeScene.sceneTheme).toBe('motel_safehouse');
     expect(case003.crimeScene.sceneTheme).toBe('museum_vault');
   });
 
-  it('Verifies all Case 001 hotspot coordinates and focusRects are normalized and within 4K image bounds', () => {
-    expect(case001.crimeScene.hotspots.length).toBeGreaterThanOrEqual(8);
-
-    case001.crimeScene.hotspots.forEach(hotspot => {
-      // Coordinate validity
-      expect(hotspot.x).toBeGreaterThanOrEqual(0);
-      expect(hotspot.x).toBeLessThanOrEqual(100);
-      expect(hotspot.y).toBeGreaterThanOrEqual(0);
-      expect(hotspot.y).toBeLessThanOrEqual(100);
-
-      // Focus rect validity
-      expect(hotspot.focusRect).toBeDefined();
-      const rect = hotspot.focusRect as HotspotFocusRect;
-      expect(rect.x).toBeGreaterThanOrEqual(0);
-      expect(rect.y).toBeGreaterThanOrEqual(0);
-      expect(rect.width).toBeGreaterThan(0);
-      expect(rect.height).toBeGreaterThan(0);
-      expect(rect.x + rect.width).toBeLessThanOrEqual(100.1);
-      expect(rect.y + rect.height).toBeLessThanOrEqual(100.1);
-
-      // Calculated 4K pixel bounds
-      const fullW = 3840;
-      const fullH = 2160;
-      const pxX = (rect.x / 100) * fullW;
-      const pxY = (rect.y / 100) * fullH;
-      const pxW = (rect.width / 100) * fullW;
-      const pxH = (rect.height / 100) * fullH;
-
-      expect(pxX).toBeGreaterThanOrEqual(0);
-      expect(pxY).toBeGreaterThanOrEqual(0);
-      expect(pxX + pxW).toBeLessThanOrEqual(fullW + 1);
-      expect(pxY + pxH).toBeLessThanOrEqual(fullH + 1);
-    });
+  it('keeps Case 001 hit regions inside the study image and selectable at their markers', () => {
+    const { hotspots } = case001.crimeScene;
+    const { width, height } = plates.study;
+    expect(hotspots.length).toBeGreaterThanOrEqual(8);
+    for (const hotspot of hotspots) {
+      expect(hotspot.plate).toBe('study');
+      for (const [x, y] of vertices(hotspot)) {
+        expect(x).toBeGreaterThanOrEqual(0);
+        expect(x).toBeLessThanOrEqual(100);
+        expect(y).toBeGreaterThanOrEqual(0);
+        expect(y).toBeLessThanOrEqual(100);
+      }
+      expect(hitTest(hotspots, hotspot.x, hotspot.y, width, height)?.id).toBe(hotspot.id);
+    }
   });
 
   it('Verifies hotspot-to-evidence mappings resolve to valid evidence items', () => {
@@ -90,87 +72,57 @@ describe('Case 001 4K Crime Scene & Mystery Rebalancing Tests', () => {
     });
   });
 
-  it('Verifies balanced red herrings and canon connections for all 5 suspects', () => {
-    const suspectIds = new Set(case001.suspects.map(s => s.id));
-    expect(suspectIds.has('suspect-01-julian')).toBe(true);
-    expect(suspectIds.has('suspect-02-evelyn')).toBe(true);
-    expect(suspectIds.has('suspect-03-finch')).toBe(true);
-    expect(suspectIds.has('suspect-04-beatrice')).toBe(true);
-    expect(suspectIds.has('suspect-05-marcus')).toBe(true);
-
-    // Verify connections cover both incriminating and exonerating links
-    const connectedSuspectIds = new Set<string>();
-    case001.canonConnections.forEach(conn => {
-      if (suspectIds.has(conn.sourceId)) connectedSuspectIds.add(conn.sourceId);
-      if (suspectIds.has(conn.targetId)) connectedSuspectIds.add(conn.targetId);
-      expect(getLocalized(conn.label, 'en')).toBeTruthy();
-      expect(getLocalized(conn.deductionNotes, 'en')).toBeTruthy();
-      expect(getLocalized(conn.deductionNotes, 'bn')).toBeTruthy();
-    });
-
-    // Julian, Evelyn, Finch, and Marcus all have canon deductive connections
-    expect(connectedSuspectIds.has('suspect-01-julian')).toBe(true);
-    expect(connectedSuspectIds.has('suspect-02-evelyn')).toBe(true);
-    expect(connectedSuspectIds.has('suspect-03-finch')).toBe(true);
-    expect(connectedSuspectIds.has('suspect-05-marcus')).toBe(true);
+  it('corroborates the false alibi and the debt red herring with separate exhibits', () => {
+    expect(case001.canonConnections).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        targetId: 'suspect-02-evelyn',
+        sourceId: 'clue-03-stopped-clock',
+        requiresEvidenceIds: ['clue-11-tray-handover'],
+        isContradiction: true
+      }),
+      expect.objectContaining({
+        targetId: 'suspect-01-julian',
+        sourceId: 'clue-06-burnt-will',
+        requiresEvidenceIds: ['clue-09-pawn-receipt'],
+        isContradiction: false
+      })
+    ]));
+    for (const connection of case001.canonConnections) {
+      for (const language of ['en', 'bn'] as const) {
+        expect(getLocalized(connection.label, language)).toBeTruthy();
+        expect(getLocalized(connection.deductionNotes, language)).toBeTruthy();
+      }
+    }
   });
 
-  it('Verifies 3 progressive hint tiers follow Direction -> Relationship -> Guidance without early spoilers', () => {
-    expect(case001.hints.length).toBe(3);
-
-    const [h1, h2, h3] = case001.hints;
-    expect(h1.level).toBe(1);
-    expect(h2.level).toBe(2);
-    expect(h3.level).toBe(3);
-
-    // Level 1: Direction only, does not mention Nawrin Sultana
-    const h1En = getLocalized(h1.hintText, 'en');
-    expect(h1En.toLowerCase()).toContain('direction');
-    expect(h1En).not.toContain('Nawrin');
-
-    // Level 2: Relationship between window and rose garden
-    const h2En = getLocalized(h2.hintText, 'en');
-    expect(h2En.toLowerCase()).toContain('relationship');
-    expect(h2En).not.toContain('Nawrin');
-
-    // Level 3: Strong investigative guidance
-    const h3En = getLocalized(h3.hintText, 'en');
-    expect(h3En.toLowerCase()).toContain('investigative guidance');
+  it('offers three increasingly costly hints without naming the culprit', () => {
+    expect(case001.hints.map(hint => [hint.level, hint.cost])).toEqual([[1, 50], [2, 100], [3, 200]]);
+    for (const hint of case001.hints) {
+      for (const language of ['en', 'bn'] as const) {
+        const text = getLocalized(hint.hintText, language);
+        const culprit = getLocalized(case001.solution.culpritName, language);
+        expect(text).toBeTruthy();
+        expect(text).not.toContain(culprit.split(' ')[0]);
+      }
+    }
   });
 
-  it('Verifies final report evaluation provides suspect-specific feedback when accusing red herrings', () => {
-    const state = createInitialCaseState('case-001');
+  it.each(['suspect-01-julian', 'suspect-05-marcus'])('returns an accusation against %s for review', culpritId => {
+    const state = createInitialCaseState(case001.id);
+    state.discoveredEvidenceIds = case001.evidence.map(e => e.id);
+    state.userConnections = case001.canonConnections.map(link => ({ ...link, createdAt: 1 }));
+    const answers = { ...case001.solution, culpritId, detectiveTheory: '' };
+    const result = evaluateFinalDeduction(case001, answers, state);
 
-    // Accusing Arman
-    const julianAnswers: FinalReportAnswers = {
-      culpritId: 'suspect-01-julian',
-      motiveId: 'm-gambling',
-      methodId: 'met-decanter-thread',
-      timeId: 't-2214',
-      crucialEvidenceIds: ['clue-06-burnt-will', 'clue-09-pawn-receipt'],
-      falseAlibiSuspectId: 'suspect-01-julian',
-      detectiveTheory: 'Arman poisoned Mahmudul over gambling debts.'
-    };
-    const julianEval = evaluateFinalDeduction(case001, julianAnswers, state);
-    expect(julianEval.isCulpritCorrect).toBe(false);
-    expect(julianEval.performanceGrade).not.toBe('S+');
-    const julianFeedback = julianEval.feedbackNotes.map(n => getLocalized(n, 'en')).join(' ');
-    expect(julianFeedback).toContain('Arman Haque Chowdhury');
-
-    // Accusing Rashed Karim
-    const marcusAnswers: FinalReportAnswers = {
-      culpritId: 'suspect-05-marcus',
-      motiveId: 'm-codex',
-      methodId: 'met-decanter-thread',
-      timeId: 't-2214',
-      crucialEvidenceIds: ['clue-05-window-latch'],
-      falseAlibiSuspectId: 'suspect-05-marcus',
-      detectiveTheory: 'Rashed killed Mahmudul for the codex.'
-    };
-    const marcusEval = evaluateFinalDeduction(case001, marcusAnswers, state);
-    expect(marcusEval.isCulpritCorrect).toBe(false);
-    const marcusFeedback = marcusEval.feedbackNotes.map(n => getLocalized(n, 'en')).join(' ');
-    expect(marcusFeedback).toContain('Rashed Karim');
+    expect(result.isCulpritCorrect).toBe(false);
+    expect(result.accepted).toBe(false);
+    expect(result.pointsAwarded).toBe(0);
+    expect(result.fullDebriefing).toBe('');
+    for (const language of ['en', 'bn'] as const) {
+      const feedback = result.feedbackNotes.map(note => getLocalized(note, language)).join(' ');
+      expect(feedback).toContain(language === 'en' ? 'evidence' : 'প্রমাণ');
+      expect(feedback).not.toContain(getLocalized(case001.solution.culpritName, language));
+    }
   });
 
   it('Verifies save state compatibility with existing stored structures', () => {
@@ -204,86 +156,57 @@ describe('Case 001 4K Crime Scene & Mystery Rebalancing Tests', () => {
     }, legacyState);
 
     expect(evalResult.isCulpritCorrect).toBe(true);
-    expect(evalResult.pointsAwarded).toBeGreaterThan(0);
+    expect(evalResult.crucialEvidenceMatchedCount).toBe(0);
+    expect(evalResult.accepted).toBe(false);
+    expect(evalResult.pointsAwarded).toBe(0);
   });
 
-  it('Verifies CASE_AVAILABILITY restricts Case 002 and Case 003 while keeping Case 001 playable', () => {
-    expect(CASE_AVAILABILITY['case-001']).toBe('AVAILABLE');
-    expect(CASE_AVAILABILITY['case-002']).toBe('COMING_SOON');
-    expect(CASE_AVAILABILITY['case-003']).toBe('COMING_SOON');
+  it('lists Cases 002 and 003 in the archive with only Case 001 playable', () => {
+    expect(PLAYABLE_CASE_ID).toBe('case-001');
+    expect(ALL_CASES.map(file => file.id)).toEqual(expect.arrayContaining(['case-001', 'case-002', 'case-003']));
   });
 
-  it('Verifies official Bangladeshi names for all Case 001 suspects and victim', () => {
-    // Victim
-    expect(getLocalized(case001.victimOrSubject, 'en')).toContain('Mahmudul Haque Chowdhury');
-    expect(getLocalized(case001.victimOrSubject, 'bn')).toContain('মাহমুদুল হক চৌধুরী');
-
-    // Suspects
-    const julian = case001.suspects.find(s => s.id === 'suspect-01-julian');
-    expect(getLocalized(julian!.name, 'en')).toBe('Arman Haque Chowdhury');
-    expect(getLocalized(julian!.name, 'bn')).toBe('আরমান হক চৌধুরী');
-
-    const evelyn = case001.suspects.find(s => s.id === 'suspect-02-evelyn');
-    expect(getLocalized(evelyn!.name, 'en')).toBe('Nawrin Sultana');
-    expect(getLocalized(evelyn!.name, 'bn')).toBe('নওরীন সুলতানা');
-
-    const finch = case001.suspects.find(s => s.id === 'suspect-03-finch');
-    expect(getLocalized(finch!.name, 'en')).toBe('Dr. Farhan Rahman');
-    expect(getLocalized(finch!.name, 'bn')).toBe('ডা. ফারহান রহমান');
-
-    const beatrice = case001.suspects.find(s => s.id === 'suspect-04-beatrice');
-    expect(getLocalized(beatrice!.name, 'en')).toBe('Shahana Begum');
-    expect(getLocalized(beatrice!.name, 'bn')).toBe('শাহানা বেগম');
-
-    const marcus = case001.suspects.find(s => s.id === 'suspect-05-marcus');
-    expect(getLocalized(marcus!.name, 'en')).toBe('Rashed Karim');
-    expect(getLocalized(marcus!.name, 'bn')).toBe('রাশেদ করিম');
-  });
-
-  it('Verifies natural Bangladeshi names for Case 002 and Case 003 characters', () => {
-    // Case 002
-    expect(getLocalized(case002.victimOrSubject, 'en')).toContain('Farzana Haque');
-    expect(getLocalized(case002.victimOrSubject, 'bn')).toContain('ফারজানা হক');
-
-    const navarro = case002.suspects.find(s => s.id === 'suspect-02-navarro');
-    expect(getLocalized(navarro!.name, 'en')).toContain('Rayhan Kabir');
-    expect(getLocalized(navarro!.name, 'bn')).toContain('রায়হান কবীর');
-
-    const sterling = case002.suspects.find(s => s.id === 'suspect-02-sterling');
-    expect(getLocalized(sterling!.name, 'en')).toBe('Tanvir Shikder');
-    expect(getLocalized(sterling!.name, 'bn')).toBe('তানভীর শিকদার');
-
-    const maya = case002.suspects.find(s => s.id === 'suspect-02-maya');
-    expect(getLocalized(maya!.name, 'en')).toBe('Mousumi Das');
-    expect(getLocalized(maya!.name, 'bn')).toBe('মৌসুমী দাস');
-
-    const kozlov = case002.suspects.find(s => s.id === 'suspect-02-kozlov');
-    expect(getLocalized(kozlov!.name, 'en')).toBe('Bakhtiar Alam');
-    expect(getLocalized(kozlov!.name, 'bn')).toBe('বখতিয়ার আলম');
-
-    const isaac = case002.suspects.find(s => s.id === 'suspect-02-isaac');
-    expect(getLocalized(isaac!.name, 'en')).toBe('Iqbal Hossain');
-    expect(getLocalized(isaac!.name, 'bn')).toBe('ইকবাল হোসেন');
-
-    // Case 003
-    const rossi = case003.suspects.find(s => s.id === 'suspect-03-rossi');
-    expect(getLocalized(rossi!.name, 'en')).toBe('Dr. Humaira Rashid');
-    expect(getLocalized(rossi!.name, 'bn')).toBe('ডা. হুমায়রা রশীদ');
-
-    const cross = case003.suspects.find(s => s.id === 'suspect-03-cross');
-    expect(getLocalized(cross!.name, 'en')).toBe('Nasir Uddin');
-    expect(getLocalized(cross!.name, 'bn')).toBe('নাসির উদ্দিন');
-
-    const chloe = case003.suspects.find(s => s.id === 'suspect-03-chloe');
-    expect(getLocalized(chloe!.name, 'en')).toBe('Sharmin Jahan');
-    expect(getLocalized(chloe!.name, 'bn')).toBe('শারমীন জাহান');
-
-    const tariq = case003.suspects.find(s => s.id === 'suspect-03-tariq');
-    expect(getLocalized(tariq!.name, 'en')).toBe('Tareq Al-Mamun');
-    expect(getLocalized(tariq!.name, 'bn')).toBe('তারেক আল-মামুন');
-
-    const simon = case003.suspects.find(s => s.id === 'suspect-03-simon');
-    expect(getLocalized(simon!.name, 'en')).toBe('Shafiqul Islam');
-    expect(getLocalized(simon!.name, 'bn')).toBe('শফিকুল ইসলাম');
+  it.each([
+    {
+      file: case001,
+      subject: ['Lord Arthur Pendelton', 'লর্ড আর্থার পেন্ডেলটন'],
+      suspects: [
+        ['suspect-01-julian', 'Julian Pendelton', 'জুলিয়ান পেন্ডেলটন'],
+        ['suspect-02-evelyn', 'Evelyn Vance', 'ইভলিন ভ্যান্স'],
+        ['suspect-03-finch', 'Dr. Alistair Finch', 'ডা. অ্যালিস্টার ফিঞ্চ'],
+        ['suspect-04-beatrice', 'Beatrice Morales', 'বিয়াট্রিস মোরালেস'],
+        ['suspect-05-marcus', 'Marcus Kane', 'মার্কাস কেন']
+      ]
+    },
+    {
+      file: case002,
+      subject: ['Clara Thorne', 'ক্লারা থর্ন'],
+      suspects: [
+        ['suspect-02-navarro', 'Detective Ray Navarro', 'ডিটেকটিভ রে নাভারো'],
+        ['suspect-02-sterling', 'Thomas Sterling', 'টমাস স্টার্লিং'],
+        ['suspect-02-maya', 'Maya Lin', 'মায়া লিন'],
+        ['suspect-02-kozlov', 'Viktor Kozlov', 'ভিক্টর কজলভ'],
+        ['suspect-02-isaac', 'Isaac Vance', 'আইজ্যাক ভ্যান্স']
+      ]
+    },
+    {
+      file: case003,
+      subject: ['The Eye of Osiris', 'আই অব ওসাইরিস'],
+      suspects: [
+        ['suspect-03-rossi', 'Dr. Helena Rossi', 'ডা. হেলেনা রসি'],
+        ['suspect-03-cross', 'Nathan Cross', 'নাথান ক্রস'],
+        ['suspect-03-chloe', 'Chloe Dupuis', 'ক্লোয়ি দুপুই'],
+        ['suspect-03-tariq', 'Tariq Al-Mansoor', 'তারিক আল-মনসুর'],
+        ['suspect-03-simon', 'Simon Bell', 'সাইমন বেল']
+      ]
+    }
+  ])('preserves the English and Bengali names in $file.id', ({ file, subject, suspects }) => {
+    expect(getLocalized(file.victimOrSubject, 'en')).toContain(subject[0]);
+    expect(getLocalized(file.victimOrSubject, 'bn')).toContain(subject[1]);
+    for (const [id, en, bn] of suspects) {
+      const name = file.suspects.find(suspect => suspect.id === id)?.name;
+      expect(getLocalized(name, 'en')).toBe(en);
+      expect(getLocalized(name, 'bn')).toBe(bn);
+    }
   });
 });
