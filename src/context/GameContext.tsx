@@ -9,10 +9,9 @@ import {
   UserConnection,
   Language,
   LocalizableText,
-  getLocalized,
-  CASE_AVAILABILITY
+  getLocalized
 } from '../types/game';
-import { ALL_CASES, getCaseById } from '../data/cases';
+import { ALL_CASES, PLAYABLE_CASE_ID, getCaseById } from '../data/cases';
 import {
   loadProfile,
   saveProfile,
@@ -23,7 +22,7 @@ import {
   calculateDetectiveRank,
   getLastActiveCaseId
 } from '../utils/storage';
-import { evaluateFinalDeduction } from '../utils/deductionEngine';
+import { evaluateFinalDeduction, sameLink, hasLinkSources } from '../utils/deductionEngine';
 import { sound } from '../utils/audio';
 import { translations, TranslationDict, getTranslation, formatNumber } from '../i18n';
 
@@ -77,6 +76,7 @@ interface GameContextType {
   updateTimelineOrder: (newOrder: string[]) => void;
   unlockHint: (level: 1 | 2 | 3) => void;
   updateCaseNotes: (notes: string) => void;
+  draftReport: (answers: FinalReportAnswers) => void;
   submitFinalReport: (answers: FinalReportAnswers) => FinalReportEvaluation;
   resetCurrentCase: () => void;
   resetEntireGame: () => void;
@@ -101,7 +101,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [caseState, setCaseState] = useState<ActiveCaseState | null>(null);
   const [currentView, setCurrentView] = useState<MainView>('menu');
   const [investigationTab, setInvestigationTab] = useState<InvestigationTab>('scene');
-  const [lastActiveCaseId, setLastActiveCaseId] = useState<string | null>(() => getLastActiveCaseId());
+  const [lastActiveCaseId, setLastActiveCaseId] = useState<string | null>(() =>
+    getLastActiveCaseId() === PLAYABLE_CASE_ID ? PLAYABLE_CASE_ID : null
+  );
   const [selectedClueForInspection, setSelectedClueForInspection] = useState<string | null>(null);
 
   // Sync language to html document tag and localStorage
@@ -146,11 +148,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Start or switch to a case
   const startCase = useCallback((caseId: string) => {
-    // Guard against opening coming soon cases
-    if (CASE_AVAILABILITY[caseId] === 'COMING_SOON') {
-      return;
-    }
-
+    if (caseId !== PLAYABLE_CASE_ID) return;
     const foundCase = getCaseById(caseId);
     if (!foundCase) return;
 
@@ -160,11 +158,21 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const loadedState = loadCaseState(caseId, initialTimelineIds);
 
-    if (loadedState.discoveredEvidenceIds.length === 0) {
-      const initialClues = foundCase.evidence.slice(0, 2).map(e => e.id);
-      loadedState.discoveredEvidenceIds = initialClues;
+    // Earlier saves may have already played an interview that now yields a record.
+    const known = new Set(loadedState.discoveredEvidenceIds);
+    for (const suspect of foundCase.suspects) {
+      for (const line of suspect.dialogueTree) {
+        if (line.revealsClueId && loadedState.askedDialogueIds[suspect.id]?.includes(line.id)) known.add(line.revealsClueId);
+      }
+      for (const reaction of suspect.evidenceReactions) {
+        if (reaction.revealsClueId && loadedState.presentedClueIds[suspect.id]?.includes(reaction.evidenceId)) known.add(reaction.revealsClueId);
+      }
     }
-
+    loadedState.discoveredEvidenceIds = [...known];
+    if (!loadedState.rewardedConnectionIds) {
+      loadedState.rewardedConnectionIds = foundCase.canonConnections.filter(c => hasLinkSources(c,loadedState.discoveredEvidenceIds) && loadedState.userConnections.some(u => sameLink(u,c))).map(c => c.id);
+    }
+    setSelectedClueForInspection(null);
     setActiveCase(foundCase);
     setCaseState(loadedState);
     setCurrentView('investigation');
@@ -173,53 +181,55 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const resumeLastCase = useCallback(() => {
-    const targetId = lastActiveCaseId && CASE_AVAILABILITY[lastActiveCaseId] === 'AVAILABLE'
-      ? lastActiveCaseId
-      : 'case-001';
+    const targetId = lastActiveCaseId ?? PLAYABLE_CASE_ID;
     startCase(targetId);
   }, [lastActiveCaseId, startCase]);
 
   const discoverClue = useCallback((clueId: string, hotspotId?: string) => {
     if (!caseState || !activeCase) return;
 
+    if (!activeCase.evidence.some(e => e.id === clueId)) return;
     if (caseState.discoveredEvidenceIds.includes(clueId)) {
       sound.playPaper();
       return;
     }
 
     sound.playClueFound();
-    const updatedDiscovered = [...caseState.discoveredEvidenceIds, clueId];
-    const updatedExamined = hotspotId && !caseState.examinedHotspotIds.includes(hotspotId)
-      ? [...caseState.examinedHotspotIds, hotspotId]
-      : caseState.examinedHotspotIds;
-
     const clueObj = activeCase.evidence.find(e => e.id === clueId);
     const isOptional = clueObj?.isOptional || clueObj?.isHidden;
+    const discovered = [...caseState.discoveredEvidenceIds,clueId];
+    const newlySupported = activeCase.canonConnections.filter(link =>
+      !caseState.rewardedConnectionIds?.includes(link.id) && hasLinkSources(link,discovered) &&
+      caseState.userConnections.some(connection=>sameLink(connection,link))
+    );
 
     setCaseState(prev => prev ? {
       ...prev,
-      discoveredEvidenceIds: updatedDiscovered,
-      examinedHotspotIds: updatedExamined
+      discoveredEvidenceIds: [...new Set([...prev.discoveredEvidenceIds, clueId])],
+      rewardedConnectionIds: [...(prev.rewardedConnectionIds ?? []), ...newlySupported.map(link=>link.id)],
+      examinedHotspotIds: hotspotId ? [...new Set([...prev.examinedHotspotIds, hotspotId])] : prev.examinedHotspotIds
     } : null);
 
-    if (isOptional) {
+    if (isOptional || newlySupported.length) {
       setProfile(prev => ({
         ...prev,
-        totalOptionalCluesFound: prev.totalOptionalCluesFound + 1,
-        totalPoints: prev.totalPoints + 25
+        totalOptionalCluesFound: prev.totalOptionalCluesFound + Number(!!isOptional),
+        totalContradictionsFound: prev.totalContradictionsFound + newlySupported.filter(link=>link.isContradiction).length,
+        totalPoints: prev.totalPoints + (isOptional ? 25 : 0) + newlySupported.reduce((sum,link)=>sum+link.bonusPoints,0)
       }));
     }
   }, [caseState, activeCase]);
 
   const examineHotspot = useCallback((hotspotId: string) => {
-    if (!caseState || !activeCase) return;
-    if (!caseState.examinedHotspotIds.includes(hotspotId)) {
-      setCaseState(prev => prev ? {
+    if (!activeCase?.crimeScene.hotspots.some(h => h.id === hotspotId)) return;
+    setCaseState(prev => {
+      if (!prev || prev.examinedHotspotIds[prev.examinedHotspotIds.length - 1] === hotspotId) return prev;
+      return {
         ...prev,
-        examinedHotspotIds: [...prev.examinedHotspotIds, hotspotId]
-      } : null);
-    }
-  }, [caseState, activeCase]);
+        examinedHotspotIds: [...prev.examinedHotspotIds.filter(id => id !== hotspotId), hotspotId]
+      };
+    });
+  }, [activeCase]);
 
   const toggleMarkImportant = useCallback((clueId: string) => {
     if (!caseState) return;
@@ -243,6 +253,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const suspect = activeCase.suspects.find(s => s.id === suspectId);
     const dialogue = suspect?.dialogueTree.find(d => d.id === dialogueId);
 
+    if (!dialogue || (dialogue.conditionClueId && !caseState.discoveredEvidenceIds.includes(dialogue.conditionClueId))) return;
     setCaseState(prev => {
       if (!prev) return null;
       const currentAsked = prev.askedDialogueIds[suspectId] || [];
@@ -266,19 +277,23 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (!caseState || !activeCase) return { reaction: 'No response.', lieExposed: false };
 
     const suspect = activeCase.suspects.find(s => s.id === suspectId);
-    const reactionObj = suspect?.evidenceReactions.find(r => r.evidenceId === clueId);
+    if (!suspect || !caseState.discoveredEvidenceIds.includes(clueId)) return { reaction: '', lieExposed: false };
+    const reactionObj = suspect.evidenceReactions.find(r => r.evidenceId === clueId);
 
     const existingPresented = caseState.presentedClueIds[suspectId] || [];
     const updatedPresented = existingPresented.includes(clueId)
       ? existingPresented
       : [...existingPresented, clueId];
 
-    const currentStress = caseState.suspectStressLevels[suspectId] || 10;
-    const addedStress = reactionObj ? reactionObj.stressIncrease : 5;
+    const confirmationId = suspectId + '/' + clueId;
+    const lieExposed = !!reactionObj?.exposesLie && (reactionObj.requiresEvidenceIds ?? []).every(id=>caseState.discoveredEvidenceIds.includes(id));
+    const currentStress = caseState.suspectStressLevels[suspectId] || 15;
+    const addedStress = existingPresented.includes(clueId) ? 0 : reactionObj?.stressIncrease ?? 5;
     const newStress = Math.min(100, currentStress + addedStress);
 
     setCaseState(prev => prev ? {
       ...prev,
+      confirmedStatementIds: lieExposed ? [...new Set([...(prev.confirmedStatementIds ?? []), confirmationId])] : prev.confirmedStatementIds,
       presentedClueIds: {
         ...prev.presentedClueIds,
         [suspectId]: updatedPresented
@@ -289,7 +304,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     } : null);
 
-    if (reactionObj?.exposesLie) {
+    if (lieExposed && !caseState.confirmedStatementIds?.includes(confirmationId)) {
       sound.playDeductionSuccess();
       setProfile(prev => ({
         ...prev,
@@ -312,13 +327,15 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return {
       reaction: reactionText,
-      lieExposed: !!reactionObj?.exposesLie
+      lieExposed
     };
   }, [caseState, activeCase, discoverClue, language]);
 
   const addUserConnection = useCallback((sourceId: string, targetId: string, note?: string) => {
     if (!caseState || !activeCase) return { isCanon: false };
 
+    const available = (id: string) => caseState.discoveredEvidenceIds.includes(id) || activeCase.suspects.some(s => s.id === id);
+    if (sourceId === targetId || !available(sourceId) || !available(targetId)) return { isCanon: false };
     const exists = caseState.userConnections.some(
       c => (c.sourceId === sourceId && c.targetId === targetId) ||
            (c.sourceId === targetId && c.targetId === sourceId)
@@ -329,28 +346,29 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     const canon = activeCase.canonConnections.find(
-      c => (c.sourceId === sourceId && c.targetId === targetId) ||
-           (c.sourceId === targetId && c.targetId === sourceId)
+      c => hasLinkSources(c,caseState.discoveredEvidenceIds) && sameLink(c,{sourceId,targetId})
     );
 
     const newConn: UserConnection = {
       id: `conn-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
       sourceId,
       targetId,
-      note: note || (canon ? getLocalized(canon.label, language) : undefined),
+      note: note || undefined,
       createdAt: Date.now()
     };
 
     setCaseState(prev => prev ? {
       ...prev,
-      userConnections: [...prev.userConnections, newConn]
+      userConnections: [...prev.userConnections, newConn],
+      rewardedConnectionIds: canon ? [...new Set([...(prev.rewardedConnectionIds ?? []), canon.id])] : prev.rewardedConnectionIds
     } : null);
 
     if (canon) {
       sound.playDeductionSuccess();
-      setProfile(prev => ({
+      if (!caseState.rewardedConnectionIds?.includes(canon.id)) setProfile(prev => ({
         ...prev,
-        totalPoints: prev.totalPoints + canon.bonusPoints
+        totalPoints: prev.totalPoints + canon.bonusPoints,
+        totalContradictionsFound: prev.totalContradictionsFound + Number(canon.isContradiction)
       }));
       return { isCanon: true, canon };
     } else {
@@ -381,7 +399,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (caseState.unlockedHintLevels.includes(level)) return;
 
     const hint = activeCase.hints.find(h => h.level === level);
-    if (!hint) return;
+    if (!hint || (level > 1 && !caseState.unlockedHintLevels.includes(level - 1))) return;
 
     sound.playTypewriter();
     setCaseState(prev => prev ? {
@@ -403,12 +421,21 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } : null);
   }, [caseState]);
 
+  const draftReport = useCallback((reportDraft: FinalReportAnswers) => {
+    setCaseState(prev => prev ? { ...prev, reportDraft } : prev);
+  }, []);
+
   const submitFinalReport = useCallback((answers: FinalReportAnswers): FinalReportEvaluation => {
     if (!caseState || !activeCase) {
       throw new Error('No active case loaded');
     }
 
     const evaluation = evaluateFinalDeduction(activeCase, answers, caseState);
+
+    if (!evaluation.accepted) {
+      sound.playContradictionBuzz();
+      return evaluation;
+    }
 
     const isFirstTimeCompletion = !profile.completedCaseIds.includes(activeCase.id);
     const existingHighScore = profile.caseHighScores[activeCase.id] || 0;
@@ -505,6 +532,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     updateTimelineOrder,
     unlockHint,
     updateCaseNotes,
+    draftReport,
     submitFinalReport,
     resetCurrentCase,
     resetEntireGame,
@@ -534,6 +562,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     updateTimelineOrder,
     unlockHint,
     updateCaseNotes,
+    draftReport,
     submitFinalReport,
     resetCurrentCase,
     resetEntireGame,

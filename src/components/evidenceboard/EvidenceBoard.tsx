@@ -15,6 +15,8 @@ import {
 import { useGame } from '../../context/GameContext';
 import { EvidenceBoardNode, CanonConnection, UserConnection } from '../../types/game';
 import { AddConnectionModal } from './AddConnectionModal';
+import { hasLinkSources, sameLink } from '../../utils/deductionEngine';
+import { InquiryList } from './InquiryList';
 import { sound } from '../../utils/audio';
 import { getLocalizedCategory } from '../../i18n';
 
@@ -38,16 +40,12 @@ export const EvidenceBoard: React.FC = () => {
     isContradiction: boolean;
   } | null>(null);
 
-  if (!activeCase || !caseState) return null;
-
   const isBengali = language === 'bn';
-
-  // Build the list of active board nodes (all 5 suspects + all discovered evidence items)
-  const discoveredClues = activeCase.evidence.filter(e =>
-    caseState.discoveredEvidenceIds.includes(e.id)
-  );
-
+  const discoveredIds = caseState?.discoveredEvidenceIds;
   const nodes: EvidenceBoardNode[] = useMemo(() => {
+    if (!activeCase || !discoveredIds) return [];
+    const discoveredClues = activeCase.evidence.filter(clue => discoveredIds.includes(clue.id));
+    const evidenceRows = Math.max(3,Math.ceil(discoveredClues.length/4));
     const list: EvidenceBoardNode[] = [];
 
     // 1. Suspect nodes (placed on top/sides)
@@ -70,7 +68,7 @@ export const EvidenceBoard: React.FC = () => {
       const col = idx % 4;
       const row = Math.floor(idx / 4);
       const x = 14 + col * 24;
-      const y = 45 + row * 24;
+      const y = 37 + row * 53 / (evidenceRows - 1);
       list.push({
         id: `node-clue-${clue.id}`,
         type: 'evidence',
@@ -84,7 +82,7 @@ export const EvidenceBoard: React.FC = () => {
     });
 
     return list;
-  }, [activeCase, discoveredClues, language, getLoc]);
+  }, [activeCase, discoveredIds, language, getLoc]);
 
   // Handle direct node click for 2-step point-and-click linking
   const handleNodeClick = (node: EvidenceBoardNode) => {
@@ -122,12 +120,12 @@ export const EvidenceBoard: React.FC = () => {
 
   // Find coordinates for user connection lines
   const connectionLines = useMemo(() => {
+    if (!activeCase || !caseState) return [];
     return caseState.userConnections.map(conn => {
       const nodeA = nodes.find(n => n.targetId === conn.sourceId);
       const nodeB = nodes.find(n => n.targetId === conn.targetId);
       const canon = activeCase.canonConnections.find(
-        c => (c.sourceId === conn.sourceId && c.targetId === conn.targetId) ||
-             (c.sourceId === conn.targetId && c.targetId === conn.sourceId)
+        c => hasLinkSources(c,caseState.discoveredEvidenceIds) && sameLink(conn,c)
       );
 
       return {
@@ -138,14 +136,15 @@ export const EvidenceBoard: React.FC = () => {
         isCanon: !!canon
       };
     }).filter(c => c.nodeA && c.nodeB);
-  }, [caseState.userConnections, nodes, activeCase]);
+  }, [caseState?.userConnections, discoveredIds, nodes, activeCase]);
 
+  if (!activeCase || !caseState) return null;
   return (
-    <div className={`flex flex-col lg:flex-row h-[calc(100vh-105px)] bg-noir-950 select-none overflow-hidden ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <div className={`board-room flex flex-col lg:flex-row bg-noir-950 ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       {/* Interactive Corkboard Surface */}
-      <div className="flex-1 relative corkboard-texture overflow-auto p-4 sm:p-8 flex items-center justify-center">
+      <div className="board-surface flex-1 min-w-0 p-3 sm:p-5">
         {/* Board Top Header Bar */}
-        <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-none">
+        <div className="board-tools flex flex-wrap gap-2 items-center justify-between mb-3">
           <div className="bg-noir-950/90 border border-amber-900/60 px-3.5 py-1.5 rounded-lg shadow-xl backdrop-blur pointer-events-auto">
             <span className="text-[10px] uppercase font-bold text-amber-500 tracking-wider">
               {t('investigationWall')}
@@ -180,7 +179,7 @@ export const EvidenceBoard: React.FC = () => {
         </div>
 
         {/* Board Canvas Area */}
-        <div className="relative w-full max-w-5xl h-[560px] sm:h-[620px] rounded-lg border-4 border-[#33251c] shadow-2xl overflow-hidden bg-[#181310]/90">
+        <div className="board-scroll"><div className="board-canvas corkboard-texture">
           {/* SVG Yarn / String Layer */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
             {connectionLines.map(({ conn, nodeA, nodeB, isCanon, canon }) => {
@@ -223,7 +222,7 @@ export const EvidenceBoard: React.FC = () => {
             const isSuspect = node.type === 'suspect';
 
             return (
-              <div
+              <button aria-pressed={isSelected}
                 key={node.id}
                 onClick={() => handleNodeClick(node)}
                 style={{
@@ -239,7 +238,7 @@ export const EvidenceBoard: React.FC = () => {
                 <div
                   className={`w-4 h-4 rounded-full mx-auto -mb-2 border-2 shadow-md relative z-30 ${
                     isSelected
-                      ? 'bg-blood-500 border-white animate-bounce'
+                      ? 'bg-blood-500 border-white '
                       : isSuspect
                       ? 'bg-amber-500 border-amber-900'
                       : 'bg-blood-600 border-blood-950'
@@ -267,12 +266,12 @@ export const EvidenceBoard: React.FC = () => {
                     {node.title}
                   </div>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
       </div>
-
+      </div>
       {/* Right Column: Connection Matrix & Canon Deductions */}
       <div className="w-full lg:w-80 bg-noir-900 border-t lg:border-t-0 border-noir-800 p-4 flex flex-col justify-between overflow-y-auto">
         <div className="space-y-4">
@@ -285,6 +284,7 @@ export const EvidenceBoard: React.FC = () => {
             </span>
           </div>
 
+          <InquiryList/>
           {/* Active Revelation Card if Unlocked */}
           {activeDeductionNote && (
             <div
@@ -368,6 +368,7 @@ export const EvidenceBoard: React.FC = () => {
                     {nodeA?.title} ⟷ {nodeB?.title}
                   </div>
 
+                  {canon && <p className="text-xs text-noir-300">{getLoc(canon.deductionNotes)}</p>}
                   {conn.note && (
                     <p className="text-[10px] text-amber-300/80 italic">
                       {isBengali ? 'নোট' : 'Note'}: {conn.note}

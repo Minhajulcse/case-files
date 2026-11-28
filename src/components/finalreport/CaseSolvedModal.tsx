@@ -1,149 +1,64 @@
-import React from 'react';
-import {
-  Award,
-  CheckCircle2,
-  XCircle,
-  ShieldAlert,
-  ArrowRight,
-  RotateCcw,
-  Star,
-  FileText
-} from 'lucide-react';
+import { Award, ArrowRight, RotateCcw } from 'lucide-react';
 import { FinalReportEvaluation, CaseData } from '../../types/game';
 import { useGame } from '../../context/GameContext';
-import { sound } from '../../utils/audio';
 import { getLocalizedRank } from '../../i18n';
+import { Dialog } from '../common/Dialog';
 
-interface CaseSolvedModalProps {
-  isOpen: boolean;
-  evaluation: FinalReportEvaluation | null;
-  activeCase: CaseData;
-  onClose: () => void;
-}
-
-export const CaseSolvedModal: React.FC<CaseSolvedModalProps> = ({
-  isOpen,
-  evaluation,
-  activeCase,
-  onClose
-}) => {
+export function CaseSolvedModal({ isOpen, evaluation, activeCase, onClose }: { isOpen: boolean; evaluation: FinalReportEvaluation | null; activeCase: CaseData; onClose: () => void }) {
   const { setCurrentView, profile, language, t, formatNum, getLoc } = useGame();
-
   if (!isOpen || !evaluation) return null;
+  const accepted = evaluation.accepted ?? true; // Previously completed files retain their original review.
+  const heading = accepted ? t('caseClosedVerdict') : t('insufficientEvidenceVerdict');
+  return <Dialog label={heading} onClose={onClose}>
+    <article className="field-sheet verdict-sheet">
 
-  const isBengali = language === 'bn';
-  const isPassed = evaluation.accuracyScore >= 60;
+      <div className="sheet-body">
+        <div className="eyebrow">
+          <Award size={17} />
+          {formatNum(activeCase.caseNumber)}
+        </div>
 
-  return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto text-noir-200 ${isBengali ? 'font-bengali' : 'font-mono'}`}>
-      <div className="relative w-full max-w-3xl bg-noir-900 border-2 border-noir-700 rounded-lg shadow-2xl overflow-hidden my-8">
-        {/* Classified Header */}
-        <div className="bg-noir-950 px-6 py-5 border-b border-noir-800 flex items-center justify-between">
+        <span className={accepted ? 'rubber-stamp-green' : 'rubber-stamp'}>{heading}</span>
+
+        <h2>{getLoc(activeCase.title)}</h2>
+
+        {accepted && <div className="verdict-metrics">
           <div>
-            <div className="flex items-center space-x-2">
-              <span className={`rubber-stamp text-xs ${isPassed ? 'text-green-500 border-green-600' : 'text-blood-500 border-blood-600'}`}>
-                {isPassed ? t('caseClosedVerdict') : t('insufficientEvidenceVerdict')}
-              </span>
-              <span className="text-[10px] text-noir-400 font-bold uppercase tracking-widest font-mono">
-                {t('verdictTitle')}
-              </span>
-            </div>
-            <h2 className="font-serif font-bold text-xl text-white tracking-wide mt-1">
-              {getLoc(activeCase.title)} — {isBengali ? 'বিভাগীয় পর্যালোচনা' : 'Official Review'}
-            </h2>
+            {t('gradeLabel')}
+            <b>{evaluation.performanceGrade}</b>
           </div>
 
-          {/* Performance Grade Medal */}
-          <div className="flex flex-col items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-amber-600/20 to-blood-900/40 border-2 border-amber-500/80 shadow-lg">
-            <span className="text-[10px] text-amber-400 font-bold uppercase">{t('gradeLabel')}</span>
-            <span className="text-2xl font-serif font-black text-amber-200">
-              {evaluation.performanceGrade}
-            </span>
+          <div>
+            {t('accuracyRating')}
+            <b>
+              {formatNum(evaluation.accuracyScore)}%
+            </b>
           </div>
-        </div>
-
-        {/* Evaluation Metrics Breakdown */}
-        <div className="p-6 space-y-6 max-h-[65vh] overflow-y-auto">
-          {/* Top Score & Accuracy Banner */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-            <div className="bg-noir-950 p-4 rounded-lg border border-noir-800">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">
-                {t('accuracyRating')}
-              </span>
-              <div className="text-2xl font-bold text-amber-400 mt-0.5 font-mono">
-                {formatNum(evaluation.accuracyScore)}%
-              </div>
-            </div>
-
-            <div className="bg-noir-950 p-4 rounded-lg border border-noir-800">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">
-                {t('investigationPoints')}
-              </span>
-              <div className="text-2xl font-bold text-green-400 mt-0.5 font-mono">
-                +{formatNum(evaluation.pointsAwarded)} {t('pts')}
-              </div>
-            </div>
-
-            <div className="bg-noir-950 p-4 rounded-lg border border-noir-800">
-              <span className="text-[10px] text-noir-400 uppercase tracking-wider">
-                {t('detectiveRank')}
-              </span>
-              <div className="text-sm font-bold text-amber-200 mt-2 truncate">
-                {getLocalizedRank(profile.rank, language)}
-              </div>
-            </div>
+          <div>
+            {t('investigationPoints')}
+            <b>+
+              {formatNum(evaluation.pointsAwarded)}
+            </b>
           </div>
+        </div>}
 
-          {/* Detailed Points of Indictment Checklist */}
-          <div className="bg-noir-950 p-4 rounded-lg border border-noir-800 space-y-2 text-xs">
-            <span className="text-[10px] uppercase font-bold text-noir-400 tracking-wider block mb-1">
-              {t('bureauAudit')}
-            </span>
-            <div className="space-y-1.5">
-              {evaluation.feedbackNotes.map((note, idx) => (
-                <div key={idx} className="flex items-start space-x-2 text-noir-300">
-                  <span className="text-blood-400 font-bold">•</span>
-                  <span>{getLoc(note)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        {evaluation.feedbackNotes.map((note, i) => <p key={i}>{getLoc(note)}</p>)}
 
-          {/* Canonical Debriefing Story Narrative */}
-          <div className="bg-noir-950 p-5 rounded-lg border border-amber-600/40 space-y-3">
-            <div className="flex items-center space-x-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
-              <FileText className="w-4 h-4" />
-              <span>{t('canonicalDebriefing')}</span>
-            </div>
+        {accepted && <><h3>{t('canonicalDebriefing')}</h3><p className="whitespace-pre-line">{getLoc(evaluation.fullDebriefing)}</p><small>{getLocalizedRank(profile.rank, language)}</small></>}
 
-            <div className="text-xs text-noir-200 leading-relaxed space-y-3 whitespace-pre-line bg-noir-900/80 p-4 rounded border border-noir-800/80">
-              {getLoc(evaluation.fullDebriefing)}
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Navigation Actions */}
-        <div className="bg-noir-950 px-6 py-4 border-t border-noir-800 flex items-center justify-between">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-noir-800 hover:bg-noir-700 text-noir-300 text-xs rounded transition-colors flex items-center gap-1.5"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>{t('reviewInvestigationBtn')}</span>
-          </button>
-
-          <button
-            onClick={() => {
-              sound.playPaper();
-              setCurrentView('cases');
-            }}
-            className="px-5 py-2 bg-blood-600 hover:bg-blood-500 text-white text-xs font-bold rounded shadow-lg flex items-center space-x-2 transition-all transform hover:-translate-y-0.5"
-          >
-            <span>{t('proceedToArchiveBtn')}</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
       </div>
-    </div>
-  );
-};
+      <footer className="sheet-actions">
+        <button onClick={onClose} className="minor-action">
+          <RotateCcw size={15} />
+          {t('reviewInvestigationBtn')}
+        </button>
+
+        {accepted && <button className="gold-action" onClick={() => setCurrentView('cases')}>
+          {t('cases')}
+          <ArrowRight size={16} />
+        </button>}
+      </footer>
+
+    </article>
+  </Dialog>;
+}

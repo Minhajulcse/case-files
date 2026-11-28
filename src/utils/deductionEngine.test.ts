@@ -11,6 +11,7 @@ describe('Detective Investigation Game Logic Tests', () => {
   it('Evaluates Case 001 (The Last Alibi) with 100% accuracy for canonical deduction', () => {
     const state = createInitialCaseState('case-001');
     state.discoveredEvidenceIds = case001.evidence.map(e => e.id);
+    state.userConnections = case001.canonConnections.map(link=>({ ...link, createdAt: 1 }));
     
     const answers: FinalReportAnswers = {
       culpritId: 'suspect-02-evelyn',
@@ -18,18 +19,24 @@ describe('Detective Investigation Game Logic Tests', () => {
       methodId: 'met-decanter-thread',
       timeId: 't-2214',
       crucialEvidenceIds: [
+        'clue-01-brandy-snifter',
         'clue-02-audited-ledger',
         'clue-03-stopped-clock',
+        'clue-04-poisoned-decanter',
         'clue-05-window-latch',
         'clue-07-nylon-thread',
-        'clue-08-torn-envelope'
+        'clue-08-torn-envelope',
+        'clue-10-handwriting-sample',
+        'clue-11-tray-handover',
+        'case-001-pulse-strip'
       ],
       falseAlibiSuspectId: 'suspect-02-evelyn',
-      detectiveTheory: 'Nawrin poisoned Mahmudul to prevent disclosure of $450k embezzlement and rigged the window with thread.'
+      detectiveTheory: 'Evelyn poisoned Arthur to prevent disclosure of $450k embezzlement and rigged the window with thread.'
     };
 
     const evaluation = evaluateFinalDeduction(case001, answers, state);
 
+    expect(evaluation.accepted).toBe(true);
     expect(evaluation.isCulpritCorrect).toBe(true);
     expect(evaluation.isMotiveCorrect).toBe(true);
     expect(evaluation.isMethodCorrect).toBe(true);
@@ -42,6 +49,7 @@ describe('Detective Investigation Game Logic Tests', () => {
   it('Evaluates Case 002 (The Missing Witness) canonical deduction', () => {
     const state = createInitialCaseState('case-002');
     state.discoveredEvidenceIds = case002.evidence.map(e => e.id);
+    state.userConnections = case002.canonConnections.map(link=>({ ...link, createdAt: 1 }));
 
     const answers: FinalReportAnswers = {
       culpritId: 'suspect-02-navarro',
@@ -49,18 +57,24 @@ describe('Detective Investigation Game Logic Tests', () => {
       methodId: 'met-staged-escape',
       timeId: 't-2320',
       crucialEvidenceIds: [
+        'clue-02-forced-door',
         'clue-02-staged-blood',
         'clue-02-burner-phone',
         'clue-02-vent-grate',
         'clue-02-torn-ticket',
-        'clue-02-tunnel-footprints'
+        'clue-02-tunnel-footprints',
+        'case-002-gate-strip',
+        'case-002-parcel-counterfoil',
+        'clue-02-navarro-deposit',
+        'clue-02-escape-plan-memo'
       ],
-      falseAlibiSuspectId: 'suspect-02-navarro',
-      detectiveTheory: 'Inspector Rayhan Kabir betrayed the safehouse. Farzana staged her kidnapping and fled through the steam tunnel.'
+      falseAlibiSuspectId: 'suspect-02-isaac',
+      detectiveTheory: 'Navarro betrayed the safehouse. Clara staged her kidnapping and fled through the steam tunnel.'
     };
 
     const evaluation = evaluateFinalDeduction(case002, answers, state);
 
+    expect(evaluation.accepted).toBe(true);
     expect(evaluation.isCulpritCorrect).toBe(true);
     expect(evaluation.isMotiveCorrect).toBe(true);
     expect(evaluation.isMethodCorrect).toBe(true);
@@ -71,6 +85,7 @@ describe('Detective Investigation Game Logic Tests', () => {
   it('Evaluates Case 003 (The Museum Heist) canonical deduction', () => {
     const state = createInitialCaseState('case-003');
     state.discoveredEvidenceIds = case003.evidence.map(e => e.id);
+    state.userConnections = case003.canonConnections.map(link=>({ ...link, createdAt: 1 }));
 
     const answers: FinalReportAnswers = {
       culpritId: 'suspect-03-rossi',
@@ -82,14 +97,16 @@ describe('Detective Investigation Game Logic Tests', () => {
         'clue-03-emp-capacitor',
         'clue-03-vault-access-logs',
         'clue-03-rossi-invoice',
-        'clue-03-lead-box'
+        'clue-03-lead-box',
+        'clue-03-janitor-testimony'
       ],
       falseAlibiSuspectId: 'suspect-03-rossi',
-      detectiveTheory: 'Dr. Humaira Rashid swapped the scarab with a Florence replica at 18:00 and used an EMP capacitor to stage the 02:15 blackout.'
+      detectiveTheory: 'Rossi swapped the scarab with a Florence replica at 18:00 and used an EMP capacitor to stage the 02:15 blackout.'
     };
 
     const evaluation = evaluateFinalDeduction(case003, answers, state);
 
+    expect(evaluation.accepted).toBe(true);
     expect(evaluation.isCulpritCorrect).toBe(true);
     expect(evaluation.isMotiveCorrect).toBe(true);
     expect(evaluation.isMethodCorrect).toBe(true);

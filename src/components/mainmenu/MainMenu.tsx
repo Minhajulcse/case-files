@@ -1,216 +1,137 @@
-import React, { useState } from 'react';
-import {
-  FolderOpen,
-  Play,
-  Shield,
-  Sliders,
-  Feather,
-  ChevronRight,
-  FileText,
-  Briefcase,
-  Award
-} from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, BookOpen, ChevronRight, Fingerprint, Folders, MapPin, ScanLine, ShieldCheck, Users } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
+import type { CaseData } from '../../types/game';
+import { getLocalizedBadge, getLocalizedRank } from '../../i18n';
+import { CaseCards, CaseBrief } from '../caseselect/CaseSelect';
+import { CaseArtwork } from '../common/CaseArtwork';
+import { BureauHeader } from '../common/BureauHeader';
 import { ProfileModal } from './ProfileModal';
 import { SettingsModal } from './SettingsModal';
 import { CreditsModal } from './CreditsModal';
-import { SoundToggle } from '../common/SoundToggle';
-import { LanguageToggle } from '../common/LanguageToggle';
-import { ALL_CASES } from '../../data/cases';
-import { sound } from '../../utils/audio';
-import { getLocalizedRank } from '../../i18n';
 
-export const MainMenu: React.FC = () => {
-  const {
-    profile,
-    setCurrentView,
-    lastActiveCaseId,
-    resumeLastCase,
-    language,
-    t,
-    getLoc,
-    formatNum
-  } = useGame();
+export function MainMenu() {
+  const { profile, allCases, lastActiveCaseId, resumeLastCase, getLoc, formatNum, language, t, setCurrentView } = useGame();
+  const [panel, setPanel] = useState<'profile' | 'settings' | 'credits' | null>(null);
+  const [brief, setBrief] = useState<CaseData | null>(null);
+  const bn = language === 'bn';
+  const featured = allCases.find(c => c.id === lastActiveCaseId) ?? allCases[0];
+  const ongoing = featured.id === lastActiveCaseId;
+  const closed = profile.completedCaseIds.includes(featured.id);
+  return <div className="desk-page">
 
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isCreditsOpen, setIsCreditsOpen] = useState(false);
+    <BureauHeader onProfile={() => setPanel('profile')} onSettings={() => setPanel('settings')} />
 
-  const activeCaseObj = ALL_CASES.find(c => c.id === lastActiveCaseId) || ALL_CASES[0];
+    <main className="desk-wrap">
 
-  const handleNewGame = () => {
-    sound.playPaper();
-    setCurrentView('cases');
-  };
+      <div className="desk-title">
+        <div>
+          <div className="eyebrow">
+            <span className="tiny-rule" />
+            {bn ? 'মহানগর পুলিশ' : 'Metropolitan Police'}
+          </div>
 
-  const handleContinue = () => {
-    sound.playPaper();
-    resumeLastCase();
-  };
+          <h1>{bn ? 'তদন্ত ডেস্ক' : 'Investigation desk'}</h1>
+        </div>
 
-  return (
-    <div className="relative min-h-screen bg-[#0a0b0e] flex flex-col justify-between overflow-hidden select-none font-mono">
-      {/* Background Architectural Vignette & Scanline */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#11141a]/60 via-[#0a0b0e] to-black z-0 pointer-events-none" />
-      <div className="absolute inset-0 scanline-effect z-10 pointer-events-none opacity-40" />
-
-      {/* Top Header / Bureau Title & Language Toggle */}
-      <header className="relative z-20 max-w-7xl w-full mx-auto px-6 py-6 flex items-center justify-between border-b border-noir-850">
-        <div className="flex items-center space-x-2.5">
-          <div className="w-2 h-2 rounded-full bg-blood-500 animate-pulse" />
-          <span className="font-mono text-xs tracking-widest text-noir-400 uppercase">
-            {t('metropolitanPolice')}
+        <button className="officer" onClick={() => setPanel('profile')}>
+          <ShieldCheck size={19} />
+          <span>
+            {profile.name}
+            <small>{getLocalizedRank(profile.rank, language)}</small>
           </span>
-        </div>
+        </button>
 
-        <div className="flex items-center space-x-3">
-          <LanguageToggle variant="segmented" />
-          <SoundToggle />
-        </div>
-      </header>
+      </div>
 
-      {/* Center Cinematic Noir Opening */}
-      <main className="relative z-20 max-w-5xl w-full mx-auto px-6 py-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
-        {/* Left Column: Game Title & Detective Office Atmosphere */}
-        <div className="flex-1 text-center md:text-left space-y-5">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-noir-900 border border-noir-750 text-blood-400 font-mono text-xs uppercase tracking-widest">
-            <Briefcase className="w-3.5 h-3.5 text-brass-400" />
-            <span>{t('gameSubtitle')}</span>
+      <section className="feature">
+
+        <CaseArtwork file={featured} eager className="feature-art" />
+        <div className="feature-shade" />
+
+        <div className="feature-content">
+          <div className="feature-tag">
+            <span className="status-dot" />
+            {closed ? t('solved') : ongoing ? (bn ? 'চলমান তদন্ত' : 'Current investigation') : (bn ? 'নির্বাচিত তদন্ত' : 'Featured investigation')}
           </div>
 
-          <div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-black tracking-wider text-noir-50 leading-none">
-              {language === 'bn' ? (
-                <>কেস <span className="text-blood-500 font-serif">ফাইলস</span></>
-              ) : (
-                <>CASE <span className="text-blood-500">FILES</span></>
-              )}
-            </h1>
-            <p className="font-mono text-xs sm:text-sm text-noir-400 max-w-md leading-relaxed mt-3">
-              {language === 'bn'
-                ? 'ফরেনসিক অপরাধস্থল অনুসন্ধান করুন, সাক্ষীদের জিজ্ঞাসাবাদে অসঙ্গতি ধরুন, প্রমাণ বোর্ডে সুতোর সংযোগ টানুন এবং আদালতে অভিযোগপত্র পেশ করুন।'
-                : 'Examine forensic crime scenes, cross-examine suspects for contradictions, connect threads on the evidence board, and deliver the final indictment.'}
-            </p>
+          <div className="feature-index">
+            {formatNum(featured.caseNumber)}
+            <i />
+            {getLocalizedBadge(featured.badge, language)}
           </div>
 
-          {/* Quick Active Case Manila Envelope Preview */}
-          {lastActiveCaseId && (
-            <div className="mt-6 p-4 rounded bg-[#13161c] border border-[#2b313d] max-w-md shadow-dossier text-left">
-              <div className="flex items-center justify-between text-xs font-mono text-noir-400 mb-1 border-b border-noir-750 pb-1.5">
-                <span className="flex items-center gap-1.5 text-brass-400 font-bold uppercase tracking-wider text-[11px]">
-                  <FileText className="w-3.5 h-3.5" /> {t('ongoingInvestigation')}
-                </span>
-                <span className="text-blood-400 font-bold text-[11px]">{activeCaseObj.caseNumber}</span>
-              </div>
-              <div className="font-serif font-bold text-sm text-noir-100 mt-2">
-                {getLoc(activeCaseObj.title)}
-              </div>
-              <p className="text-[11px] font-mono text-noir-400 truncate mt-0.5">
-                {getLoc(activeCaseObj.location)}
-              </p>
-            </div>
-          )}
-        </div>
+          <h2>{getLoc(featured.title)}</h2>
 
-        {/* Right Column: Menu Actions */}
-        <div className="w-full sm:w-80 space-y-3 font-mono text-sm">
-          {/* Continue Investigation Button */}
-          {lastActiveCaseId && (
-            <button
-              onClick={handleContinue}
-              className="group w-full py-3.5 px-5 bg-blood-800 hover:bg-blood-700 text-white font-bold rounded shadow-lg border border-blood-600 flex items-center justify-between transition-all transform hover:-translate-y-0.5"
-            >
-              <div className="flex items-center space-x-3">
-                <Play className="w-4 h-4 fill-white" />
-                <span className="tracking-wide">{t('continueInvestigation')}</span>
-              </div>
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          )}
+          <p className="feature-subtitle">{getLoc(featured.subtitle)}</p>
 
-          {/* New / Select Case File */}
-          <button
-            onClick={handleNewGame}
-            className="group w-full py-3.5 px-5 bg-noir-900 hover:bg-noir-850 hover:border-blood-600/70 border border-noir-750 text-noir-100 font-bold rounded shadow-md flex items-center justify-between transition-all transform hover:-translate-y-0.5"
-          >
-            <div className="flex items-center space-x-3">
-              <FolderOpen className="w-4 h-4 text-brass-400" />
-              <span className="tracking-wide">{t('selectCaseFile')}</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-noir-400 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          {/* Detective Profile Dossier */}
-          <button
-            onClick={() => setIsProfileOpen(true)}
-            className="group w-full py-3 px-5 bg-noir-900 hover:bg-noir-850 hover:border-noir-600 border border-noir-800 text-noir-300 hover:text-white rounded flex items-center justify-between transition-all"
-          >
-            <div className="flex items-center space-x-3">
-              <Shield className="w-4 h-4 text-brass-400" />
-              <span>{t('detectiveProfile')}</span>
-            </div>
-            <span className="text-[10px] text-brass-300 bg-brass-950 border border-brass-800 px-2 py-0.5 rounded uppercase">
-              {getLocalizedRank(profile.rank, language)}
+          <div className="feature-meta">
+            <span>
+              <MapPin />
+              {getLoc(featured.site)}
             </span>
-          </button>
-
-          {/* Settings */}
-          <button
-            onClick={() => setIsSettingsOpen(true)}
-            className="group w-full py-3 px-5 bg-noir-900 hover:bg-noir-850 hover:border-noir-600 border border-noir-800 text-noir-300 hover:text-white rounded flex items-center justify-between transition-all"
-          >
-            <div className="flex items-center space-x-3">
-              <Sliders className="w-4 h-4 text-noir-400" />
-              <span>{t('settingsAudio')}</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-noir-500 group-hover:text-noir-300 transition-colors" />
-          </button>
-
-          {/* Production Credits */}
-          <button
-            onClick={() => setIsCreditsOpen(true)}
-            className="group w-full py-3 px-5 bg-noir-900 hover:bg-noir-850 hover:border-noir-600 border border-noir-800 text-noir-400 hover:text-white rounded flex items-center justify-between transition-all"
-          >
-            <div className="flex items-center space-x-3">
-              <Feather className="w-4 h-4 text-noir-500" />
-              <span>{t('productionCredits')}</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-noir-600 group-hover:text-noir-300 transition-colors" />
-          </button>
-        </div>
-      </main>
-
-      {/* Bottom Bar: Detective Career Overview Status */}
-      <footer className="relative z-20 max-w-7xl w-full mx-auto px-6 py-5 border-t border-noir-850 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-noir-400">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <span className="text-noir-500">{t('detectiveLabel')}:</span>
-            <span className="text-white font-bold">{profile.name}</span>
+            <span>
+              <Users />
+              {formatNum(featured.suspects.length)} {bn ? 'সন্দেহভাজন' : 'suspects'}
+            </span>
           </div>
-          <div className="h-3 w-px bg-noir-800" />
-          <div className="flex items-center space-x-1.5">
-            <Award className="w-3.5 h-3.5 text-brass-400" />
-            <span className="text-brass-300 font-bold">{formatNum(profile.totalPoints)} {t('pts')}</span>
-          </div>
+
+          <button className="gold-action" onClick={() => ongoing ? resumeLastCase() : setBrief(featured)}>
+            {closed ? (bn ? 'মামলার নথি দেখুন' : 'Review case file') : ongoing ? t('continueInvestigation') : (bn ? 'মামলার বিবরণ' : 'Open case file')}
+            <ArrowRight size={17} />
+          </button>
+
         </div>
 
-        <div className="flex items-center space-x-6 text-[11px]">
-          <span>
-            {t('closedCases')}:{' '}
-            <strong className="text-green-400 font-mono">
-              {formatNum(profile.completedCaseIds.length)} / {formatNum(ALL_CASES.length)}
-            </strong>
-          </span>
-          <span>
-            {t('detectiveRank')}: <strong className="text-parchment-100">{getLocalizedRank(profile.rank, language)}</strong>
-          </span>
+        <div className="photo-caption">
+          <ScanLine size={15} />
+          {getLoc(featured.crimeScene.roomTitle)}
         </div>
-      </footer>
 
-      {/* Modals */}
-      <ProfileModal isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
-      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-      <CreditsModal isOpen={isCreditsOpen} onClose={() => setIsCreditsOpen(false)} />
-    </div>
-  );
-};
+      </section>
+
+      <section className="archive-section">
+        <div className="section-heading">
+          <h2>
+            <Folders />
+            {bn ? 'মামলার নথি' : 'Case archive'}
+          </h2>
+
+          <button className="archive-link" onClick={() => setCurrentView('cases')}>
+            {bn ? 'সব নথি' : 'View all files'}
+            <ChevronRight size={16} />
+          </button>
+        </div>
+
+        <CaseCards onSelect={setBrief} />
+
+      </section>
+
+    </main>
+
+    <footer className="desk-footer">
+      <span>
+        <Fingerprint size={17} />
+        {bn ? 'সমাপ্ত মামলা' : 'Cases closed'}
+        <b>
+          {formatNum(profile.completedCaseIds.length)} /
+          {formatNum(allCases.length)}
+        </b>
+      </span>
+
+      <button onClick={() => setPanel('credits')}>
+        <BookOpen size={14} />
+        {t('productionCredits')}
+      </button>
+    </footer>
+
+    {brief && <CaseBrief file={brief} onClose={() => setBrief(null)} />}
+
+    {panel === 'profile' && <ProfileModal isOpen onClose={() => setPanel(null)} />}
+
+    {panel === 'settings' && <SettingsModal isOpen onClose={() => setPanel(null)} />}
+
+    {panel === 'credits' && <CreditsModal isOpen onClose={() => setPanel(null)} />}
+
+  </div>;
+}

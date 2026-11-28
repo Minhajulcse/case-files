@@ -66,27 +66,24 @@ export interface EvidenceItem {
   dateDiscovered?: string;
 }
 
-export interface HotspotFocusRect {
-  x: number; // percentage 0 - 100
-  y: number; // percentage 0 - 100
-  width: number; // percentage 0 - 100
-  height: number; // percentage 0 - 100
-}
+export type PlateId = 'study' | 'apartment' | 'conduit' | 'vault' | 'dispatch';
+export type HotspotShape =
+  | { type: 'rect'; width: number; height: number }
+  | { type: 'polygon'; points: [number, number][] };
 
 export interface HotspotItem {
+  plate: PlateId;
+  shape: HotspotShape;
   id: string;
   name: LocalizableText;
   x: number; // percentage 0 - 100
   y: number; // percentage 0 - 100
-  radius?: number;
   description: LocalizableText;
   detailViewImage?: string;
   revealsEvidenceId: string;
   isHidden?: boolean;
-  requiresClueIdToNotice?: string;
   discoveryNote: LocalizableText;
   iconType: 'magnifier' | 'footprint' | 'document' | 'key' | 'flask' | 'camera' | 'safe';
-  focusRect?: HotspotFocusRect;
 }
 
 export interface DialogueOption {
@@ -107,6 +104,7 @@ export interface EvidenceReaction {
   stressIncrease: number; // 0 to 100
   unlocksDialogueIds?: string[];
   exposesLie?: boolean;
+  requiresEvidenceIds?: string[];
 }
 
 export interface Suspect {
@@ -139,6 +137,7 @@ export interface EvidenceBoardNode {
 }
 
 export interface CanonConnection {
+  requiresEvidenceIds?: string[];
   id: string;
   sourceId: string;
   targetId: string;
@@ -158,6 +157,7 @@ export interface UserConnection {
 
 export interface TimelineEvent {
   id: string;
+  evidenceId: string;
   timestamp: string;
   timeSortValue: number;
   title: LocalizableText;
@@ -175,7 +175,19 @@ export interface CaseHint {
   hintText: LocalizableText;
 }
 
+export interface Deduction {
+  id: string;
+  question: LocalizableText;
+  // A recorded board link and the independent exhibits that authenticate it.
+  connectionId: string;
+  alternativeConnectionIds?: string[];
+  evidenceIds: string[];
+}
+
 export interface CaseSolution {
+  motiveId: string;
+  methodId: string;
+  timeId: string;
   culpritId: string;
   culpritName: LocalizableText;
   motiveDescription: LocalizableText;
@@ -183,6 +195,7 @@ export interface CaseSolution {
   approximateTime: LocalizableText;
   crucialEvidenceIds: string[];
   falseAlibiSuspectId: string;
+  statementQuestion?: LocalizableText;
   fullCaseDebriefing: LocalizableText;
   options: {
     motives: { id: string; label: LocalizableText }[];
@@ -191,19 +204,12 @@ export interface CaseSolution {
   };
 }
 
-export type CaseAvailability = 'AVAILABLE' | 'COMING_SOON';
-
-export const CASE_AVAILABILITY: Record<string, CaseAvailability> = {
-  'case-001': 'AVAILABLE',
-  'case-002': 'COMING_SOON',
-  'case-003': 'COMING_SOON'
-};
-
 export interface CaseData {
   id: string;
   caseNumber: string;
   title: LocalizableText;
   subtitle: LocalizableText;
+  site: LocalizableText;
   badge: 'MURDER' | 'ABDUCTION' | 'GRAND HEIST';
   difficulty: 'Standard' | 'Hard' | 'Master';
   estimatedTime: string;
@@ -219,12 +225,13 @@ export interface CaseData {
   crimeScene: {
     roomTitle: LocalizableText;
     roomDescription: LocalizableText;
+    plates: PlateId[];
     sceneTheme: 'victorian_study' | 'motel_safehouse' | 'museum_vault';
-    imageUrl?: string;
     hotspots: HotspotItem[];
   };
   suspects: Suspect[];
   evidence: EvidenceItem[];
+  deductions: Deduction[];
   canonConnections: CanonConnection[];
   timelineEvents: TimelineEvent[];
   hints: CaseHint[];
@@ -242,6 +249,7 @@ export interface FinalReportAnswers {
 }
 
 export interface FinalReportEvaluation {
+  accepted?: boolean; // Older completed saves predate evidence-backed verdicts.
   isCulpritCorrect: boolean;
   isMotiveCorrect: boolean;
   isMethodCorrect: boolean;
@@ -263,12 +271,15 @@ export interface ActiveCaseState {
   markedImportantClueIds: string[];
   askedDialogueIds: Record<string, string[]>;
   presentedClueIds: Record<string, string[]>;
+  confirmedStatementIds?: string[];
   suspectStressLevels: Record<string, number>;
+  rewardedConnectionIds?: string[];
   userConnections: UserConnection[];
   timelineOrder: string[];
   unlockedHintLevels: number[];
   revealedHiddenHotspots: string[];
   caseNotes: string;
+  reportDraft?: FinalReportAnswers;
   isCompleted: boolean;
   evaluation?: FinalReportEvaluation;
   startedAt: number;

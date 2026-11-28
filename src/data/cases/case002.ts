@@ -1,22 +1,22 @@
-import { CaseData } from '../../types/game';
+import type { CaseData } from '../../types/game';
 
 export const case002: CaseData = {
   id: 'case-002',
   caseNumber: 'CASE 002',
   title: {
-    en: 'THE MISSING WITNESS',
-    bn: 'নিখোঁজ প্রত্যক্ষদর্শী'
+    en: 'The Missing Witness',
+    bn: 'নিখোঁজ সাক্ষী'
   },
   subtitle: {
-    en: 'A Compromised Safehouse, a Staged Kidnapping, and a Vanished Whistleblower',
-    bn: 'একটি অরক্ষিত সেফহাউস, সাজানো অপহরণ এবং উধাও হওয়া প্রধান সাক্ষী'
+    en: 'A witness vanishes before dawn. The fourth-floor door tells only part of the story.',
+    bn: 'ভোরের আগে সাক্ষী নিখোঁজ। চারতলার দরজা গল্পের একাংশই বলে।'
   },
   badge: 'ABDUCTION',
   difficulty: 'Hard',
   estimatedTime: '30-40 mins',
   victimOrSubject: {
-    en: 'Farzana Haque (Age 31, Chief Forensic Accountant & Crown Whistleblower)',
-    bn: 'ফারজানা হক (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)'
+    en: 'Clara Thorne (Age 31, Chief Forensic Accountant & Crown Whistleblower)',
+    bn: 'ক্লারা থর্ন (বয়স ৩১, প্রধান ফরেনসিক হিসাবরক্ষক ও সরকারি হুইসেলব্লোয়ার)'
   },
   incidentDate: {
     en: 'November 03, 2024 — 01:15 Hours',
@@ -27,13 +27,13 @@ export const case002: CaseData = {
     bn: 'ফেডারেল সেফহাউস ৪০৪, সেন্ট জুড অ্যাপার্টমেন্টস, ইস্ট ডকস'
   },
   synopsis: {
-    en: 'Hours before she was scheduled to testify against the ruthless Blackwood Crime Syndicate, key whistleblower Farzana Haque disappeared from her 4th-floor guarded safehouse. The door was forced, furniture overturned, blood splattered on the rug, and her police escort unconscious in the hallway. Did the mob abduct her, or did she execute a daring escape?',
-    bn: 'কুখ্যাত ব্ল্যাকউড অপরাধ সিন্ডিকেটের বিরুদ্ধে আদালতে সাক্ষ্য দেওয়ার ঠিক কয়েক ঘণ্টা আগে ৪ তলার সুরক্ষিত সেফহাউস থেকে নিখোঁজ হন প্রধান সাক্ষী ফারজানা হক। দরজা ভাঙা, আসবাবপত্র ওলটপালট, মেঝেতে ছোপ ছোপ রক্ত এবং পুলিশ পাহারাদার করিডোরে অচেতন অবস্থায় পড়ে ছিল। অপরাধীরা কি তাকে অপহরণ করেছে, নাকি সে নিজেই পালিয়ে গেছে?'
+    en: 'Clara Thorne is missing from Room 404 on the eve of the Blackwood trial. A guard lies in the hall. Inside the room a lamp has fallen across a dark stain.',
+    bn: 'ব্ল্যাকউড বিচারের আগের রাতে ৪০৪ থেকে ক্লারা থর্ন নিখোঁজ। করিডোরে এক প্রহরী পড়ে আছেন। ঘরে গাঢ় দাগের ওপর বাতি উল্টে আছে।'
   },
   briefing: {
     chiefMemo: {
-      en: 'Detective, the Blackwood trial collapses in 10 hours unless we recover Farzana Haque or prove what occurred in that apartment. Officer Rayhan Kabir claims he was ambushed from behind by masked men. But something smells foul. Search the apartment, examine communication logs, cross-examine the protection detail, and reconstruct the true sequence of events.',
-      bn: 'গোয়েন্দা, আগামী ১০ ঘণ্টার মধ্যে ফারজানা হককে খুঁজে না পেলে বা সত্য উন্মোচন না হলে সিন্ডিকেটের বিচার বাতিল হয়ে যাবে। অফিসার রায়হান কবীরর দাবি মুখোশধারীরা তাকে পেছন থেকে আঘাত করেছে। কিন্তু কিছু একটা গোলমেলে ঠেকছে। অ্যাপার্টমেন্টটি তল্লাশি করুন, কল রেকর্ড ও ডিজিটাল যোগাযোগ পরীক্ষা করুন এবং সত্য উদঘাটন করুন।'
+      en: 'Establish whether the address was sold, and who was responsible for that disclosure. Account separately for how and when the witness left. A breached door dates only one event.',
+      bn: 'ঠিকানা বিক্রি হয়েছিল কি না এবং সেই ফাঁসের জন্য কে দায়ী, খুঁজুন। সাক্ষী কখন ও কীভাবে বেরোলেন, আলাদাভাবে যাচাই করুন। দরজা ভাঙা কেবল একটি ঘটনা।'
     },
     initialStatus: {
       en: 'Safehouse cordoned off by State Marshals. Syndicate trial scheduled for 10:00 AM.',
@@ -41,192 +41,280 @@ export const case002: CaseData = {
     },
     keyObjectives: [
       {
-        en: 'Inspect Safehouse Room 404 for signs of genuine struggle vs staged deception.',
-        bn: 'রুম ৪০৪-এ প্রকৃত ধস্তাধস্তির প্রমাণ নাকি সাজানো নাটকের আলামত রয়েছে তা নির্ধারণ করুন।'
+        en: 'Reconcile the duty roster with the message traffic.',
+        bn: 'ডিউটির তালিকা ও বার্তার সময় মেলান।'
       },
       {
-        en: 'Investigate the unconscious protection officer and digital communications.',
-        bn: 'অচেতন পাহারাদার অফিসার ও তার ডিজিটাল ডিভাইসের আদান-প্রদান তদন্ত করুন।'
+        en: 'Follow the physical trail beyond the apartment.',
+        bn: 'ফ্ল্যাটের বাইরেও ভৌত চিহ্ন অনুসরণ করুন।'
       },
       {
-        en: 'Examine building entry logs, CCTV footage, and subterranean maintenance tunnels.',
-        bn: 'ভবনের সিসিটিভি ফুটেজ এবং ভূগর্ভস্থ কয়লা ও বাষ্প বয়লারের সুড়ঙ্গপথ পরীক্ষা করুন।'
-      },
-      {
-        en: 'Determine who leaked the safehouse location and what truly happened to Farzana Haque.',
-        bn: 'কে সেফহাউসের গোপন ঠিকানা ফাঁস করেছিল এবং ফারজানা হকের সাথে আসলে কী ঘটেছে তা প্রমাণ করুন।'
-      },
-      {
-        en: 'Submit the final indictment with ironclad physical and digital evidence.',
-        bn: 'অকাট্য ডিজিটাল ও শারীরিক প্রমাণসহ চূড়ান্ত অভিযোগপত্র পেশ করুন।'
+        en: 'Date the exit independently of the alarm.',
+        bn: 'সতর্কতার সময় থেকে আলাদা করে বেরোনোর সময় নির্ণয় করুন।'
       }
     ]
   },
   crimeScene: {
     roomTitle: {
-      en: 'Safehouse Room 404 — Main Living Quarters',
-      bn: 'সেফহাউস রুম ৪০৪ — প্রধান বসবাসের ঘর'
+      en: 'Safehouse 404',
+      bn: 'সেফহাউস ৪০৪'
     },
     roomDescription: {
-      en: 'A nondescript apartment with reinforced deadbolts, drawn blinds, an overturned floor lamp, broken teacups on the carpet, an unmade cot, a humming radiator, and an open steam vent in the adjacent kitchenette.',
-      bn: 'একটি সাধারণ অ্যাপার্টমেন্ট। ভারী দরজার লক, টানা পর্দা, মেঝেতে উল্টে পড়ে থাকা বাতি, ভাঙা চায়ের কাপ, এলোমেলো বিছানা, গর্জন করতে থাকা স্টিম হিটার এবং রান্নাঘরের উন্মুক্ত ডাক্ট প্যানেল।'
+      en: 'The fourth-floor flat overlooks the railway cutting. A service passage connects the basement to the old platform.',
+      bn: 'চারতলার ফ্ল্যাট থেকে রেলপথ দেখা যায়। বেসমেন্ট থেকে পুরোনো প্ল্যাটফর্মে একটি পরিষেবা পথ রয়েছে।'
     },
     sceneTheme: 'motel_safehouse',
     hotspots: [
       {
         id: 'hs-02-door',
         name: {
-          en: 'Apartment Entrance & Door Frame',
-          bn: 'দরজার ফ্রেম ও প্রবেশপথ'
+          en: 'Door and strike plate',
+          bn: 'দরজা ও ধাতব পাত'
         },
-        x: 15,
-        y: 42,
-        radius: 28,
+        x: 13,
+        y: 35.5,
         description: {
-          en: 'The steel door has outward splintering on the jamb. Officer Rayhan Kabir was found slumped in the hallway outside.',
-          bn: 'দরজার ফ্রেম বাইরে থেকে ভাঙা। বাইরে করিডোরে অফিসার রায়হান কবীরকে অচেতন অবস্থায় পাওয়া যায়।'
+          en: 'A bright splinter interrupts the dark frame.',
+          bn: 'গাঢ় ফ্রেমে উজ্জ্বল ভাঙা অংশ।'
         },
         revealsEvidenceId: 'clue-02-forced-door',
         discoveryNote: {
-          en: 'Forensic inspection of the strike plate shows pry marks made from the OUTSIDE, but the deadbolt was already unlatched before being struck.',
-          bn: 'ফরেনসিক পরীক্ষায় দেখা গেল বাইরে থেকে লাথি মেরে দরজা ভাঙা হয়েছিল, কিন্তু আঘাত করার আগেই ভেতরের লকটি খোলা ছিল।'
+          en: 'A clipped duty sheet is folded behind the plate.',
+          bn: 'পাতের পেছনে ডিউটির তালিকা ভাঁজ করা।'
         },
-        iconType: 'magnifier'
+        iconType: 'magnifier',
+        plate: 'apartment',
+        shape: {
+          type: 'rect',
+          width: 16.4,
+          height: 51.6
+        }
       },
       {
         id: 'hs-02-rug',
         name: {
-          en: 'Overturned Lamp & Stained Rug',
-          bn: 'উল্টানো বাতি ও রক্তের দাগযুক্ত গালিচা'
+          en: 'Stained rug',
+          bn: 'দাগ লাগা গালিচা'
         },
         x: 45,
-        y: 60,
-        radius: 26,
+        y: 77,
         description: {
-          en: 'A shattered porcelain lamp and dark red droplets spattered on the worn linoleum rug.',
-          bn: 'ভাঙা চিনামাটির বাতি এবং পুরোনো লিনোলিয়ামের গালিচায় ছিটকে পড়া জমাট রক্ত।'
+          en: 'Dark pigment breaks across the woven pattern.',
+          bn: 'বোনা নকশার ওপর গাঢ় রঙের ছোপ।'
         },
         revealsEvidenceId: 'clue-02-staged-blood',
         discoveryNote: {
-          en: 'Field reagent test confirms the red droplets are synthetic theatrical stage blood mixed with chicken plasma, NOT human hemoglobin!',
-          bn: 'রাসায়নিক পরীক্ষায় ধরা পড়েছে এটি মানুষের রক্ত নয়, বরং নাটকে ব্যবহৃত কৃত্রিম লাল সিরাপ ও পশুর রক্ত!'
+          en: 'Dry red pigment lies beneath a flake of door paint.',
+          bn: 'দরজার রঙের কণার নিচে শুকনো লাল রং।'
         },
-        iconType: 'flask'
+        iconType: 'flask',
+        plate: 'apartment',
+        shape: {
+          type: 'polygon',
+          points: [[40, 74], [46, 72], [50, 74], [50, 78], [46, 81], [40, 80]]
+        }
       },
       {
         id: 'hs-02-radiator',
         name: {
-          en: 'Cast Iron Steam Radiator',
-          bn: 'ঢালাই লোহার স্টিম হিটার'
+          en: 'Steam radiator',
+          bn: 'রেডিয়েটর'
         },
-        x: 75,
-        y: 52,
-        radius: 24,
+        x: 76,
+        y: 50,
         description: {
-          en: 'A clanking steam radiator beneath the taped-up window.',
-          bn: 'টেপ দিয়ে সিল করা জানালার নিচে শব্দ করতে থাকা হিটার।'
+          en: 'Something flat is caught behind the last fin.',
+          bn: 'শেষ খাঁজের পেছনে চ্যাপ্টা কিছু আটকানো।'
         },
         revealsEvidenceId: 'clue-02-burner-phone',
         discoveryNote: {
-          en: 'Concealed in the hollow gap behind the radiator: an active disposable burner phone with text messages coordinates matching Officer Rayhan Kabir\'s unit.',
-          bn: 'রেডিয়েটরের পেছনে লুকিয়ে রাখা একটি সস্তা বার্নার ফোন পাওয়া গেছে, যাতে অফিসার রায়হান কবীরর সাথে বার্তা আদান-প্রদানের রেকর্ড রয়েছে।'
+          en: 'The receiver contains a cached dispatch receipt.',
+          bn: 'রিসিভারে ডিসপ্যাচ রসিদের অনুলিপি আছে।'
         },
-        iconType: 'magnifier'
+        iconType: 'magnifier',
+        plate: 'apartment',
+        shape: {
+          type: 'rect',
+          width: 14,
+          height: 23
+        }
       },
       {
         id: 'hs-02-vent',
         name: {
-          en: 'Kitchenette Maintenance Hatch',
-          bn: 'রান্নাঘরের দেয়ালের ভেন্টিলেশন প্যানেল'
+          en: 'Kitchenette hatch',
+          bn: 'রান্নাঘরের ফাঁক'
         },
-        x: 88,
-        y: 35,
-        radius: 25,
+        x: 90,
+        y: 34,
         description: {
-          en: 'A low sheet-metal access panel in the kitchenette wall leading into the building\'s central steam conduit pipe shaft.',
-          bn: 'রান্নাঘরের দেয়ালের নিচে একটি টিনের ঢাকনা যা ভবনের মাটির নিচের পুরনো বাষ্প সুড়ঙ্গে চলে গেছে।'
+          en: 'The mesh cover hangs at a slight angle.',
+          bn: 'জালির ঢাকনা সামান্য কাত।'
         },
         revealsEvidenceId: 'clue-02-vent-grate',
         discoveryNote: {
-          en: 'The screws were removed from the inside and greased with butter. Scratches on the sheet metal indicate someone crawled through into the basement boiler shaft.',
-          bn: 'ঢাকনার স্ক্রুগুলো ভেতর থেকে মাখন মাখিয়ে খোলা হয়েছিল। ঘষার দাগ প্রমাণ করে কেউ একজন সুড়ঙ্গ বেয়ে বেসমেন্টে নেমে গেছে।'
+          en: 'The hinge-side dust has been brushed toward the stair.',
+          bn: 'কবজার পাশের ধুলো সিঁড়ির দিকে সরেছে।'
         },
-        iconType: 'key'
+        iconType: 'key',
+        plate: 'apartment',
+        shape: {
+          type: 'rect',
+          width: 12,
+          height: 21
+        }
       },
       {
         id: 'hs-02-desk',
         name: {
-          en: 'Makeshift Desk & Trash',
-          bn: 'ছোট টেবিল ও ময়লার ঝুড়ি'
+          en: 'Folding desk',
+          bn: 'ভাঁজ টেবিল'
         },
-        x: 35,
-        y: 30,
-        radius: 24,
+        x: 37,
+        y: 45,
         description: {
-          en: 'A laminate folding table with an unplugged laptop charger and a shredded notepad.',
-          bn: 'একটি ফোল্ডিং টেবিল, যাতে ল্যাপটপ চার্জার এবং টুকরো করা নোটপ্যাড রয়েছে।'
+          en: 'One corner of the timetable sits higher than the rest.',
+          bn: 'সময়সূচির এক কোণ একটু উঁচু।'
         },
         revealsEvidenceId: 'clue-02-torn-ticket',
         discoveryNote: {
-          en: 'Recovered a torn sleeper car train ticket for the 23:45 Night Express to Montreal under the alias "Rehana Karim".',
-          bn: 'মন্ট্রিয়লগামী রাত ১১:৪৫ ট্রেনের একটি ছেঁড়া টিকিট পাওয়া গেছে, যা "র‍্যাচেল ক্যাম্পবেল" ছদ্মনামে কেনা।'
+          en: 'The paper underneath is the passenger half of a rail voucher.',
+          bn: 'নিচের কাগজটি রেল ভাউচারের যাত্রী অংশ।'
         },
-        iconType: 'document'
+        iconType: 'document',
+        plate: 'apartment',
+        shape: {
+          type: 'polygon',
+          points: [[31, 40], [45, 40], [48, 51], [28, 52]]
+        }
       },
       {
         id: 'hs-02-coat',
         name: {
-          en: 'Hallway Coat Pegs',
-          bn: 'করিডোরের জামা ঝুলানোর হুক'
+          en: 'Coat pegs',
+          bn: 'কাপড় রাখার খুঁটি'
         },
-        x: 22,
-        y: 25,
-        radius: 22,
+        x: 24.8,
+        y: 24,
         description: {
-          en: 'A rain slicker hanging from a hook with water still dripping from the hem.',
-          bn: 'ভেজা রেইনকোট ঝুলছে, যার কোণা থেকে তখনও ফোঁটা ফোঁটা পানি পড়ছে।'
+          en: 'A scarf is looped over an empty peg by the door.',
+          bn: 'দরজার পাশে খালি খুঁটিতে স্কার্ফ।'
         },
         isHidden: true,
         revealsEvidenceId: 'clue-02-sister-scarf',
         discoveryNote: {
-          en: 'Tucked inside the coat pocket: a silk lavender floral scarf smelling of French perfume, belonging to Farzana\'s sister Mousumi Das.',
-          bn: 'কোটের পকেটে ল্যাভেন্ডার ফুলের সুগন্ধি মাখা একটি রেশমি স্কার্ফ পাওয়া গেছে, যা ফারজানার বোন মৌসুমী দাসের।'
+          en: 'There is transfer colour in the hem, beside two stitched initials.',
+          bn: 'পাড়ের দুই আদ্যক্ষরের পাশে ছাপার রং।'
         },
-        iconType: 'magnifier'
+        iconType: 'magnifier',
+        plate: 'apartment',
+        shape: {
+          type: 'polygon',
+          points: [[21.6, 16.9], [29.3, 16.9], [29.3, 19.2], [25.6, 19.2], [27.3, 27.5],
+            [25.6, 29.2], [25.2, 25], [25.2, 32.7], [23.5, 33], [22.6, 27.4], [23.5, 19.2], [21.6, 19.2]]
+        }
       },
       {
         id: 'hs-02-boiler',
         name: {
-          en: 'Basement Boiler Conduit Exit',
-          bn: 'বেসমেন্ট বয়লার সুড়ঙ্গের প্রস্থানমুখ'
+          en: 'Soot on the passage floor',
+          bn: 'পথের মেঝেতে কালি'
         },
-        x: 60,
-        y: 78,
-        radius: 25,
+        x: 46,
+        y: 79,
         description: {
-          en: 'The sub-level tunnel door leading out to the rear alleyway delivery dock.',
-          bn: 'পেছনের মালবাহী রেল লাইনের দিকে বের হয়ে যাওয়া মাটির নিচের কয়লা সুড়ঙ্গ।'
+          en: 'Two trails cross the fresh sweep marks.',
+          bn: 'নতুন ঝাড়ুর দাগের ওপর দুই সারি ছাপ।'
         },
         isHidden: true,
         revealsEvidenceId: 'clue-02-tunnel-footprints',
         discoveryNote: {
-          en: 'Fresh footprints in boiler coal soot showing two distinct women\'s shoe prints exiting toward the freight dock alley at 23:20.',
-          bn: 'কয়লার কালিতে দুজন মহিলার জুতোর তাজা ছাপ যা রাত ১১:২০-এ মালবাহী প্ল্যাটফর্মের দিকে চলে গেছে।'
+          en: 'One repaired heel appears again at the platform gate.',
+          bn: 'তালি দেওয়া এক গোড়ালির ছাপ প্ল্যাটফর্মের ফটকেও আছে।'
         },
-        iconType: 'footprint'
+        iconType: 'footprint',
+        plate: 'conduit',
+        shape: {
+          type: 'polygon',
+          points: [[28, 89], [30, 81], [54, 70], [62, 64], [67, 67], [56, 76], [36, 90]]
+        }
+      },
+      {
+        id: 'hs-case-002-lamp-shade',
+        plate: 'apartment',
+        x: 56,
+        y: 77,
+        shape: {
+          type: 'polygon',
+          points: [[49, 67], [52, 66], [57, 74], [59, 75], [61, 83], [55, 82], [54, 78]]
+        },
+        name: {
+          en: 'Fallen floor lamp',
+          bn: 'পড়ে থাকা বাতি'
+        },
+        description: {
+          en: 'The floor lamp lies on its side. The shaded side of its rim bears a rectangular transfer mark.',
+          bn: 'বাতিটি পাশে কাত। কিনারার ছায়ার দিকে আয়তাকার রঙের ছাপ।'
+        },
+        discoveryNote: {
+          en: 'The underside preserves an impression that the rug no longer shows.',
+          bn: 'ঢাকনার নিচে এমন ছাপ আছে যা গালিচায় আর নেই।'
+        },
+        revealsEvidenceId: 'case-002-lamp-shade',
+        iconType: 'magnifier'
+      },
+      {
+        id: 'hs-02-platform-gate',
+        plate: 'conduit',
+        x: 51,
+        y: 38,
+        shape: {
+          type: 'polygon',
+          points: [[37.5, 53.8], [37.5, 28.4], [41, 23], [46, 19.5], [50, 19], [55, 22.5], [58.5, 28.4], [58.5, 53.8]]
+        },
+        name: { en: 'Platform gate', bn: 'প্ল্যাটফর্মের ফটক' },
+        description: {
+          en: 'A narrow paper strip hangs beneath the brass gate recorder. Two pens share the drum.',
+          bn: 'ফটকের পিতলের রেকর্ডার থেকে সরু কাগজ ঝুলছে। একই ড্রামে দুটি কলম।'
+        },
+        discoveryNote: {
+          en: 'The final mark before midnight lies on the lower track. The calibration card identifies which way the gate swung.',
+          bn: 'মধ্যরাতের আগের শেষ চিহ্নটি নিচের সারিতে। পাশের পরীক্ষার কার্ডে লেখা কোন সারি কোন দিক বোঝায়।'
+        },
+        revealsEvidenceId: 'case-002-gate-strip',
+        iconType: 'document'
+      },
+      {
+        id: 'hs-02-platform-notice',
+        plate: 'conduit',
+        x: 78.5,
+        y: 24.5,
+        shape: { type: 'polygon', points: [[73.5, 23], [83.5, 17.5], [83.5, 28], [75.5, 33], [73.5, 30.5]] },
+        name: { en: 'Platform notice', bn: 'প্ল্যাটফর্মের বিজ্ঞপ্তি' },
+        description: {
+          en: 'A porter has tucked a pink parcel counterfoil under the platform sign.',
+          bn: 'প্ল্যাটফর্মের ফলকের নিচে গোলাপি রঙের একটি পার্সেল রসিদ গোঁজা।'
+        },
+        discoveryNote: {
+          en: 'The porter stamped the collection just after the evening delivery. The space for the collector’s name is blank.',
+          bn: 'সন্ধ্যার সরবরাহের কিছু পরেই মাল তোলার সিল পড়েছে। সংগ্রহকারীর নামের ঘর খালি।'
+        },
+        revealsEvidenceId: 'case-002-parcel-counterfoil',
+        iconType: 'document'
       }
-    ]
+    ],
+    plates: ['apartment', 'conduit']
   },
   suspects: [
     {
       id: 'suspect-02-navarro',
       name: {
-        en: 'Inspector Rayhan Kabir',
-        bn: 'ইন্সপেক্টর রায়হান কবীর'
+        en: 'Detective Ray Navarro',
+        bn: 'ডিটেকটিভ রে নাভারো'
       },
       alias: {
-        en: 'The Compromised Guard',
-        bn: 'বিকিয়ে যাওয়া পাহারাদার'
+        en: 'The duty officer',
+        bn: 'ডিউটি অফিসার'
       },
       role: {
         en: 'Assigned Protection Detail Leader',
@@ -242,87 +330,90 @@ export const case002: CaseData = {
         bn: 'সেফহাউস পাহারায় নিয়োজিত পুলিশ কর্মকর্তা'
       },
       motive: {
-        en: 'Bank records show a $25,000 cash deposit into his offshore account at 23:00; deep in offshore sports betting debt.',
-        bn: 'অনলাইন জুয়ার বিপুল দেনায় ডুবে ছিল; রাত ১১টায় তার গোপন অ্যাকাউন্টে সিন্ডিকেটের ২৫,০০০ ডলার জমা হয়।'
+        en: 'A betting creditor had called the station. The duty leader controlled protected traffic alongside a relief desk.',
+        bn: 'বাজির পাওনাদার থানায় ফোন করেছিল। ডিউটি প্রধান ও বিকল্প ডেস্ক সুরক্ষিত বার্তা নিয়ন্ত্রণ করত।'
       },
       alibi: {
-        en: 'Claims he was struck from behind by two masked syndicate hitmen in the hallway at 00:45 and knocked unconscious.',
-        bn: 'দাবি করে রাত ১২:৪৫-এ করিডোরে মুখোশধারীরা তাকে পেছন থেকে রড দিয়ে আঘাত করে অজ্ঞান করে ফেলে।'
+        en: 'I saw Clara inside just before I went down at 00:45. The door was still undamaged then.',
+        bn: '০০:৪৫-এ পড়ে যাওয়ার ঠিক আগে ক্লারাকে ঘরে দেখি। তখনও দরজা অক্ষত।'
       },
       personality: {
         en: 'Defensive, rubbing the back of his neck, aggressive posture, evasive eyes.',
         bn: 'উদ্ধত কিন্তু চোখে ভীতি, ঘাড় চুলকাচ্ছে, বারবার নজর এড়িয়ে যাচ্ছে।'
       },
       secrets: {
-        en: 'Sold the safehouse address and access codes to Bakhtiar Alam for $50,000.',
-        bn: '৫০ হাজার ডলারের বিনিময়ে সেফহাউসের ঠিকানা ও শিফট পরিবর্তনের সময় সিন্ডিকেটের কাছে বিক্রি করেছিল।'
+        en: 'The K31 settlement cleared a personal betting debt.',
+        bn: 'K31 নিষ্পত্তিতে তাঁর ব্যক্তিগত বাজির ঋণ মেটে।'
       },
-      avatarSeed: 'Kabir',
+      avatarSeed: 'Navarro',
       avatarColor: '#dc2626',
       dialogueTree: [
         {
           id: 'dlg-n-1',
           prompt: {
-            en: 'Describe the ambush in the hallway.',
-            bn: 'করিডোরের হামলার বিবরণ দিন।'
+            en: 'What fixed the time of the ambush?',
+            bn: 'হামলার সময় কীভাবে বুঝলেন?'
           },
           response: {
-            en: 'I heard a noise by the fire escape stairs. As I stepped out to investigate, someone clocked me with a pipe. When I woke up, Farzana was gone and the door was kicked in.',
-            bn: 'সিঁড়ির কাছে শব্দ শুনে বের হয়েছিলাম। মুহূর্তের মধ্যে কেউ একজন লোহার পাইপ দিয়ে আমার মাথায় মারে। জ্ঞান ফিরলে দেখি দরজা ভাঙা আর ফারজানা উধাও।'
+            en: 'The quarter-hour recall sounded. I remember the door shut behind me. I woke when backup arrived.',
+            bn: 'পনেরো মিনিটের সংকেত শুনি। পেছনে দরজা বন্ধ ছিল। সাহায্য এলে জ্ঞান ফেরে।'
           },
           reactionMood: 'hostile'
         },
         {
           id: 'dlg-n-2',
           prompt: {
-            en: 'Why was your personal weapon found unfired in its holster?',
-            bn: 'আপনার পিস্তলটি হলস্টারে সম্পূর্ণ অব্যবহৃত অবস্থায় ছিল কেন?'
+            en: 'Who kept the dispatch seals?',
+            bn: 'ডিসপ্যাচ সিল কার কাছে ছিল?'
           },
           response: {
-            en: 'It happened in two seconds! They blindsided me! What, are you accusing a decorated fifteen-year veteran of letting a witness get taken?',
-            bn: 'সবকিছু চোখের পলকে ঘটেছিল! আমাকে ভাবার সুযোগ দেয়নি! আপনি কি ১৫ বছরের সম্মানিত অফিসারকে সাক্ষী হাতছাড়া করার অপবাদ দিচ্ছেন?'
+            en: 'The supervisor checked twice. We each retained our own. A receiver in the room could hear releases.',
+            bn: 'তদারককারী দুবার দেখেন। সবার সিল নিজের কাছে ছিল। ঘরের রিসিভারে বার্তা শোনা যেত।'
           },
           reactionMood: 'defensive'
         },
         {
           id: 'dlg-n-3',
           prompt: {
-            en: 'Whose burner phone was transmitting from behind the radiator?',
-            bn: 'হিটারের পেছনে লুকিয়ে রাখা ফোনটি কার সাথে বার্তা আদান-প্রদান করছিল?'
+            en: 'Was any debt paid that evening?',
+            bn: 'সন্ধ্যায় কোনো ঋণ শোধ হয়েছিল?'
           },
           response: {
-            en: 'Burner phone? I know nothing about that. Farzana was forbidden from having electronic devices. If she had a phone, she smuggled it in herself.',
-            bn: 'বার্নার ফোন? আমি ওসবের কিছুই জানি না। ফারজানার কোনো ডিভাইস রাখার নিয়ম ছিল না। ওটা থাকলে সে নিজেই লুকিয়ে এনেছে।'
+            en: 'Internal affairs already obtained the clearing slip. I said the money was a family loan.',
+            bn: 'অভ্যন্তরীণ তদন্ত রসিদ নিয়েছে। আমি বলেছি সেটা পরিবারের ঋণ।'
           },
-          reactionMood: 'nervous'
+          reactionMood: 'nervous',
+          revealsClueId: 'clue-02-navarro-deposit',
+          conditionClueId: 'clue-02-burner-phone'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-02-navarro-deposit',
           reactionText: {
-            en: 'Kabir sweats heavily: "That $25,000? That was... a private loan from my brother-in-law to clear casino debts! It has nothing to do with this assignment!"',
-            bn: 'কবীর ঘেমে ওঠে: "ওই ২৫,০০০ ডলার? ওটা আমার শ্যালকের কাছ থেকে নেওয়া ব্যক্তিগত ধার! এই সেফহাউসের সাথে ওর কোনো সম্পর্ক নেই!"'
+            en: 'The bank redacted the beneficiary, so you cannot read a name there.',
+            bn: 'ব্যাংক প্রাপকের নাম ঢেকেছে, সেখানে নাম পড়তে পারবেন না।'
           },
           stressIncrease: 45,
-          exposesLie: true
+          exposesLie: true,
+          requiresEvidenceIds: ['clue-02-burner-phone', 'clue-02-forced-door']
         },
         {
           evidenceId: 'clue-02-burner-phone',
           reactionText: {
-            en: 'Kabir\'s jaw tightens: "The IMEI on that burner matches the phone seized from my locker? I... I need to consult my union attorney immediately."',
-            bn: 'কবীর সাহেবের চোয়াল শক্ত হয়ে যায়: "ওই ফোনের আইএমইআই আমার লকারের ফোনের সাথে মিলে গেছে? আমি... আমি আমার আইনজীবীর সাথে কথা না বলে আর কিছু বলব না।"'
+            en: 'Those sets store other people’s traffic as well as ours.',
+            bn: 'ওই যন্ত্রে আমাদের পাশাপাশি অন্যের বার্তাও জমে।'
           },
           stressIncrease: 50,
-          exposesLie: true
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-02-sterling',
       name: {
-        en: 'Tanvir Shikder',
-        bn: 'তানভীর শিকদার'
+        en: 'Thomas Sterling',
+        bn: 'টমাস স্টার্লিং'
       },
       alias: {
         en: 'The Syndicate Consigliere',
@@ -338,49 +429,49 @@ export const case002: CaseData = {
         bn: 'প্রভাবশালী ফৌজদারি আইনজীবী'
       },
       relationshipToVictim: {
-        en: 'Adversary in court; cross-examined Farzana in depositions',
+        en: 'Adversary in court; cross-examined Clara in depositions',
         bn: 'আদালতের প্রতিপক্ষ উকিল'
       },
       motive: {
-        en: 'If Farzana testifies, his billionaire client goes to federal penitentiary for life and Shikder loses his retainer.',
-        bn: 'ফারজানা সাক্ষ্য দিলে সিন্ডিকেট প্রধানের যাবজ্জীবন জেল হবে এবং শিকদারের কোটি টাকার ক্যারিয়ার ধ্বংস হবে।'
+        en: 'His client stood to lose the trial and his retainer with it. He could authorise the courier fund.',
+        bn: 'মক্কেল হারলে তাঁর পারিশ্রমিকও যাবে। কুরিয়ার তহবিল অনুমোদনের ক্ষমতা ছিল।'
       },
       alibi: {
-        en: 'Claims he was in his downtown penthouse drafting legal motions until 02:00 with his junior associates.',
-        bn: 'দাবি করে রাত ২টা পর্যন্ত সে নিজের চেম্বারে জুনিয়রদের নিয়ে মামলার খসড়া তৈরি করছিল।'
+        en: 'My associates saw me drafting motions. They cannot say what I signed before they arrived.',
+        bn: 'সহকারীরা আমাকে আবেদন লিখতে দেখেছে। তারা আসার আগে কী স্বাক্ষর করেছি বলতে পারবে না।'
       },
       personality: {
         en: 'Suave, condescending, immaculate bespoke suit, sneering smile.',
         bn: 'মার্জিত, দামি স্যুট পরা, মুখে বাঁকা বিদ্রূপের হাসি।'
       },
       secrets: {
-        en: 'Communicated with Kabir via encrypted Signal app to coordinate Alam\'s breach.',
-        bn: 'কবীর সাহেবের সাথে গোপন সংকেতে যোগাযোগ করে খুনিদের অভিযানের সময় ঠিক করেছিল।'
+        en: 'His office authorised the courier float that financed the K31 transfer.',
+        bn: 'তাঁর অফিসের কুরিয়ার অগ্রিম থেকে K31-এর টাকা যায়।'
       },
-      avatarSeed: 'Shikder',
+      avatarSeed: 'Sterling',
       avatarColor: '#475569',
       dialogueTree: [
         {
           id: 'dlg-s-1',
           prompt: {
-            en: 'Where were you between 23:00 and 01:00 tonight?',
-            bn: 'রাত ১১:০০ থেকে ০১:০০ টার মধ্যে আপনি কোথায় ছিলেন?'
+            en: 'Who can verify your evening?',
+            bn: 'আপনার সন্ধ্যার অবস্থান কে জানেন?'
           },
           response: {
-            en: 'In my corner office on the 42nd floor preparing our defense. Three associates and two legal paralegals can verify my presence every single minute.',
-            bn: 'আমার ৪২ তলার চেম্বারে শুনানির প্রস্তুতি নিচ্ছিলাম। তিনজন আইনজীবী ও দুজন সহকারী প্রতি মিনিটের সাক্ষ্য দিতে প্রস্তুত।'
+            en: 'The filing clerk stamped a motion at midnight with me present.',
+            bn: 'মধ্যরাতে কর্মী আমার সামনে আবেদনে সিল দেন।'
           },
           reactionMood: 'calm'
         },
         {
           id: 'dlg-s-2',
           prompt: {
-            en: 'Did you make financial offers to Detective Kabir?',
-            bn: 'আপনি কি অফিসার রায়হান কবীরকে কোনো আর্থিক প্রস্তাব দিয়েছিলেন?'
+            en: 'What did the courier fund cover?',
+            bn: 'কুরিয়ার তহবিলে কী খরচ চলত?'
           },
           response: {
-            en: 'I don\'t know any Detective Kabir. My dealings are strictly with the Attorney General. If you imply bribery without evidence, I will sue your department for slander.',
-            bn: 'আমি কবীর নামের কাউকে চিনি না। প্রমাণ ছাড়া ঘুষের অভিযোগ আনলে আমি পুরো পুলিশ ডিপার্টমেন্টের বিরুদ্ধে মানহানির মামলা করব।'
+            en: 'I approved a weekly float. The individual remittances came back to me after settlement.',
+            bn: 'আমি সাপ্তাহিক অগ্রিম অনুমোদন করি। লেনদেন মেটার পর আলাদা রসিদ পাই।'
           },
           reactionMood: 'defensive'
         }
@@ -389,26 +480,27 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-burner-phone',
           reactionText: {
-            en: 'Shikder smiles thinly: "A burner phone? Numbers registered to anonymous offshore shell accounts prove nothing in a court of law, detective."',
-            bn: 'শিকদার মুচকি হাসে: "বেনামী বার্নার ফোনের মেসেজ আদালতে কারও অপরাধ প্রমাণ করতে পারে না, গোয়েন্দা।"'
+            en: 'I could release money from the office. I had no duty seal for the fourth floor.',
+            bn: 'অফিস থেকে অর্থ অনুমোদন করতে পারতাম। চারতলার ডিউটি সিল আমার ছিল না।'
           },
-          stressIncrease: 10
+          stressIncrease: 10,
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-02-maya',
       name: {
-        en: 'Mousumi Das',
-        bn: 'মৌসুমী দাস'
+        en: 'Maya Lin',
+        bn: 'মায়া লিন'
       },
       alias: {
         en: 'The Loyal Sister',
         bn: 'বিশ্বস্ত বোন'
       },
       role: {
-        en: 'Farzana Haque\'s Half-Sister',
-        bn: 'ফারজানার সৎ বোন'
+        en: 'Clara Thorne\'s Half-Sister',
+        bn: 'ক্লারার সৎ বোন'
       },
       age: 27,
       occupation: {
@@ -420,45 +512,45 @@ export const case002: CaseData = {
         bn: 'অত্যন্ত ঘনিষ্ঠ সহোদরা'
       },
       motive: {
-        en: 'Believed the State Police protection was incompetent and that Farzana would be assassinated inside the safehouse.',
-        bn: 'বিশ্বাস করত পুলিশ পাহারা সম্পূর্ণ ব্যর্থ এবং ফারজানাকে সেফহাউসের ভেতরেই হত্যা করা হবে।'
+        en: 'Clara had asked for clothes and wanted her evidence delivered without a police escort.',
+        bn: 'ক্লারা পোশাক চেয়েছিলেন এবং পুলিশ পাহারা ছাড়া প্রমাণ পৌঁছাতে চেয়েছিলেন।'
       },
       alibi: {
-        en: 'Claims she was at home in Queens all night watching television alone.',
-        bn: 'দাবি করেছিল সে সারারাত নিজের কুইন্সের ফ্ল্যাটে একা টিভি দেখছিল।'
+        en: 'No visit appears under my name. My sister was frightened that people were reading the visitor book.',
+        bn: 'আমার নামে সাক্ষাতের নথি নেই। দর্শনার্থীর খাতা অন্যরা পড়ছে বলে বোনের ভয় ছিল।'
       },
       personality: {
-        en: 'Guarded, anxious, highly protective of Farzana, sharp-witted.',
-        bn: 'উদ্বিগ্ন, ফারজানার প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।'
+        en: 'Guarded, anxious, highly protective of Clara, sharp-witted.',
+        bn: 'উদ্বিগ্ন, ক্লারার প্রতি নিবেদিতপ্রাণ, তীব্র উপস্থিত বুদ্ধি সম্পন্ন।'
       },
       secrets: {
-        en: 'Smuggled civilian clothes, fake Canadian passports, and a bug detector to Farzana at 19:30.',
-        bn: 'সন্ধ্যা ৭:৩০-এ ফারজানার জন্য সাধারণ জামাকাপড় ও জাল কানাডিয়ান পাসপোর্ট লুকিয়ে পৌঁছে দিয়েছিল।'
+        en: 'She delivered clothes and pigment under a courier booking.',
+        bn: 'কুরিয়ার বুকিংয়ে তিনি পোশাক ও রং দেন।'
       },
-      avatarSeed: 'Mousumi',
+      avatarSeed: 'Maya',
       avatarColor: '#ec4899',
       dialogueTree: [
         {
           id: 'dlg-ml-1',
           prompt: {
-            en: 'Did you visit Farzana at Safehouse 404 this evening?',
-            bn: 'আজ সন্ধ্যায় কি আপনি ফারজানার সেফহাউসে গিয়েছিলেন?'
+            en: 'Did you sign in to see your sister?',
+            bn: 'বোনকে দেখতে গিয়ে নাম লিখেছিলেন?'
           },
           response: {
-            en: 'The Marshals strictly forbade me from seeing her! I haven\'t seen my sister in two weeks since they locked her in that cage! I\'ve been worried sick!',
-            bn: 'পুলিশ আমাকে ওর সাথে দেখা করতে সম্পূর্ণ নিষেধ করেছিল! দুই সপ্তাহ ধরে আমি বোনের মুখ দেখিনি! আমি ওর চিন্তায় পাগল হয়ে যাচ্ছি!'
+            en: 'Nobody asked the courier to sign a family name.',
+            bn: 'কুরিয়ারকে পরিবারের নাম লিখতে বলা হয়নি।'
           },
           reactionMood: 'defensive'
         },
         {
           id: 'dlg-ml-2',
           prompt: {
-            en: 'Did Farzana express fear about her police escorts?',
-            bn: 'ফারজানা কি তার পুলিশ পাহারাদারদের নিয়ে কোনো আশঙ্কার কথা বলেছিল?'
+            en: 'What did Clara fear losing?',
+            bn: 'ক্লারা কী হারাতে ভয় করতেন?'
           },
           response: {
-            en: 'Farzana told me on a payphone three days ago that Detective Kabir was constantly whispering on a second phone and asking about her encrypted financial backups. She didn\'t trust him!',
-            bn: 'তিন দিন আগে পে-ফোন থেকে ফারজানা বলেছিল কবীর সবসময় চুপিচুপি অন্য ফোনে ফিসফিস করে এবং মূল এভিডেন্স ড্রাইভের পাসওয়ার্ড জানতে চায়। ফারজানা ওকে একদম বিশ্বাস করেনি!'
+            en: 'The original drive. She wanted a clerk to receive it in person.',
+            bn: 'মূল ড্রাইভটি। তিনি চেয়েছিলেন আদালতের কর্মী নিজে তা নিন।'
           },
           reactionMood: 'nervous'
         }
@@ -467,29 +559,29 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-sister-scarf',
           reactionText: {
-            en: 'Mousumi\'s breath catches: "My lavender scarf? All right! I went there at 19:30 disguised as a food courier. Farzana found Kabir\'s burner wiretap. She knew the mob was coming for her tonight!"',
-            bn: 'মৌসুমীর দম বন্ধ হয়ে আসে: "আমার স্কার্ফ? ঠিক আছে! আমি খাবার ডেলিভারির ছদ্মবেশে সন্ধ্যা ৭:৩০-এ গিয়েছিলাম। ফারজানা কবীর সাহেবের ফোনে সিন্ডিকেটের মেসেজ দেখে ফেলেছিল। সে নিশ্চিত জেনে গিয়েছিল আজ রাতেই ওকে মেরে ফেলা হবে!"'
+            en: 'That is the hem I repaired. I visited my sister. The court clerk has since sent my lawyer a certified receipt. Here is the copy.',
+            bn: 'পাড়টি আমি সেলাই করেছি। বোনের কাছে গিয়েছিলাম। পরে আদালতের কর্মী আমার আইনজীবীকে প্রত্যয়িত রসিদ পাঠিয়েছেন। এই নিন কপি।'
           },
           stressIncrease: 35,
-          exposesLie: true,
+          exposesLie: false,
           revealsClueId: 'clue-02-escape-plan-memo'
         },
         {
           evidenceId: 'clue-02-tunnel-footprints',
           reactionText: {
-            en: 'Mousumi exhales: "Yes! I helped her escape through the maintenance tunnel! We had to stage the room to buy time until her train crosses the Canadian border!"',
-            bn: 'মায়া দীর্ঘশ্বাস ফেলে: "হ্যাঁ! আমিই ওকে মাটির নিচের সুড়ঙ্গ দিয়ে পালিয়ে যেতে সাহায্য করেছি! ওর ট্রেন সীমান্ত পার হওয়ার আগ পর্যন্ত সময় নেওয়ার জন্য আমাদের এই নাটক সাজাতে হয়েছিল!"'
+            en: 'We both had soot on our shoes. Nobody carried either of us.',
+            bn: 'আমাদের দুজনের জুতাতেই কালি ছিল। কেউ আমাদের বহন করেনি।'
           },
           stressIncrease: 50,
-          exposesLie: true
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-02-kozlov',
       name: {
-        en: 'Bakhtiar Alam',
-        bn: 'বখতিয়ার আলম'
+        en: 'Viktor Kozlov',
+        bn: 'ভিক্টর কজলভ'
       },
       alias: {
         en: 'The Syndicate Enforcer',
@@ -505,49 +597,49 @@ export const case002: CaseData = {
         bn: 'পেশাদার হিটম্যান'
       },
       relationshipToVictim: {
-        en: 'Sent by Syndicate to silence or eliminate the witness',
-        bn: 'সাক্ষীকে চিরতরে স্তব্ধ করতে আসা আততায়ী'
+        en: 'Worked security for the defendant’s organisation',
+        bn: 'আসামিপক্ষের প্রতিষ্ঠানে নিরাপত্তার কাজ করতেন'
       },
       motive: {
-        en: 'Under direct orders to eliminate Farzana Haque before 08:00 AM court opening.',
-        bn: 'সকাল ৮টার আগে ফারজানাকে পৃথিবী থেকে সরিয়ে দেওয়ার সরাসরি নির্দেশ ছিল।'
+        en: 'His employer wanted Clara absent from court. A street camera placed his car outside after midnight.',
+        bn: 'তাঁর নিয়োগকর্তা চেয়েছিলেন ক্লারা আদালতে অনুপস্থিত থাকুন। মধ্যরাতের পর বাইরে তাঁর গাড়ির ছবি আছে।'
       },
       alibi: {
-        en: 'Claims he was playing poker at the Red Dragon Club in Chinatown until 02:00.',
-        bn: 'দাবি করে রাত ২টা পর্যন্ত সে চায়নাটাউনে তাস খেলছিল।'
+        en: 'I reached the building after midnight. The street camera can give you the minute.',
+        bn: 'মধ্যরাতের পরে ভবনে যাই। রাস্তার ক্যামেরা থেকে মিনিটও পাবেন।'
       },
       personality: {
         en: 'Scarred cheek, muscular, leather jacket, heavy Russian accent, completely cold.',
         bn: 'গালে কাটা দাগ, সুঠাম দেহ, চামড়ার জ্যাকেট, অত্যন্ত শীতল ও নিষ্ঠুর।'
       },
       secrets: {
-        en: 'Arrived at Room 404 at 00:30, found it already empty, and kicked down the door in rage.',
-        bn: 'রাত ১২:৩০-এ সেফহাউসের দরজা ভেঙে ঢুকে কাউকে না পেয়ে রাগে আসবাব ভেঙে চলে যায়।'
+        en: 'He forced the door after receiving an address through a courier.',
+        bn: 'কুরিয়ারের কাছ থেকে ঠিকানা পেয়ে তিনি দরজা ভাঙেন।'
       },
-      avatarSeed: 'Alam',
+      avatarSeed: 'Kozlov',
       avatarColor: '#0f766e',
       dialogueTree: [
         {
           id: 'dlg-k-1',
           prompt: {
-            en: 'Street cameras put your black Audi outside St. Jude Apartments at 00:25.',
-            bn: 'রাস্তার ক্যামেরায় দেখা গেছে রাত ১২:২৫-এ আপনার গাড়ি সেন্ট জুড অ্যাপার্টমেন্টের সামনে ছিল।'
+            en: 'What brought you to St. Jude?',
+            bn: 'সেন্ট জুডে কেন এসেছিলেন?'
           },
           response: {
-            en: 'I like driving at night. St. Jude street is a public thoroughfare. Show me a law that forbids driving down a city street, detective.',
-            bn: 'রাতে গাড়ি চালাতে ভালো লাগে। রাস্তা তো কারো বাপের নয়। রাস্তায় গাড়ি চালানো কি অপরাধ?'
+            en: 'A courier sent the room number. I kept the message, not the name of the person behind it.',
+            bn: 'এক কুরিয়ার ঘরের নম্বর পাঠায়। বার্তা রেখেছি, উৎসের নাম নয়।'
           },
           reactionMood: 'hostile'
         },
         {
           id: 'dlg-k-2',
           prompt: {
-            en: 'Did you enter Room 404 tonight?',
-            bn: 'আজ রাতে কি আপনি রুম ৪০৪-এ ঢুকেছিলেন?'
+            en: 'Was the apartment occupied?',
+            bn: 'ফ্ল্যাটে কেউ ছিল?'
           },
           response: {
-            en: 'I don\'t know any 404. If I had entered that room to do a job, you wouldn\'t be looking for a missing woman — you would be carrying out a corpse in a black bag.',
-            bn: 'আমি কোনো ৪০৪ চিনি না। তবে আমি যদি কোনো শিকারের ঘরে ঢুকতাম, তবে আপনারা নিখোঁজ বিজ্ঞপ্তি দিতেন না — কালো ব্যাগে করে লাশ তুলতেন।'
+            en: 'I heard nobody inside when the frame gave. Your alarm should record when that was.',
+            bn: 'ফ্রেম ভাঙার সময় ভেতরে কাউকে শুনিনি। অ্যালার্মে সময় থাকবে।'
           },
           reactionMood: 'calm'
         }
@@ -556,18 +648,19 @@ export const case002: CaseData = {
         {
           evidenceId: 'clue-02-forced-door',
           reactionText: {
-            en: 'Alam sneers: "Look at the door strike! The steel lock was kicked open, yes. But whoever did that found NOTHING inside. The bird had already flown the coop."',
-            bn: 'আলম ব্যঙ্গ করে: "দরজাটা ভালো করে দেখুন! দরজা লাথি দিয়ে ভাঙা হয়েছিল সত্যি, কিন্তু ভেতরে ঢোকার পর সেখানে কেউ ছিল না। পাখি খাঁচা ভেঙে আগেই উড়ে গিয়েছিল।"'
+            en: 'I reached an empty doorway. The alarm records the time of the impact.',
+            bn: 'খালি দরজায় পৌঁছেছিলাম। অ্যালার্মে আঘাতের সময় আছে।'
           },
-          stressIncrease: 20
+          stressIncrease: 20,
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-02-isaac',
       name: {
-        en: 'Iqbal Hossain',
-        bn: 'ইকবাল হোসেন'
+        en: 'Isaac Vance',
+        bn: 'আইজ্যাক ভ্যান্স'
       },
       alias: {
         en: 'The Building Superintendent',
@@ -587,57 +680,77 @@ export const case002: CaseData = {
         bn: 'সেফহাউস ভবনের ম্যানেজার'
       },
       motive: {
-        en: 'Paid under the table by both marshals for secrecy and the mob for tenant records.',
-        bn: 'উভয় পক্ষের কাছ থেকে গোপনে সুবিধা নিয়ে চলতেন।'
+        en: 'He sold tenant lists and held both service keys. A visitor was seen at his workshop.',
+        bn: 'তিনি ভাড়াটিয়ার তালিকা বিক্রি করতেন, সার্ভিস চাবি দুটিও তাঁর। কর্মশালায় একজন দর্শনার্থী এসেছিলেন।'
       },
       alibi: {
-        en: 'Claims he was asleep in his basement apartment from 22:00 until awakened by police sirens.',
-        bn: 'দাবি করেন রাত ১০টা থেকে বেসমেন্টে ঘুমাচ্ছিলেন।'
+        en: 'I was collecting the evening parcel when the platform gate last swung out before midnight. The porter was still putting his stamp on the slip.',
+        bn: 'মধ্যরাতের আগে প্ল্যাটফর্মের ফটক শেষবার বাইরে খোলার সময় আমি সন্ধ্যার পার্সেলটা নিচ্ছিলাম। কর্মী তখনও রসিদে সিল দিচ্ছিলেন।'
       },
       personality: {
         en: 'Shabby work overalls, smelling of stale coffee and grease, ring of brass skeleton keys.',
         bn: 'তেলচিটে ওভারঅল পরা, হাতে চাবির গোছা, কাশির আওয়াজ।'
       },
       secrets: {
-        en: 'Gave Farzana Haque the master padlock key to the underground boiler steam conduit.',
-        bn: 'ফারজানার কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।'
+        en: 'Gave Clara Thorne the master padlock key to the underground boiler steam conduit.',
+        bn: 'ক্লারার কান্নাকাটি দেখে তাকে মাটির নিচের বয়লার সুড়ঙ্গের তালা খোলার চাবি দিয়েছিলেন।'
       },
-      avatarSeed: 'Iqbal',
+      avatarSeed: 'Isaac',
       avatarColor: '#ca8a04',
       dialogueTree: [
         {
           id: 'dlg-iv-1',
           prompt: {
-            en: 'Who has access to the basement steam conduit tunnel?',
-            bn: 'বেসমেন্টের বয়লার বাষ্প সুড়ঙ্গে প্রবেশের চাবি কার কার কাছে থাকে?'
+            en: 'Where does the service stair lead?',
+            bn: 'সার্ভিস সিঁড়ি কোথায় যায়?'
           },
           response: {
-            en: 'Only me. It\'s an old 1920s coal heating conduit that connects under the street to the old railway freight platform. It\'s kept padlocked with an iron chain.',
-            bn: 'শুধু আমার কাছেই থাকে। ১৯২০ সালের কয়লা দিয়ে গরম করার সুড়ঙ্গ, যা মাটির নিচ দিয়ে মালবাহী ট্রেনের ইয়ার্ডে চলে গেছে। ওটা সবসময় তালা মারা থাকে।'
+            en: 'Past the boiler to a platform gate. The passenger exit has a time contact.',
+            bn: 'বয়লার পেরিয়ে প্ল্যাটফর্মের ফটকে। যাত্রীপথে সময় রেকর্ড হয়।'
           },
           reactionMood: 'calm'
         },
         {
           id: 'dlg-iv-2',
           prompt: {
-            en: 'Was the conduit padlock tampered with tonight?',
-            bn: 'আজ রাতে কি সুড়ঙ্গের তালায় কোনো হাত দেওয়া হয়েছিল?'
+            en: 'Was a key missing?',
+            bn: 'কোনো চাবি হারিয়েছিল?'
           },
           response: {
-            en: 'Well... now that you ask, the brass padlock wasn\'t cut. It was unlocked with a key. One of my duplicate keys went missing from the pegboard yesterday afternoon.',
-            bn: 'সত্যি বলতে কি, তালাটা কিন্তু ভাঙা হয়নি, চাবি দিয়েই খোলা হয়েছিল। গতকাল বিকেলে আমার বোর্ডের একটা ডুপ্লিকেট চাবি পাওয়া যাচ্ছিল না।'
+            en: 'I lent one to a courier for a parcel pickup. The spare stayed on the board.',
+            bn: 'পার্সেল নিতে কুরিয়ারকে একটি দিই। অন্যটি বোর্ডে ছিল।'
           },
           reactionMood: 'nervous'
+        },
+        {
+          id: 'dlg-iv-key-slip',
+          conditionClueId: 'clue-02-escape-plan-memo',
+          prompt: { en: 'Who initialled the slip around the returned key?', bn: 'ফেরত চাবির কাগজে কার আদ্যক্ষর?' },
+          response: {
+            en: 'I did. After the courier brought it back, I lent it to Clara. A second loan outside the log would cost me my post.',
+            bn: 'আমার। কুরিয়ার চাবি ফেরত দিলে আমি ক্লারাকে দিই। খাতায় না লিখে দ্বিতীয়বার চাবি দেওয়ার কথা জানলে আমার চাকরি যেত।'
+          },
+          reactionMood: 'defensive'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-02-tunnel-footprints',
           reactionText: {
-            en: 'Iqbal scratches his chin: "Miss Farzana... she was a kind girl. She came down to my shop yesterday crying, saying she knew she was going to be killed tonight. I didn\'t stop her from taking the tunnel key. She deserved a fighting chance."',
-            bn: 'ইকবাল মাথা নিচু করে: "মেয়েটা কাল বিকেলে আমার কাছে এসে কাঁদতে কাঁদতে বলেছিল ওকে আজ রাতে পুলিশ আর গুন্ডারা মিলে মেরে ফেলবে। আমি ওকে চাবি নিতে বারণ করিনি। বাঁচবার একটা সুযোগ ওর প্রাপ্য ছিল।"'
+            en: 'I sweep at 23:15. The steps cut across my broom lines.',
+            bn: '২৩:১৫-তে ঝাড়ু দিই। ছাপগুলো ঝাড়ুর দাগের ওপরে।'
           },
           stressIncrease: 30,
+          exposesLie: false
+        },
+        {
+          evidenceId: 'case-002-parcel-counterfoil',
+          requiresEvidenceIds: ['case-002-gate-strip'],
+          reactionText: {
+            en: 'The porter put a time on the parcel. He never signed for anyone passing through the gate.',
+            bn: 'কর্মী পার্সেল তোলার সময় লিখেছেন। ফটক দিয়ে কেউ গেলে তিনি তার জন্য সই করতেন না।'
+          },
+          stressIncrease: 15,
           exposesLie: true
         }
       ]
@@ -647,329 +760,487 @@ export const case002: CaseData = {
     {
       id: 'clue-02-forced-door',
       name: {
-        en: 'Splintered Safehouse Door & Frame',
-        bn: 'ভাঙা দরজা ও দরজার ফ্রেম'
+        en: 'Door frame and duty sheet',
+        bn: 'দরজার ফ্রেম ও ডিউটির তালিকা'
       },
       category: 'Physical',
       description: {
-        en: 'The exterior entryway of Safehouse Room 404.',
-        bn: 'রুম ৪০৪-এর বাইরের প্রবেশপথ।'
+        en: 'A loose strike plate covers the building alarm contact. The duty sheet is still clipped to the corridor side.',
+        bn: 'ঢিলে ধাতব পাতের নিচে অ্যালার্মের সংযোগ। করিডোরের দিকে এখনও ডিউটির কাগজ আটকানো।'
       },
       discoveryLocation: {
         en: '4th Floor Corridor Entrance',
         bn: '৪র্থ তলার করিডোরের মুখ'
       },
       relevance: {
-        en: 'Proves the violent breach occurred from outside, but the internal deadbolt was disengaged beforehand.',
-        bn: 'বাইরে থেকে বলপ্রয়োগের প্রমাণ হলেও, দরজা আগেই ভেতরের দিক থেকে আনলক করা ছিল।'
+        en: 'Does the alarm say when anyone left the flat?',
+        bn: 'ফ্ল্যাট ছেড়ে যাওয়ার সময় কি অ্যালার্ম দেখায়?'
       },
       relatedSuspectIds: ['suspect-02-navarro', 'suspect-02-kozlov'],
       details: [
         {
-          en: 'Boot heel scuff on door panel matches Bakhtiar Alam\'s heavy combat boots.',
-          bn: 'দরজায় থাকা বুটের ছাপ বখতিয়ার আলমের ভারী কমব্যাট বুটের সাথে মিলে যায়।'
+          en: 'The contact first registered a forced opening at 00:30. It does not register ordinary visits.',
+          bn: '০০:৩০-এ প্রথম জোর করে খোলার সংকেত ধরা পড়ে। স্বাভাবিক প্রবেশে এই যন্ত্রের সংকেত হয় না।'
         },
         {
-          en: 'Pry marks on the jamb show blunt force entry at approximately 00:30.',
-          bn: 'দরজায় রাত ১২:৩০ টার দিকে বলপ্রয়োগের দাগ রয়েছে।'
-        },
-        {
-          en: 'The deadbolt bolt was retracted when the door swung inward; Farzana was already gone.',
-          bn: 'ভেতরের লকটি আগেই বন্ধমুক্ত ছিল; ফারজানা ইতিপূর্বেই ঘর ছেড়ে পালিয়েছিল।'
+          en: 'At the roster check Navarro retained personal dispatch seal 6, relief seal 8 stayed in the safe. The supervisor witnessed both at 23:00 and 23:15.',
+          bn: '২৩:০০ ও ২৩:১৫-র তদারকিতে নাভারোর ব্যক্তিগত ডিসপ্যাচ সিল ৬ তাঁর কাছে, বিকল্প সিল ৮ সিন্দুকে ছিল।'
         }
       ],
-      iconKey: 'door'
+      iconKey: 'door',
+      forensicReport: {
+        labSummary: {
+          en: 'The frame records an impact from the hall. The alarm contact has its own clock and battery.',
+          bn: 'ফ্রেমে করিডোরের দিক থেকে আঘাতের চিহ্ন। সংযোগটির নিজস্ব ঘড়ি ও ব্যাটারি আছে।'
+        }
+      }
     },
     {
       id: 'clue-02-staged-blood',
       name: {
-        en: 'Synthetic Plasma Residue on Rug',
-        bn: 'গালিচায় কৃত্রিম রক্তের আলামত'
+        en: 'Rug swab and lamp',
+        bn: 'গালিচার নমুনা ও বাতি'
       },
       category: 'Forensic Reports',
       description: {
-        en: 'Spattered red fluid sample collected beside the overturned floor lamp.',
-        bn: 'উল্টানো বাতির পাশ থেকে সংগৃহীত রক্তের নমুনা।'
+        en: 'The stain has a hard square edge beneath the fallen lamp. Broken door paint rests on its dry surface.',
+        bn: 'পড়ে থাকা বাতির নিচে দাগের এক কিনারা চৌকো। শুকনো দাগের ওপরে দরজার ভাঙা রং।'
       },
       discoveryLocation: {
         en: 'Living room linoleum rug',
         bn: 'ঘরের মেঝের গালিচা'
       },
       relevance: {
-        en: 'Demonstrates the violent struggle was staged to fake an abduction.',
-        bn: 'অপহরণের নাটক সাজানোর অকাট্য বৈজ্ঞানিক প্রমাণ দেয়।'
+        en: 'Which came first, the stain or the door damage?',
+        bn: 'আগে কোনটি ঘটেছে, দাগ নাকি দরজার ক্ষতি?'
       },
-      relatedSuspectIds: ['suspect-02-maya'],
+      relatedSuspectIds: ['suspect-02-maya', 'suspect-02-kozlov'],
       isCrucial: true,
       details: [
         {
-          en: 'Forensic analysis: zero human white or red blood cells.',
-          bn: 'ফরেনসিক বিশ্লেষণ: মানুষের কোনো রক্তকণিকা পাওয়া যায়নি।'
+          en: 'A textile transfer sheet would leave that straight edge.',
+          bn: 'কাপড়ে নকশা তোলার পাত এমন সোজা কিনারা রাখতে পারে।'
         },
         {
-          en: 'Chemical composition: theatrical syrup base colored with carmine dye and bovine albumin.',
-          bn: 'উপাদান: চিনির সিরাপ ও পশুর প্লাজমার মিশ্রণে তৈরি নাটকের কৃত্রিম রক্ত।'
-        },
-        {
-          en: 'Used in theatrical stagecraft to simulate violent hemorrhaging.',
-          bn: 'রক্তক্ষরণের বিভ্রম তৈরি করতে নাটক ও সিনেমায় ব্যবহৃত হয়।'
+          en: 'No blood cells are present. The material is a water-soluble stage pigment.',
+          bn: 'রক্তকণিকা নেই। এটি জলে দ্রবণীয় মঞ্চের রং।'
         }
       ],
-      iconKey: 'flask'
+      iconKey: 'flask',
+      forensicReport: {
+        labSummary: {
+          en: 'Door paint landed after the pigment dried. The two traces need separate timestamps.',
+          bn: 'রং শুকোনোর পর দরজার রং খসে পড়ে। দুই চিহ্নের সময় আলাদা।'
+        }
+      }
     },
     {
       id: 'clue-02-burner-phone',
       name: {
-        en: 'Burner Phone Behind Radiator',
-        bn: 'হিটারের পেছনের গোপন বার্নার ফোন'
+        en: 'Radiator handset',
+        bn: 'রেডিয়েটরের ফোন'
       },
       category: 'Digital',
       description: {
-        en: 'A prepaid flip phone discovered wedged behind the steam radiator.',
-        bn: 'হিটারের পেছনে গোঁজা একটি গোপন ফ্লিপ ফোন।'
+        en: 'A shared dispatch receiver cached an outgoing room assignment at 23:10. The address includes an east-stair label used only on the protected roster.',
+        bn: 'যৌথ ডিসপ্যাচ রিসিভারে ২৩:১০-এ পাঠানো ঘরের অবস্থান আছে। পূর্ব সিঁড়ির নামটি শুধু সুরক্ষিত তালিকায় ছিল।'
       },
       discoveryLocation: {
         en: 'Behind kitchenette radiator',
         bn: 'হিটারের পেছনের ফাঁকা স্থান'
       },
       relevance: {
-        en: 'Direct digital link proving Officer Rayhan Kabir leaked the location to Alam.',
-        bn: 'কবীর কর্তৃক খুনিদের কাছে সেফহাউস ফাঁসের ডিজিটাল প্রমাণ।'
+        en: 'Who authenticated the outgoing release, and who financed it?',
+        bn: 'বহির্গামী বার্তাটিতে কে অনুমোদন দিলেন, আর অর্থ এল কোথা থেকে?'
       },
-      relatedSuspectIds: ['suspect-02-navarro'],
+      relatedSuspectIds: ['suspect-02-navarro', 'suspect-02-sterling', 'suspect-02-kozlov'],
       isCrucial: true,
       details: [
         {
-          en: 'Outgoing SMS at 23:10 to Bakhtiar Alam\'s device: "Room 404. Shift change at 00:30. Strike fast."',
-          bn: 'রাত ১১:১০ মিনিটে আলমকে পাঠানো মেসেজ: "রুম ৪০৪। রাত ১২:৩০-এ গার্ড পরিবর্তন। দ্রুত আঘাত করো।"'
+          en: 'The source was personal seal 6. The receiver is only a mirror of the traffic.',
+          bn: 'উৎস ব্যক্তিগত সিল ৬। রিসিভার কেবল বার্তার অনুলিপি রাখে।'
         },
         {
-          en: 'Stored audio recording: Farzana Haque recorded Kabir whispering his bribe demands.',
-          bn: 'রেকর্ডিং ফারজানা নিজের ফোনে ধারণ করেছিল যাতে কবীর সাহেবের ঘুষের দাবি শোনা যায়।'
-        },
-        {
-          en: 'Confirms the protection detail was compromised.',
-          bn: 'নিশ্চিত করে পাহারাদার অফিসার নিজেই বিক্রি হয়ে গিয়েছিল।'
+          en: 'The address was acknowledged with remittance reference K31. No sender name is stored.',
+          bn: 'ঠিকানা পাওয়ার রসিদে অর্থপ্রেরণ কোড K31। প্রেরকের নাম সংরক্ষিত নেই।'
         }
       ],
-      iconKey: 'phone'
+      iconKey: 'phone',
+      forensicReport: {
+        labSummary: {
+          en: 'The dispatch office confirms that the numbered seal required its holder’s live identity check for each release.',
+          bn: 'ডিসপ্যাচ দপ্তর নিশ্চিত করেছে, প্রতিবার পাঠাতে সিলধারীর পরিচয় সরাসরি যাচাই হয়।'
+        }
+      }
     },
     {
       id: 'clue-02-vent-grate',
       name: {
-        en: 'Unscrewed Maintenance Hatch',
-        bn: 'স্ক্রু খোলা ভেন্টিলেশন ঢাকনা'
+        en: 'Maintenance hatch',
+        bn: 'রক্ষণাবেক্ষণ ফাঁক'
       },
       category: 'Physical',
       description: {
-        en: 'A 2x2 foot sheet-metal duct cover removed and set against the kitchenette wall.',
-        bn: 'রান্নাঘরের দেয়াল থেকে খুলে রাখা টিনের ঢাকনা।'
+        en: 'The kitchenette opens onto the service stair. Loose dust lies on top of the cover, except for a clean handspan.',
+        bn: 'রান্নার জায়গা থেকে সার্ভিস সিঁড়ি খোলে। ঢাকনার ধুলোয় হাতের সমান একখণ্ড পরিষ্কার।'
       },
       discoveryLocation: {
         en: 'Kitchenette baseboard',
         bn: 'রান্নাঘরের দেয়ালের নিচে'
       },
       relevance: {
-        en: 'Reveals Farzana\'s actual escape route out of the locked apartment.',
-        bn: 'ফারজানার আসল পলায়নের সুড়ঙ্গপথ উন্মোচন করে।'
+        en: 'Which direction did the traffic move?',
+        bn: 'চলাচল কোন দিকে হয়েছিল?'
       },
       relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
       isCrucial: true,
       details: [
         {
-          en: 'Screws removed with a butter knife found on the counter.',
-          bn: 'টেবিলে থাকা মাখনের ছুরি দিয়ে স্ক্রুগুলো খোলা হয়েছিল।'
+          en: 'A bead of blue pigment continues from the inner lip onto the first stair.',
+          bn: 'নীল রঙের ফোঁটা ভেতরের কিনারা থেকে প্রথম ধাপে গেছে।'
         },
         {
-          en: 'Dust smeared inside the 30-inch duct heading straight down to the building boiler basement.',
-          bn: 'ধুলোবালি ঘষে সরাসরি বেসমেন্টের বয়লার রুমে নামার পরিষ্কার চিহ্ন।'
+          en: 'The service plan labels this stair P. The same letter appears beside the platform gate on the plan.',
+          bn: 'নকশায় এই সিঁড়ির চিহ্ন P। প্ল্যাটফর্মের ফটকের পাশেও একই অক্ষর।'
         }
       ],
-      iconKey: 'key'
+      iconKey: 'key',
+      forensicReport: {
+        labSummary: {
+          en: 'Dust was displaced toward the stair. No inward trail disturbs the return edge.',
+          bn: 'ধুলো সিঁড়ির দিকে সরেছে। ফেরার কিনারায় ভেতরমুখী দাগ নেই।'
+        }
+      }
     },
     {
       id: 'clue-02-torn-ticket',
       name: {
-        en: 'Torn Sleeper Car Ticket to Montreal',
-        bn: 'মন্ট্রিয়লগামী ট্রেনের ছেঁড়া টিকিট'
+        en: 'Sleeper ticket stub',
+        bn: 'শয়নযানের টিকিটের অংশ'
       },
       category: 'Documents',
       description: {
-        en: 'A boarding pass fragment for the 23:45 Night Express departing Penn Station.',
-        bn: 'রাত ১১:৪৫-এর নাইট এক্সপ্রেসের ট্রেনের টিকিট।'
+        en: 'A ticket for Montreal has been torn along a rail voucher numbered 71. The passenger field is blank on this half.',
+        bn: 'মন্ট্রিয়লের টিকিট ৭১ নম্বর রেল ভাউচার বরাবর ছেঁড়া। এ অংশে যাত্রীর নাম খালি।'
       },
       discoveryLocation: {
-        en: 'Wastebasket under folding desk',
-        bn: 'ফোল্ডিং টেবিলের নিচের ডাস্টবিন'
+        en: 'Folding desk, under the timetable',
+        bn: 'ভাঁজ টেবিলে সময়সূচির নিচে'
       },
       relevance: {
-        en: 'Pinpoints Farzana Haque\'s true destination and timeline.',
-        bn: 'ফারজানার আসল গন্তব্য ও সময়রেখা নির্ধারণ করে।'
+        en: 'Was the ticket merely bought, or was the other half used?',
+        bn: 'টিকিট শুধু কেনা হয়েছিল, নাকি অন্য অংশ ব্যবহারও হয়েছিল?'
       },
-      relatedSuspectIds: ['suspect-02-maya'],
+      relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
       isCrucial: true,
       details: [
         {
-          en: 'Passenger: "Rehana Karim" (alias confirmed on forged Canadian passport).',
-          bn: 'যাত্রীর নাম: "র‍্যাচেল ক্যাম্পবেল" (জাল কানাডিয়ান পাসপোর্টের নাম)।'
+          en: 'The train departed at 23:45. The platform carbon records voucher 71 accepted at boarding.',
+          bn: 'ট্রেন ছাড়ে ২৩:৪৫-তে। প্ল্যাটফর্ম কপিতে ওঠার সময় ৭১ গ্রহণ করা হয়েছে।'
         },
         {
-          en: 'Departure: 23:45 PM from East Rail Platform 3.',
-          bn: 'ছাড়ার সময়: রাত ১১:৪৫ মিনিট, প্ল্যাটফর্ম ৩।'
-        },
-        {
-          en: 'Purchased with Mousumi Das\'s credit card 48 hours prior.',
-          bn: '৪৮ ঘণ্টা আগে মৌসুমী দাসের ক্রেডিট কার্ড দিয়ে কেনা হয়েছিল।'
+          en: 'The booking was made before the door alarm, with a return message for the court clerk.',
+          bn: 'দরজার অ্যালার্মের আগে বুকিং হয়েছিল, আদালতের কর্মীর জন্য ফেরত বার্তাসহ।'
         }
       ],
-      iconKey: 'document'
+      iconKey: 'document',
+      forensicReport: {
+        labSummary: {
+          en: 'The fibres along the tear fit the clerk’s retained voucher. A used fare alone gives no passenger identity.',
+          bn: 'ছেঁড়া অংশ কর্মীর রাখা ভাউচারের সঙ্গে মেলে। ভাড়া ব্যবহারে যাত্রীর পরিচয় জানা যায় না।'
+        }
+      }
     },
     {
       id: 'clue-02-sister-scarf',
       name: {
-        en: 'Mousumi\'s Silk Floral Scarf',
-        bn: 'মৌসুমীর রেশমি সুগন্ধি স্কার্ফ'
+        en: 'Floral scarf',
+        bn: 'ফুলের নকশার স্কার্ফ'
       },
       category: 'Physical',
       description: {
-        en: 'A high-end silk scarf found in the rain slicker pocket.',
-        bn: 'রেইনকোটের পকেটে পাওয়া দামী সিল্কের স্কার্ফ।'
+        en: 'A lavender scarf on the peg carries blue transfer pigment in a hem. The lobby camera shows a scarf in a delivery bag at 19:30.',
+        bn: 'খুঁটির ল্যাভেন্ডার স্কার্ফের পাড়ে নীল ছাপার রং। ১৯:৩০-এর লবি ক্যামেরায় সরবরাহ ব্যাগে স্কার্ফ দেখা যায়।'
       },
       discoveryLocation: {
         en: 'Hallway coat rack inside Room 404',
         bn: 'রুম ৪০৪-এর কোট হ্যাঙ্গার'
       },
       relevance: {
-        en: 'Proves Mousumi Das was inside the safehouse earlier in the evening helping Farzana prepare.',
-        bn: 'প্রমাণ করে মায়া সন্ধ্যায় সেফহাউসে এসে ফারজানাকে পলায়নে সাহায্য করেছিল।'
+        en: 'Why would a visitor want a delivery kept off the register?',
+        bn: 'এক দর্শনার্থী কেন সরবরাহের কথা গোপন রাখবেন?'
       },
       relatedSuspectIds: ['suspect-02-maya'],
       details: [
         {
-          en: 'Scented with distinctive lavender perfume registered to Mousumi Das.',
-          bn: 'মৌসুমী দাসের ব্যবহৃত ল্যাভেন্ডার পারফিউমের পরিচিত সুবাসযুক্ত।'
+          en: 'The hem bears Maya’s initials. The fibres have no tears.',
+          bn: 'পাড়ে মায়ার আদ্যক্ষর। তন্তু ছেঁড়েনি।'
         },
         {
-          en: 'Refutes Mousumi\'s initial claim that she had not visited Farzana in weeks.',
-          bn: 'মৌসুমীর সেই প্রাথমিক দাবি মিথ্যা প্রমাণ করে যে সে দুই সপ্তাহ ধরে আসেনি।'
+          en: 'The bag carried clothing as well as printed sheets.',
+          bn: 'ব্যাগে ছাপা পাতা ছাড়াও পোশাক ছিল।'
         }
       ],
-      iconKey: 'scissors'
+      iconKey: 'scissors',
+      forensicReport: {
+        labSummary: {
+          en: 'The pigment and scarf travelled together before the recorded evening breach.',
+          bn: 'রাতের দরজা ভাঙার আগেই রং ও স্কার্ফ একসঙ্গে এসেছিল।'
+        }
+      }
     },
     {
       id: 'clue-02-tunnel-footprints',
       name: {
-        en: 'Soot Footprints in Steam Conduit',
-        bn: 'সুড়ঙ্গের কয়লার গুঁড়ায় পদচিহ্ন'
+        en: 'Boiler passage tracks',
+        bn: 'বয়লার পথের পদচিহ্ন'
       },
       category: 'Forensic Reports',
       description: {
-        en: 'Plaster casts of two sets of footwear in the boiler room coal dust.',
-        bn: 'সুড়ঙ্গের কয়লার স্তূপে দুজন মহিলার জুতোর স্পষ্ট ছাপ।'
+        en: 'Two sets of prints lead from the service stair to the platform. One heel has a small triangular repair.',
+        bn: 'সার্ভিস সিঁড়ি থেকে প্ল্যাটফর্মে দুই সারি ছাপ। একটি গোড়ালিতে ত্রিভুজাকার তালি।'
       },
       discoveryLocation: {
         en: 'Sub-basement steam tunnel to rail yard',
         bn: 'রেল ইয়ার্ডে যাওয়া ভূগর্ভস্থ সুড়ঙ্গ'
       },
       relevance: {
-        en: 'Shows Farzana and Mousumi evacuated together at 23:20 through the underground conduit.',
-        bn: 'প্রমাণ করে ফারজানা ও মায়া রাত ১১:২০-এ সুড়ঙ্গ দিয়ে একসাথে পালিয়ে যায়।'
+        en: 'Does the trail end at the point named in the booking?',
+        bn: 'টিকিটে লেখা জায়গাতেই কি পথ শেষ?'
       },
       relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
       isCrucial: true,
       details: [
         {
-          en: 'Track 1: Women\'s size 7 running sneaker (Farzana Haque).',
-          bn: 'চিহ্ন ১: মহিলাদের সাইজ ৭ স্নিকার্স (ফারজানা হক)।'
+          en: 'Dry soot overlies the 23:15 sweep marks. No wheel or dragging trail accompanies the steps.',
+          bn: 'শুকনো কালির নিচে ২৩:১৫-র ঝাড়ুর দাগ। চাকা বা টানার চিহ্ন নেই।'
         },
         {
-          en: 'Track 2: Women\'s size 8 designer flat (Mousumi Das).',
-          bn: 'চিহ্ন ২: মহিলাদের সাইজ ৮ ফ্ল্যাট জুতো (মৌসুমী দাস)।'
-        },
-        {
-          en: 'Leads directly through the steam conduit to the rear rail yard platform.',
-          bn: 'সুড়ঙ্গ বেয়ে সরাসরি পেছনের রেল স্টেশনের মালবাহী প্ল্যাটফর্মে চলে গেছে।'
+          en: 'A blue fleck sits inside the repaired heel print by the stair.',
+          bn: 'সিঁড়ির পাশে তালি দেওয়া গোড়ালির ছাপে নীল রং।'
         }
       ],
-      iconKey: 'footprint'
+      iconKey: 'footprint',
+      forensicReport: {
+        labSummary: {
+          en: 'The same repaired tread reaches the platform gate before the 23:45 train.',
+          bn: '২৩:৪৫-এর ট্রেনের আগে একই তালি দেওয়া জুতোর ছাপ প্ল্যাটফর্মের ফটকে পৌঁছেছে।'
+        }
+      }
     },
     {
       id: 'clue-02-navarro-deposit',
       name: {
-        en: 'Kabir\'s $25,000 Midnight Wire Slip',
-        bn: 'কবীর সাহেবের অ্যাকাউন্টে ২৫,০০০ ডলার জমার রসিদ'
+        en: 'Clearinghouse remittance',
+        bn: 'লেনদেন নিষ্পত্তির রসিদ'
       },
       category: 'Documents',
       description: {
-        en: 'Financial intelligence intercept of an offshore electronic deposit.',
-        bn: 'গোপন আন্তর্জাতিক ব্যাংক অ্যাকাউন্টে রাতারাতি টাকা স্থানান্তরের রেকর্ড।'
+        en: 'Internal affairs obtained a $25,000 transfer authorised at 23:00 against a betting balance. The payer was the Blackwood courier fund.',
+        bn: 'অভ্যন্তরীণ তদন্তে বাজির বকেয়া মেটাতে ২৩:০০-তে অনুমোদিত ২৫,০০০ ডলারের লেনদেন পাওয়া গেছে। প্রেরক ব্ল্যাকউড কুরিয়ার তহবিল।'
       },
       discoveryLocation: {
         en: 'State Police Internal Affairs Intercept',
         bn: 'পুলিশের অভ্যন্তরীণ গোয়েন্দা ইন্টারসেপ্ট'
       },
       relevance: {
-        en: 'Direct financial motive for Officer Rayhan Kabir\'s betrayal of the safehouse.',
-        bn: 'অফিসার রায়হান কবীরর বিশ্বাসঘাতকতার সরাসরি আর্থিক প্রমাণ।'
+        en: 'Which exchange used the same reference as this payment?',
+        bn: 'এই অর্থের রেফারেন্স আর কোন লেনদেনে ব্যবহৃত?'
       },
-      relatedSuspectIds: ['suspect-02-navarro'],
+      relatedSuspectIds: ['suspect-02-navarro', 'suspect-02-sterling', 'suspect-02-kozlov'],
       details: [
         {
-          en: 'Deposited at 23:00 into a Grand Cayman account controlled by Kabir.',
-          bn: 'রাত ১১টায় কবীর সাহেবের কেম্যান আইল্যান্ডসের অ্যাকাউন্টে জমা হয়।'
+          en: 'The settlement carries reference K31. The account holder is redacted on the court copy.',
+          bn: 'রসিদে K31। আদালতের কপিতে হিসাবধারীর নাম ঢাকা।'
         },
         {
-          en: 'Originated from a Panamanian shell corporation funded by the Blackwood Syndicate.',
-          bn: 'ব্ল্যাকউড সিন্ডিকেটের পানামা ভিত্তিক ভুয়া কোম্পানি থেকে পাঠানো হয়েছিল।'
+          en: 'The transfer settled on acknowledgement of a room assignment.',
+          bn: 'একটি ঘরের অবস্থান পাওয়ার স্বীকৃতিতে অর্থ নিষ্পত্তি হয়েছে।'
         }
       ],
-      iconKey: 'receipt'
+      iconKey: 'receipt',
+      forensicReport: {
+        labSummary: {
+          en: 'The bank and dispatch references were issued independently and match in full.',
+          bn: 'ব্যাংক ও ডিসপ্যাচে স্বাধীনভাবে নথিভুক্ত রেফারেন্স পুরোপুরি মেলে।'
+        }
+      }
     },
     {
       id: 'clue-02-escape-plan-memo',
       name: {
-        en: 'Encrypted USB Drive & Escape Note',
-        bn: 'এনক্রিপ্টেড পেনড্রাইভ ও ফারজানার গোপন চিঠি'
+        en: 'Clerk’s receipt and drive',
+        bn: 'আদালতের রসিদ ও ড্রাইভ'
       },
       category: 'Digital',
       description: {
-        en: 'A high-security encrypted USB stick with a handwritten note in Farzana\'s handwriting.',
-        bn: 'ফারজানার হস্তাক্ষরে লেখা চিঠি সহ একটি এনক্রিপ্ট করা ইউএসবি ড্রাইভ।'
+        en: 'A prosecutor kept the other half of voucher 71 with the original fraud drive. The travelling witness signed in person.',
+        bn: 'সরকারি কৌঁসুলি মূল জালিয়াতির ড্রাইভের সঙ্গে ভাউচার ৭১-এর অন্য অংশ রেখেছেন। যাত্রী সাক্ষী নিজে স্বাক্ষর করেন।'
       },
       discoveryLocation: {
-        en: 'Under floorboard near steam vent',
-        bn: 'রান্নাঘরের মেঝের তক্তা তোলার নিচে'
+        en: 'Court receipt supplied during interview',
+        bn: 'জিজ্ঞাসাবাদে পাওয়া আদালতের রসিদ'
       },
       relevance: {
-        en: 'Farzana\'s personal explanation of why she fled and instructions for the federal prosecutor.',
-        bn: 'ফারজানা কেন পালিয়ে যেতে বাধ্য হয়েছিল তার নিজস্ব বক্তব্য ও মামলার মূল নথি।'
+        en: 'Whose journey does the clerk’s receipt authenticate?',
+        bn: 'কর্মীর রসিদ কার যাত্রা প্রমাণ করে?'
       },
-      relatedSuspectIds: ['suspect-02-navarro'],
+      relatedSuspectIds: ['suspect-02-maya'],
       details: [
         {
-          en: 'Note reads: "Kabir sold me out. Alam is coming tonight. I am taking the evidence drive to the federal courthouse via rail. Do not trust state police."',
-          bn: 'চিঠিতে লেখা: "কবীর আমাকে বিক্রি করে দিয়েছে। আজ রাতেই আলম আসছে। আমি প্রমাণ ড্রাইভ নিয়ে ট্রেনে করে সরাসরি ফেডারেল আদালতে যাচ্ছি। স্থানীয় পুলিশকে বিশ্বাস করবেন না।"'
+          en: 'The clerk verified Clara’s identity on the departing train and saw her board on foot by choice.',
+          bn: 'ট্রেন ছাড়ার সময় কর্মী ক্লারার পরিচয় যাচাই করেন, তাঁকে স্বেচ্ছায় হেঁটে উঠতে দেখেন।'
         },
         {
-          en: 'Contains complete accounting ledgers proving Blackwood\'s criminal racketeering.',
-          bn: 'সিন্ডিকেটের আর্থিক জালিয়াতির সমস্ত মূল লেজার এই ড্রাইভে সংরক্ষিত।'
+          en: 'The accompanying note records an overheard room release. It gives no sender’s name.',
+          bn: 'সঙ্গে থাকা নোটে ঘরের অবস্থান ফাঁস হতে শোনার উল্লেখ। প্রেরকের নাম নেই।'
+        },
+        {
+          en: 'The clerk also logged the return of service key P, wrapped in a loan slip initialled I.V.',
+          bn: 'কর্মী P চিহ্নিত সার্ভিস চাবি ফেরতের কথাও লিখেছেন। চাবিটির ধার দেওয়ার কাগজে I.V. আদ্যক্ষর।'
         }
       ],
-      iconKey: 'usb'
+      iconKey: 'usb',
+      forensicReport: {
+        labSummary: {
+          en: 'The signature on the receipt matches Clara’s court deposition.',
+          bn: 'রসিদের স্বাক্ষর ক্লারার আদালতের জবানবন্দির সঙ্গে মেলে।'
+        }
+      }
+    },
+    {
+      id: 'case-002-lamp-shade',
+      name: {
+        en: 'Dust on the lamp shade',
+        bn: 'বাতির ঢাকনার ধুলো'
+      },
+      category: 'Physical',
+      description: {
+        en: 'The floor lamp lies on its side. The shaded side of its rim bears a rectangular transfer mark.',
+        bn: 'বাতিটি পাশে কাত। কিনারার ছায়ার দিকে আয়তাকার রঙের ছাপ।'
+      },
+      discoveryLocation: {
+        en: 'Room 404, lamp shade',
+        bn: 'কক্ষ ৪০৪, বাতির ঢাকনা'
+      },
+      relevance: {
+        en: 'Did the lamp fall onto wet or dry pigment?',
+        bn: 'বাতিটি ভেজা নাকি শুকনো রঙে পড়েছিল?'
+      },
+      relatedSuspectIds: ['suspect-02-maya', 'suspect-02-kozlov'],
+      details: [
+        {
+          en: 'The smear ends at the edge of a transfer sheet. The shade has no impact dent.',
+          bn: 'ছাপটি রং তোলার কাগজের কিনারায় শেষ। ঢাকনায় আঘাতের গর্ত নেই।'
+        }
+      ],
+      forensicReport: {
+        labSummary: {
+          en: 'Pigment transferred while wet and dried on the flattened rim. The disturbance in the room preceded the flakes of door paint.',
+          bn: 'ভেজা রং চ্যাপ্টা কিনারায় লেগে শুকিয়েছে। ঘরের ওলটপালট দরজার রং খসার আগের।'
+        }
+      },
+      iconKey: 'file'
+    },
+    {
+      id: 'case-002-gate-strip',
+      name: { en: 'Gate recorder strip', bn: 'ফটকের রেকর্ডার ফিতা' },
+      category: 'Documents',
+      description: {
+        en: 'The last mark before midnight sits at 23:20 on the lower row of the platform gate strip.',
+        bn: 'মধ্যরাতের আগের শেষ চিহ্নটি প্ল্যাটফর্মের ফটকের ফিতায় ২৩:২০-তে নিচের সারিতে।'
+      },
+      discoveryLocation: { en: 'Boiler passage, platform gate', bn: 'বয়লার পথ, প্ল্যাটফর্মের ফটক' },
+      relevance: { en: 'Which journey could fit after this opening?', bn: 'এবার ফটক খোলার পর কোন যাত্রার সময় মেলে?' },
+      relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
+      isCrucial: true,
+      details: [
+        {
+          en: 'The porter marked a test swing in each direction. The lower pen records swings toward the tracks.',
+          bn: 'কর্মী দুদিকে ফটক খুলে পরীক্ষার চিহ্ন দিয়েছেন। রেললাইনের দিকে খুললে নিচের কলমটি লেখে।'
+        },
+        {
+          en: 'One swing can admit several people. The recorder counts neither tickets nor passengers.',
+          bn: 'একবার খুললে একাধিক লোক যেতে পারেন। যাত্রী বা টিকিট গোনার ব্যবস্থা এতে নেই।'
+        }
+      ],
+      forensicReport: { labSummary: {
+        en: 'The calibration marks agree with the station clock. The strip runs continuously past the 23:20 mark.',
+        bn: 'পরীক্ষার চিহ্নগুলি স্টেশনের ঘড়ির সঙ্গে মেলে। ২৩:২০-এর চিহ্নের পরেও ফিতা অক্ষত।'
+      } },
+      iconKey: 'file'
+    },
+    {
+      id: 'case-002-parcel-counterfoil',
+      name: { en: 'Porter’s parcel counterfoil', bn: 'মালের রসিদের মুড়ি' },
+      category: 'Documents',
+      description: {
+        en: 'The porter receipted a parcel at 19:34. Its collection slip is stamped for the evening round.',
+        bn: '১৯:৩৪-এ একটি পার্সেল তোলার রসিদ দিয়েছেন কর্মী। সিলটি সন্ধ্যার পালার।'
+      },
+      discoveryLocation: { en: 'Boiler passage, platform sign', bn: 'বয়লার পথ, প্ল্যাটফর্মের ফলক' },
+      relevance: { en: 'Does the parcel account for the early visitor or the late tracks?', bn: 'পার্সেলটি আগের দর্শনার্থীর ব্যাখ্যা দেয়, নাকি পরের পদচিহ্নের?' },
+      relatedSuspectIds: ['suspect-02-maya', 'suspect-02-isaac'],
+      isCrucial: true,
+      details: [{
+        en: 'The counterfoil records a collection from the platform stores. Its reference belongs to the parcel book.',
+        bn: 'রসিদে প্ল্যাটফর্মের গুদাম থেকে মাল তোলার উল্লেখ আছে। নম্বরটি পার্সেলের খাতার।'
+      }],
+      forensicReport: { labSummary: {
+        en: 'Pressure marks match the porter’s 19:34 entry on the duplicate. The counterfoil carries no passenger voucher number.',
+        bn: 'চাপের দাগ কর্মীর ১৯:৩৪-এর কার্বন কপির সঙ্গে মেলে। রসিদে যাত্রীর ভাউচার নম্বর নেই।'
+      } },
+      iconKey: 'file'
     }
   ],
   canonConnections: [
     {
+      id: 'c2-link-porter-alibi',
+      sourceId: 'case-002-parcel-counterfoil',
+      targetId: 'case-002-gate-strip',
+      label: { en: 'Two visits to the platform', bn: 'প্ল্যাটফর্মে দুই সময়' },
+      deductionNotes: {
+        en: 'The collection was stamped at 19:34. The gate swung out at 23:20. The porter could witness a collection without witnessing the later crossing.',
+        bn: 'পার্সেল তোলার সিল ১৯:৩৪-এ। ফটক বাইরে খোলে ২৩:২০-তে। পার্সেল তোলার সাক্ষী হলেও পরেরবার কে পার হয়েছেন তা কর্মীর দেখার কথা নয়।'
+      },
+      isContradiction: true,
+      bonusPoints: 100
+    },
+    {
+      id: 'c2-link-parcel-visit',
+      sourceId: 'case-002-parcel-counterfoil',
+      targetId: 'clue-02-sister-scarf',
+      label: { en: 'The evening collection', bn: 'সন্ধ্যার পার্সেল সংগ্রহ' },
+      deductionNotes: {
+        en: 'The 19:30 lobby image and the 19:34 receipt allow time for a real parcel call. The scarf in that image cannot date the later journey.',
+        bn: 'লবির ১৯:৩০-এর ছবি এবং ১৯:৩৪-এর রসিদ মিলিয়ে পার্সেল তোলার সময় পাওয়া যায়। ছবির স্কার্ফ দিয়ে পরের যাত্রার সময় স্থির করা যায় না।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
+    },
+    {
+      id: 'c2-link-platform-clock',
+      sourceId: 'case-002-gate-strip',
+      targetId: 'clue-02-torn-ticket',
+      label: { en: 'The platform interval', bn: 'প্ল্যাটফর্মে সময়ের ব্যবধান' },
+      deductionNotes: {
+        en: 'The outward swing precedes boarding by twenty-five minutes. Neither record alone identifies who crossed.',
+        bn: 'যাত্রী ওঠার পঁচিশ মিনিট আগে ফটক বাইরে খোলে। কে পার হয়েছিল তা কোনও একক নথিতে নেই।'
+      },
+      isContradiction: false,
+      bonusPoints: 90
+    },
+    {
       id: 'c2-conn-01',
-      sourceId: 'clue-02-staged-blood',
-      targetId: 'suspect-02-maya',
+      sourceId: 'clue-02-forced-door',
+      targetId: 'clue-02-staged-blood',
       label: {
-        en: 'Staged Kidnapping',
-        bn: 'সাজানো অপহরণের নাটক'
+        en: 'Two events at the doorway',
+        bn: 'দরজায় দুটি ঘটনা'
       },
       deductionNotes: {
-        en: 'The blood in Room 404 is synthetic theatrical prop blood brought in by Mousumi Das. Farzana was never harmed or kidnapped; she staged the scene to delay pursuit!',
-        bn: 'রুম ৪০৪-এ পাওয়া রক্ত কৃত্রিম থিয়েটার প্রপ রক্ত, যা মৌসুমী দাস নিয়ে এসেছিল। ফারজানা অপহৃত হয়নি; সে সময় পাওয়ার জন্য এই নাটক সাজিয়েছিল!'
+        en: 'Dry pigment beneath fresh paint puts the stain before the breach.',
+        bn: 'নতুন রঙের কণার নিচে শুকনো দাগ, অর্থাৎ দাগটি দরজা ভাঙার আগের।'
       },
       isContradiction: true,
       bonusPoints: 200
@@ -977,16 +1248,16 @@ export const case002: CaseData = {
     {
       id: 'c2-conn-02',
       sourceId: 'clue-02-burner-phone',
-      targetId: 'suspect-02-navarro',
+      targetId: 'clue-02-navarro-deposit',
       label: {
-        en: 'Corrupt Betrayal',
-        bn: 'ঘুষ নিয়ে বিশ্বাসঘাতকতা'
+        en: 'A remittance acknowledged',
+        bn: 'লেনদেনের স্বীকৃতি'
       },
       deductionNotes: {
-        en: 'The SMS sent to hitman Alam came from the burner phone linked to Detective Kabir. Kabir sold the safehouse location to the syndicate for $25,000!',
-        bn: 'খুনি আলমকে পাঠানো মেসেজটি কবীর সাহেবের সাথে যুক্ত। কবীর ২৫ হাজার ডলারের বিনিময়ে সেফহাউসের ঠিকানা অপরাধীদের কাছে বিক্রি করেছিল!'
+        en: 'K31 appears on the payment and the dispatch acknowledgement. The duty register identifies which live seal was in use.',
+        bn: 'অর্থ ও ডিসপ্যাচ স্বীকৃতি দুটিতেই K31। কোন সিল চালু ছিল ডিউটি খাতায় আছে।'
       },
-      isContradiction: false,
+      isContradiction: true,
       bonusPoints: 200
     },
     {
@@ -994,12 +1265,12 @@ export const case002: CaseData = {
       sourceId: 'clue-02-vent-grate',
       targetId: 'clue-02-tunnel-footprints',
       label: {
-        en: 'Subterranean Escape',
-        bn: 'সুড়ঙ্গপথে পলায়ন'
+        en: 'The service stair and platform',
+        bn: 'সার্ভিস সিঁড়ি ও প্ল্যাটফর্ম'
       },
       deductionNotes: {
-        en: 'Farzana crawled through the kitchenette maintenance duct into the basement steam tunnel and escaped with Mousumi to the rail yard at 23:20.',
-        bn: 'ফারজানা রান্নাঘরের ডাক্ট দিয়ে বয়লার রুমে নেমে মৌসুমীর সাথে রাত ১১:২০-এ সুড়ঙ্গ বেয়ে রেল ইয়ার্ডে নিরাপদে পালিয়ে যায়।'
+        en: 'Dust direction and a continuous tread connect two floors with the rail exit.',
+        bn: 'ধুলোর দিক ও একই জুতোর ছাপ দুই তলা থেকে রেলপথ যুক্ত করে।'
       },
       isContradiction: false,
       bonusPoints: 175
@@ -1009,15 +1280,77 @@ export const case002: CaseData = {
       sourceId: 'clue-02-torn-ticket',
       targetId: 'clue-02-escape-plan-memo',
       label: {
-        en: 'Destination Albany/Montreal',
-        bn: 'আসল গন্তব্য ট্রেন স্টেশন'
+        en: 'Two halves of voucher 71',
+        bn: '৭১ নম্বর ভাউচারের দুই অংশ'
       },
       deductionNotes: {
-        en: 'Farzana boarded the 23:45 Night Express with the master evidence drive to deliver it directly to the Federal District Court, bypassing compromised local officers.',
-        bn: 'ফারজানা রাত ১১:৪৫-এর ট্রেনে চড়ে সমস্ত প্রমাণ নিয়ে নিজেই সরাসরি আদালতে সাক্ষ্য দিতে পৌঁছানোর পরিকল্পনা করেছিল।'
+        en: 'A booked seat becomes a witnessed journey once the clerk’s half is placed alongside the passenger stub.',
+        bn: 'কর্মীর কপি ও যাত্রীর টুকরো মেলালে বুক করা আসনের যাত্রীর সাক্ষ্য মেলে।'
       },
       isContradiction: false,
       bonusPoints: 150
+    },
+    {
+      id: 'case-002-link-5',
+      sourceId: 'clue-02-burner-phone',
+      targetId: 'clue-02-forced-door',
+      label: {
+        en: 'A numbered release',
+        bn: 'নম্বরযুক্ত অনুমোদন'
+      },
+      deductionNotes: {
+        en: 'The roster identifies the custodian of the live dispatch seal. The bank copy can test its purpose.',
+        bn: 'সচল ডিসপ্যাচ সিলের ধারক তালিকায় আছে। ব্যাংকের কপি থেকে উদ্দেশ্য যাচাই করুন।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
+    },
+    {
+      id: 'case-002-link-6',
+      sourceId: 'clue-02-forced-door',
+      targetId: 'clue-02-escape-plan-memo',
+      label: {
+        en: 'The clerk and the corridor',
+        bn: 'কর্মী ও করিডোর'
+      },
+      deductionNotes: {
+        en: 'A witnessed boarding and a separately timed breach test the order of the two events.',
+        bn: 'সাক্ষীর সামনে ট্রেনে ওঠা ও আলাদা সময়ে দরজা ভাঙা থেকে ঘটনাক্রম যাচাই হয়।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
+    },
+    {
+      id: 'safehouse-loan',
+      sourceId: 'clue-02-navarro-deposit',
+      targetId: 'suspect-02-navarro',
+      requiresEvidenceIds: ['clue-02-forced-door', 'clue-02-burner-phone'],
+      label: {
+        en: 'The family-loan account',
+        bn: 'পারিবারিক ঋণের বয়ান'
+      },
+      deductionNotes: {
+        en: 'The dispatch acknowledgement and the paying fund give a way to test the loan explanation.',
+        bn: 'বার্তার স্বীকৃতি ও অর্থদাতা তহবিল থেকে ঋণের ব্যাখ্যা যাচাই করা যায়।'
+      },
+      isContradiction: true,
+      bonusPoints: 60
+    },
+    {
+      id: 'safehouse-courier',
+      sourceId: 'clue-02-sister-scarf',
+      targetId: 'suspect-02-maya',
+      requiresEvidenceIds: ['clue-02-escape-plan-memo'],
+      label: {
+        en: 'A private delivery',
+        bn: 'ব্যক্তিগত সরবরাহ'
+      },
+      deductionNotes: {
+        en: 'The visitor who identified the scarf supplied a later court receipt. It gives the concealed visit a purpose independent of the door damage.',
+        bn: 'স্কার্ফ চেনা দর্শনার্থী পরের আদালতের রসিদটি দিলেন। দরজার ক্ষতি থেকে আলাদাভাবে গোপন সাক্ষাতের উদ্দেশ্য বোঝা যায়।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
     }
   ],
   timelineEvents: [
@@ -1026,159 +1359,161 @@ export const case002: CaseData = {
       timestamp: '19:30',
       timeSortValue: 1170,
       title: {
-        en: 'Mousumi Smuggles Escape Gear to Farzana',
-        bn: 'মায়া ফারজানার কাছে ছদ্মবেশের পোশাক ও জিনিস পৌঁছে দেয়'
+        en: 'Courier at the lobby',
+        bn: 'লবিতে কুরিয়ার'
       },
       description: {
-        en: 'Mousumi Das visits Safehouse 404 disguised as a delivery courier, providing Farzana with fake Canadian ID, theatrical blood, and clothes.',
-        bn: 'মায়া ডেলিভারি কর্মীর ছদ্মবেশে ফারজানার জন্য কানাডার জাল পাসপোর্ট, থিয়েটারের রক্ত ও পোশাক নিয়ে আসে।'
+        en: 'A delivery bag crosses the camera.',
+        bn: 'ক্যামেরায় সরবরাহ ব্যাগ দেখা যায়।'
       },
       source: {
-        en: 'Mousumi\'s Admission & Scarf Discovery',
-        bn: 'মৌসুমীর স্বীকারোক্তি ও স্কার্ফের সন্ধান'
+        en: 'Floral scarf',
+        bn: 'ফুলের নকশার স্কার্ফ'
       },
       verifiedLocation: {
-        en: 'Safehouse 404',
-        bn: 'সেফহাউস ৪০৪'
+        en: 'Hallway coat rack inside Room 404',
+        bn: 'রুম ৪০৪-এর কোট হ্যাঙ্গার'
       },
-      relatedSuspectId: 'suspect-02-maya',
-      correctIndex: 0
+      correctIndex: 0,
+      evidenceId: 'clue-02-sister-scarf'
     },
     {
       id: 'tl2-02',
       timestamp: '23:00',
       timeSortValue: 1380,
       title: {
-        en: 'Kabir Receives $25,000 Wire Deposit',
-        bn: 'কবীর সাহেবের অ্যাকাউন্টে ঘুষের ২৫,০০০ ডলার জমা'
+        en: 'Transfer authorised',
+        bn: 'লেনদেন অনুমোদিত'
       },
       description: {
-        en: 'Blackwood Syndicate wire transfers $25,000 into Detective Kabir\'s offshore account to betray the safehouse coordinates.',
-        bn: 'সিন্ডিকেট কবীর সাহেবের গোপন অফশোর অ্যাকাউন্টে সেফহাউসের ঠিকানা পাওয়ার জন্য ২৫,০০০ ডলার পাঠায়।'
+        en: 'The courier fund authorises a payment subject to acknowledgement.',
+        bn: 'প্রাপ্তির স্বীকৃতি সাপেক্ষে কুরিয়ার তহবিল অর্থ অনুমোদন করে।'
       },
       source: {
-        en: 'FinCEN Wire Intercept',
-        bn: 'ব্যাংক ইন্টারসেপ্ট রেকর্ড'
+        en: 'Clearinghouse remittance',
+        bn: 'লেনদেন নিষ্পত্তির রসিদ'
       },
       verifiedLocation: {
-        en: 'Offshore Server / Kabir Mobile',
-        bn: 'কবীর সাহেবের গোপন অ্যাকাউন্ট'
+        en: 'State Police Internal Affairs Intercept',
+        bn: 'পুলিশের অভ্যন্তরীণ গোয়েন্দা ইন্টারসেপ্ট'
       },
-      relatedSuspectId: 'suspect-02-navarro',
-      correctIndex: 1
+      correctIndex: 1,
+      evidenceId: 'clue-02-navarro-deposit'
     },
     {
       id: 'tl2-03',
       timestamp: '23:10',
       timeSortValue: 1390,
       title: {
-        en: 'Kabir Texts Coordinates to Alam',
-        bn: 'কবীর আলমকে ঘরের নম্বর ও সময় মেসেজ করে'
+        en: 'Room assignment released',
+        bn: 'ঘরের তথ্য পাঠানো'
       },
       description: {
-        en: 'Kabir transmits Room 404 and shift change details to enforcer Bakhtiar Alam via burner phone. Farzana overhears the transmission.',
-        bn: 'কবীর আলমকে রুম ৪০৪ এবং গার্ড পরিবর্তনের সময় জানায়। ফারজানা দেয়ালের ওপাশ থেকে তা শুনে ফেলে।'
+        en: 'A numbered source receives an acknowledgement.',
+        bn: 'নম্বরযুক্ত উৎস স্বীকৃতি পায়।'
       },
       source: {
-        en: 'Radiator Burner Phone SMS Log',
-        bn: 'বার্নার ফোনের এসএমএস রেকর্ড'
+        en: 'Radiator handset',
+        bn: 'রেডিয়েটরের ফোন'
       },
       verifiedLocation: {
-        en: '4th Floor Hallway',
-        bn: '৪র্থ তলার করিডোর'
+        en: 'Behind kitchenette radiator',
+        bn: 'হিটারের পেছনের ফাঁকা স্থান'
       },
-      relatedSuspectId: 'suspect-02-navarro',
-      correctIndex: 2
+      correctIndex: 2,
+      evidenceId: 'clue-02-burner-phone'
     },
     {
       id: 'tl2-04',
       timestamp: '23:20',
       timeSortValue: 1400,
       title: {
-        en: 'Farzana & Mousumi Flee via Steam Tunnel',
-        bn: 'ফারজানা নাটক সাজিয়ে সুড়ঙ্গ দিয়ে পালায়'
+        en: 'Service door opened',
+        bn: 'সার্ভিস দরজা খোলে'
       },
       description: {
-        en: 'Farzana splatters theatrical stage blood, overturns furniture to stage a struggle, and crawls through the kitchenette vent into the basement with Mousumi.',
-        bn: 'ফারজানা কৃত্রিম রক্ত ছড়িয়ে ও আসবাব উল্টে ধস্তাধস্তির নাটক সাজিয়ে রান্নাঘরের ডাক্ট দিয়ে সুড়ঙ্গে পালায়।'
+        en: 'The lower pen records the gate opening toward the tracks.',
+        bn: 'রেললাইনের দিকে ফটক খোলার চিহ্ন নিচের কলমে ধরা পড়ে।'
       },
       source: {
-        en: 'Synthetic Blood Test & Conduit Footprints',
-        bn: 'কৃত্রিম রক্তের রিপোর্ট ও সুড়ঙ্গের পায়ের ছাপ'
+        en: 'Gate recorder strip',
+        bn: 'ফটকের রেকর্ডার ফিতা'
       },
       verifiedLocation: {
-        en: 'Kitchenette Vent & Boiler Tunnel',
-        bn: 'রান্নাঘরের ডাক্ট ও বয়লার সুড়ঙ্গ'
+        en: 'Boiler passage, platform gate',
+        bn: 'বয়লার পথ, প্ল্যাটফর্মের ফটক'
       },
-      correctIndex: 3
+      correctIndex: 3,
+      evidenceId: 'case-002-gate-strip'
     },
     {
       id: 'tl2-05',
       timestamp: '23:45',
       timeSortValue: 1425,
       title: {
-        en: 'Farzana Boards the Night Express',
-        bn: 'ফারজানা মন্ট্রিয়লগামী রাতের ট্রেনে ওঠে'
+        en: 'Night express departs',
+        bn: 'রাতের ট্রেন ছাড়ে'
       },
       description: {
-        en: 'Farzana boards the 23:45 sleeper train to Montreal carrying the master encrypted USB drive to reach federal prosecutors safely.',
-        bn: 'ফারজানা মূল প্রমাণের ড্রাইভ নিয়ে নিরাপদে আদালতে পৌঁছাতে রাতের ট্রেনে ওঠে।'
+        en: 'A rail voucher is accepted.',
+        bn: 'রেল ভাউচার গ্রহণ করা হয়।'
       },
       source: {
-        en: 'Torn Train Boarding Pass & Rail Logs',
-        bn: 'ট্রেনের টিকিট ও প্ল্যাটফর্মের লগ'
+        en: 'Sleeper ticket stub',
+        bn: 'শয়নযানের টিকিটের অংশ'
       },
       verifiedLocation: {
-        en: 'East Docks Freight Platform',
-        bn: 'রেল প্ল্যাটফর্ম'
+        en: 'Folding desk, under the timetable',
+        bn: 'ভাঁজ টেবিলে সময়সূচির নিচে'
       },
-      correctIndex: 4
+      correctIndex: 4,
+      evidenceId: 'clue-02-torn-ticket'
     },
     {
       id: 'tl2-06',
       timestamp: '00:30',
       timeSortValue: 1470,
       title: {
-        en: 'Alam Breaches the Empty Apartment',
-        bn: 'আলম দরজা ভেঙে ঢুকে শূন্য ঘর পায়'
+        en: 'Door contact triggered',
+        bn: 'দরজার সংকেত'
       },
       description: {
-        en: 'Bakhtiar Alam kicks down the door of Room 404 to execute the hit, finds the apartment completely vacant, and knocks over the lamp in frustration.',
-        bn: 'আলম খুনের উদ্দেশ্যে দরজা ভেঙে ঢুকে দেখে ঘর সম্পূর্ণ ফাঁকা, রাগে সে বাতি আছড়ে ফেলে।'
+        en: 'The strike separates from the frame.',
+        bn: 'ধাতব পাত ফ্রেম থেকে সরে যায়।'
       },
       source: {
-        en: 'Door Frame Boot Scuff & Forensic Reagent',
-        bn: 'দরজায় বুটের ছাপ ও আসবাব ভাঙার দাগ'
+        en: 'Door frame and duty sheet',
+        bn: 'দরজার ফ্রেম ও ডিউটির তালিকা'
       },
       verifiedLocation: {
-        en: 'Room 404 Doorway',
-        bn: 'রুম ৪০৪-এর প্রবেশপথ'
+        en: '4th Floor Corridor Entrance',
+        bn: '৪র্থ তলার করিডোরের মুখ'
       },
-      relatedSuspectId: 'suspect-02-kozlov',
-      correctIndex: 5
+      correctIndex: 5,
+      evidenceId: 'clue-02-forced-door'
     },
     {
       id: 'tl2-07',
       timestamp: '00:45',
       timeSortValue: 1485,
       title: {
-        en: 'Kabir Fakes His Unconscious State',
-        bn: 'কবীর আঘাতের ভান করে অজ্ঞান হয়ে পড়ে থাকে'
+        en: 'Quarter-hour recall',
+        bn: 'পনেরো মিনিটের সংকেত'
       },
       description: {
-        en: 'Officer Rayhan Kabir lies down in the hallway, staging an ambush with a self-inflicted contusion to feign innocence before backup arrives.',
-        bn: 'কবীর নিজেকে নির্দোষ প্রমাণ করতে নিজে নিজেই মাথায় টর্চ দিয়ে সামান্য আঘাত করে করিডোরে পড়ে থাকে।'
+        en: 'The roster records the next unanswered recall.',
+        bn: 'তালিকায় পরের ডাকে সাড়া নেই।'
       },
       source: {
-        en: 'Medical Pathology Report & Hallway Review',
-        bn: 'মেডিকেল রিপোর্ট ও করিডোরের প্রমাণ'
+        en: 'Door frame and duty sheet',
+        bn: 'দরজার ফ্রেম ও ডিউটির তালিকা'
       },
       verifiedLocation: {
-        en: '4th Floor Hallway',
-        bn: '৪র্থ তলার করিডোর'
+        en: '4th Floor Corridor Entrance',
+        bn: '৪র্থ তলার করিডোরের মুখ'
       },
-      relatedSuspectId: 'suspect-02-navarro',
-      correctIndex: 6
+      correctIndex: 6,
+      evidenceId: 'clue-02-forced-door'
     }
   ],
   hints: [
@@ -1186,97 +1521,106 @@ export const case002: CaseData = {
       level: 1,
       cost: 50,
       title: {
-        en: 'Check the Blood Chemistry',
-        bn: 'রক্তের রাসায়নিক পরীক্ষা দেখুন'
+        en: 'Different clocks',
+        bn: 'আলাদা ঘড়ি'
       },
       hintText: {
-        en: 'Inspect the forensic reagent results for the blood on the living room rug. Real blood has hemoglobin; theatrical blood has sugar syrup and carmine dye.',
-        bn: 'গালিচায় পড়ে থাকা রক্তের ল্যাব রিপোর্ট দেখুন। আসল রক্তে হিমোগ্লোবিন থাকে, কিন্তু কৃত্রিম রক্তে থাকে সুগার সিরাপ আর রঙ।'
+        en: 'Keep separate times for the stain, impact and passenger journey.',
+        bn: 'দাগ, আঘাত ও যাত্রার সময় আলাদা রাখুন।'
       }
     },
     {
       level: 2,
       cost: 100,
       title: {
-        en: 'The Officer\'s Secret Phone',
-        bn: 'পাহারাদারের গোপন ফোন'
+        en: 'Ownership and custody',
+        bn: 'মালিকানা ও হেফাজত'
       },
       hintText: {
-        en: 'Search behind the steam radiator. The burner phone contains outgoing text messages that reveal who betrayed the safehouse address.',
-        bn: 'স্টিম হিটারের পেছনের বার্নার ফোনটির মেসেজ দেখুন। ওখান থেকেই প্রকাশ পাবে কে সেফহাউসের ঠিকানা অপরাধীদের কাছে ফাঁস করেছিল।'
+        en: 'Ask who held the numbered seals. A receiver can retain traffic sent by someone else.',
+        bn: 'নম্বর দেওয়া সিল কার কাছে ছিল জিজ্ঞেস করুন। রিসিভারে অন্যের পাঠানো বার্তাও থাকে।'
       }
     },
     {
       level: 3,
       cost: 200,
       title: {
-        en: 'The Real Escape',
-        bn: 'আসল পলায়নের রহস্য'
+        en: 'Paired paperwork',
+        bn: 'জোড়া নথি'
       },
       hintText: {
-        en: 'Farzana Haque was never kidnapped. She discovered Kabir\'s betrayal, staged the scene with sister Mousumi, and fled via the sub-basement conduit to catch the 23:45 train.',
-        bn: 'ফারজানা অপহৃত হয়নি। সে পাহারাদারের বিশ্বাসঘাতকতা ধরে ফেলে বোনের সাহায্যে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে রাত ১১:৪৫-এর ট্রেনে চড়ে নিরাপদে সরে পড়ে।'
+        en: 'Check the remittance against the outgoing acknowledgement. Then put both halves of the rail voucher together.',
+        bn: 'অর্থের রসিদ ও পাঠানোর স্বীকৃতি মেলান। এরপর রেল ভাউচারের দুই অংশ পাশাপাশি রাখুন।'
       }
     }
   ],
   solution: {
     culpritId: 'suspect-02-navarro',
     culpritName: {
-      en: 'Inspector Rayhan Kabir (Betrayal & Corruption)',
-      bn: 'ইন্সপেক্টর রায়হান কবীর (ঘুষ ও বিশ্বাসঘাতকতা)'
+      en: 'Detective Ray Navarro (Betrayal & Corruption)',
+      bn: 'ডিটেকটিভ রে নাভারো (ঘুষ ও বিশ্বাসঘাতকতা)'
     },
     motiveDescription: {
-      en: 'Accepted a $25,000 syndicate bribe to pay off gambling debts by leaking the safehouse location to hitman Bakhtiar Alam.',
-      bn: 'জুয়ার দেনা মেটাতে ব্ল্যাকউড সিন্ডিকেটের কাছ থেকে ২৫,০০০ ডলার ঘুষ নিয়ে খুনিদের কাছে সেফহাউসের গোপন ঠিকানা ফাঁস করেছিল।'
+      en: 'A paid disclosure to a creditor',
+      bn: 'পাওনা মেটাতে অর্থের বিনিময়ে তথ্য ফাঁস'
     },
     methodDescription: {
-      en: 'Kabir transmitted room coordinates to the syndicate. Farzana discovered the betrayal, staged an abduction with theatrical blood, and escaped through the steam conduit to catch the 23:45 Night Express.',
-      bn: 'কবীর গোপন মেসেজে তথ্য ফাঁস করে। ফারজানা বিষয়টি টের পেয়ে কৃত্রিম রক্ত দিয়ে অপহরণের দৃশ্য সাজায় এবং সুড়ঙ্গপথ দিয়ে পালিয়ে ট্রেনে চড়ে রক্ষা পায়।'
+      en: 'Voluntary rail departure after a staged struggle',
+      bn: 'সাজানো ধস্তাধস্তির পর স্বেচ্ছায় রেলযাত্রা'
     },
     approximateTime: {
-      en: '23:20 (Escape) / 00:30 (Breach)',
-      bn: 'রাত ১১:২০ (পলায়ন) / ১২:৩০ (দরজা ভাঙা)'
+      en: '23:20–23:45',
+      bn: '২৩:২০–২৩:৪৫'
     },
     crucialEvidenceIds: [
-      'clue-02-staged-blood',
+      'clue-02-forced-door',
       'clue-02-burner-phone',
+      'clue-02-navarro-deposit',
       'clue-02-vent-grate',
+      'clue-02-tunnel-footprints',
+      'clue-02-staged-blood',
+      'case-002-parcel-counterfoil',
+      'case-002-gate-strip',
       'clue-02-torn-ticket',
-      'clue-02-tunnel-footprints'
+      'clue-02-escape-plan-memo'
     ],
-    falseAlibiSuspectId: 'suspect-02-navarro',
+    falseAlibiSuspectId: 'suspect-02-isaac',
+    statementQuestion: {
+      en: 'Whose alibi for the platform crossing fails the time check?',
+      bn: 'প্ল্যাটফর্মের ফটক পার হওয়ার সময় মিলিয়ে দেখলে কার অ্যালিবাই খণ্ডিত হয়?'
+    },
     fullCaseDebriefing: {
-      en: 'Inspector Rayhan Kabir was corrupted by high-stakes sports gambling debts. For $25,000 wired into an offshore Cayman account, he agreed to sell out protected witness Farzana Haque to the Blackwood Syndicate, texting the room number and guard rotation to hitman Bakhtiar Alam.\n\nHowever, Farzana was sharp. She intercepted Kabir\'s burner radio chatter and realized she was a dead woman if she stayed. With the assistance of her sister Mousumi Das and superintendent Iqbal Hossain, Farzana formulated a daring plan: at 23:20, she splattered theatrical prop blood on the carpet, kicked over furniture, and crawled through the kitchenette maintenance vent into the 1920s underground steam conduit. She emerged onto the freight rail platform and boarded the 23:45 Night Express carrying the master encrypted fraud drive to deliver it directly to federal prosecutors.\n\nWhen Alam arrived at 00:30, he kicked open the door to find the room empty and fled. Kabir, realizing his bribe scheme had imploded, struck himself in the head with a flashlight and played the unconscious victim in the hallway. Thanks to your deduction of the synthetic blood, the radiator burner phone, and the underground boiler tracks, Kabir was arrested for criminal conspiracy and Farzana Haque\'s testimony was preserved.',
-      bn: 'ইন্সপেক্টর রায়হান কবীর জুয়ার দেনার কারণে নীতিভ্রষ্ট হয়েছিল। কেম্যান আইল্যান্ডসের ব্যাংক অ্যাকাউন্টে ২৫,০০০ ডলারের বিনিময়ে সে সরকারি সুরক্ষিত সাক্ষী ফারজানা হককে সিন্ডিকেটের হাতে তুলে দেওয়ার চুক্তি করে এবং খুনি বখতিয়ার আলমকে ঘরের নম্বর ও সময় মেসেজ করে।\n\nকিন্তু ফারজানা অত্যন্ত তীক্ষ্ণ বুদ্ধিসম্পন্ন ছিল। সে কবীর সাহেবের কথোপকথন ধরে ফেলে এবং বুঝতে পারে এখানে থাকলে তার নিশ্চিত মৃত্যু। সৎ বোন মৌসুমী দাস ও কেয়ারটেকার ইকবালের সহায়তায় সে এক সাহসী পরিকল্পনা করে: রাত ১১:২০-এ কার্পেটে থিয়েটারের কৃত্রিম রক্ত ছড়িয়ে, আসবাবপত্র ওলটপালট করে সে রান্নাঘরের ডাক্ট বেয়ে মাটির নিচের পুরনো বাষ্প সুড়ঙ্গে নেমে পড়ে। সেখান থেকে রেল প্ল্যাটফর্মে গিয়ে রাত ১১:৪৫-এর নাইট এক্সপ্রেসে চড়ে সে সমস্ত আর্থিক জালিয়াতির মাস্টার ইউএসবি ড্রাইভ নিয়ে আদালতের উদ্দেশ্যে রওয়ানা দেয়।\n\nরাত ১২:৩০-এ খুনি আলম দরজা ভেঙে ভেতরে ঢুকে কাউকে না পেয়ে রাগে আসবাব ভেঙে পালায়। কবীর পরিস্থিতি বেগতিক দেখে নিজের মাথায় নিজেই আঘাত করে করিডোরে অজ্ঞান হওয়ার ভান করে পড়ে থাকে। আপনার নিখুঁত তদন্তে কৃত্রিম রক্তের রহস্য, বার্নার ফোনের এসএমএস এবং মাটির নিচের সুড়ঙ্গের পায়ের ছাপ উদঘাটিত হওয়ায় কবীর গ্রেপ্তার হয় এবং ফারজানা হকের মূল্যবান সাক্ষ্য সুরক্ষিত থাকে।'
+      en: 'Navarro sold the protected room assignment. Only his live seal 6 authenticated the 23:10 release. Its K31 acknowledgement matches the syndicate payment to a betting creditor. Sterling could fund a payment and Kozlov could receive the address. Neither controlled that seal.\n\nClara overheard the traffic. Maya brought clothes and pigment. Isaac hid a second loan of key P to Clara. The porter stamped his parcel at 19:34, hours before the crossing he claimed to have witnessed. The dry stain predates the forced opening. Two people left tracks down the service passage. At 23:20 the gate opened toward the platform. Voucher 71 and the clerk place Clara voluntarily on the 23:45 train with her drive. Kozlov arrived at 00:30. Navarro’s account of an undamaged door and Clara still inside at 00:45 cannot stand.',
+      bn: 'নাভারো সুরক্ষিত ঘরের তথ্য বিক্রি করেন। ২৩:১০-এর বার্তা তাঁর ব্যক্তিগত ৬ নম্বর সিলে অনুমোদিত। K31 স্বীকৃতি সিন্ডিকেটের বাজির পাওনা মেটানোর রসিদের সঙ্গে মেলে। স্টার্লিং অর্থ দিতে এবং কোজলভ ঠিকানা পেতে পারতেন, সিলটি তাঁদের ছিল না।\n\nক্লারা বার্তা শুনেছিলেন। মায়া পোশাক ও রং আনেন। আইজ্যাক P চাবিটি দ্বিতীয়বার ক্লারাকে ধার দেওয়ার কথা লুকিয়েছিলেন। কর্মী তাঁর পার্সেলে ১৯:৩৪-এ সিল দেন, ফটক পার হওয়ার যে সময়ের কথা তিনি দাবি করেছিলেন তার কয়েক ঘণ্টা আগে। দরজা ভাঙার আগেই দাগ শুকিয়েছে। সার্ভিস পথে দুজনের হাঁটার ছাপ পাওয়া গেছে। ২৩:২০-তে ফটকটি প্ল্যাটফর্মের দিকে খোলে। ভাউচার ৭১ ও কর্মীর সাক্ষ্যে ক্লারা ড্রাইভ নিয়ে ২৩:৪৫-এর ট্রেনে স্বেচ্ছায় ওঠেন। কোজলভ আসেন ০০:৩০-এ। ০০:৪৫-এ অক্ষত দরজা ও ঘরে ক্লারাকে দেখার দাবি মিথ্যা।'
     },
     options: {
       motives: [
         {
           id: 'm-syndicate-bribe',
           label: {
-            en: 'Accepted $25,000 syndicate bribe to leak safehouse location due to gambling debts',
-            bn: 'জুয়ার দেনা মেটাতে সিন্ডিকেটের কাছ থেকে ২৫,০০০ ডলার ঘুষ নিয়ে সেফহাউসের গোপন তথ্য ফাঁস করা'
+            en: 'A paid disclosure to a creditor',
+            bn: 'পাওনা মেটাতে অর্থের বিনিময়ে তথ্য ফাঁস'
           }
         },
         {
           id: 'm-revenge',
           label: {
-            en: 'Personal vengeance against the Haque family for prior criminal convictions',
-            bn: 'পূর্ববর্তী শত্রুতার জেরে হক পরিবারের ওপর ব্যক্তিগত প্রতিশোধ নেওয়া'
+            en: 'Retaliation over an earlier conviction',
+            bn: 'পুরোনো দণ্ডের প্রতিশোধ'
           }
         },
         {
           id: 'm-silence-witness',
           label: {
-            en: 'Preventing Farzana from exposing police precinct corruption in trial',
-            bn: 'থানার নিজস্ব কর্মকর্তাদের দুর্নীতি প্রকাশ ঠেকানো'
+            en: 'Suppress testimony about local officers',
+            bn: 'স্থানীয় অফিসারদের নিয়ে সাক্ষ্য বন্ধ করা'
           }
         },
         {
           id: 'm-extortion',
           label: {
-            en: 'Extorting $500,000 ransom from the Blackwood Syndicate',
-            bn: 'সিন্ডিকেটের কাছ থেকে ৫ লাখ ডলার মুক্তিপণ আদায়ের চেষ্টা'
+            en: 'Collect a ransom from the family',
+            bn: 'পরিবারের কাছে মুক্তিপণ আদায়'
           }
         }
       ],
@@ -1284,29 +1628,29 @@ export const case002: CaseData = {
         {
           id: 'met-staged-escape',
           label: {
-            en: 'Kabir leaked location; Farzana discovered it, staged kidnapping with prop blood, and escaped via steam tunnel',
-            bn: 'কবীর তথ্য ফাঁস করে; ফারজানা তা ধরে ফেলে কৃত্রিম রক্ত দিয়ে নাটক সাজিয়ে সুড়ঙ্গ বেয়ে পালিয়ে যায়'
+            en: 'Voluntary rail departure after a staged struggle',
+            bn: 'সাজানো ধস্তাধস্তির পর স্বেচ্ছায় রেলযাত্রা'
           }
         },
         {
           id: 'met-forced-abduction',
           label: {
-            en: 'Alam stormed room, chloroformed Farzana, and carried her out the fire escape',
-            bn: 'আলম ঘরে ঢুকে ক্লোরোফর্ম দিয়ে অজ্ঞান করে ফায়ার এসকেপ দিয়ে ফারজানাকে তুলে নিয়ে যায়'
+            en: 'Forced removal through the breached door',
+            bn: 'ভাঙা দরজা দিয়ে জোর করে নেওয়া'
           }
         },
         {
           id: 'met-poisoned-vent',
           label: {
-            en: 'Pumped carbon monoxide through the air vents to incapacitate the witness',
-            bn: 'ভেন্টিলেশন পাইপ দিয়ে বিষাক্ত গ্যাস ছেড়ে সাক্ষীকে কাবু করা হয়'
+            en: 'Planned transfer arranged by court officials',
+            bn: 'আদালতের কর্মীদের পরিকল্পিত স্থানান্তর'
           }
         },
         {
           id: 'met-corridor-bludgeon',
           label: {
-            en: 'Ambushed the protection detail and drove the witness across the border',
-            bn: 'পুলিশকে মেরে সাক্ষীকে জোরপূর্বক গাড়িতে করে সীমান্ত পার করে নিয়ে যাওয়া হয়'
+            en: 'Abduction by car from the service exit',
+            bn: 'সার্ভিস দরজা থেকে গাড়িতে অপহরণ'
           }
         }
       ],
@@ -1314,32 +1658,70 @@ export const case002: CaseData = {
         {
           id: 't-2320',
           label: {
-            en: 'Between 23:20 and 23:45 (Farzana\'s tunnel evacuation and train departure)',
-            bn: 'রাত ১১:২০ থেকে ১১:৪৫-এর মধ্যে (সুড়ঙ্গ দিয়ে পলায়ন ও ট্রেনে চড়া)'
+            en: '23:20–23:45',
+            bn: '২৩:২০–২৩:৪৫'
           }
         },
         {
           id: 't-0030',
           label: {
-            en: 'At 00:30 (when Alam breached the empty doorway)',
-            bn: 'রাত ১২:৩০ মিনিটে (আলম শূন্য ঘরে দরজা ভেঙে ঢোকার সময়)'
+            en: '00:25–00:35',
+            bn: '০০:২৫–০০:৩৫'
           }
         },
         {
           id: 't-0045',
           label: {
-            en: 'At 00:45 (when Kabir staged his unconsciousness)',
-            bn: 'রাত ১২:৪৫ মিনিটে (কবীর সাহেবের অজ্ঞান হওয়ার নাটক সাজানোর সময়)'
+            en: '00:40–00:50',
+            bn: '০০:৪০–০০:৫০'
           }
         },
         {
           id: 't-0115',
           label: {
-            en: 'At 01:15 (when backup police units arrived)',
-            bn: 'রাত ০১:১৫ মিনিটে (অতিরিক্ত পুলিশ ফোর্স পৌঁছানোর সময়)'
+            en: '01:10–01:20',
+            bn: '০১:১০–০১:২০'
           }
         }
       ]
+    },
+    motiveId: 'm-syndicate-bribe',
+    methodId: 'met-staged-escape',
+    timeId: 't-2320'
+  },
+  site: {
+    en: 'St. Jude Apartments',
+    bn: 'সেন্ট জুড অ্যাপার্টমেন্ট'
+  },
+  deductions: [
+    {
+      id: 'inquiry-1',
+      question: {
+        en: 'Who authenticated the paid release?',
+        bn: 'অর্থের বিনিময়ে বার্তাটি কে অনুমোদন দেন?'
+      },
+      connectionId: 'c2-conn-02',
+      evidenceIds: ['clue-02-forced-door', 'clue-02-burner-phone', 'clue-02-navarro-deposit'],
+      alternativeConnectionIds: ['case-002-link-5']
+    },
+    {
+      id: 'inquiry-2',
+      question: {
+        en: 'Which route fits the marked floor?',
+        bn: 'মেঝের চিহ্ন কোন পথ সমর্থন করে?'
+      },
+      connectionId: 'c2-conn-03',
+      evidenceIds: ['clue-02-vent-grate', 'clue-02-tunnel-footprints', 'clue-02-staged-blood']
+    },
+    {
+      id: 'inquiry-3',
+      question: {
+        en: 'Which records date the parcel visit, the passenger crossing and the breach?',
+        bn: 'কোন নথিতে পার্সেল তোলা, যাত্রীর ফটক পার হওয়া ও দরজা ভাঙার আলাদা সময় মেলে?'
+      },
+      connectionId: 'c2-conn-04',
+      evidenceIds: ['clue-02-torn-ticket', 'clue-02-escape-plan-memo', 'clue-02-forced-door', 'case-002-parcel-counterfoil', 'case-002-gate-strip'],
+      alternativeConnectionIds: ['case-002-link-6', 'c2-link-platform-clock', 'c2-link-porter-alibi']
     }
-  }
+  ]
 };

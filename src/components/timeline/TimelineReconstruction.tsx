@@ -43,29 +43,35 @@ export const TimelineReconstruction: React.FC = () => {
 
   const orderedEvents: TimelineEvent[] = currentOrderIds
     .map(id => activeCase.timelineEvents.find(e => e.id === id))
-    .filter((e): e is TimelineEvent => !!e);
+    .filter((e): e is TimelineEvent => !!e && caseState.discoveredEvidenceIds.includes(e.evidenceId));
+  const visibleIds = orderedEvents.map(e=>e.id);
+  const chronological = [...orderedEvents].sort((a,b)=>a.correctIndex-b.correctIndex);
+  const saveVisibleOrder = (ids: string[]) => {
+    let offset=0;
+    updateTimelineOrder(currentOrderIds.map(id=>visibleIds.includes(id)?ids[offset++]:id));
+  };
 
   // Move item up in order
   const handleMoveUp = (index: number) => {
     if (index <= 0) return;
     sound.playPaper();
-    const newOrder = [...currentOrderIds];
+    const newOrder = [...visibleIds];
     const temp = newOrder[index - 1];
     newOrder[index - 1] = newOrder[index];
     newOrder[index] = temp;
-    updateTimelineOrder(newOrder);
+    saveVisibleOrder(newOrder);
     setVerificationFeedback(null);
   };
 
   // Move item down in order
   const handleMoveDown = (index: number) => {
-    if (index >= currentOrderIds.length - 1) return;
+    if (index >= visibleIds.length - 1) return;
     sound.playPaper();
-    const newOrder = [...currentOrderIds];
+    const newOrder = [...visibleIds];
     const temp = newOrder[index + 1];
     newOrder[index + 1] = newOrder[index];
     newOrder[index] = temp;
-    updateTimelineOrder(newOrder);
+    saveVisibleOrder(newOrder);
     setVerificationFeedback(null);
   };
 
@@ -82,11 +88,11 @@ export const TimelineReconstruction: React.FC = () => {
   // Verify chronology
   const handleVerify = () => {
     let correctCount = 0;
-    const totalCount = activeCase.timelineEvents.length;
+    const totalCount = orderedEvents.length;
 
     // A timeline event is in correct relative position if its target index matches
     orderedEvents.forEach((ev, idx) => {
-      if (ev.correctIndex === idx) {
+      if (ev.id === chronological[idx].id) {
         correctCount++;
       }
     });
@@ -100,8 +106,8 @@ export const TimelineReconstruction: React.FC = () => {
         totalCount,
         isFlawless: true,
         feedbackMessage: isBengali
-          ? 'অনবদ্য সময়রেখা! প্রতিটি ফরেনসিক টাইমস্ট্যাম্প, সিসিটিভি ফুটেজ ও সাক্ষ্যের সময় নিখুঁতভাবে মিলে গেছে।'
-          : 'Ironclad Sequence! Every forensic timestamp, CCTV record, and witness sighting lines up flawlessly.'
+          ? 'নথিভুক্ত আলামতের ঘটনাগুলি সঠিক সময়ক্রমে আছে।'
+          : 'The events currently supported by your exhibits are in chronological order.'
       });
     } else {
       sound.playContradictionBuzz();
@@ -147,7 +153,7 @@ export const TimelineReconstruction: React.FC = () => {
 
           <div className="flex items-center space-x-2 w-full sm:w-auto">
             <button
-              onClick={handleReset}
+              onClick={handleReset} disabled={orderedEvents.length<2}
               className="px-3 py-2 bg-noir-950 hover:bg-noir-800 border border-noir-700 rounded text-xs text-noir-400 hover:text-white transition-colors flex items-center gap-1.5"
               title={t('shuffleBtn')}
             >
@@ -156,7 +162,7 @@ export const TimelineReconstruction: React.FC = () => {
             </button>
 
             <button
-              onClick={handleVerify}
+              onClick={handleVerify} disabled={orderedEvents.length<2}
               className="flex-1 sm:flex-initial px-5 py-2 bg-blood-600 hover:bg-blood-500 text-white rounded text-xs font-bold shadow-lg flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5"
             >
               <FileCheck2 className="w-4 h-4" />
@@ -186,11 +192,6 @@ export const TimelineReconstruction: React.FC = () => {
                   {isBengali ? 'ঘটনাক্রম নিরীক্ষা:' : 'Chronological Analysis:'} {formatNum(verificationFeedback.correctCount)} /{' '}
                   {formatNum(verificationFeedback.totalCount)} {isBengali ? 'ঘটনা সঠিক ক্রমানুসারে রয়েছে' : 'Events Properly Sequenced'}
                 </span>
-                {verificationFeedback.isFlawless && (
-                  <span className="text-[10px] bg-green-600 text-white px-2 py-0.5 rounded uppercase font-bold font-mono">
-                    +{formatNum(150)} {t('pts')} {isBengali ? 'প্রশংসাপত্র' : 'Commendation'}
-                  </span>
-                )}
               </div>
               <p className="text-[11px] leading-relaxed text-noir-300">
                 {verificationFeedback.feedbackMessage}
@@ -199,11 +200,12 @@ export const TimelineReconstruction: React.FC = () => {
           </div>
         )}
 
+        <p className="text-sm text-noir-300">{isBengali?'নথিভুক্ত আলামত থেকে পাওয়া ঘটনা':'Events sourced from your locker'} · {formatNum(orderedEvents.length)} / {formatNum(activeCase.timelineEvents.length)}</p>
         {/* Re-orderable Event Cards List */}
         <div className="space-y-3">
           {orderedEvents.map((ev, index) => {
             const isCorrectlyPlaced =
-              verificationFeedback !== null && ev.correctIndex === index;
+              verificationFeedback !== null && ev.id === chronological[index].id;
 
             return (
               <div

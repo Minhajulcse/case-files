@@ -1,3 +1,4 @@
+import { Dialog } from './Dialog';
 import React from 'react';
 import { X, BookOpen, Target, FileText, CheckCircle2 } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -13,7 +14,7 @@ export const NotebookModal: React.FC<NotebookModalProps> = ({ isOpen, onClose })
   if (!isOpen || !activeCase || !caseState) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <Dialog label={t('notebookTitle')} onClose={onClose}>
       <div className="relative w-full max-w-3xl max-h-[85vh] bg-[#141210] border border-[#3e342a] rounded shadow-2xl overflow-hidden flex flex-col font-mono text-noir-200">
         {/* Leather Notebook Header */}
         <div className="bg-[#1c1814] px-6 py-4 border-b border-[#30271f] flex items-center justify-between">
@@ -29,7 +30,7 @@ export const NotebookModal: React.FC<NotebookModalProps> = ({ isOpen, onClose })
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800/50 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -124,6 +125,6 @@ export const NotebookModal: React.FC<NotebookModalProps> = ({ isOpen, onClose })
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

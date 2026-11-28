@@ -1,3 +1,4 @@
+import { Dialog } from '../common/Dialog';
 import React from 'react';
 import { X, Feather, ShieldCheck } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -18,7 +19,7 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
   const isBengali = language === 'bn';
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <Dialog label={t('productionCredits')} onClose={onClose}>
       <div className="relative w-full max-w-xl bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
@@ -32,7 +33,7 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -93,6 +94,6 @@ export const CreditsModal: React.FC<CreditsModalProps> = ({ isOpen, onClose }) =
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

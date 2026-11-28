@@ -1,39 +1,39 @@
-import { CaseData } from '../../types/game';
+import type { CaseData } from '../../types/game';
 
 export const case001: CaseData = {
   id: 'case-001',
   caseNumber: 'CASE 001',
   title: {
-    en: 'THE LAST ALIBI',
+    en: 'The Last Alibi',
     bn: 'শেষ অ্যালিবাই'
   },
   subtitle: {
-    en: 'A Locked Manor, Five Suspects, and a Calculated Deception',
-    bn: 'একটি বন্ধ প্রাসাদ, পাঁচজন সন্দেহভাজন এবং একটি সুপরিকল্পিত প্রতারণা'
+    en: 'A sealed study. A voice heard through the door. Five people with something to lose.',
+    bn: 'এক রুদ্ধ পাঠকক্ষ। দরজার ওপারে এক কণ্ঠ। পাঁচজনেরই কিছু হারানোর ভয়।'
   },
   badge: 'MURDER',
   difficulty: 'Hard',
-  estimatedTime: '30-45 mins',
+  estimatedTime: '25-35 mins',
   victimOrSubject: {
-    en: 'Mahmudul Haque Chowdhury (Age 64, Industrialist & Antiquities Collector)',
-    bn: 'মাহমুদুল হক চৌধুরী (বয়স ৬৪, শিল্পপতি ও প্রাচীন প্রত্নতত্ত্ব সংগ্রাহক)'
+    en: 'Lord Arthur Pendelton (Age 64, Industrialist & Antiquities Collector)',
+    bn: 'লর্ড আর্থার পেন্ডেলটন (বয়স ৬৪, শিল্পপতি ও প্রাচীন প্রত্নতত্ত্ব সংগ্রাহক)'
   },
   incidentDate: {
-    en: 'October 14, 2024 — 22:30 Hours',
-    bn: '১৪ অক্টোবর, ২০২৪ — রাত ১০:৩০ টা'
+    en: '14 October 2024 · Discovered 23:05',
+    bn: '১৪ অক্টোবর ২০২৪ · সন্ধান ২৩:০৫'
   },
   location: {
-    en: 'Chowdhury Mansion, Private Study, Blackthorn Ridge',
-    bn: 'চৌধুরী ম্যানর, ব্যক্তিগত পড়ার ঘর, ব্ল্যাকথর্ন রিজ'
+    en: 'Pendelton Manor, Private Study, Blackthorn Ridge',
+    bn: 'পেন্ডেলটন ম্যানর, ব্যক্তিগত পড়ার ঘর, ব্ল্যাকথর্ন রিজ'
   },
   synopsis: {
-    en: 'Mahmudul Haque Chowdhury was found slumped over his mahogany desk inside his private study, poisoned with potassium cyanide in his vintage brandy. The study door was heavy oak, bolted from the inside. The single bay window was latched shut from inside. Five people were inside the mansion during the storm. Each claims an ironclad alibi, but one of them orchestrated an impossible crime.',
-    bn: 'মাহমুদুল হক চৌধুরীকে তার ব্যক্তিগত পড়ার ঘরের মেহগনি টেবিলের ওপর নিথর অবস্থায় পাওয়া যায়। তার ব্র্যান্ডির গ্লাসে মেশানো ছিল মারাত্মক পটাশিয়াম সায়ানাইড। মেহগনির ভারী দরজাটি ভেতর থেকে ছিটকিনি আটকানো ছিল এবং একমাত্র জানালাটিও ভেতর থেকেই বন্ধ ছিল। ঝড়ের রাতে প্রাসাদে মাত্র পাঁচজন লোক উপস্থিত ছিল। প্রত্যেকেরই রয়েছে নিশ্ছিদ্র অ্যালিবাই, কিন্তু তাদের একজনই ঘটিয়েছে এই আপাত অসম্ভব হত্যাকাণ্ড।'
+    en: 'At 23:05 the staff force the study door. Arthur Pendelton lies over his accounts. Both the bolt and the garden catch are fastened. Someone says they heard him half an hour earlier.',
+    bn: 'রাত ২৩:০৫-এ কর্মীরা দরজা ভেঙে আর্থার পেন্ডেলটনকে হিসাবখাতার ওপর নিথর অবস্থায় পান। দরজার খিল ও বাগানের জানালার ছিটকিনি আটকানো। এক সাক্ষীর দাবি, আধঘণ্টা আগেও তাঁর কণ্ঠ শোনা গেছে।'
   },
   briefing: {
     chiefMemo: {
-      en: 'Detective, the local precinct is baffled. The coroner confirms Mahmudul Haque Chowdhury died between 22:00 and 22:30 from rapid cyanide intoxication. The study was locked tight; the staff had to break the door with an axe at 23:05 when he failed to answer. Meticulously examine the room, interrogate all five suspects, connect physical clues to shatter the false alibi, and deliver the indictment.',
-      bn: 'গোয়েন্দা, স্থানীয় থানা এই রহস্যের কূলকিনারা করতে পারছে না। ময়নাতদন্তের রিপোর্ট অনুযায়ী রাত ১০:০০ থেকে ১০:৩০-এর মধ্যে সায়ানাইডের তীব্র বিষক্রিয়ায় মাহমুদুল হক চৌধুরীর মৃত্যু ঘটে। পড়ার ঘরটি ভেতর থেকে সম্পূর্ণ অবরুদ্ধ ছিল; কোনো সাড়াশব্দ না পেয়ে রাত ১১:০৫-এ কুঠার দিয়ে দরজা ভেঙে কর্মচারীরা ভেতরে ঢোকে। অপরাধস্থল খুঁটিয়ে দেখুন, পাঁচজন সন্দেহভাজনকে জেরা করুন এবং আলামতগুলো যুক্ত করে মিথ্যা অ্যালিবাই ভেঙে অপরাধীকে আইনের আওতায় আনুন।'
+      en: 'Separate what the household heard from what anyone saw. The kitchen and the library kept their own receipts that evening.',
+      bn: 'বাড়ির লোকেরা কী শুনেছে আর কী দেখেছে, আলাদা করুন। সে সন্ধ্যায় রান্নাঘর ও গ্রন্থাগার আলাদা রসিদ রেখেছিল।'
     },
     initialStatus: {
       en: 'Study sealed under police tape. Coroner report pending review.',
@@ -41,283 +41,292 @@ export const case001: CaseData = {
     },
     keyObjectives: [
       {
-        en: 'Investigate Mahmudul Haque Chowdhury\'s locked study for hidden physical anomalies.',
-        bn: 'মাহমুদুল হক চৌধুরীর তালাবদ্ধ পড়ার ঘরে কোনো শারীরিক বা যান্ত্রিক অসঙ্গতি আছে কিনা তা অনুসন্ধান করুন।'
+        en: 'Trace the bottle between the kitchen and study.',
+        bn: 'রান্নাঘর থেকে পাঠকক্ষ পর্যন্ত বোতলের পথ খুঁজুন।'
       },
       {
-        en: 'Uncover the source and delivery mechanism of the potassium cyanide.',
-        bn: 'পটাশিয়াম সায়ানাইডের উৎস এবং তা কীভাবে পানীয়তে মেশানো হয়েছিল তা উদঘাটন করুন।'
+        en: 'Test the time of the last reported conversation.',
+        bn: 'শেষ কথোপকথনের সময় যাচাই করুন।'
       },
       {
-        en: 'Examine the locked room mechanism — how did the killer seal it from the outside?',
-        bn: 'বদ্ধ ঘরের রহস্য উন্মোচন করুন — বাইরে থেকে কীভাবে ছিটকিনি আটকানো সম্ভব হয়েছিল?'
-      },
-      {
-        en: 'Cross-examine the 5 suspects and detect contradictions in their timelines.',
-        bn: 'পাঁচজন সন্দেহভাজনকে জেরা করুন এবং তাদের সময়রেখার অসঙ্গতি ও মিথ্যা শনাক্ত করুন।'
-      },
-      {
-        en: 'Identify the killer, the true motive, the method, and the false alibi.',
-        bn: 'প্রকৃত খুনি, হত্যাকাণ্ডের আসল উদ্দেশ্য, ব্যবহৃত কৌশল এবং মিথ্যা অ্যালিবাই প্রমাণসহ দাখিল করুন।'
+        en: 'Account for the audit and the closed window.',
+        bn: 'নিরীক্ষার হিসাব ও বন্ধ জানালার ব্যাখ্যা দিন।'
       }
     ]
   },
   crimeScene: {
     roomTitle: {
-      en: 'Chowdhury Mansion — The Private Study',
-      bn: 'চৌধুরী ম্যানর — ব্যক্তিগত পড়ার ঘর'
+      en: 'Private study',
+      bn: 'ব্যক্তিগত পাঠকক্ষ'
     },
     roomDescription: {
-      en: 'A cavernous Victorian study lined with floor-to-ceiling bookshelves, a heavy Persian carpet, a blazing marble fireplace, an antique grandfather clock, a crystal liquor sideboard, and a large mahogany desk where Mahmudul Haque Chowdhury drew his last breath.',
-      bn: 'একটি সুবিশাল ভিক্টোরিয়ান আমলের পড়ার ঘর। ছাদ পর্যন্ত বইয়ের তাক, মেঝেতে ভারী পারস্য গালিচা, মার্বেলের ফায়ারপ্লেস, প্রাচীন গ্র্যান্ডফাদার ক্লক, কাচের পানীয় সাইডবোর্ড এবং মেহগনি কাঠের তৈরি বিশাল টেবিল যেখানে মাহমুদুল হক চৌধুরী শেষ নিঃশ্বাস ত্যাগ করেন।'
+      en: 'Rain gathers on the rose garden sill. A lamp still burns over the open accounts.',
+      bn: 'গোলাপবাগানের জানালায় বৃষ্টির জল। খোলা হিসাবখাতার ওপর বাতি জ্বলছে।'
     },
     sceneTheme: 'victorian_study',
-    imageUrl: '/assets/cases/case001.png',
     hotspots: [
-      {
-        id: 'hs-01-clock',
-        name: {
-          en: 'Antique Grandfather Clock',
-          bn: 'প্রাচীন গ্র্যান্ডফাদার ক্লক'
-        },
-        x: 9.5,
-        y: 19.0,
-        radius: 28,
-        description: {
-          en: 'A towering brass pendulum grandfather clock. The glass face is fractured, and the brass hands are frozen.',
-          bn: 'পিতলের পেণ্ডুলামযুক্ত সুবিশাল ঘড়ি। কাচের ডায়ালটি চূর্ণবিচূর্ণ এবং কাঁটা দুটি স্থির হয়ে থেমে আছে।'
-        },
-        revealsEvidenceId: 'clue-03-stopped-clock',
-        discoveryNote: {
-          en: 'The clock hands are arrested precisely at 22:14. Inside the casing lies a heavy bronze paperweight, apparently hurled across the room during a sudden, violent motor convulsion.',
-          bn: 'ঘড়ির কাঁটা ঠিক রাত ১০:১৪ মিনিটে স্থির হয়ে আছে। ঘড়ির খোলসের ভেতর একটি ভারী ব্রোঞ্জের পেপারওয়েট পাওয়া গেছে, যা বিষক্রিয়ার তীব্র খিঁচুনির সময় ছিটকে এসে ঘড়িতে আঘাত করেছিল।'
-        },
-        iconType: 'magnifier',
-        focusRect: {
-          x: 4.5,
-          y: 7.0,
-          width: 10.0,
-          height: 28.0
-        }
-      },
-      {
-        id: 'hs-01-window',
-        name: {
-          en: 'Leaded Glass Bay Window',
-          bn: 'কাচের খড়খড়িযুক্ত বে উইন্ডো'
-        },
-        x: 29.0,
-        y: 34.5,
-        radius: 26,
-        description: {
-          en: 'A leaded mullion window overlooking the rain-swept rose garden. The interior brass cam latch is in the locked horizontal position.',
-          bn: 'বৃষ্টিস্নাত গোলাপ বাগানের দিকে মুখ করা একটি জানালা। ভেতরের পিতলের ছিটকিনিটি আনুভূমিকভাবে বন্ধ অবস্থায় রয়েছে।'
-        },
-        revealsEvidenceId: 'clue-05-window-latch',
-        discoveryNote: {
-          en: 'Inspection of the window frame reveals fine beeswax residue and microscopic scratch grooves along the brass latch axle, suggesting mechanical manipulation from outside the frame.',
-          bn: 'জানালার ফ্রেমে মোমের সূক্ষ্ম অবশিষ্টাংশ এবং ছিটকিনির কব্জায় সূক্ষ্ম দাগ পাওয়া গেছে, যা বাইরে থেকে কোনো যান্ত্রিক কারসাজির ইঙ্গিত দেয়।'
-        },
-        iconType: 'magnifier',
-        focusRect: {
-          x: 23.0,
-          y: 24.0,
-          width: 12.0,
-          height: 21.0
-        }
-      },
-      {
-        id: 'hs-01-garden-sill',
-        name: {
-          en: 'Exterior Window Sill (Rose Garden)',
-          bn: 'বাইরের জানালার কার্নিশ (গোলাপ বাগান)'
-        },
-        x: 29.0,
-        y: 46.5,
-        radius: 22,
-        description: {
-          en: 'The muddy terrace bed immediately beneath the study window among the rose thorns.',
-          bn: 'পড়ার ঘরের জানালার ঠিক নিচের ভেজা কাদা এবং গোলাপের ঝোপের মধ্যবর্তী অংশ।'
-        },
-        isHidden: true,
-        revealsEvidenceId: 'clue-07-nylon-thread',
-        discoveryNote: {
-          en: 'Trapped on a rose thorn directly below the study window: a 40cm strand of high-tensile waxed nylon monofilament and a size 6 dress shoe print in the rain-softened earth.',
-          bn: 'গোলাপের কাঁটায় আটকে থাকা ৪০ সেন্টিমিটার লম্বা মোম মাখানো শক্ত নাইলন সুতো এবং নরম কাদামাটিতে ৬ সাইজের একটি সরু জুতার ছাপ।'
-        },
-        iconType: 'footprint',
-        focusRect: {
-          x: 23.0,
-          y: 41.0,
-          width: 12.0,
-          height: 18.0
-        }
-      },
       {
         id: 'hs-01-desk',
         name: {
-          en: 'Mahmudul Haque Chowdhury (Victim)',
-          bn: 'মাহমুদুল হক চৌধুরী (মরদেহ)'
+          en: 'Overturned glass',
+          bn: 'উল্টানো গ্লাস'
         },
-        x: 52.0,
-        y: 51.0,
-        radius: 30,
+        x: 47.2,
+        y: 61,
         description: {
-          en: 'Mahmudul Haque Chowdhury is slumped face-forward over the polished mahogany desk. There are no signs of blunt trauma or struggle, but his fingers are stiffened in agony.',
-          bn: 'মেহগনি টেবিলের ওপর মুখ থুবড়ে পড়ে আছেন মাহমুদুল হক চৌধুরী। মাথায় কোনো আঘাতের চিহ্ন নেই, তবে তার হাত ও মুখমণ্ডল তীব্র খিঁচুনির যন্ত্রণায় শক্ত হয়ে আছে।'
+          en: 'The overturned snifter rests beside Arthur’s hand.',
+          bn: 'আর্থারের হাতের পাশে গ্লাসটি উল্টে আছে।'
         },
         revealsEvidenceId: 'clue-01-brandy-snifter',
         discoveryNote: {
-          en: 'The victim collapsed suddenly while writing. Beside his outstretched hand lies an overturned crystal snifter emitting the faint, bitter scent of potassium cyanide.',
-          bn: 'লিখতে লিখতে হঠাৎই জ্ঞান হারিয়ে পড়ে যান তিনি। লাশের ডান হাতের কাছে পড়ে থাকা কাচের গ্লাস থেকে তেতো বাদামের গন্ধ ছড়াচ্ছে — পটাশিয়াম সায়ানাইড।'
+          en: 'The spill cuts across a fresh entry. A service call is impressed in the blotter.',
+          bn: 'সদ্য লেখা লাইনের ওপর পানীয় ছড়িয়েছে। কালি শোষকে সার্ভিস কলের ছাপ।'
         },
         iconType: 'magnifier',
-        focusRect: {
-          x: 45.0,
-          y: 42.0,
-          width: 14.0,
-          height: 19.0
-        }
-      },
-      {
-        id: 'hs-01-glass',
-        name: {
-          en: 'Overturned Crystal Brandy Snifter',
-          bn: 'উল্টে থাকা ক্রিস্টালের ব্র্যান্ডি গ্লাস'
-        },
-        x: 46.8,
-        y: 60.0,
-        radius: 20,
-        description: {
-          en: 'A heavy lead-crystal snifter lying on its side, surrounded by a shallow amber puddle on the varnished wood.',
-          bn: 'টেবিলের ওপর কাত হয়ে পড়ে থাকা ভারী ক্রিস্টাল গ্লাস এবং চারপাশে ছড়িয়ে থাকা ব্র্যান্ডির তরল।'
-        },
-        revealsEvidenceId: 'clue-01-brandy-snifter',
-        discoveryNote: {
-          en: 'Forensic droplet swab confirms 120mg of potassium cyanide in the amber puddle. The crystal surface is wiped clean of fingerprints, indicating gloves were used.',
-          bn: 'রাসায়নিক পরীক্ষায় তরলে ১২০ মিলিগ্রাম পটাশিয়াম সায়ানাইড নিশ্চিত হয়েছে। গ্লাসে কোনো আঙুলের ছাপ নেই, যা নির্দেশ করে এটি গ্লাভস পরে ধরা হয়েছিল।'
-        },
-        iconType: 'flask',
-        focusRect: {
-          x: 43.0,
-          y: 54.0,
-          width: 8.0,
-          height: 12.0
+        plate: 'study',
+        shape: {
+          type: 'polygon',
+          points: [[45.6, 59.4], [46.5, 57.3], [47.4, 56.8], [48.7, 57.8], [49.4, 59.5],
+            [49.3, 61.5], [48.5, 63.6], [46.4, 63.8], [45.6, 62.1]]
         }
       },
       {
         id: 'hs-01-ledger',
         name: {
-          en: 'Audited Financial Ledger',
-          bn: 'আর্থিক হিসেবের খাতা (লেজার)'
+          en: 'Open ledger',
+          bn: 'খোলা খাতা'
         },
-        x: 55.2,
-        y: 57.5,
-        radius: 25,
+        x: 57,
+        y: 56,
         description: {
-          en: 'A leather-bound estate ledger with freshly annotated audit marks in red ink.',
-          bn: 'চামড়ায় বাঁধানো এস্টেট লেজার, যাতে লাল কালিতে সদ্য নিরীক্ষার দাগ ও নোট দেওয়া আছে।'
+          en: 'Two pages are held flat beneath the desk lamp.',
+          bn: 'বাতির নিচে খাতার দুই পাতা খোলা।'
         },
         revealsEvidenceId: 'clue-02-audited-ledger',
         discoveryNote: {
-          en: 'Mahmudul\'s final notes highlight a massive $450,000 deficit in the endowment accounts across the archive and trust funds. Underneath is written: "Irregularities confirmed. Summons with Crown Prosecutor scheduled for morning."',
-          bn: 'খোলা লেজারে সাড়ে চার লাখ ডলারের বড় তহবিল তছরুপের হিসাব লাল কালিতে চিহ্নিত। নিচে মাহমুদুল সাহেবের লেখা নোট: "অনিয়ম প্রমাণিত। সকালে সরকারি কৌঁসুলির সাথে বৈঠকের ব্যবস্থা করতে হবে।"'
+          en: 'Six entries carry the same collection code. The margin names a morning appointment.',
+          bn: 'ছয়টি হিসাবের সংগ্রহ কোড এক। পাশে সকালের সাক্ষাতের সময়।'
         },
         iconType: 'document',
-        focusRect: {
-          x: 51.0,
-          y: 52.0,
-          width: 9.0,
-          height: 13.0
+        plate: 'study',
+        shape: {
+          type: 'polygon',
+          points: [[47.5, 55.7], [51.4, 55.1], [54.8, 54.5], [56.2, 53.1], [60, 53.4],
+            [65.8, 57], [65.7, 57.9], [51.6, 60.1]]
         }
       },
       {
-        id: 'hs-01-fireplace',
+        id: 'hs-01-clock',
         name: {
-          en: 'Marble Fireplace & Hearth',
-          bn: 'মার্বেল পাথরের ফায়ারপ্লেস'
+          en: 'Grandfather clock',
+          bn: 'দেয়ালঘড়ি'
         },
-        x: 77.5,
-        y: 39.0,
-        radius: 25,
+        x: 9,
+        y: 28,
         description: {
-          en: 'Dying embers glow in the marble hearth. Among the gray ashes rests a partially charred sheet of parchment.',
-          bn: 'ফায়ারপ্লেসে নিভে আসা কয়লা। ছাইয়ের স্তূপের মাঝে আধপোড়া একটি আইনি দলিলের টুকরো চোখে পড়ে।'
+          en: 'The clock face is visible above the pendulum cabinet.',
+          bn: 'দোলকের বাক্সের ওপরে ঘড়ির মুখ।'
         },
-        revealsEvidenceId: 'clue-06-burnt-will',
+        revealsEvidenceId: 'clue-03-stopped-clock',
         discoveryNote: {
-          en: 'Extracted a partially burnt codicil to the estate will cutting off nephew Arman Haque Chowdhury from his trust allowance. Soot patterns match the early evening fire stoking at approximately 17:00.',
-          bn: 'ছাইয়ের ভেতর থেকে উদ্ধারকৃত আধপোড়া খসড়ায় ভাইপো আরমান হক চৌধুরীকে এস্টেটের ভাতা থেকে বঞ্চিত করার নির্দেশ রয়েছে। ছাইয়ের স্তর নিশ্চিত করে এটি বিকেল ৫টার দিকে আগুনে ফেলা হয়েছিল।'
+          en: 'The hands read 22:14. A separate paper strip continues inside the case.',
+          bn: 'কাঁটায় ২২:১৪। বাক্সে আলাদা কাগজের ফিতা আরও এগিয়েছে।'
         },
-        iconType: 'document',
-        focusRect: {
-          x: 73.0,
-          y: 28.0,
-          width: 11.0,
-          height: 22.0
+        iconType: 'magnifier',
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 15,
+          height: 54
         }
       },
       {
         id: 'hs-01-liquor',
         name: {
-          en: 'Crystal Liquor Sideboard',
-          bn: 'ক্রিস্টাল পানীয়ের সাইডবোর্ড'
+          en: 'Crystal decanter',
+          bn: 'কাচের বোতল'
         },
-        x: 94.5,
-        y: 53.0,
-        radius: 26,
+        x: 95,
+        y: 53,
         description: {
-          en: 'A silver tray holding an antique crystal decanter of vintage 1948 Armagnac and several clean glasses.',
-          bn: 'রূপার ট্রেতে রাখা প্রাচীন ক্রিস্টাল ডিক্যান্টার ভর্তি ১৯৪৮ সালের আরমাগনাক ব্র্যান্ডি ও কয়েকটি পরিষ্কার গ্লাস।'
+          en: 'A cut-glass bottle stands on the sideboard tray.',
+          bn: 'সাইডবোর্ডের ট্রেতে খোদাই করা কাচের বোতল।'
         },
         revealsEvidenceId: 'clue-04-poisoned-decanter',
         discoveryNote: {
-          en: 'Spectroscopic chemical field analysis confirms cyanide salt was mixed directly into the decanter itself, proving the poison was introduced into the bottle before Mahmudul poured his nightcap.',
-          bn: 'ল্যাব পরীক্ষায় দেখা গেছে পুরো ডিক্যান্টারের ব্র্যান্ডিতেই সায়ানাইড মেশানো ছিল। এটি প্রমাণ করে মাহমুদুল সাহেব গ্লাসে ঢালার আগেই বোতলে বিষ দেওয়া হয়েছিল।'
+          en: 'The broken neck band still carries the delivery number B4.',
+          bn: 'ছেঁড়া বন্ধনীতে এখনও সরবরাহ নম্বর B4।'
         },
         iconType: 'flask',
-        focusRect: {
-          x: 90.0,
-          y: 46.0,
-          width: 9.0,
-          height: 16.0
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 10,
+          height: 26
+        }
+      },
+      {
+        id: 'hs-01-window',
+        name: {
+          en: 'Window catch',
+          bn: 'জানালার ছিটকিনি'
+        },
+        x: 29,
+        y: 26,
+        description: {
+          en: 'The brass arm sits across two rain-darkened panes.',
+          bn: 'বৃষ্টিভেজা দুই পাল্লার ওপর পিতলের হাতল।'
+        },
+        revealsEvidenceId: 'clue-05-window-latch',
+        discoveryNote: {
+          en: 'Fresh arcs interrupt the polish beneath the catch.',
+          bn: 'ছিটকিনির নিচের পালিশে নতুন বাঁকা দাগ।'
+        },
+        iconType: 'magnifier',
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 14,
+          height: 17
+        }
+      },
+      {
+        id: 'hs-01-fireplace',
+        name: {
+          en: 'Fireplace hearth',
+          bn: 'অগ্নিকুণ্ড'
+        },
+        x: 77,
+        y: 39,
+        description: {
+          en: 'A cream corner shows through the ash under the grate.',
+          bn: 'ঝাঁঝরির নিচে ছাইয়ের ভেতর সাদা এক কোণ।'
+        },
+        revealsEvidenceId: 'clue-06-burnt-will',
+        discoveryNote: {
+          en: 'The surviving clause has room for a signature. The space is empty.',
+          bn: 'বেঁচে যাওয়া ধারায় স্বাক্ষরের জায়গাটি খালি।'
+        },
+        iconType: 'document',
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 15,
+          height: 25
+        }
+      },
+      {
+        id: 'hs-01-garden-sill',
+        name: {
+          en: 'Rose garden sill',
+          bn: 'গোলাপবাগানের কার্নিশ'
+        },
+        x: 25,
+        y: 45,
+        description: {
+          en: 'A strand catches the light outside the lower pane.',
+          bn: 'নিচের কাচের বাইরে এক টুকরো সুতোয় আলো পড়ছে।'
+        },
+        isHidden: true,
+        revealsEvidenceId: 'clue-07-nylon-thread',
+        discoveryNote: {
+          en: 'The strand clings to a thorn just below the window hardware.',
+          bn: 'জানালার যন্ত্রাংশের ঠিক নিচে কাঁটায় সুতোটি লেগে আছে।'
+        },
+        iconType: 'footprint',
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 16,
+          height: 17
         }
       },
       {
         id: 'hs-01-wastebasket',
         name: {
-          en: 'Under-Desk Wastebasket',
-          bn: 'টেবিলের নিচের ময়লার ঝুড়ি'
+          en: 'Wastebasket',
+          bn: 'বর্জ্যের ঝুড়ি'
         },
-        x: 65.5,
-        y: 80.0,
-        radius: 20,
+        x: 66,
+        y: 83,
         description: {
-          en: 'A brass wastebasket tucked beneath the mahogany kneehole desk.',
-          bn: 'মেহগনি টেবিলের নিচে রাখা একটি পিতলের ময়লা ফেলার পাত্র।'
+          en: 'A folded envelope sticks up through the wire basket.',
+          bn: 'তারের ঝুড়ি থেকে ভাঁজ করা খাম বেরিয়ে আছে।'
         },
         isHidden: true,
         revealsEvidenceId: 'clue-08-torn-envelope',
         discoveryNote: {
-          en: 'Found torn fragments of a commercial invoice from a chemical supplier for photographic toning reagents (potassium cyanide salt), shipped to an antiquarian PO Box in Blackthorn Ridge.',
-          bn: 'টেবিলের নিচের ঝুড়িতে একটি ছেঁড়া বাণিজ্যিক রসিদ পাওয়া গেছে — যাতে ফটোগ্রাফিক রাসায়নিকের নামে পটাশিয়াম সায়ানাইড কেনার অর্ডার ও পোস্ট বক্স নম্বর রয়েছে।'
+          en: 'Inside is a neck band with a violet countermark and an uneven torn end.',
+          bn: 'ভেতরে বেগুনি প্রতিচিহ্নসহ অসমভাবে ছেঁড়া বোতলের ফিতা।'
         },
         iconType: 'document',
-        focusRect: {
-          x: 61.0,
-          y: 73.0,
-          width: 11.0,
-          height: 17.0
+        plate: 'study',
+        shape: {
+          type: 'rect',
+          width: 12,
+          height: 23
         }
+      },
+      {
+        id: 'hs-case-001-pulse-strip',
+        plate: 'study',
+        x: 49,
+        y: 49,
+        shape: {
+          type: 'polygon',
+          points: [[36.8, 56.5], [43.5, 44.3], [47, 43], [51, 43], [54.6, 45.7], [56.1, 48.5],
+            [55.9, 52.6], [54.6, 53.9], [51.4, 54.6], [47, 55.3], [45.1, 57.4], [42.2, 55.6],
+            [40.1, 57.2], [40, 59.4], [37.8, 58.8]]
+        },
+        name: {
+          en: 'Arthur’s jacket',
+          bn: 'আর্থারের জামা'
+        },
+        description: {
+          en: 'A portable monitor is clipped beneath Arthur’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.',
+          bn: 'আর্থারের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।'
+        },
+        discoveryNote: {
+          en: 'The monitor has a time interval, but no wall-clock setting.',
+          bn: 'মনিটরে সময়ের ব্যবধান আছে, ঘড়ির সময় নেই।'
+        },
+        revealsEvidenceId: 'case-001-pulse-strip',
+        iconType: 'magnifier'
+      },
+      {
+        id: 'hs-case-001-corridor-bolt',
+        plate: 'study',
+        x: 94,
+        y: 22,
+        shape: {
+          type: 'rect',
+          width: 10,
+          height: 31
+        },
+        name: {
+          en: 'Corridor door',
+          bn: 'করিডোরের দরজা'
+        },
+        description: {
+          en: 'The oak door bears a new split beside an old brass bolt.',
+          bn: 'ওক দরজার পুরোনো পিতলের খিলের পাশে নতুন ফাটল।'
+        },
+        discoveryNote: {
+          en: 'The rescue party recorded this damage before removing the bolt.',
+          bn: 'খিল তোলার আগে উদ্ধারকারীরা ক্ষতিটি নথিভুক্ত করেন।'
+        },
+        revealsEvidenceId: 'case-001-corridor-bolt',
+        iconType: 'magnifier'
       }
-    ]
+    ],
+    plates: ['study']
   },
   suspects: [
     {
       id: 'suspect-01-julian',
       name: {
-        en: 'Arman Haque Chowdhury',
-        bn: 'আরমান হক চৌধুরী'
+        en: 'Julian Pendelton',
+        bn: 'জুলিয়ান পেন্ডেলটন'
       },
       alias: {
         en: 'The Disinherited Nephew',
@@ -337,107 +346,88 @@ export const case001: CaseData = {
         bn: 'উইল ও ভাতার ওপর নির্ভরশীল দূরবর্তী ভাইপো'
       },
       motive: {
-        en: 'Saddled with $300,000 in loan shark debts due at midnight; uncle threatened to disinherit him completely.',
-        bn: 'মাঝরাতের মধ্যে ৩ লাখ ডলারের জুয়ার দেনা পরিশোধের চাপ ছিল; কাকা তাকে উইল থেকে সম্পূর্ণ বাদ দেওয়ার হুমকি দেন।'
+        en: 'A loan instalment falls due at midnight. Arthur threatened his inheritance that afternoon.',
+        bn: 'মধ্যরাতে কিস্তি দিতে হবে। বিকেলে আর্থার উত্তরাধিকার বাতিলের হুমকি দেন।'
       },
       alibi: {
-        en: 'Claims he was locked in the mansion billiard room from 21:30 to 22:45 practicing his trick shots while drinking whiskey.',
-        bn: 'তার দাবি রাত ৯:৩০ থেকে ১০:৪৫ পর্যন্ত সে বিলিয়ার্ড রুমে একা একা হুইস্কি খাচ্ছিল এবং খেলছিল।'
+        en: 'I spent the evening in the billiard room. Nobody kept score.',
+        bn: 'সন্ধ্যাটা বিলিয়ার্ড ঘরে ছিলাম। কেউ স্কোর রাখেনি।'
       },
       personality: {
         en: 'Nervous, arrogant, sweat beads on his brow, chain-smoker.',
         bn: 'নার্ভাস, দাম্ভিক, কপালে ঘামের ফোঁটা, ঘন ঘন সিগারেট টানে।'
       },
       secrets: {
-        en: 'Stole Mahmudul\'s diamond signet ring earlier that afternoon to pawn it.',
+        en: 'Stole Arthur\'s diamond signet ring earlier that afternoon to pawn it.',
         bn: 'সেদিন বিকেলে কাকার আলমারি থেকে পারিবারিক হীরার আংটি চুরি করে বন্ধক দিয়েছিল।'
       },
-      avatarSeed: 'Arman',
+      avatarSeed: 'Julian',
       avatarColor: '#c2410c',
       dialogueTree: [
         {
           id: 'dlg-j-1',
           prompt: {
-            en: 'Where were you between 22:00 and 22:30 tonight?',
-            bn: 'রাত ১০:০০ থেকে ১০:৩০-এর মধ্যে আপনি কোথায় ছিলেন?'
+            en: 'Who saw you in the billiard room?',
+            bn: 'বিলিয়ার্ড ঘরে আপনাকে কে দেখেছে?'
           },
           response: {
-            en: 'I already told your deputies! I was in the billiard room alone, playing nine-ball and trying to drown out the thunderstorm with Scotch. I didn\'t leave until Shahana started screaming at 23:00.',
-            bn: 'আমি আপনার অফিসারদের আগেই বলেছি! আমি বিলিয়ার্ড রুমে একা ছিলাম, নাইন-বল খেলছিলাম আর স্কচ খাচ্ছিলাম। রাত ১১টায় শাহানার চিৎকার শোনার আগ পর্যন্ত আমি বের হইনি।'
+            en: 'I played alone. I could hear the kitchen bell, but I never counted the strokes.',
+            bn: 'একা খেলছিলাম। রান্নাঘরের ঘণ্টা শুনেছি, কয়বার বাজল গুনিনি।'
           },
           reactionMood: 'defensive'
         },
         {
           id: 'dlg-j-2',
           prompt: {
-            en: 'Did your uncle threaten to cut you out of his will today?',
-            bn: 'আপনার কাকা কি আজ আপনাকে উইল থেকে বাদ দেওয়ার হুমকি দিয়েছিলেন?'
+            en: 'How did you meet tonight’s instalment?',
+            bn: 'আজকের কিস্তি কীভাবে মেটালেন?'
           },
           response: {
-            en: 'He... he was always threatening that! Uncle Mahmudul enjoyed holding the purse strings over my neck. But I wouldn\'t kill him! He was my only lifeline to the estate trustees!',
-            bn: 'তিনি... তিনি প্রায়ই এই হুমকি দিতেন! কাকা মাহমুদুল হক চৌধুরী আমাকে সবসময় চাপে রাখতেন। কিন্তু তাই বলে আমি তাকে খুন করতে যাব কেন? তিনিই তো ছিলেন আমার একমাত্র ভরসা!'
+            en: 'Take the ticket. I pawned his ring. I would rather he never learned that.',
+            bn: 'রসিদটা নিন। তাঁর আংটি বন্ধক দিয়েছি। তিনি জানুন তা চাইনি।'
           },
-          reactionMood: 'nervous'
+          reactionMood: 'nervous',
+          revealsClueId: 'clue-09-pawn-receipt'
         },
         {
           id: 'dlg-j-3',
           prompt: {
-            en: 'Did you enter Mahmudul\'s study at any point this evening?',
-            bn: 'আজ সন্ধ্যায় কি আপনি পড়ার ঘরে ঢুকেছিলেন?'
+            en: 'When did you last enter the study?',
+            bn: 'শেষ কবে পাঠকক্ষে ঢুকেছিলেন?'
           },
           response: {
-            en: 'At 17:00, yes. We had a row about my debts. He locked the study door right behind me when I stormed out. I never stepped foot back in that room.',
-            bn: 'বিকেল ৫টায় ঢুকেছিলাম। দেনা নিয়ে তুমুল ঝগড়া হয়। আমি বের হওয়ার পর তিনি দরজা বন্ধ করে দিয়েছিলেন। এরপর আর ওমুখো হইনি।'
+            en: 'At five. He held that unsigned amendment over the fire until I left.',
+            bn: 'পাঁচটায়। আমি বেরোবার সময়ও তিনি স্বাক্ষরহীন সংশোধনীটা আগুনের ওপর ধরে ছিলেন।'
           },
           reactionMood: 'calm'
-        },
-        {
-          id: 'dlg-j-4',
-          prompt: {
-            en: 'Did you know who had access to the liquor sideboard?',
-            bn: 'সাইডবোর্ডের পানীয়তে কার কার হাত দেওয়ার সুযোগ ছিল?'
-          },
-          response: {
-            en: 'Uncle never let me touch his vintage Armagnac. Shahana always brought it up at 21:45, and Nawrin handled all his correspondence and desk keys. If someone poisoned that bottle, they had to be close to his evening routine.',
-            bn: 'কাকা আমাকে কখনই তার দামি আরমাগনাকে হাত দিতে দিতেন না। শাহানা প্রতি রাত ৯:৪৫-এ ওটা নিয়ে আসত, আর নওরীন কাকার যাবতীয় চিঠিপত্র ও টেবিলের চাবি দেখাশোনা করত।'
-          },
-          reactionMood: 'defensive'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-06-burnt-will',
           reactionText: {
-            en: 'Arman bluffs, his hands shaking: "That burnt codicil? Uncle Mahmudul threw it into the hearth right in front of me during our argument at five o\'clock! He shouted at me, but the fire wasn\'t hot enough to consume the seal."',
-            bn: 'আরমান কেঁপে ওঠে: "ওই আধপোড়া উইল? বিকেল ৫টায় ঝগড়ার সময় কাকা নিজেই ওটা আগুনে ফেলে দিয়েছিলেন! তিনি চিৎকার করছিলেন, কিন্তু আগুনে ওটা পুরো পোড়েনি।"'
+            en: 'I recognised my name below the burned edge. I never saw him sign it.',
+            bn: 'পোড়া অংশের নিচে আমার নাম চিনেছি। তাঁকে স্বাক্ষর করতে দেখিনি।'
           },
-          stressIncrease: 20,
+          stressIncrease: 25,
           exposesLie: false
         },
         {
           evidenceId: 'clue-09-pawn-receipt',
           reactionText: {
-            en: 'Arman pales: "Fine! I took his signet ring from the hallway coat! I was desperate for cash! But stealing jewelry doesn\'t make me a poisoner! The receipt was stamped at 16:15!"',
-            bn: 'আরমান ফ্যাকাশে হয়ে বলে: "ঠিক আছে! আমি স্বীকার করছি কোটের পকেট থেকে আংটিটা আমিই নিয়েছিলাম! টাকার খুব দরকার ছিল! কিন্তু রসিদ দেখুন বিকেল ৪:১৫-র! চোর হলেই তো আর খুনি হওয়া যায় না!"'
+            en: 'The advance paid the instalment, not the entire debt. I still owed him an explanation.',
+            bn: 'অগ্রিমে কিস্তি মিটেছে, পুরো ঋণ নয়। তাঁকে জবাব দেওয়ার ছিল।'
           },
-          stressIncrease: 35,
-          exposesLie: true
-        },
-        {
-          evidenceId: 'clue-01-brandy-snifter',
-          reactionText: {
-            en: 'Arman shudders: "Cyanide? God in heaven. I was begging him for money, not plotting to poison him in a locked room!"',
-            bn: 'আরমান শিউরে ওঠে: "সায়ানাইড? আল্লাহ রক্ষা করুন! আমি তো শুধু টাকার জন্য কাকার কাছে চেয়েছিলাম, বিষ দিয়ে মারার কোনো ফন্দি আমার ছিল না!"'
-          },
-          stressIncrease: 15
+          stressIncrease: 40,
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-02-evelyn',
       name: {
-        en: 'Nawrin Sultana',
-        bn: 'নওরীন সুলতানা'
+        en: 'Evelyn Vance',
+        bn: 'ইভলিন ভ্যান্স'
       },
       alias: {
         en: 'The Quiet Archivist',
@@ -457,118 +447,99 @@ export const case001: CaseData = {
         bn: '৭ বছর ধরে বিশ্বস্ত ব্যক্তিগত সহকারী'
       },
       motive: {
-        en: 'Mahmudul discovered Nawrin was systematically siphoning funds from the Chowdhury Rare Books Endowment into private Swiss accounts.',
-        bn: 'মাহমুদুল হক চৌধুরী আবিষ্কার করেছিলেন যে নওরীন ট্রাস্ট ফান্ডের সাড়ে চার লাখ ডলার গোপনে নিজের অ্যাকাউন্টে সরিয়ে নিচ্ছিলেন।'
+        en: 'Arthur had reopened accounts administered jointly by the library and household staff.',
+        bn: 'গ্রন্থাগার ও গৃহকর্মীদের যৌথ হিসাব আর্থার আবার খুলেছিলেন।'
       },
       alibi: {
-        en: 'Claims she was in the library cataloging manuscripts until 22:40, then knocked on Mahmudul\'s door at 22:30 and heard him cough and grumble inside.',
-        bn: 'দাবি করে যে রাত ১০:৪০ পর্যন্ত সে লাইব্রেরিতে ছিল, এবং রাত ১০:৩০-এ পড়ার ঘরের দরজায় নক করলে মাহমুদুল সাহেব ভেতর থেকে তাকে চলে যেতে বলেন।'
+        en: 'I was at the library desk. At the half-hour I heard the study clock strike and Arthur answer from inside.',
+        bn: 'গ্রন্থাগারের ডেস্কে ছিলাম। সাড়ে দশটায় পাঠকক্ষের ঘণ্টা আর ভেতর থেকে আর্থারের জবাব শুনি।'
       },
       personality: {
         en: 'Composed, articulate, wearing prim spectacles, remarkably calm under pressure.',
         bn: 'অত্যন্ত শান্ত, মাপা কথা, চোখে চশমা, তীব্র চাপের মুখেও অবিচল।'
       },
       secrets: {
-        en: 'An expert bookbinder who uses waxed nylon monofilament and specialized knotting tools.',
+        en: 'An expert embroiderer who uses waxed nylon monofilament and specialized knotting tools.',
         bn: 'বই বাঁধাই ও সূচিকর্মে দক্ষ, যে মোম মাখানো শক্ত নাইলন সুতো ব্যবহার করে।'
       },
-      avatarSeed: 'Nawrin',
+      avatarSeed: 'Evelyn',
       avatarColor: '#0284c7',
       dialogueTree: [
         {
           id: 'dlg-e-1',
           prompt: {
-            en: 'Walk me through your movements around 22:00 to 22:30.',
-            bn: 'রাত ১০:০০ থেকে ১০:৩০-এর মধ্যে আপনি কী করছিলেন?'
+            en: 'How did you place the conversation at 22:30?',
+            bn: 'কথোপকথনের সময় ২২:৩০ বুঝলেন কীভাবে?'
           },
           response: {
-            en: 'I was in the east library cross-referencing auction receipts. At approximately 22:30, I walked past the study to deliver the evening mail. I tapped on the door. Mr. Chowdhury called out from inside: "Leave me, Nawrin, I am indisposed!" So I placed the letters on the credenza outside.',
-            bn: 'আমি পূর্ব লাইব্রেরিতে নিলামের রসিদ মেলাচ্ছিলাম। প্রায় ১০:৩০ নাগাদ চিঠি দিতে এসে দরজায় মৃদু টোকা দিই। চৌধুরী সাহেব ভেতর থেকে গম্ভীর গলায় বললেন: "আমাকে একা থাকতে দাও নওরীন, আমি অসুস্থ বোধ করছি!" তাই চিঠিগুলো বাইরের টেবিলে রেখে যাই।'
-          },
-          reactionMood: 'calm',
-          revealsContradictionId: 'contra-evelyn-time'
-        },
-        {
-          id: 'dlg-e-2',
-          prompt: {
-            en: 'Did Mahmudul mention anything about the financial audit?',
-            bn: 'মাহমুদুল সাহেব কি আর্থিক নিরীক্ষা বা অডিট নিয়ে কিছু বলেছিলেন?'
-          },
-          response: {
-            en: 'He mentioned standard quarterly audits. Our records are impeccably maintained, detective. I have dedicated seven years of my life to preserving his archives.',
-            bn: 'তিনি নিয়মিত ত্রৈমাসিক অডিটের কথা বলেছিলেন। আমাদের নথি সম্পূর্ণ নিখুঁত, গোয়েন্দা। আমি সাত বছর ধরে সততার সাথে তার কাজ করে আসছি।'
+            en: 'The study chime marked the half-hour. I called through the oak and heard a voice. The maid was in the corridor.',
+            bn: 'ঘড়িতে সাড়ে দশটা বাজে। দরজার বাইরে ডাকলে কণ্ঠ শুনি। পরিচারিকা করিডোরে ছিল।'
           },
           reactionMood: 'calm'
         },
         {
-          id: 'dlg-e-3',
+          id: 'dlg-e-2',
           prompt: {
-            en: 'Do you have keys to the study or the garden terrace?',
-            bn: 'আপনার কাছে কি পড়ার ঘরের বা বাগানের টেরাসের চাবি আছে?'
+            en: 'Who handled reimbursements?',
+            bn: 'খরচ ফেরতের কাজ কারা করতেন?'
           },
           response: {
-            en: 'Only Mahmudul held the master key to the study deadbolt. When he locked himself in, not even Shahana or I could enter without him opening it.',
-            bn: 'কেবলমাত্র মাহমুদুল সাহেবের কাছেই পড়ার ঘরের চাবি থাকত। তিনি ভেতর থেকে লক করলে কারও পক্ষেই ঢোকা সম্ভব ছিল না।'
-          },
-          reactionMood: 'defensive'
-        },
-        {
-          id: 'dlg-e-4',
-          prompt: {
-            en: 'What materials do you use in restoring rare books in the archive?',
-            bn: 'লাইব্রেরিতে পুরনো বই বাঁধাইয়ের জন্য আপনি কী কী উপাদান ব্যবহার করেন?'
-          },
-          response: {
-            en: 'Specialized acid-free paste, bone folders, calf leather, and high-tensile waxed bookbinding filaments. We take preservation very seriously here.',
-            bn: 'বিশেষ অ্যাসিড-মুক্ত আঠা, হাড্ডির তৈরি ফোল্ডার, চামড়া এবং মোম মাখানো শক্ত নাইলন সুতো। আমরা ঐতিহ্যের সংরক্ষণকে অত্যন্ত গুরুত্ব দিই।'
+            en: 'Three desks could authorise them. You need the quarter’s seal cards to separate our entries.',
+            bn: 'তিন ডেস্ক অনুমোদন দিত। লেনদেন আলাদা করতে ত্রৈমাসিক সিল কার্ড লাগবে।'
           },
           reactionMood: 'calm',
-          conditionClueId: 'clue-07-nylon-thread'
+          conditionClueId: 'clue-02-audited-ledger',
+          revealsClueId: 'clue-10-handwriting-sample'
+        },
+        {
+          id: 'dlg-e-3',
+          prompt: {
+            en: 'Was the terrace in use?',
+            bn: 'টেরেস ব্যবহার হতো?'
+          },
+          response: {
+            en: 'The gardener and the bindery share a store there. The windows had been polished that morning.',
+            bn: 'সেখানে মালি আর বাঁধাইঘরের যৌথ গুদাম। সেদিন সকালে জানালা পালিশ হয়েছিল।'
+          },
+          reactionMood: 'defensive'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-03-stopped-clock',
           reactionText: {
-            en: 'Nawrin\'s mask slips for a fraction of a second: "The grandfather clock stopped at 22:14? That... that must be a coincidence or a mechanical fault! I am certain I heard his voice at 22:30!"',
-            bn: 'নওরীনের মুখ নিমেষে ফ্যাকাশে হয়ে যায়: "ঘড়ি রাত ১০:১৪ মিনিটে থেমে গেছে? ওটা নিশ্চয়ই কোনো কাকতালীয় যান্ত্রিক ত্রুটি! আমি শপথ করে বলছি রাত ১০:৩০-এ তার গলা শুনেছি!"'
+            en: 'I dated the voice by the chime. I did not see him at the door.',
+            bn: 'ঘণ্টা শুনে সময় বলেছি। দরজায় তাঁকে দেখিনি।'
           },
           stressIncrease: 35,
-          exposesLie: true
+          exposesLie: true,
+          requiresEvidenceIds: ['clue-11-tray-handover']
         },
         {
           evidenceId: 'clue-07-nylon-thread',
           reactionText: {
-            en: 'Nawrin recoils slightly: "High-tensile waxed nylon thread? I... I use that thread for rebinding 18th-century leather folios in the archive. Why would that be on the garden sill?"',
-            bn: 'নওরীন কিছুটা শিউরে ওঠে: "মোম মাখানো নাইলনের সুতো? ওটা তো আমি লাইব্রেরির পুরনো দুর্লভ বই বাঁধাইয়ের জন্য ব্যবহার করি। ওটা বাগানের কার্নিশে কীভাবে গেল?"'
+            en: 'That thread was in both stores. Ask which surface it last touched.',
+            bn: 'সুতো দুটো গুদামেই ছিল। শেষে কোন পৃষ্ঠে লেগেছিল তা দেখুন।'
           },
           stressIncrease: 50,
-          exposesLie: true
+          exposesLie: false
         },
         {
           evidenceId: 'clue-02-audited-ledger',
           reactionText: {
-            en: 'Nawrin tightens her lips: "Mr. Chowdhury was growing paranoid in his old age. Those red annotations are speculative figures, nothing more."',
-            bn: 'নওরীন ঠোঁট চেপে ধরে: "বৃদ্ধ বয়সে চৌধুরী সাহেব সবাইকে সন্দেহ করতেন। লাল কালির ওই হিসেবগুলো কাল্পনিক অনুমান ছাড়া কিছুই নয়।"'
+            en: 'The examiner was due in the morning. Everyone in the office knew.',
+            bn: 'সকালে নিরীক্ষক আসবেন। অফিসের সবাই জানত।'
           },
-          stressIncrease: 30
-        },
-        {
-          evidenceId: 'clue-10-handwriting-sample',
-          reactionText: {
-            en: 'Nawrin pales, her hands clasping tightly: "My catalog cards? You cannot link legitimate archive records to a forged slip from an apothecary merchant!"',
-            bn: 'নওরীন তীব্র নার্ভাস হয়ে হাত চেপে ধরে: "আমার ক্যাটালগ কার্ড? লাইব্রেরির বৈধ লেখার সাথে কোনো কালোবাজারি রসিদের মিল খুঁজলে সেটা ঘোর অন্যায় হবে!"'
-          },
-          stressIncrease: 40,
-          exposesLie: true
+          stressIncrease: 30,
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-03-finch',
       name: {
-        en: 'Dr. Farhan Rahman',
-        bn: 'ডা. ফারহান রহমান'
+        en: 'Dr. Alistair Finch',
+        bn: 'ডা. অ্যালিস্টার ফিঞ্চ'
       },
       alias: {
         en: 'The Family Physician',
@@ -588,12 +559,12 @@ export const case001: CaseData = {
         bn: 'আজীবন বন্ধু ও চিকিৎসক'
       },
       motive: {
-        en: 'Mahmudul threatened to report Dr. Farhan to the medical board for illegally prescribing experimental narcotics.',
-        bn: 'নিষিদ্ধ ও পরীক্ষামূলক ঘুমের ওষুধ প্রেসক্রাইব করার দায়ে মাহমুদুল সাহেব ডা. ফারহানকে মেডিকেল কাউন্সিলে রিপোর্ট করার হুঁশিয়ারি দিয়েছিলেন।'
+        en: 'Arthur was considering reporting disputed prescriptions. Finch also signed for conservation supplies.',
+        bn: 'বিতর্কিত ব্যবস্থাপত্র নিয়ে আর্থার অভিযোগ করার কথা ভাবছিলেন। সংরক্ষণ সামগ্রীর জন্যও ফিঞ্চ স্বাক্ষর করতেন।'
       },
       alibi: {
-        en: 'Claims he was in the mansion guest room reading medical journals from 21:00 onwards until alerted by the commotion.',
-        bn: 'দাবি করেন রাত ৯টা থেকে তিনি গেস্টরুমে বসে গবেষণাপত্র পড়ছিলেন।'
+        en: 'I kept a telephone appointment from the guest room. The switchboard recorded the call, though earlier I was downstairs.',
+        bn: 'অতিথিকক্ষ থেকে নির্ধারিত ফোন করি। সুইচবোর্ডে তা আছে, তবে আগে নিচে ছিলাম।'
       },
       personality: {
         en: 'Weary, dignified, smell of antiseptic and pipe tobacco, trembling fingers.',
@@ -603,92 +574,73 @@ export const case001: CaseData = {
         en: 'Keeps a locked travel bag containing pharmaceutical grade toxins and sedatives.',
         bn: 'তার ব্যাগে তীব্র বিষাক্ত ওষুধ ও ঘুমের ইনজেকশন লক করা আছে।'
       },
-      avatarSeed: 'Farhan',
+      avatarSeed: 'Finch',
       avatarColor: '#16a34a',
       dialogueTree: [
         {
           id: 'dlg-f-1',
           prompt: {
-            en: 'What was your professional assessment of Mahmudul\'s health recently?',
-            bn: 'সাম্প্রতিক সময়ে মাহমুদুল সাহেবের শারীরিক অবস্থা কেমন ছিল?'
+            en: 'When was Arthur last fit to write?',
+            bn: 'আর্থার শেষ কখন লিখতে সক্ষম ছিলেন?'
           },
           response: {
-            en: 'Mahmudul suffered from chronic hypertension and mild angina. I prescribed digitalis and mild sedatives. He was irritable, under great stress from family disputes, but physically resilient.',
-            bn: 'মাহমুদুল সাহেবের উচ্চ রক্তচাপ এবং অ্যানজাইনা ছিল। আমি তাকে হালকা সিডেটিভ দিতাম। পারিবারিক কলহের কারণে তিনি বেশ মানসিক চাপে ছিলেন।'
+            en: 'His hand was steady at supper. A blotter may tell you more about his last entry.',
+            bn: 'রাতের খাবারে হাত কাঁপেনি। শেষ লেখার সময় কালি শোষক থেকে বুঝতে পারেন।'
           },
           reactionMood: 'calm'
         },
         {
           id: 'dlg-f-2',
           prompt: {
-            en: 'Do you carry potassium cyanide in your medical kit?',
-            bn: 'আপনার চিকিৎসা কিটে কি পটাশিয়াম সায়ানাইড থাকে?'
+            en: 'Who had access to the clinic case?',
+            bn: 'চিকিৎসার বাক্স কার নাগালে ছিল?'
           },
           response: {
-            en: 'Heavens, no! Cyanide has no legitimate therapeutic purpose in modern clinical medicine. As a chemist, I know its lethal nature — death occurs within minutes of ingestion via cellular asphyxiation.',
-            bn: 'ঈশ্বরের দোহাই, কখনই না! আধুনিক চিকিৎসায় সায়ানাইডের কোনো বৈধ ব্যবহার নেই। এর বিষক্রিয়ায় কোষে অক্সিজেন পৌঁছানো বন্ধ হয়ে কয়েক মিনিটের মধ্যে মৃত্যু ঘটে।'
+            en: 'It was on the landing. Its numbered seal is still intact in the porter’s photograph.',
+            bn: 'সিঁড়ির চাতালে। দারোয়ানের ছবিতে নম্বর দেওয়া সিল অক্ষত।'
           },
           reactionMood: 'surprised'
         },
         {
           id: 'dlg-f-3',
           prompt: {
-            en: 'Did you prepare or serve Mahmudul\'s drinks this evening?',
-            bn: 'আজ সন্ধ্যায় কি আপনি মাহমুদুল সাহেবকে কোনো পানীয় পরিবেশন করেছিলেন?'
+            en: 'Who laid out the drink?',
+            bn: 'পানীয় কে সাজিয়েছিল?'
           },
           response: {
-            en: 'Certainly not. Mahmudul was fiercely ritualistic. Every night at 21:50, Shahana set the crystal Armagnac decanter on his study sideboard, and he poured his own nightcap.',
-            bn: 'একদমই না। মাহমুদুল সাহেবের নির্দিষ্ট নিয়ম ছিল। প্রতি রাতে ৯:৫০-এ শাহানা তার সাইডবোর্ডে ব্র্যান্ডির বোতল রেখে আসত, আর তিনি নিজে ঢেলে খেতেন।'
+            en: 'I saw a sealed bottle at the kitchen hatch. Three of us could collect trays.',
+            bn: 'রান্নাঘরের জানালায় সিল করা বোতল দেখি। আমাদের তিনজন ট্রে নিতে পারত।'
           },
           reactionMood: 'calm'
-        },
-        {
-          id: 'dlg-f-4',
-          prompt: {
-            en: 'What are the exact toxicological mechanics of potassium cyanide?',
-            bn: 'পটাশিয়াম সায়ানাইড মানবদেহে কীভাবে কাজ করে এবং কত দ্রুত মৃত্যু ঘটায়?'
-          },
-          response: {
-            en: 'It inhibits cytochrome c oxidase within mitochondrial cells. Within 3 to 5 minutes of ingestion, the patient suffers violent convulsive spasms and rapid respiratory arrest. Whoever was with him at 22:14 witnessed the end.',
-            bn: 'এটি কোষের সাইটোক্রোম অক্সিডেজ নিষ্ক্রিয় করে। খাওয়ার ৩ থেকে ৫ মিনিটের মধ্যে তীব্র খিঁচুনি ও শ্বাসকষ্ট হয়ে মৃত্যু ঘটে। রাত ১০:১৪ মিনিটে যে ঘরে ছিল সে তার মৃত্যুচক্ষু দেখেছে।'
-          },
-          reactionMood: 'calm',
-          conditionClueId: 'clue-01-brandy-snifter'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-04-poisoned-decanter',
           reactionText: {
-            en: 'Dr. Farhan peers closely: "Remarkable. The poison was dissolved in the decanter itself, not merely smeared on the rim. Whoever did this had advance access to the study before it was sealed."',
-            bn: 'ডা. ফারহান ঝুঁকে দেখেন: "ভয়াবহ কাণ্ড! বিষ সরাসরি ডিক্যান্টারের ভেতরের তরলে মেশানো হয়েছিল, গ্লাসে নয়। যে এটা করেছে সে ঘর বন্ধ হওয়ার আগেই ভেতরে ঢুকেছিল।"'
+            en: 'Two bottles make a good control. Check whether both samples agree.',
+            bn: 'দুটি বোতল তুলনার সুযোগ দেয়। নমুনা মেলে কি না দেখুন।'
           },
-          stressIncrease: 10
+          stressIncrease: 10,
+          exposesLie: false
         },
         {
           evidenceId: 'clue-08-torn-envelope',
           reactionText: {
-            en: 'Dr. Farhan inspects the apothecary slip: "This PO box is registered under \'N. S. Antiquarian Books\'. That isn\'t my signature, detective. That is Nawrin Sultana\'s handwriting."',
-            bn: 'ডা. ফারহান রসিদটি দেখে বলেন: "এই পিও বক্সটি \'এন. এস. বুকস\'-এর নামে। এটা আমার সই নয়, এটি নিশ্চিতভাবেই নওরীন সুলতানার হাতের লেখা।"'
+            en: 'The archive retains sample impressions. Here is the signed register.',
+            bn: 'আর্কাইভে ছাপের নমুনা থাকে। স্বাক্ষর করা রেজিস্টারটি নিন।'
           },
           stressIncrease: 0,
-          revealsClueId: 'clue-10-handwriting-sample'
-        },
-        {
-          evidenceId: 'clue-01-brandy-snifter',
-          reactionText: {
-            en: 'Dr. Farhan shakes his head: "A lethal dose of potassium cyanide salt. It would have caused sudden violent muscle spasms — enough to overturn furniture or knock a heavy object across the room."',
-            bn: 'ডা. ফারহান মাথা নাড়েন: "তীব্র মাত্রার পটাশিয়াম সায়ানাইড। এর খিঁচুনিতে মানুষ ছিটকে পড়ে ভারী জিনিস ভেঙে ফেলতে পারে — যেমনটি ঘড়ির ক্ষেত্রে ঘটেছে।"'
-          },
-          stressIncrease: 5
+          revealsClueId: 'clue-10-handwriting-sample',
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-04-beatrice',
       name: {
-        en: 'Shahana Begum',
-        bn: 'শাহানা বেগম'
+        en: 'Beatrice Morales',
+        bn: 'বিয়াট্রিস মোরালেস'
       },
       alias: {
         en: 'The Devoted Housekeeper',
@@ -708,33 +660,33 @@ export const case001: CaseData = {
         bn: '১৮ বছর ধরে কর্মরত গৃহপরিচারিকা'
       },
       motive: {
-        en: 'Mahmudul had recently drafted an amendment requiring all household staff to undergo lie detector tests following theft of antique silverware.',
-        bn: 'রুপার বাসন চুরির ঘটনায় মাহমুদুল সাহেব সকল গৃহকর্মীকে দিয়ে লাই ডিটেক্টর টেস্ট করানোর ঘোষণা দিয়েছিলেন।'
+        en: 'A staff audit threatened her position. She prepared the tray and knew the household’s service routine.',
+        bn: 'কর্মীদের নিরীক্ষায় তাঁর চাকরি ঝুঁকিতে। তিনি ট্রে সাজাতেন ও ঘরের সময়সূচি জানতেন।'
       },
       alibi: {
-        en: 'Was in the kitchen preparing midnight broth with the kitchen maid between 22:00 and 22:45.',
-        bn: 'রাত ১০:০০ থেকে ১০:৪৫ পর্যন্ত রান্নাঘরে সুপ তৈরি করছিলেন।'
+        en: 'I stayed by the kitchen hatch from the evening tray until the alarm. The maid was with me.',
+        bn: 'সন্ধ্যার ট্রে থেকে সংকেত পর্যন্ত রান্নাঘরের জানালায় ছিলাম। পরিচারিকা সঙ্গে ছিল।'
       },
       personality: {
         en: 'Fretful, religious, clutches a wooden rosary, speaks in hushed whispers.',
-        bn: 'ভীতু, ধর্মপ্রাণ, হাতে তসবিহ, ফিসফিস করে কথা বলে।'
+        bn: 'ভীতু, ধর্মপ্রাণ, হাতে কাঠের জপমালা, ফিসফিস করে কথা বলে।'
       },
       secrets: {
-        en: 'Knew about the secret escape door behind the hallway tapestry, but insists it was locked with rusted iron bolts.',
-        bn: 'দেওয়ালের গোপন দরজার কথা জানত, তবে সেটি বহু বছর ধরে জং ধরা ছিটকিনিতে বন্ধ।'
+        en: 'She let staff collect trays at the hatch and kept the maid’s counterfoil.',
+        bn: 'তিনি কর্মীদের জানালা থেকে ট্রে নিতে দিতেন, পরিচারিকার কপিটি রেখেছিলেন।'
       },
-      avatarSeed: 'Shahana',
+      avatarSeed: 'Beatrice',
       avatarColor: '#9333ea',
       dialogueTree: [
         {
           id: 'dlg-b-1',
           prompt: {
-            en: 'Who was the last person you saw entering Mahmudul\'s study?',
-            bn: 'মাহমুদুল সাহেবের পড়ার ঘরে শেষ কাকে ঢুকতে দেখেছিলেন?'
+            en: 'Who took the tray from the kitchen?',
+            bn: 'রান্নাঘর থেকে ট্রে কে নিয়েছিল?'
           },
           response: {
-            en: 'I brought his hot water and Armagnac decanter to the study door at 21:45. Miss Nawrin was standing right outside with a stack of papers. She took the tray from my hands, saying she would set it inside for Sir.',
-            bn: 'আমি রাত ৯:৪৫-এ ব্র্যান্ডির বোতল আর গরম পানির ট্রে নিয়ে যাচ্ছিলাম। মিস নওরীন বাইরে দাঁড়িয়ে ছিলেন। তিনি বললেন, "ট্রেটা আমাকে দাও, আমি স্যারের টেবিলে রেখে আসছি।"'
+            en: 'I saw a cuff, not a face. The maid watched the carrier all the way. Take her countersigned sheet.',
+            bn: 'মুখ নয়, জামার হাতা দেখেছি। পরিচারিকা পুরো পথ বাহককে দেখেছে। তার স্বাক্ষর করা কপি নিন।'
           },
           reactionMood: 'nervous',
           revealsClueId: 'clue-11-tray-handover'
@@ -742,65 +694,45 @@ export const case001: CaseData = {
         {
           id: 'dlg-b-2',
           prompt: {
-            en: 'How was the study door locked when you discovered him?',
-            bn: 'মরদেহ উদ্ধারের সময় ঘরের দরজাটি কেমন অবস্থায় ছিল?'
+            en: 'How did the staff enter at 23:05?',
+            bn: '২৩:০৫-এ কর্মীরা কীভাবে ঢোকে?'
           },
           response: {
-            en: 'Oh merciful Allah, the brass deadbolt was turned all the way in! The heavy iron key was sitting on the inside keyhole! We had to strike the frame with the woodcutter\'s axe to breach it!',
-            bn: 'হে আল্লাহ! ভেতরের ছিটকিনিটি পুরোপুরি লাগানো ছিল! চাবিটিও ভেতরের ফুটোতে ঝোলানো ছিল! কাঠ কাটার কুঠার দিয়ে কপাট ভেঙে আমাদের ভেতরে ঢুকতে হয়েছে!'
+            en: 'We forced the oak door. The bolt landed on the rug, still in its keeper.',
+            bn: 'দরজা ভেঙেছিলাম। খিল আটকানো অবস্থায় গালিচায় পড়ে।'
           },
           reactionMood: 'surprised'
         },
         {
           id: 'dlg-b-3',
           prompt: {
-            en: 'Did you hear anything from inside the room around 22:15?',
-            bn: 'রাত ১০:১৫ নাগাদ পড়ার ঘরের ভেতর থেকে কোনো আওয়াজ পেয়েছিলেন?'
+            en: 'What reached the kitchen after ten?',
+            bn: 'দশটার পর কী শুনেছিলেন?'
           },
           response: {
-            en: 'Around 22:15, there was a terrible crash — like heavy metal striking the grandfather clock! I knocked and called out, but there was only silence. Then Miss Nawrin came down the hall and told me Sir had ordered us not to disturb him.',
-            bn: 'রাত ১০:১৫ নাগাদ বিকট এক ঝনঝন শব্দ হয় — যেন ভারী কোনো লোহা গিয়ে ঘড়িতে আছড়ে পড়েছে! আমি নক করেছিলাম, কিন্তু কোনো উত্তর মেলেনি। তখন মিস নওরীন এসে বললেন স্যারকে যেন বিরক্ত না করি।'
+            en: 'A crash, then much later a voice calling from the corridor. I heard no reply.',
+            bn: 'আঘাতের শব্দ, অনেক পরে করিডোর থেকে ডাক। কোনো জবাব শুনিনি।'
           },
           reactionMood: 'nervous'
-        },
-        {
-          id: 'dlg-b-4',
-          prompt: {
-            en: 'Did you notice anyone near the bay window during the storm?',
-            bn: 'ঝড়ের মধ্যে জানালার আশপাশে কাউকে দেখেছিলেন?'
-          },
-          response: {
-            en: 'Earlier today, Miss Nawrin was dusting and oiling the latch on that very window. She claimed the hinges were squeaking and causing drafts. I didn\'t think anything of it at the time.',
-            bn: 'আজ সকালেই তো মিস নওরীন ওই জানালার ছিটকিনিতে তেল দিচ্ছিলেন আর পরিষ্কার করছিলেন। বলছিলেন ছিটকিনি আটকে যাচ্ছে। তখন তো খারাপ কিছু ভাবিনি।'
-          },
-          reactionMood: 'calm',
-          conditionClueId: 'clue-05-window-latch'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-05-window-latch',
           reactionText: {
-            en: 'Shahana gasps: "The garden window! Miss Nawrin spent hours this morning polishing the brass hardware on that very window! She claimed the storm was causing damp drafts!"',
-            bn: 'শাহানা চমকে উঠে বলে: "বাগানের ওই জানালাটা? আজ সকালেই তো মিস নওরীন অনেকক্ষণ ধরে ওই জানালার ছিটকিনি পরিষ্কার ও তেল মালিশ করছিলেন!"'
+            en: 'I polished the plate before breakfast. The marks were not there when I finished.',
+            bn: 'সকালের খাবারের আগে পাতটা পালিশ করেছি। তখন দাগ ছিল না।'
           },
-          stressIncrease: 5
-        },
-        {
-          evidenceId: 'clue-04-poisoned-decanter',
-          reactionText: {
-            en: 'Shahana sobs: "I swear by the Almighty, I took that decanter straight from the locked cellar pantry! I would never harm Mahmudul Sir! When I handed the tray to Miss Nawrin in the corridor, the decanter was unopened!"',
-            bn: 'শাহানা কেঁদে ফেলে: "আল্লাহর কসম, আমি ভাঁড়ার ঘর থেকে বোতল এনেছিলাম! চৌধুরী স্যারের ক্ষতি করার কথা আমি স্বপ্নেও ভাবতে পারি না! করিডোরে যখন নওরীনকে দিয়েছিলাম তখন বোতল সিলগালা ছিল!"'
-          },
-          stressIncrease: 20
+          stressIncrease: 5,
+          exposesLie: false
         }
       ]
     },
     {
       id: 'suspect-05-marcus',
       name: {
-        en: 'Rashed Karim',
-        bn: 'রাশেদ করিম'
+        en: 'Marcus Kane',
+        bn: 'মার্কাস কেন'
       },
       alias: {
         en: 'The Cutthroat Rival',
@@ -820,91 +752,71 @@ export const case001: CaseData = {
         bn: 'ব্যবসায়িক শত্রু'
       },
       motive: {
-        en: 'Mahmudul outbid Rashed at auction for the Byzantine Codex; Rashed faced bankruptcy if he could not acquire the codex.',
-        bn: 'বাইজেন্টাইন কোডেক্স নিলামে রাশেদকে হারিয়ে মাহমুদুল সাহেব কিনে নেন; কোডেক্স না পেলে রাশেদ দেউলিয়া হয়ে যেত।'
+        en: 'His firm needed Arthur’s codex to honour a sale already promised. He waited beyond the terrace after being dismissed.',
+        bn: 'আগাম বিক্রির শর্ত পূরণে আর্থারের পুঁথি তাঁর দরকার ছিল। বিদায়ের পরও টেরেসের বাইরে অপেক্ষা করেন।'
       },
       alibi: {
-        en: 'Claims he departed the mansion grounds in his car at 21:15 after Mahmudul refused his buyout offer.',
-        bn: 'দাবি করে রাত ৯:১৫-এ প্রস্তাব প্রত্যাখ্যানের পর সে নিজের গাড়িতে চড়ে প্রাসাদ ছেড়ে চলে যায়।'
+        en: 'I left the house at 21:15. I did not say my car had left the grounds.',
+        bn: '২১:১৫-তে বাড়ি থেকে বেরিয়েছি। গাড়ি চত্বর ছাড়ে বলিনি।'
       },
       personality: {
         en: 'Pompous, cigar-scented, sharp double-breasted suit, sneering demeanor.',
         bn: 'অহংকারী, সিগারের গন্ধ, দামি স্যুট পরিহিত, ব্যঙ্গাত্মক হাসি।'
       },
       secrets: {
-        en: 'Parked his car down the driveway gate until 22:40 waiting to see if Mahmudul would change his mind.',
-        bn: 'রাত ১০:৪০ পর্যন্ত গেটের বাইরে গাড়ি থামিয়ে অপেক্ষা করছিল যদি মাহমুদুল সাহেব মত বদলান।'
+        en: 'Parked his Bentley down the driveway gate until 22:40 waiting to see if Arthur would change his mind.',
+        bn: 'রাত ১০:৪০ পর্যন্ত গেটের বাইরে গাড়ি থামিয়ে অপেক্ষা করছিল যদি আর্থার মত বদলায়।'
       },
-      avatarSeed: 'Rashed',
+      avatarSeed: 'Marcus',
       avatarColor: '#b45309',
       dialogueTree: [
         {
           id: 'dlg-m-1',
           prompt: {
-            en: 'Why were you at Chowdhury Mansion on the night of the murder?',
-            bn: 'হত্যাকাণ্ডের রাতে আপনি চৌধুরী ম্যানরে কেন এসেছিলেন?'
+            en: 'Why were you at the manor?',
+            bn: 'ম্যানরে এসেছিলেন কেন?'
           },
           response: {
-            en: 'Pure commerce. I made a generous final offer of £250,000 for the Byzantine Codex. Chowdhury laughed in my face and had his staff show me the door at 21:15.',
-            bn: 'নিছক ব্যবসার কাজে। বাইজেন্টাইন কোডেক্সটির জন্য আড়াই লাখ পাউন্ডের প্রস্তাব দিয়েছিলাম। চৌধুরী সাহেব আমার মুখের ওপর হেসে আমাকে বের করে দেন।'
+            en: 'I offered to buy the codex. Arthur refused to let me handle it.',
+            bn: 'পুঁথি কিনতে চেয়েছি। আর্থার ধরতেও দেননি।'
           },
           reactionMood: 'hostile'
         },
         {
           id: 'dlg-m-2',
           prompt: {
-            en: 'Security gate logs show your car didn\'t exit until 22:42. Explain the gap.',
-            bn: 'গেটের লগবুকে দেখা যাচ্ছে আপনার গাড়ি রাত ১০:৪২-এর আগে বের হয়নি। এর ব্যাখ্যা দিন।'
+            en: 'Why does the gate book say 22:42?',
+            bn: 'ফটকের খাতায় ২২:৪২ কেন?'
           },
           response: {
-            en: 'My tire had a slow leak, officer. I pulled over under the cypress trees to inspect the valve. Is having bad rubber a capital crime in this county?',
-            bn: 'আমার গাড়ির চাকায় লিক ছিল। গাছের নিচে গাড়ি থামিয়ে চাকা ঠিক করছিলাম। গাড়ির চাকা নষ্ট হওয়া কি ফৌজদারি অপরাধ?'
+            en: 'I waited in the drive in case he changed his mind. The gate camera faces my car.',
+            bn: 'মত পাল্টালে ফিরব বলে ড্রাইভওয়েতে ছিলাম। ফটকের ক্যামেরা আমার গাড়ির দিকে।'
           },
           reactionMood: 'defensive'
         },
         {
           id: 'dlg-m-3',
           prompt: {
-            en: 'Did you see anyone on the garden terrace while parked?',
-            bn: 'গাড়িতে বসে থাকা অবস্থায় বাগানের দিকে কাউকে দেখতে পেয়েছিলেন?'
+            en: 'What could you see from the drive?',
+            bn: 'ড্রাইভওয়ে থেকে কী দেখা যেত?'
           },
           response: {
-            en: 'Now that you mention it... around 22:20, through the rain, I saw a figure in a dark rain slicker slip out from the mansion terrace into the rose garden and re-enter through the side conservatory door.',
-            bn: 'হ্যাঁ, মনে পড়েছে... রাত ১০:২০ নাগাদ বৃষ্টির মধ্যে রেইনকোট পরা একজন রোগা লোককে টেরাস থেকে বাগানে নামতে এবং কনজারভেটরির দরজা দিয়ে ভেতরে ঢুকতে দেখেছিলাম।'
+            en: 'Someone crossed the gravel. Rain turned the coat into a dark shape. You can have the gate still.',
+            bn: 'কেউ নুড়িপথ পেরোয়। বৃষ্টিতে শুধু গাঢ় অবয়ব দেখা যায়। ফটকের ছবিটি নিন।'
           },
           reactionMood: 'calm',
           revealsClueId: 'clue-12-terrace-sighting'
-        },
-        {
-          id: 'dlg-m-4',
-          prompt: {
-            en: 'What do you know about the missing endowment funds for antiquities?',
-            bn: 'প্রাচীন প্রত্নতত্ত্ব ট্রাস্ট ফান্ডের লোপাট হওয়া অর্থ সম্পর্কে আপনি কী জানেন?'
-          },
-          response: {
-            en: 'Chowdhury boasted that his archivist handled every purchase order. I dealt with Mahmudul directly, but the invoices always had Miss Sultana\'s stamp. If half a million went missing, search the archive ledger, not my pockets.',
-            bn: 'চৌধুরী সাহেব বলতেন তার সমস্ত ক্রয়ের হিসাব তার সেক্রেটারি রাখে। আমি মাহমুদুল সাহেবের সাথে কথা বলতাম, কিন্তু নথিতে নওরীন সুলতানার সিল থাকত। অর্থ লোপাটের খোঁজ লাইব্রেরিতে গিয়ে করুন।'
-          },
-          reactionMood: 'calm',
-          conditionClueId: 'clue-02-audited-ledger'
         }
       ],
       evidenceReactions: [
         {
           evidenceId: 'clue-07-nylon-thread',
           reactionText: {
-            en: 'Rashed laughs coldly: "Size 6 woman\'s dress shoes? I wear custom Italian size 11 wingtips, detective. You are looking for a petite woman, not an art dealer."',
-            bn: 'রাশেদ হেসে ওঠে: "৬ সাইজের মেয়েদের জুতো? আমার জুতার সাইজ ১১, গোয়েন্দা। আপনি কোনো খাটো মহিলার খোঁজ করুন, আমার নয়।"'
+            en: 'The print has no toe. Anyone who claims a size from that is guessing.',
+            bn: 'ছাপে জুতোর সামনের অংশ নেই। মাপ বললে তা অনুমান।'
           },
-          stressIncrease: 0
-        },
-        {
-          evidenceId: 'clue-12-terrace-sighting',
-          reactionText: {
-            en: 'Rashed nods firmly: "That slicker figure was slender and hurried. Definitely not Arman or the old doctor. It had the precise, agile gait of a woman."',
-            bn: 'রাশেদ দৃঢ়ভাবে বলে: "রেইনকোট পরা মানুষটি বেশ রোগা আর ক্ষিপ্র ছিল। আরমান বা বৃদ্ধ ডাক্তারের মতো মোটেই নয়। হাঁটার ধরণ দেখে একজন চটপটে মহিলা মনে হয়েছিল।"'
-          },
-          stressIncrease: 0
+          stressIncrease: 0,
+          exposesLie: false
         }
       ]
     }
@@ -913,431 +825,550 @@ export const case001: CaseData = {
     {
       id: 'clue-01-brandy-snifter',
       name: {
-        en: 'Overturned Crystal Brandy Snifter',
-        bn: 'উল্টে থাকা ক্রিস্টালের ব্র্যান্ডি গ্লাস'
+        en: 'Overturned brandy glass',
+        bn: 'উল্টানো ব্র্যান্ডির গ্লাস'
       },
       category: 'Physical',
       description: {
-        en: 'A heavy lead-crystal glass on Mahmudul\'s desk with 5ml of spilled amber liquid.',
-        bn: 'মাহমুদুল সাহেবের টেবিলে পড়ে থাকা ভারী কাচের গ্লাস, যাতে সামান্য তরল লেগে আছে।'
+        en: 'A narrow spill crosses Arthur’s last entry. The ink had barely dried when the glass fell.',
+        bn: 'আর্থারের শেষ লেখার ওপর পানীয় ছড়িয়েছে। গ্লাস পড়ার সময় কালিও পুরো শুকায়নি।'
       },
       discoveryLocation: {
         en: 'Study Desk, beside victim\'s right arm',
         bn: 'পড়ার টেবিল, লাশের ডান হাতের পাশে'
       },
       relevance: {
-        en: 'The immediate ingestion vessel for the lethal toxin.',
-        bn: 'মারাত্মক বিষ শরীরে প্রবেশের মূল পাত্র।'
+        en: 'Did the contamination arrive before or after the drink was poured?',
+        bn: 'ঢালার আগে নাকি পরে পানীয় দূষিত হয়?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice', 'suspect-03-finch'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       details: [
         {
-          en: 'Mass spectrometer analysis confirms 120mg of potassium cyanide dissolved in the liquor.',
-          bn: 'ল্যাব পরীক্ষায় তরলের ভেতরে ১২০ মিলিগ্রাম পটাশিয়াম সায়ানাইড পাওয়া গেছে।'
+          en: 'The desk blotter carries a wet impression of the service bell tape at 22:13.',
+          bn: 'ডেস্কের কালি শোষক কাগজে ২২:১৩-এর ঘণ্টার ফিতার ভেজা ছাপ।'
         },
         {
-          en: 'No foreign fingerprints detected on the glass; wiped clean or handled with gloves.',
-          bn: 'গ্লাসে কোনো আঙুলের ছাপ নেই; গ্লাভস পরে ধরা হয়েছিল বা মুছে ফেলা হয়েছে।'
-        },
-        {
-          en: 'The vintage corresponds exactly to the decanter on the sideboard.',
-          bn: 'তরলটি সাইডবোর্ডের ডিক্যান্টারের ব্র্যান্ডির সাথে সম্পূর্ণ মিলে যায়।'
+          en: 'Only Arthur’s ridge marks are clear on the rim.',
+          bn: 'কিনারায় কেবল আর্থারের আঙুলের ছাপ স্পষ্ট।'
         }
       ],
-      iconKey: 'glass'
+      iconKey: 'glass',
+      forensicReport: {
+        labSummary: {
+          en: 'The postmortem and the glass contain the same toxic residue. A spill alone cannot date the collapse.',
+          bn: 'ময়নাতদন্ত ও গ্লাসে একই বিষাক্ত পদার্থের চিহ্ন। শুধু ছড়িয়ে পড়া পানীয় থেকে সময় নির্ধারণ করা যায় না।'
+        }
+      }
     },
     {
       id: 'clue-02-audited-ledger',
       name: {
-        en: 'Audited Estate Ledger with Red Annotations',
-        bn: 'নিরীক্ষিত এস্টেট লেজার (লাল কালির নোট)'
+        en: 'Endowment daybook',
+        bn: 'তহবিলের দৈনিক খাতা'
       },
       category: 'Documents',
       description: {
-        en: 'Mahmudul\'s personal estate books, showing forensic audits of the endowment accounts.',
-        bn: 'মাহমুদুল সাহেবের নিজস্ব হিসেবের খাতা, যেখানে ট্রাস্ট ফান্ডের হিসেব মেলানো হয়েছিল।'
+        en: 'Six reimbursements share one collection code, V6. Arthur underlined their total and marked the page for the morning examiner.',
+        bn: 'ছয়টি খরচ ফেরতের কোড V6। আর্থার মোট অঙ্কের নিচে দাগ দিয়ে পাতাটি সকালের নিরীক্ষকের জন্য রেখেছেন।'
       },
       discoveryLocation: {
-        en: 'Open on study desk under victim\'s hands',
-        bn: 'পড়ার টেবিলে লাশের হাতের নিচে খোলা'
+        en: 'Open on Arthur\'s desk under his hands',
+        bn: 'আর্থারের হাতের নিচে টেবিলের ওপর খোলা'
       },
       relevance: {
-        en: 'Establishes direct financial embezzlement and motive against the signing archivist.',
-        bn: 'তহবিল তছরুপের আর্থিক গরমিল এবং হত্যার মূল উদ্দেশ্য উন্মোচন করে।'
+        en: 'Who controlled the code when the money went missing?',
+        bn: 'টাকা সরার সময় কোডটি কার নিয়ন্ত্রণে ছিল?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-01-julian'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       isCrucial: true,
       details: [
         {
-          en: 'Mahmudul noted a missing deficit of $450,000 between March and September across the endowment accounts.',
-          bn: 'মার্চ থেকে সেপ্টেম্বরের মধ্যে ট্রাস্ট অ্যাকাউন্টে সাড়ে চার লাখ ডলারের বড় গরমিল ধরা পড়ে।'
+          en: 'The six transfers total $450,000. Each receipt requires a personal countermark.',
+          bn: 'ছয়বারে মোট ৪৫০,০০০ ডলার সরেছে। প্রতি রসিদে ব্যক্তিগত প্রতিচিহ্ন লাগে।'
         },
         {
-          en: 'Final entry dated October 14, 21:00: "Irregularities confirmed across archive accounts. Summons with Crown Prosecutor scheduled for morning."',
-          bn: '১৪ অক্টোবর রাত ৯টার শেষ এন্ট্রি: "আর্কাইভের হিসাবে গরমিল নিশ্চিত। সকালে সরকারি কৌঁসুলির হাতে এই প্রমাণ তুলে দেব।"'
-        },
-        {
-          en: 'Presents an imminent, existential threat of criminal indictment to the authorized signing archivist, Nawrin Sultana.',
-          bn: 'অনুমোদিত স্বাক্ষরকারী মহাফেজ নওরীন সুলতানার জন্য এটি ছিল জেল খাটার নিশ্চিত পরোয়ানা।'
+          en: 'The entry was countersigned at 21:00. Names are kept on a separate library register.',
+          bn: '২১:০০-এ দ্বিতীয় স্বাক্ষর হয়। নামের তালিকা আলাদা গ্রন্থাগার রেজিস্টারে।'
         }
       ],
-      iconKey: 'book'
+      iconKey: 'book',
+      forensicReport: {
+        labSummary: {
+          en: 'The receiving account repeats across all six leaves. The V6 mark is original on each.',
+          bn: 'ছয় পাতাতেই প্রাপকের হিসাব এক। প্রতিটিতে V6-এর আসল ছাপ।'
+        }
+      }
     },
     {
       id: 'clue-03-stopped-clock',
       name: {
-        en: 'Fractured Grandfather Clock (22:14)',
-        bn: 'ভাঙা গ্র্যান্ডফাদার ক্লক (১০:১৪)'
+        en: 'Clock and bell tape',
+        bn: 'ঘড়ি ও ঘণ্টার ফিতা'
       },
       category: 'Physical',
       description: {
-        en: 'Antique clock with smashed glass face, stopped rigidly at 10:14 PM.',
-        bn: 'কাচ ভাঙা প্রাচীন ঘড়ি, কাঁটা রাত ১০:১৪ মিনিটে স্থির হয়ে থেমে গেছে।'
+        en: 'The grandfather clock and its chime train stopped at 22:14. A service recorder in the case continued on its own spring.',
+        bn: 'ঘড়ি ও ঘণ্টাধ্বনির চাকা ২২:১৪-তে থেমেছে। তার বাক্সের আলাদা স্প্রিং চালিত রেকর্ডার পরে চলেছে।'
       },
       discoveryLocation: {
         en: 'Study west corner',
         bn: 'পড়ার ঘরের পশ্চিম কোণ'
       },
       relevance: {
-        en: 'Fixes the exact time of Mahmudul\'s terminal convulsions and challenges witness timeline statements.',
-        bn: 'মাহমুদুল সাহেবের মৃত্যুর সুনির্দিষ্ট সময় নির্ধারণ করে এবং সাক্ষীদের দাবিকৃত সময়ের সত্যতা যাচাইয়ের ভিত্তি তৈরি করে।'
+        en: 'Which part of the reported half-hour call could the corridor actually hear?',
+        bn: 'আধঘণ্টার কথিত ডাকে করিডোর থেকে কী শোনা সম্ভব ছিল?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-01-julian', 'suspect-04-beatrice'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice'],
       isCrucial: true,
       details: [
         {
-          en: 'Pendulum jammed by a heavy bronze paperweight knocked from the desk during violent muscle spasms.',
-          bn: 'বিষক্রিয়ার তীব্র খিঁচুনির সময় টেবিল থেকে ছিটকে যাওয়া ব্রোঞ্জের পেপারওয়েটে পেণ্ডুলাম আটকে ঘড়ি থেমে যায়।'
+          en: 'The recorder marks a desk call at 22:13 and a cabinet impact one minute later.',
+          bn: 'রেকর্ডারে ২২:১৩-তে ডেস্ক থেকে ডাক ও এক মিনিট পর আঘাত ধরা আছে।'
         },
         {
-          en: 'Proves Mahmudul suffered catastrophic convulsions and was incapacitated by 22:14.',
-          bn: 'প্রমাণ করে রাত ১০:১৪ মিনিটের মধ্যেই মাহমুদুল সাহেব প্রাণঘাতী খিঁচুনিতে লুটিয়ে পড়েছিলেন।'
-        },
-        {
-          en: 'Serves as an objective physical anchor to evaluate all claimed verbal alibis after 22:14.',
-          bn: 'রাত ১০:১৪-এর পরবর্তী যেকোনো কথিত জবানবন্দি ও দাবির সত্যতা প্রমাণের অন্যতম চাবিকাঠি।'
+          en: 'The half-hour hammer remained caught behind a loose strip of glass.',
+          bn: 'আধঘণ্টার ঘণ্টার হাতুড়ি কাচে আটকে ছিল।'
         }
       ],
-      iconKey: 'clock'
+      iconKey: 'clock',
+      forensicReport: {
+        labSummary: {
+          en: 'Fresh damage arrests both hands and the chime together. The separate bell tape agrees with the kitchen duplicate.',
+          bn: 'নতুন আঘাতে কাঁটা ও ঘণ্টা একসঙ্গে থামে। ঘণ্টার ফিতার তথ্য রান্নাঘরের কপির সঙ্গে মেলে।'
+        }
+      }
     },
     {
       id: 'clue-04-poisoned-decanter',
       name: {
-        en: 'Vintage Armagnac Decanter',
-        bn: 'আরমাগনাক ব্র্যান্ডির ডিক্যান্টার'
+        en: 'Sideboard decanter B4',
+        bn: 'সাইডবোর্ডের B4 বোতল'
       },
       category: 'Physical',
       description: {
-        en: 'A heavy crystal bottle holding approximately 400ml of vintage brandy.',
-        bn: 'প্রায় ৪০০ মিলি ব্র্যান্ডিভর্তি ক্রিস্টালের একটি ভারী বোতল।'
+        en: 'A paper band around the neck has separated at its seam. Its delivery number is B4.',
+        bn: 'বোতলের গলার কাগজের বন্ধনী জোড়ায় ছেঁড়া। সরবরাহ নম্বর B4।'
       },
       discoveryLocation: {
         en: 'Study Liquor Sideboard',
         bn: 'পড়ার ঘরের লিকার সাইডবোর্ড'
       },
       relevance: {
-        en: 'Demonstrates the poison was added to the decanter before Mahmudul poured his glass.',
-        bn: 'প্রমাণ করে যে মাহমুদুল সাহেব গ্লাসে ঢালার আগেই গোটা বোতলে বিষ মেশানো হয়েছিল।'
+        en: 'At which handover was the band last seen intact?',
+        bn: 'শেষ কোন হস্তান্তরে বন্ধনী অক্ষত ছিল?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       details: [
         {
-          en: 'The entire decanter volume was laced with 2 grams of potassium cyanide salt.',
-          bn: 'পুরো ডিক্যান্টারের ব্র্যান্ডিতে প্রায় ২ গ্রাম পটাশিয়াম সায়ানাইড মেশানো ছিল।'
+          en: 'The sideboard holds two matching bottles. Only B4 has the residue found in the glass.',
+          bn: 'দুটি একই রকম বোতলের শুধু B4-এ গ্লাসের মতো অবশিষ্টাংশ।'
         },
         {
-          en: 'Whoever poisoned it knew Mahmudul drank a single snifter every evening at 22:00 sharp.',
-          bn: 'খুনি ভালো করেই জানত মাহমুদুল সাহেব প্রতি রাত ১০টায় ঠিক এক গ্লাস ব্র্যান্ডি খান।'
+          en: 'The kitchen retains a dated strip for each bottle it issues.',
+          bn: 'প্রতিটি বোতলের তারিখযুক্ত ফিতা রান্নাঘরে থাকে।'
         },
         {
-          en: 'Placed in the study between 21:45 and 22:00 during the evening tea and drink service.',
-          bn: 'রাত ৯:৪৫ থেকে ১০:০০-এর মধ্যে সান্ধ্যকালীন পানীয় পরিবেশনের সময় ঘরে রাখা হয়েছিল।'
+          en: 'A sealed kitchen sample drawn from B4 just before banding tests clear. A swab beneath the carrier’s fresh countermark on the returned strip matches the residue inside the bottle.',
+          bn: 'বন্ধনী দেওয়ার ঠিক আগে B4 থেকে রাখা রান্নাঘরের সিল করা নমুনা পরিষ্কার। ফেরত ফিতায় বাহকের নতুন ছাপের নিচের নমুনা বোতলের অবশিষ্টাংশের সঙ্গে মেলে।'
         }
       ],
-      iconKey: 'flask'
+      iconKey: 'flask',
+      forensicReport: {
+        labSummary: {
+          en: 'Residue in the bottle matches the glass. The other decanter tests clear.',
+          bn: 'বোতল ও গ্লাসের নমুনা মেলে। অন্য বোতলটি পরিষ্কার।'
+        }
+      }
     },
     {
       id: 'clue-05-window-latch',
       name: {
-        en: 'Rigged Leaded Window Cam-Latch',
-        bn: 'কারসাজি করা জানালার ছিটকিনি'
+        en: 'Window catch',
+        bn: 'জানালার ছিটকিনি'
       },
       category: 'Forensic Reports',
       description: {
-        en: 'The locking mechanism of the study bay window.',
-        bn: 'পড়ার ঘরের বে উইন্ডোর ছিটকিনির মেকানিজম।'
+        en: 'The brass catch is closed. Beneath it are two pale arcs with a scrap of green wax between them.',
+        bn: 'পিতলের ছিটকিনি বন্ধ। নিচে দুই ফিকে অর্ধবৃত্তের মাঝে সামান্য সবুজ মোম।'
       },
       discoveryLocation: {
         en: 'Study Leaded Bay Window',
         bn: 'পড়ার ঘরের জানালার ফ্রেম'
       },
       relevance: {
-        en: 'Reveals physical anomalies explaining how the room was sealed from the exterior.',
-        bn: 'বাইরে থেকে ভেতর অবরুদ্ধ করার যান্ত্রিক কারসাজির রহস্য উন্মোচন করে।'
+        en: 'Which side of the frame carries the matching trace?',
+        bn: 'ফ্রেমের কোন দিকে একই চিহ্ন আছে?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-05-marcus'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice', 'suspect-05-marcus'],
       isCrucial: true,
       details: [
         {
-          en: 'Microscopic traces of beeswax lubricant and rub marks on the pivot arm.',
-          bn: 'ছিটকিনির খাঁজে মোমের প্রলেপ এবং ঘর্ষণের সূক্ষ্ম দাগ রয়েছে।'
+          en: 'Both arcs cut through the polish applied that morning.',
+          bn: 'সকালের পালিশের ওপর দুটি দাগ।'
         },
         {
-          en: 'By looping a thin nylon filament around the latch lever through the outer sill gap, a person outside can pull the thread to snap the latch closed, then pull the thread free.',
-          bn: 'বাইরের কার্নিশ দিয়ে একটি সরু নাইলনের সুতো গলিয়ে ছিটকিনিতে ফাঁস লাগিয়ে টান দিলে ভেতর থেকে ছিটকিনি বন্ধ হয়ে যায় এবং পরে সুতো টেনে বের করে নেওয়া যায়।'
-        },
-        {
-          en: 'Solves the "impossible" locked room illusion without requiring internal accomplices.',
-          bn: 'কোনো অভ্যন্তরীণ সহায়তাকারী ছাড়াই তথাকথিত "অসম্ভব" বদ্ধ ঘরের বৈজ্ঞানিক সমাধান দেয়।'
+          en: 'The oak door was bolted. No other opening connects the study to the terrace.',
+          bn: 'ওক দরজায় খিল ছিল। ছাদে যাওয়ার আর কোনো পথ নেই।'
         }
       ],
-      iconKey: 'key'
+      iconKey: 'key',
+      forensicReport: {
+        labSummary: {
+          en: 'The catch moves freely. Green wax is present inside the fresh arcs.',
+          bn: 'ছিটকিনি সহজে নড়ে। নতুন বাঁকা দাগের মধ্যে সবুজ মোম আছে।'
+        }
+      }
     },
     {
       id: 'clue-06-burnt-will',
       name: {
-        en: 'Charred Codicil to Will',
-        bn: 'উইলের আধপোড়া সংযোজনী'
+        en: 'Charred codicil',
+        bn: 'পোড়া উইলের সংযোজন'
       },
       category: 'Documents',
       description: {
-        en: 'Fragment of parchment pulled from the dying fireplace embers.',
-        bn: 'ফায়ারপ্লেসের ছাই থেকে উদ্ধারকৃত আইনি দলিলের টুকরো।'
+        en: 'An unsigned amendment would have removed the nephew from the trust. Its lower edge is ash.',
+        bn: 'স্বাক্ষরহীন সংশোধনীতে ভাইপোকে ট্রাস্ট থেকে বাদ দেওয়ার প্রস্তাব। নিচের অংশ ছাই।'
       },
       discoveryLocation: {
         en: 'Study Marble Fireplace',
         bn: 'পড়ার ঘরের ফায়ারপ্লেস'
       },
       relevance: {
-        en: 'Presents Arman\'s initial disinheritance motive, but shows Mahmudul threw it into the hearth earlier in the evening.',
-        bn: 'আরমানকে ত্যাজ্য করার প্রমাণ দেয়, তবে কাগজটি বিকেল ৫টার দিকেই আগুনে পোড়ানো হয়েছিল।'
+        en: 'Was this a threat for tonight or the remains of an earlier quarrel?',
+        bn: 'এটি আজ রাতের হুমকি নাকি আগের ঝগড়ার অবশেষ?'
       },
       relatedSuspectIds: ['suspect-01-julian'],
       details: [
         {
-          en: 'Drafted to strip Arman Haque Chowdhury of his trust fund allowance.',
-          bn: 'আরমান হক চৌধুরীর ট্রাস্ট ভাতা বন্ধের আইনি নির্দেশ।'
+          en: 'A 17:00 fire-tending entry records paper thrown in while the nephew was present.',
+          bn: '১৭:০০-এর আগুন পরিচর্যার নথিতে ভাইপোর সামনে কাগজ পোড়ানোর উল্লেখ।'
         },
         {
-          en: 'The ink had already set hours prior; soot patterns match the 17:00 fire stoking.',
-          bn: 'কালি ও পোড়ার দাগ নিশ্চিত করে এটি বিকেল ৫টার ঝগড়ার সময় আগুনে নিক্ষিপ্ত হয়েছিল।'
+          en: 'The clause carries neither a witness nor a seal.',
+          bn: 'ধারাটিতে সাক্ষী বা সিল নেই।'
         }
       ],
-      iconKey: 'scroll'
+      iconKey: 'scroll',
+      forensicReport: {
+        labSummary: {
+          en: 'Soot from a later coal delivery lies over the paper. It predates the evening tray.',
+          bn: 'পরে দেওয়া কয়লার কালি কাগজের ওপরে। কাগজটি সন্ধ্যার ট্রের আগের।'
+        }
+      }
     },
     {
       id: 'clue-07-nylon-thread',
       name: {
-        en: 'Waxed Nylon Thread & Size 6 Muddy Print',
-        bn: 'মোমের নাইলন সুতো ও ৬ সাইজের পদচিহ্ন'
+        en: 'Thread on the garden sill',
+        bn: 'বাগানের কার্নিশের সুতো'
       },
       category: 'Physical',
       description: {
-        en: 'A 40cm strand of high-tensile waxed monofilament caught on a rose thorn outside the window.',
-        bn: 'জানালার নিচে গোলাপের কাঁটায় আটকে থাকা ৪০ সেমি মোম মাখানো নাইলন সুতো।'
+        en: 'Waxed binding thread hangs on a thorn outside the catch. A partial shoe impression ends in wet gravel.',
+        bn: 'ছিটকিনির বাইরে কাঁটায় মোমযুক্ত বাঁধাইয়ের সুতো। ভেজা নুড়িতে অসম্পূর্ণ জুতোর ছাপ।'
       },
       discoveryLocation: {
         en: 'Rose Garden bed directly beneath study window',
         bn: 'পড়ার ঘরের জানালার ঠিক নিচের গোলাপ বাগান'
       },
       relevance: {
-        en: 'Physical forensic proof tying the exterior window mechanism to a petite individual.',
-        bn: 'বাইরে থেকে জানালা আটকানোর মেকানিজম এবং একজন ব্যক্তির পলায়নের অকাট্য শারীরিক প্রমাণ।'
+        en: 'Is the trace consistent with an ordinary walk through the garden?',
+        bn: 'সাধারণভাবে বাগানে হাঁটলে কি এমন চিহ্ন হতো?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice', 'suspect-05-marcus'],
       isCrucial: true,
       isHidden: true,
       details: [
         {
-          en: 'Thread composition: 50-lb test waxed nylon bookbinder\'s thread.',
-          bn: 'সুতোটি ৫০ পাউন্ড ধারণক্ষমতাসম্পন্ন মোম মাখানো বই বাঁধাইয়ের নাইলন সুতো।'
+          en: 'The thread is green under its outer coating of soot.',
+          bn: 'কালির নিচে সুতোর মোম সবুজ।'
         },
         {
-          en: 'Waxed nylon of this caliber is specifically used in leather folio restoration and bookbinding.',
-          bn: 'এই মানের মোম মাখানো সুতো বিশেষ করে প্রাচীন চামড়ার বই বাঁধাই ও আর্কাইভে ব্যবহৃত হয়।'
-        },
-        {
-          en: 'Footprint in the mud corresponds to a slender size 6 Oxford dress shoe, ruling out larger male footwear.',
-          bn: 'কাদার ছাপটি ৬ সাইজের সরু মেয়েলি জুতার, যা পুরুষদের বড় আকারের জুতাকে নাকচ করে।'
+          en: 'The incomplete heel cannot give a shoe size. Garden and library stores both stock this thread.',
+          bn: 'আংশিক গোড়ালির ছাপ থেকে মাপ বোঝা যায় না। বাগান ও গ্রন্থাগার দুই জায়গাতেই এই সুতো থাকে।'
         }
       ],
-      iconKey: 'scissors'
+      iconKey: 'scissors',
+      forensicReport: {
+        labSummary: {
+          en: 'Wax and fibre at the thorn match the fresh arcs inside the frame.',
+          bn: 'কাঁটার মোম ও তন্তু ফ্রেমের ভেতরের নতুন বাঁকা দাগের সঙ্গে মেলে।'
+        }
+      }
     },
     {
       id: 'clue-08-torn-envelope',
       name: {
-        en: 'Torn Black-Market Cyanide Invoice',
-        bn: 'ছেঁড়া সায়ানাইড ক্রয়ের রসিদ'
+        en: 'Torn supplier envelope',
+        bn: 'ছেঁড়া সরবরাহ খাম'
       },
       category: 'Documents',
       description: {
-        en: 'A shredded commercial invoice from a chemical supply house.',
-        bn: 'একটি রাসায়নিক সাপ্লাই এজেন্সির ছেঁড়া বাণিজ্যিক রসিদ।'
+        en: 'A conservation supplier’s envelope holds the discarded neck strip from bottle B4. Its transfer tab bears the violet V6 countermark.',
+        bn: 'সংরক্ষণ সামগ্রীর একটি খামে B4 বোতলের ফেলে দেওয়া ফিতা। হস্তান্তর অংশে বেগুনি V6 ছাপ।'
       },
       discoveryLocation: {
         en: 'Under-desk wastebasket',
         bn: 'টেবিলের নিচের ময়লার ঝুড়ি'
       },
       relevance: {
-        en: 'Traces the purchase of potassium cyanide to an antiquarian PO Box address.',
-        bn: 'সায়ানাইড কেনার রেকর্ডটি একটি এন্টিক বুকশপের পোস্ট বক্সের সাথে যুক্ত করে।'
+        en: 'Which records independently identify the person who broke this seal?',
+        bn: 'কোন স্বাধীন নথি থেকে সিল ভাঙা ব্যক্তিকে চেনা যায়?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch'],
-      isCrucial: true,
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       isHidden: true,
       details: [
         {
-          en: 'Billed to: "N. S. Antiquarian Books, PO Box 412".',
-          bn: 'ক্রেতার নাম: "এন. এস. বুকস, পোস্ট বক্স ৪১২"।'
+          en: 'The supplier serves the clinic, the bindery and the garden.',
+          bn: 'সরবরাহকারী চিকিৎসাকক্ষ, বাঁধাইঘর ও বাগানে মাল দেয়।'
         },
         {
-          en: 'Item: 100g Potassium Cyanide Reagent Grade (ordered under photographic salts pretense).',
-          bn: 'পণ্য: ১০০ গ্রাম পটাশিয়াম সায়ানাইড লবণ (ফটোগ্রাফির রাসায়নিকের নামে কেনা)।'
-        },
-        {
-          en: 'Bearing a distinctive smudged cursive signature with initial "N. Sultana".',
-          bn: 'নিচে "নওরীন সুলতানা" স্বাক্ষরিত একটি ঝাপসা হস্তাক্ষরের সই রয়েছে।'
+          en: 'The end of the strip has the same irregular tear as the band on B4.',
+          bn: 'ফিতার শেষের ছেঁড়া দাগ B4-এর বন্ধনীর সঙ্গে মেলে।'
         }
       ],
-      iconKey: 'receipt'
+      iconKey: 'receipt',
+      forensicReport: {
+        labSummary: {
+          en: 'A fresh glass-neck impression crosses the violet mark. The stamp was already on the strip when the band broke.',
+          bn: 'বেগুনি ছাপের ওপর বোতলের গলার নতুন দাগ। বন্ধনী ছেঁড়ার আগেই ফিতায় সিল ছিল।'
+        }
+      }
     },
     {
       id: 'clue-09-pawn-receipt',
       name: {
-        en: 'Arman\'s Pawn Ticket for Signet Ring',
-        bn: 'আরমানের আংটি বন্ধকের রসিদ'
+        en: 'Pawnbroker’s counterfoil',
+        bn: 'বন্ধক দোকানের রসিদ'
       },
       category: 'Documents',
       description: {
-        en: 'A pawn ticket for an heirloom gold signet ring stamped at 16:15 today.',
-        bn: 'একটি স্বর্ণের আংটি বন্ধক দেওয়ার রসিদ যা আজ বিকেল ৪:১৫ মিনিটে ইস্যু করা।'
+        en: 'The nephew pawned Arthur’s ring that afternoon. The shop issued a cash advance against it.',
+        bn: 'বিকেলে ভাইপো আর্থারের আংটি বন্ধক দিয়ে অগ্রিম টাকা পেয়েছেন।'
       },
       discoveryLocation: {
-        en: 'Arman\'s coat pocket in billiard room',
-        bn: 'বিলিয়ার্ড রুমে ঝুলিয়ে রাখা আরমানের কোটের পকেট'
+        en: 'Julian\'s coat pocket in billiard room',
+        bn: 'বিলিয়ার্ড রুমে ঝুলিয়ে রাখা জুলিয়ানের কোটের পকেট'
       },
       relevance: {
-        en: 'Explains Arman\'s suspicious behavior and theft, but clears him of being the poisoner.',
-        bn: 'আরমানের সন্দেহজনক আচরণের কারণ স্পষ্ট করে, তবে তাকে খুনের দায় থেকে খালাস দেয়।'
+        en: 'Which debt could the advance settle?',
+        bn: 'অগ্রিম টাকায় কোন ঋণ শোধ করা সম্ভব?'
       },
       relatedSuspectIds: ['suspect-01-julian'],
       details: [
         {
-          en: 'Arman pawned the ring hours before the murder to cover a poker debt.',
-          bn: 'আরমান খুনের কয়েক ঘণ্টা আগে জুয়ার দেনা মেটাতে আংটি বন্ধক দিয়েছিল।'
+          en: 'The 16:15 stamp predates the quarrel.',
+          bn: '১৬:১৫-এর ছাপ ঝগড়ার আগের।'
         },
         {
-          en: 'Proves petty opportunistic theft in the afternoon, not the calculated locked-room murder.',
-          bn: 'এটি বিকেলে ঘটে যাওয়া ক্ষুদ্র চুরির প্রমাণ দেয়, রাতে পূর্বপরিকল্পিত খুনের নয়।'
+          en: 'The advance covered the instalment due at midnight.',
+          bn: 'অগ্রিম টাকা মধ্যরাতের কিস্তির সমান।'
         }
       ],
-      iconKey: 'tag'
+      iconKey: 'tag',
+      forensicReport: {
+        labSummary: {
+          en: 'The shop copy confirms the payment. It provides no evening alibi.',
+          bn: 'দোকানের কপিতে অর্থপ্রদান নিশ্চিত। রাতের অবস্থান সম্পর্কে এতে কিছু নেই।'
+        }
+      }
     },
     {
       id: 'clue-10-handwriting-sample',
       name: {
-        en: 'Nawrin\'s Archival Catalog Cards',
-        bn: 'নওরীনের ক্যাটালগ কার্ডের হাতের লেখা'
+        en: 'Archive countermark register',
+        bn: 'আর্কাইভের প্রতিচিহ্ন রেজিস্টার'
       },
       category: 'Documents',
       description: {
-        en: 'Archival index cards written in Nawrin Sultana\'s neat calligraphic script.',
-        bn: 'লাইব্রেরির ইনডেক্স কার্ডে নওরীন সুলতানার নিজস্ব হস্তাক্ষর।'
+        en: 'Library cards assign personal seals to staff for the whole audit quarter. The signatures record continuous custody through tonight.',
+        bn: 'গ্রন্থাগারের কার্ডে পুরো ত্রৈমাসিকের ব্যক্তিগত সিল বরাদ্দ। স্বাক্ষরে আজ রাত পর্যন্ত অবিচ্ছিন্ন হেফাজতের হিসাব আছে।'
       },
       discoveryLocation: {
         en: 'Library Archive Desk',
         bn: 'লাইব্রেরি আর্কাইভ ডেস্ক'
       },
       relevance: {
-        en: 'Forensic handwriting match to the black-market cyanide order.',
-        bn: 'সায়ানাইড ক্রয়ের রসিদের সইয়ের সাথে শতভাগ মিলে যাওয়া হস্তাক্ষর।'
+        en: 'Which impressions elsewhere in the house belong to this register?',
+        bn: 'বাড়ির আর কোন ছাপ এই রেজিস্টারের অন্তর্ভুক্ত?'
       },
-      relatedSuspectIds: ['suspect-02-evelyn'],
+      relatedSuspectIds: ['suspect-02-evelyn', 'suspect-03-finch', 'suspect-04-beatrice'],
       details: [
         {
-          en: 'Loop structures and stroke pressure identical to the signature on the chemical invoice.',
-          bn: 'অক্ষরের বাঁক ও কালির চাপ সায়ানাইডের রসিদের স্বাক্ষরের সাথে সম্পূর্ণ অভিন্ন।'
+          en: 'V6 was signed to Evelyn, B2 to Beatrice and F1 to Finch. All three keys and seals were checked back after the alarm.',
+          bn: 'V6 ইভলিনের, B2 বিট্রিসের, F1 ফিঞ্চের। সতর্কতার পর তিনটি চাবি ও সিল ফেরত মেলে।'
         },
         {
-          en: 'Indisputable forensic proof establishing that Nawrin Sultana procured the potassium cyanide.',
-          bn: 'অনস্বীকার্য প্রমাণ যে নওরীন সুলতানা নিজেই বিষ সংগ্রহ করেছিল।'
+          en: 'Countermarks identify holders. They do not identify what was in a parcel.',
+          bn: 'প্রতিচিহ্নে ধারক বোঝায়। প্যাকেটে কী ছিল তা বোঝায় না।'
         }
       ],
-      iconKey: 'pen'
+      iconKey: 'pen',
+      forensicReport: {
+        labSummary: {
+          en: 'The quarterly cards and the embossed originals have matching signatures.',
+          bn: 'ত্রৈমাসিক কার্ডের স্বাক্ষর মূল উঁচু ছাপের নথির সঙ্গে মেলে।'
+        }
+      }
     },
     {
       id: 'clue-11-tray-handover',
       name: {
-        en: 'Shahana\'s Witness Statement: Tray Interception',
-        bn: 'শাহানার জবানবন্দি: ট্রে হস্তান্তর'
+        en: 'Kitchen handover sheet',
+        bn: 'রান্নাঘরের হস্তান্তর নথি'
       },
       category: 'Witness Statements',
       description: {
-        en: 'Testimony from head housekeeper Shahana Begum regarding the drink tray.',
-        bn: 'গৃহপরিচারিকা শাহানা বেগমের বক্তব্য অনুযায়ী পানীয়ের ট্রে নওরীনের হাতে তুলে দেওয়া হয়েছিল।'
+        en: 'Beatrice recorded B4 sealed at 21:45. A maid witnessed its return band being marked by the one person who carried it from the hatch to Arthur.',
+        bn: 'বিট্রিস ২১:৪৫-এ B4 সিল করা অবস্থায় নথিভুক্ত করেন। এক পরিচারিকা দেখেন, জানালা থেকে আর্থারের কাছে একমাত্র বাহকই ফেরত ফিতায় ছাপ দেন।'
       },
       discoveryLocation: {
         en: 'Kitchen Interrogation',
         bn: 'রান্নাঘরে নেওয়া জবানবন্দি'
       },
       relevance: {
-        en: 'Confirms who had sole custody of the Armagnac decanter before it entered the locked study.',
-        bn: 'নিশ্চিত করে যে পড়ার ঘরে ঢোকার ঠিক আগে কার কাছে বোতলটি ছিল।'
+        en: 'Can the carrier be identified from the return strip?',
+        bn: 'ফেরত ফিতা থেকে বাহককে চেনা যায় কি?'
       },
       relatedSuspectIds: ['suspect-02-evelyn', 'suspect-04-beatrice'],
       details: [
         {
-          en: 'At 21:45, Nawrin intercepted the tray from Shahana in the hallway.',
-          bn: 'রাত ৯:৪৫ মিনিটে করিডোরে শাহানার কাছ থেকে ট্রেটি নওরীন নিজের হাতে নেয়।'
+          en: 'The maid watched the tray continuously until it entered the study. She saw no second handover.',
+          bn: 'পাঠকক্ষে ঢোকা পর্যন্ত পরিচারিকা ট্রেটি দেখেছেন। আর হাতবদল হয়নি।'
         },
         {
-          en: 'Nawrin carried it into the study under the pretense of delivering evening correspondence.',
-          bn: 'চিঠি দেওয়ার অজুহাতে নওরীন একাই ট্রেটি নিয়ে পড়ার ঘরে ঢোকে।'
+          en: 'The same maid logged the crash at 22:14. At 22:30 she heard one voice in the hall and no chime.',
+          bn: 'তিনি ২২:১৪-র আঘাতও লিখেছেন। ২২:৩০-এ হলঘরে একটি কণ্ঠ শুনেছেন, ঘণ্টা নয়।'
         }
       ],
-      iconKey: 'message'
+      iconKey: 'message',
+      forensicReport: {
+        labSummary: {
+          en: 'The kitchen copy and the service recorder agree to the minute.',
+          bn: 'রান্নাঘরের কপি ও সার্ভিস রেকর্ডারের সময় মিনিট পর্যন্ত মেলে।'
+        }
+      }
     },
     {
       id: 'clue-12-terrace-sighting',
       name: {
-        en: 'Rashed Karim\'s Terrace Witness Statement',
-        bn: 'রাশেদ করিমের জবানবন্দি: বাগানের ছায়ামূর্তি'
+        en: 'Terrace sighting',
+        bn: 'টেরেসের সাক্ষ্য'
       },
       category: 'Witness Statements',
       description: {
-        en: 'Statement from Rashed Karim regarding a figure slipping into the garden at 22:20.',
-        bn: 'রাত ১০:২০ নাগাদ জানালা দিয়ে বাগানে একজনের পলায়ন সম্পর্কে রাশেদ করিমের প্রত্যক্ষদর্শীর বিবরণ।'
+        en: 'Kane waited outside after being shown out. At 22:20 a single figure crossed the gravel away from the study window.',
+        bn: 'বের করে দেওয়ার পর কেইন বাইরে অপেক্ষা করছিলেন। ২২:২০-তে জানালা থেকে এক অবয়ব নুড়িপথ পেরোয়।'
       },
       discoveryLocation: {
         en: 'Driveway Interrogation',
         bn: 'ড্রাইভওয়েতে নেওয়া জবানবন্দি'
       },
       relevance: {
-        en: 'Corroborates the killer\'s escape route through the study window into the rose garden.',
-        bn: 'জানালা দিয়ে বাগানে পালিয়ে যাওয়ার পথ ও সময়ের প্রত্যক্ষ প্রমাণ দেয়।'
+        en: 'Which parts of the sighting can the driveway camera check?',
+        bn: 'ড্রাইভওয়ের ক্যামেরায় সাক্ষ্যের কতটা যাচাই হয়?'
       },
-      relatedSuspectIds: ['suspect-05-marcus', 'suspect-02-evelyn'],
+      relatedSuspectIds: ['suspect-05-marcus'],
       details: [
         {
-          en: 'Rashed observed a slim figure in a dark slicker moving from the study window terrace to the conservatory door at 22:20.',
-          bn: 'রাশেদ রাত ১০:২০-এ পড়ার ঘরের কার্নিশ থেকে একজনকে নেমে পাশের দরজা দিয়ে ভেতরে ঢুকতে দেখে।'
+          en: 'Rain obscured the figure’s face and clothing.',
+          bn: 'বৃষ্টিতে মুখ ও পোশাক দেখা যায়নি।'
+        },
+        {
+          en: 'A gate image confirms Kane beside his car at the time of the sighting.',
+          bn: 'ফটকের ছবিতে ওই সময়ে কেইন নিজের গাড়ির পাশে।'
         }
       ],
-      iconKey: 'eye'
+      iconKey: 'eye',
+      forensicReport: {
+        labSummary: {
+          en: 'The gate camera clock was set with the kitchen clock that afternoon.',
+          bn: 'সেদিন বিকেলে ফটক ও রান্নাঘরের ঘড়ি একসঙ্গে মেলানো হয়েছিল।'
+        }
+      }
+    },
+    {
+      id: 'case-001-pulse-strip',
+      name: {
+        en: 'Cardiac monitor strip',
+        bn: 'হৃদ্‌যন্ত্রের ফিতা'
+      },
+      category: 'Forensic Reports',
+      description: {
+        en: 'A portable monitor is clipped beneath Arthur’s jacket. Its trace ends one minute after a desk bell is heard on its sound channel.',
+        bn: 'আর্থারের জামার নিচে ছোট মনিটর। শব্দের চ্যানেলে ডেস্কের ঘণ্টা শোনার এক মিনিট পর স্পন্দন থেমেছে।'
+      },
+      discoveryLocation: {
+        en: 'Desk chair, jacket pocket',
+        bn: 'ডেস্কের চেয়ার, জামার পকেট'
+      },
+      relevance: {
+        en: 'Which household record can put a time to the final trace?',
+        bn: 'ঘরের কোন নথিতে শেষ স্পন্দনের সময় মেলানো যায়?'
+      },
+      relatedSuspectIds: ['suspect-03-finch'],
+      details: [
+        {
+          en: 'The unit records elapsed time only. Its battery and leads were intact.',
+          bn: 'যন্ত্রটি কেবল অতিবাহিত সময় রাখে। ব্যাটারি ও সংযোগ অক্ষত।'
+        }
+      ],
+      forensicReport: {
+        labSummary: {
+          en: 'The last pulse coincides with the sharp impact on the sound channel. The case clock supplies the absolute minute.',
+          bn: 'শেষ স্পন্দন ও তীক্ষ্ণ আঘাতের শব্দ একসঙ্গে। সময়ের মিনিটটি দেয় ঘড়ি।'
+        }
+      },
+      iconKey: 'file'
+    },
+    {
+      id: 'case-001-corridor-bolt',
+      name: {
+        en: 'Corridor bolt photograph',
+        bn: 'করিডোরের খিলের ছবি'
+      },
+      category: 'Physical',
+      description: {
+        en: 'The oak door bears a new split beside an old brass bolt.',
+        bn: 'ওক দরজার পুরোনো পিতলের খিলের পাশে নতুন ফাটল।'
+      },
+      discoveryLocation: {
+        en: 'Study corridor door',
+        bn: 'পাঠকক্ষের করিডোর দরজা'
+      },
+      relevance: {
+        en: 'Does the break belong to the discovery or the earlier interval?',
+        bn: 'ফাটলটি সন্ধানের সময়ের নাকি আগের?'
+      },
+      relatedSuspectIds: ['suspect-04-beatrice'],
+      details: [
+        {
+          en: 'The porter photographed the keeper at 23:05 with the bolt still inside it.',
+          bn: '২৩:০৫-এ দারোয়ানের ছবিতে খিল তখনও আটকানো।'
+        }
+      ],
+      forensicReport: {
+        labSummary: {
+          en: 'The fresh split follows the outward movement described by the rescue party. The keeper was intact until entry.',
+          bn: 'নতুন ফাটল উদ্ধারকারীদের বর্ণিত নড়াচড়ার সঙ্গে মেলে। ঢোকার আগে খিলের ধারক অক্ষত ছিল।'
+        }
+      },
+      iconKey: 'file'
     }
   ],
   canonConnections: [
     {
       id: 'conn-01',
       sourceId: 'clue-03-stopped-clock',
-      targetId: 'suspect-02-evelyn',
+      targetId: 'clue-11-tray-handover',
       label: {
-        en: 'Alibi Contradiction',
-        bn: 'অ্যালিবাই অসঙ্গতি'
+        en: 'The missing half-hour chime',
+        bn: 'আধঘণ্টার নীরব ঘণ্টা'
       },
       deductionNotes: {
-        en: 'Mahmudul died at 22:14 when the clock was smashed by the convulsing victim. Nawrin\'s claim that she spoke to him at 22:30 is a manufactured lie to establish an alibi!',
-        bn: 'মাহমুদুল সাহেব রাত ১০:১৪ মিনিটে খিঁচুনিতে পেপারওয়েট ছিটকে ঘড়ি ভাঙার সাথে সাথেই মারা যান। রাত ১০:৩০-এ তার সাথে কথা বলার দাবিটি নওরীনের সম্পূর্ণ সাজানো মিথ্যা!'
+        en: 'The kitchen duplicate and stopped chime narrow what anyone could have heard from the corridor.',
+        bn: 'রান্নাঘরের কপি ও থেমে যাওয়া ঘণ্টা থেকে করিডোরে কী শোনা সম্ভব ছিল বোঝা যায়।'
       },
       isContradiction: true,
       bonusPoints: 150
@@ -1347,12 +1378,12 @@ export const case001: CaseData = {
       sourceId: 'clue-05-window-latch',
       targetId: 'clue-07-nylon-thread',
       label: {
-        en: 'Locked Room Mechanism',
-        bn: 'বদ্ধ ঘরের রহস্যের সমাধান'
+        en: 'Both sides of the catch',
+        bn: 'ছিটকিনির দুই দিক'
       },
       deductionNotes: {
-        en: 'The beeswax and micro-grooves on the window cam latch match the high-tensile waxed nylon thread found outside on the rose thorn. The killer latched the window from outside using a pull-string loop!',
-        bn: 'জানালার ছিটকিনিতে পাওয়া মোম এবং গোলাপের কাঁটায় আটকে থাকা নাইলন সুতো হুবহু এক। খুনি বাইরে থেকে সুতোর ফাঁস টেনে ভেতরের ছিটকিনি আটকে দিয়েছিল!'
+        en: 'The exterior fibre and the interior arcs share a wax deposit. A closed catch alone cannot establish where the last handler stood.',
+        bn: 'বাইরের তন্তু ও ভেতরের দাগে একই মোম। শুধু বন্ধ ছিটকিনি দিয়ে শেষ ব্যক্তি কোথায় ছিলেন বোঝা যায় না।'
       },
       isContradiction: false,
       bonusPoints: 200
@@ -1362,12 +1393,12 @@ export const case001: CaseData = {
       sourceId: 'clue-08-torn-envelope',
       targetId: 'clue-10-handwriting-sample',
       label: {
-        en: 'Poison Acquisition',
-        bn: 'বিষ সংগ্রহের প্রমাণ'
+        en: 'Countermark in custody',
+        bn: 'প্রতিচিহ্নের হেফাজত'
       },
       deductionNotes: {
-        en: 'The signature on the chemical supply invoice for potassium cyanide matches Nawrin Sultana\'s archival catalog handwriting with 100% forensic precision.',
-        bn: 'সায়ানাইড ক্রয়ের ইনভয়েসের সইটি নওরীন সুলতানার ক্যাটালগ কার্ডের হস্তাক্ষরের সাথে বৈজ্ঞানিকভাবে শতভাগ মিলে যায়।'
+        en: 'The personal seal register gives the mark on the return strip an owner. Check the same code in the accounts.',
+        bn: 'ফেরত ফিতার ছাপ কার, ব্যক্তিগত রেজিস্টারে তা আছে। হিসাবে একই কোড খুঁজুন।'
       },
       isContradiction: false,
       bonusPoints: 175
@@ -1375,14 +1406,14 @@ export const case001: CaseData = {
     {
       id: 'conn-04',
       sourceId: 'clue-02-audited-ledger',
-      targetId: 'suspect-02-evelyn',
+      targetId: 'clue-10-handwriting-sample',
       label: {
-        en: 'Financial Motive',
-        bn: 'আর্থিক তছরুপের উদ্দেশ্য'
+        en: 'Quarterly assignments',
+        bn: 'ত্রৈমাসিক বরাদ্দ'
       },
       deductionNotes: {
-        en: 'Mahmudul Haque Chowdhury uncovered that Nawrin embezzled $450,000 from the foundation and wrote that he would turn her in to the Crown Prosecutor the very next morning.',
-        bn: 'মাহমুদুল হক চৌধুরী আবিষ্কার করেছিলেন যে নওরীন ৪,৫০,০০০ ডলার তহবিল তছরুপ করেছে এবং পরদিন সকালেই তাকে পুলিশের হাতে তুলে দেওয়ার সিদ্ধান্ত নিয়েছিলেন।'
+        en: 'The account code refers to a personal seal held for the full audit period.',
+        bn: 'হিসাবের কোড পুরো নিরীক্ষাকাল এক ব্যক্তির হেফাজতে থাকা সিলের।'
       },
       isContradiction: false,
       bonusPoints: 125
@@ -1392,75 +1423,77 @@ export const case001: CaseData = {
       sourceId: 'clue-04-poisoned-decanter',
       targetId: 'clue-11-tray-handover',
       label: {
-        en: 'Opportunity Window',
-        bn: 'বিষ প্রয়োগের মোক্ষম সুযোগ'
+        en: 'A break in custody',
+        bn: 'হেফাজতের ফাঁক'
       },
       deductionNotes: {
-        en: 'Shahana handed the fresh decanter to Nawrin at 21:45. Nawrin had total privacy to spike the decanter before placing it on Mahmudul\'s desk.',
-        bn: 'রাত ৯:৪৫ মিনিটে শাহানা বোতলটি নওরীনকে দেয়। নির্জন করিডোরে একাকী থাকার সময়েই নওরীন বোতলে সায়ানাইড মিশিয়ে দেয়।'
+        en: 'The kitchen documented an intact band. The bottle in the study had lost it.',
+        bn: 'রান্নাঘরে বন্ধনী অক্ষত ছিল। পাঠকক্ষে তা ছেঁড়া।'
       },
       isContradiction: false,
       bonusPoints: 150
     },
     {
-      id: 'conn-06',
+      id: 'case-001-link-6',
+      sourceId: 'clue-04-poisoned-decanter',
+      targetId: 'clue-08-torn-envelope',
+      label: {
+        en: 'The B4 return strip',
+        bn: 'B4 ফেরত ফিতা'
+      },
+      deductionNotes: {
+        en: 'The tear fits the bottle and the violet impression is genuine. Read the register for its holder.',
+        bn: 'ছেঁড়া অংশ বোতলে মেলে, বেগুনি ছাপ আসল। ধারককে জানতে রেজিস্টার দেখুন।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
+    },
+    {
+      id: 'case-001-link-7',
+      sourceId: 'clue-03-stopped-clock',
+      targetId: 'case-001-pulse-strip',
+      label: {
+        en: 'The minute of collapse',
+        bn: 'নিথর হওয়ার মিনিট'
+      },
+      deductionNotes: {
+        en: 'The service bell anchors the elapsed-time trace to the household clock.',
+        bn: 'সার্ভিস ঘণ্টা অতিবাহিত সময়কে ঘরের ঘড়ির সঙ্গে মেলায়।'
+      },
+      isContradiction: false,
+      bonusPoints: 60
+    },
+    {
+      id: 'manor-chime',
+      sourceId: 'clue-03-stopped-clock',
+      targetId: 'suspect-02-evelyn',
+      requiresEvidenceIds: ['clue-11-tray-handover'],
+      label: {
+        en: 'The corridor statement',
+        bn: 'করিডোরের বিবৃতি'
+      },
+      deductionNotes: {
+        en: 'The maid and the recorder agree about the half-hour. Read the claimed timing again.',
+        bn: 'পরিচারিকা ও রেকর্ডার আধঘণ্টার বিষয়ে একমত। বয়ানের সময় আবার পড়ুন।'
+      },
+      isContradiction: true,
+      bonusPoints: 60
+    },
+    {
+      id: 'manor-debt',
       sourceId: 'clue-06-burnt-will',
       targetId: 'suspect-01-julian',
+      requiresEvidenceIds: ['clue-09-pawn-receipt'],
       label: {
-        en: 'Arman\'s Quarrel Exoneration',
-        bn: 'আরমানের কলহ ও অব্যাহতি'
+        en: 'An earlier quarrel',
+        bn: 'আগের ঝগড়া'
       },
       deductionNotes: {
-        en: 'Forensic soot depth proves the codicil was burned during the 17:00 argument. Arman is reckless, but did not poison his uncle hours later in the locked room.',
-        bn: 'ফায়ারপ্লেসের ছাইয়ের বিশ্লেষণ প্রমাণ করে উইলটি বিকেল ৫টার ঝগড়ায় পোড়ানো হয়েছিল। আরমান বেপরোয়া হলেও রাতে বিষপ্রয়োগের সাথে জড়িত নয়।'
+        en: 'The pawn advance covered the immediate instalment and the unsigned amendment predates the tray.',
+        bn: 'বন্ধকে তাৎক্ষণিক কিস্তি মেটে। স্বাক্ষরহীন সংশোধনীটি ট্রের আগের।'
       },
       isContradiction: false,
-      bonusPoints: 120
-    },
-    {
-      id: 'conn-07',
-      sourceId: 'clue-09-pawn-receipt',
-      targetId: 'suspect-01-julian',
-      label: {
-        en: 'Theft Alibi',
-        bn: 'চুরির সত্যতা ও খুনে নির্দোষ'
-      },
-      deductionNotes: {
-        en: 'Arman pawned the ring at 16:15 to pay debts. This proves he committed petty theft earlier, rather than the calculated poisoning.',
-        bn: 'আরমান বিকেল ৪:১৫-এ দেনার জন্য আংটি বন্ধক দিয়েছিল। এটি তার চুরির প্রমাণ হলেও রাতের হত্যাকাণ্ডে তাকে দায়মুক্ত করে।'
-      },
-      isContradiction: false,
-      bonusPoints: 100
-    },
-    {
-      id: 'conn-08',
-      sourceId: 'clue-07-nylon-thread',
-      targetId: 'suspect-05-marcus',
-      label: {
-        en: 'Physical Footwear Mismatch',
-        bn: 'জুতার মাপের অসঙ্গতি'
-      },
-      deductionNotes: {
-        en: 'Rashed Karim wears size 11 shoes, ruling him out from the slender size 6 footprint beneath the rigged bay window.',
-        bn: 'রাশেদ করিমের জুতার সাইজ ১১, যা জানালার নিচে পাওয়া ৬ সাইজের মেয়েলি ছাপের সাথে অসম্ভব অমিল প্রমাণ করে।'
-      },
-      isContradiction: false,
-      bonusPoints: 110
-    },
-    {
-      id: 'conn-09',
-      sourceId: 'clue-01-brandy-snifter',
-      targetId: 'suspect-03-finch',
-      label: {
-        en: 'Toxicology Timeline Corroboration',
-        bn: 'বিষক্রিয়ার সময় নির্ধারণ'
-      },
-      deductionNotes: {
-        en: 'Dr. Farhan confirms potassium cyanide takes effect within 3-5 minutes, corroborating Mahmudul\'s collapse precisely at 22:14.',
-        bn: 'ডা. ফারহান নিশ্চিত করেন সায়ানাইড ৩-৫ মিনিটে কাজ করে, যা ঘড়ির কাঁটা ১০:১৪-তে থামার সময়রেখাকে শতভাগ সমর্থন করে।'
-      },
-      isContradiction: false,
-      bonusPoints: 110
+      bonusPoints: 60
     }
   ],
   timelineEvents: [
@@ -1469,181 +1502,184 @@ export const case001: CaseData = {
       timestamp: '17:00',
       timeSortValue: 1020,
       title: {
-        en: 'Arman\'s Violent Argument with Mahmudul',
-        bn: 'মাহমুদুল সাহেবের সাথে আরমানের উত্তপ্ত বাক্যবিনিময়'
+        en: 'Paper in the hearth',
+        bn: 'চুল্লিতে কাগজ'
       },
       description: {
-        en: 'Arman demands money for his gambling debts. Mahmudul burns the trust fund codicil in anger and throws Arman out.',
-        bn: 'আরমান জুয়ার দেনা মেটাতে টাকা দাবি করে। ক্ষুব্ধ মাহমুদুল সাহেব উইল পোড়ানোর হুমকি দিয়ে আরমানকে তাড়িয়ে দেন।'
+        en: 'The fire-tending book records an argument.',
+        bn: 'আগুন পরিচর্যার খাতায় ঝগড়ার উল্লেখ।'
       },
       source: {
-        en: 'Arman\'s Admission & Hearth Soot Analysis',
-        bn: 'আরমানের স্বীকারোক্তি ও ফায়ারপ্লেসের ছাইয়ের বিশ্লেষণ'
+        en: 'Charred codicil',
+        bn: 'পোড়া উইলের সংযোজন'
       },
       verifiedLocation: {
-        en: 'Chowdhury Mansion Study',
-        bn: 'ম্যানরের পড়ার ঘর'
+        en: 'Study Marble Fireplace',
+        bn: 'পড়ার ঘরের ফায়ারপ্লেস'
       },
-      relatedSuspectId: 'suspect-01-julian',
-      correctIndex: 0
+      correctIndex: 0,
+      evidenceId: 'clue-06-burnt-will'
     },
     {
       id: 'tl-02',
       timestamp: '21:00',
       timeSortValue: 1260,
       title: {
-        en: 'Mahmudul Completes Embezzlement Audit',
-        bn: 'মাহমুদুল সাহেব অডিট সম্পন্ন করে নোট লেখেন'
+        en: 'Accounts countersigned',
+        bn: 'হিসাবে দ্বিতীয় স্বাক্ষর'
       },
       description: {
-        en: 'Mahmudul signs the final red-ink note in the estate ledger, marking $450,000 missing and pledging to call the Crown Prosecutor tomorrow.',
-        bn: 'মাহমুদুল সাহেব লেজারে লাল কালিতে সই করেন এবং সাড়ে চার লাখ ডলার লোপাটের দায়ে সকালে মামলা করার সংকল্প লেখেন।'
+        en: 'The examiner’s appointment is entered.',
+        bn: 'নিরীক্ষকের সাক্ষাৎ লেখা হয়।'
       },
       source: {
-        en: 'Victim\'s Audited Ledger Entry',
-        bn: 'ভুক্তভোগীর অডিট লেজারের এন্ট্রি'
+        en: 'Endowment daybook',
+        bn: 'তহবিলের দৈনিক খাতা'
       },
       verifiedLocation: {
-        en: 'Study Desk',
-        bn: 'পড়ার টেবিল'
+        en: 'Open on Arthur\'s desk under his hands',
+        bn: 'আর্থারের হাতের নিচে টেবিলের ওপর খোলা'
       },
-      correctIndex: 1
+      correctIndex: 1,
+      evidenceId: 'clue-02-audited-ledger'
     },
     {
       id: 'tl-03',
       timestamp: '21:15',
       timeSortValue: 1275,
       title: {
-        en: 'Rashed Karim Ejected from Mansion',
-        bn: 'রাশেদ করিমকে প্রাসাদ থেকে বিদায়'
+        en: 'Visitor leaves the house',
+        bn: 'অতিথি বাড়ি ছাড়েন'
       },
       description: {
-        en: 'Rashed Karim is rebuffed in his attempt to buy the Byzantine Codex and retreats to his car at the front gates.',
-        bn: 'কোডেক্স কেনার ব্যর্থ চেষ্টার পর রাশেদকে বিদায় দেওয়া হয় এবং সে গাড়িতে গিয়ে বসে থাকে।'
+        en: 'The driveway still records a waiting car later.',
+        bn: 'পরে ছবিতে অপেক্ষমাণ গাড়ি দেখা যায়।'
       },
       source: {
-        en: 'Staff Log & Rashed\'s Statement',
-        bn: 'লগবুক ও রাশেদের জবানবন্দি'
+        en: 'Terrace sighting',
+        bn: 'টেরেসের সাক্ষ্য'
       },
       verifiedLocation: {
-        en: 'Mansion Foyer / Driveway Gate',
-        bn: 'প্রাসাদের ড্রাইভওয়ে'
+        en: 'Driveway Interrogation',
+        bn: 'ড্রাইভওয়েতে নেওয়া জবানবন্দি'
       },
-      relatedSuspectId: 'suspect-05-marcus',
-      correctIndex: 2
+      correctIndex: 2,
+      evidenceId: 'clue-12-terrace-sighting'
     },
     {
       id: 'tl-04',
       timestamp: '21:45',
       timeSortValue: 1305,
       title: {
-        en: 'Nawrin Intercepts the Drink Tray',
-        bn: 'নওরীন পানীয়ের ট্রে নিজের হাতে নেয়'
+        en: 'Bottle issued',
+        bn: 'বোতল দেওয়া হয়'
       },
       description: {
-        en: 'Nawrin intercepts the Armagnac decanter from Shahana Begum, poisons the decanter with potassium cyanide, and carries it into the study.',
-        bn: 'নওরীন পরিচারিকার কাছ থেকে ট্রে নিয়ে বোতলে সায়ানাইড মেশায় এবং পড়ার ঘরে রেখে আসে।'
+        en: 'A maid watches the evening tray.',
+        bn: 'পরিচারিকা সন্ধ্যার ট্রে দেখেন।'
       },
       source: {
-        en: 'Shahana\'s Eyewitness Statement',
-        bn: 'শাহানার প্রত্যক্ষদর্শীর সাক্ষ্য'
+        en: 'Kitchen handover sheet',
+        bn: 'রান্নাঘরের হস্তান্তর নথি'
       },
       verifiedLocation: {
-        en: 'East Corridor / Study Entrance',
-        bn: 'পূর্ব করিডোর / পড়ার ঘরের দরজা'
+        en: 'Kitchen Interrogation',
+        bn: 'রান্নাঘরে নেওয়া জবানবন্দি'
       },
-      relatedSuspectId: 'suspect-02-evelyn',
-      correctIndex: 3
+      correctIndex: 3,
+      evidenceId: 'clue-11-tray-handover'
     },
     {
       id: 'tl-05',
-      timestamp: '22:00',
-      timeSortValue: 1320,
+      timestamp: '22:13',
+      timeSortValue: 1333,
       title: {
-        en: 'Mahmudul Drinks the Laced Brandy',
-        bn: 'মাহমুদুল সাহেব বিষাক্ত ব্র্যান্ডি পান করেন'
+        en: 'Desk call',
+        bn: 'ডেস্কের ডাক'
       },
       description: {
-        en: 'Mahmudul locks his study deadbolt for the night, pours a snifter from the decanter, and begins drinking while reviewing the ledger.',
-        bn: 'মাহমুদুল সাহেব দরজা লক করে ডিক্যান্টার থেকে ব্র্যান্ডি ঢেলে পান করা শুরু করেন।'
+        en: 'The blotter takes a wet impression.',
+        bn: 'কালি শোষকে ভেজা ছাপ পড়ে।'
       },
       source: {
-        en: 'Routine Habits & Toxicology Report',
-        bn: 'দৈনন্দিন অভ্যাস ও বিষবিজ্ঞানের রিপোর্ট'
+        en: 'Overturned brandy glass',
+        bn: 'উল্টানো ব্র্যান্ডির গ্লাস'
       },
       verifiedLocation: {
-        en: 'Study Desk',
-        bn: 'পড়ার টেবিল'
+        en: 'Study Desk, beside victim\'s right arm',
+        bn: 'পড়ার টেবিল, লাশের ডান হাতের পাশে'
       },
-      correctIndex: 4
+      correctIndex: 4,
+      evidenceId: 'clue-01-brandy-snifter'
     },
     {
       id: 'tl-06',
       timestamp: '22:14',
       timeSortValue: 1334,
       title: {
-        en: 'Fatal Convulsions & Clock Arrest',
-        bn: 'বিষক্রিয়ায় তীব্র খিঁচুনি ও ঘড়ি বন্ধ'
+        en: 'Cabinet impact',
+        bn: 'বাক্সে আঘাত'
       },
       description: {
-        en: 'Potassium cyanide induces violent convulsions. Mahmudul collapses, knocking a bronze weight into the grandfather clock, freezing its hands at 22:14.',
-        bn: 'সায়ানাইডের বিষে তীব্র খিঁচুনিতে মাহমুদুল সাহেব লুটিয়ে পড়েন, তার ছিটকে যাওয়া পেপারওয়েটের আঘাতে ঘড়ির কাঁটা ১০:১৪-তে থেমে যায়।'
+        en: 'The service recorder registers a shock.',
+        bn: 'সার্ভিস রেকর্ডারে আঘাত ধরা পড়ে।'
       },
       source: {
-        en: 'Stopped Clock & Forensic Pathology',
-        bn: 'স্থির ঘড়ি ও প্যাথলজি রিপোর্ট'
+        en: 'Clock and bell tape',
+        bn: 'ঘড়ি ও ঘণ্টার ফিতা'
       },
       verifiedLocation: {
-        en: 'Study West Corner',
+        en: 'Study west corner',
         bn: 'পড়ার ঘরের পশ্চিম কোণ'
       },
-      correctIndex: 5
+      correctIndex: 5,
+      evidenceId: 'clue-03-stopped-clock'
     },
     {
       id: 'tl-07',
       timestamp: '22:20',
       timeSortValue: 1340,
       title: {
-        en: 'The Killer Rigging the Window Latch',
-        bn: 'জানালা বাইরে থেকে আটকে খুনির পলায়ন'
+        en: 'Figure on gravel',
+        bn: 'নুড়িতে অবয়ব'
       },
       description: {
-        en: 'Nawrin Sultana slips out the study window into the rose garden, threads her waxed nylon string through the jamb to flip the cam latch locked, and flees to the conservatory.',
-        bn: 'নওরীন জানালা দিয়ে বাগানে নেমে মোম মাখানো সুতো দিয়ে জানালার ছিটকিনি বাইরে থেকে আটকে পালিয়ে যায়।'
+        en: 'The gate still confirms the witness position.',
+        bn: 'ফটকের ছবিতে সাক্ষীর অবস্থান নিশ্চিত।'
       },
       source: {
-        en: 'Window Wax Residue & Rashed\'s Sighting',
-        bn: 'মোমের অবশিষ্টাংশ ও রাশেদের সাক্ষ্য'
+        en: 'Terrace sighting',
+        bn: 'টেরেসের সাক্ষ্য'
       },
       verifiedLocation: {
-        en: 'Garden Rose Terrace',
-        bn: 'গোলাপ বাগান কার্নিশ'
+        en: 'Driveway Interrogation',
+        bn: 'ড্রাইভওয়েতে নেওয়া জবানবন্দি'
       },
-      relatedSuspectId: 'suspect-02-evelyn',
-      correctIndex: 6
+      correctIndex: 6,
+      evidenceId: 'clue-12-terrace-sighting'
     },
     {
       id: 'tl-08',
       timestamp: '22:30',
       timeSortValue: 1350,
       title: {
-        en: 'Nawrin Stages the False Voice Alibi',
-        bn: 'নওরীনের সাজানো কণ্ঠস্বরের মিথ্যা অ্যালিবাই'
+        en: 'Call in the corridor',
+        bn: 'করিডোরে ডাক'
       },
       description: {
-        en: 'Nawrin knocks on the locked study door in the corridor and speaks aloud, pretending Mahmudul responded to create an alibi after he was already dead.',
-        bn: 'মাহমুদুল সাহেব ইতিপূর্বেই মারা যাওয়ার পরও নওরীন দরজায় নক করে একা একাই কথা বলে মিথ্যা অ্যালিবাই সাজায়।'
+        en: 'A maid hears a voice in the hall.',
+        bn: 'পরিচারিকা হলে একটি কণ্ঠ শোনেন।'
       },
       source: {
-        en: 'Contradicted Alibi Statement',
-        bn: 'খণ্ডিত অ্যালিবাই জবানবন্দি'
+        en: 'Kitchen handover sheet',
+        bn: 'রান্নাঘরের হস্তান্তর নথি'
       },
       verifiedLocation: {
-        en: 'Study Outer Door',
-        bn: 'পড়ার ঘরের বাইরের করিডোর'
+        en: 'Kitchen Interrogation',
+        bn: 'রান্নাঘরে নেওয়া জবানবন্দি'
       },
-      relatedSuspectId: 'suspect-02-evelyn',
-      correctIndex: 7
+      correctIndex: 7,
+      evidenceId: 'clue-11-tray-handover'
     }
   ],
   hints: [
@@ -1651,97 +1687,102 @@ export const case001: CaseData = {
       level: 1,
       cost: 50,
       title: {
-        en: 'Timeline & Environmental Discrepancies',
-        bn: 'সময়ের অসঙ্গতি ও অপরাধস্থল'
+        en: 'Surface marks',
+        bn: 'পৃষ্ঠের দাগ'
       },
       hintText: {
-        en: 'Direction: Pay close attention to the physical time evidence inside the locked study. Compare the mechanical state of the antique grandfather clock with the various alibis and timestamps claimed by the suspects during questioning.',
-        bn: 'দিকনির্দেশনা: পড়ার ঘরের ভেতরের সময় সংক্রান্ত ভৌত আলামতের দিকে নজর দিন। প্রাচীন গ্র্যান্ডফাদার ঘড়ির থেমে যাওয়া সময়টির সাথে সন্দেহভাজনদের জেরায় দেওয়া সময়রেখা ও অ্যালিবাই তুলনা করুন।'
+        en: 'Inspect the glass, paper and hardware separately. Listen for what each witness used as a clock.',
+        bn: 'কাচ, কাগজ ও যন্ত্রাংশ আলাদা দেখুন। কে সময় বুঝতে কী ব্যবহার করেছে শুনুন।'
       }
     },
     {
       level: 2,
       cost: 100,
       title: {
-        en: 'The Sealed Room Mechanism',
-        bn: 'বদ্ধ ঘরের কৌশলগত যোগসূত্র'
+        en: 'A divided record',
+        bn: 'দুই জায়গার নথি'
       },
       hintText: {
-        en: 'Relationship: Consider how an ostensibly sealed room could be closed from the outside. Look at the leaded bay window latch and compare its mechanical marks with the physical filament recovered from the rose garden terrace.',
-        bn: 'যোগসূত্র: ভেবে দেখুন আপাত দৃষ্টিতে ভেতর থেকে অবরুদ্ধ ঘর কীভাবে বাইরে থেকে বন্ধ করা সম্ভব। কাচের বে উইন্ডোর ছিটকিনির দাগের সাথে বাইরের গোলাপ বাগান থেকে উদ্ধারকৃত ফিলামেন্টের সম্পর্ক মেলাবার চেষ্টা করুন।'
+        en: 'The kitchen recorded a handover. Libraries keep samples of the marks their staff use.',
+        bn: 'রান্নাঘরে হস্তান্তরের নথি আছে। গ্রন্থাগারে কর্মীদের ব্যবহৃত ছাপের নমুনা থাকে।'
       }
     },
     {
       level: 3,
       cost: 200,
       title: {
-        en: 'Exposing the Fabricated Alibi',
-        bn: 'সাজানো অ্যালিবাই উন্মোচন'
+        en: 'Independent checks',
+        bn: 'স্বাধীন যাচাই'
       },
       hintText: {
-        en: 'Investigative Guidance: A witness claims to have spoken with the victim at 22:30, yet the convulsive impact in the study froze the mechanical clock at 22:14. Whoever claims the victim was alive and speaking at 22:30 is maintaining a fabricated alibi. Check who had custody of the bookbinding supplies and the drink tray.',
-        bn: 'তদন্ত নির্দেশিকা: একজন প্রত্যক্ষদর্শী দাবি করেছেন যে তিনি রাত ১০:৩০-এ ভুক্তভোগীর সাথে কথা বলেছিলেন, অথচ তীব্র খিঁচুনির আঘাতে ঘড়িটি ১০:১৪-তে থেমে গিয়েছিল। যিনি ১০:৩০-এ ভুক্তভোগীকে জীবিত দেখার দাবি করছেন, তার অ্যালিবাই সাজানো। বই বাঁধাইয়ের সুতো এবং পানীয়ের ট্রে কার দায়িত্বে ছিল তা যাচাই করুন।'
+        en: 'Test the half-hour against both recorders. Compare the return strip with a seal sample, then look for its number elsewhere.',
+        bn: 'দুই রেকর্ডারে আধঘণ্টা যাচাই করুন। ফেরত ফিতা সিলের নমুনার সঙ্গে মিলিয়ে অন্যত্র তার নম্বর খুঁজুন।'
       }
     }
   ],
   solution: {
     culpritId: 'suspect-02-evelyn',
     culpritName: {
-      en: 'Nawrin Sultana',
-      bn: 'নওরীন সুলতানা'
+      en: 'Evelyn Vance',
+      bn: 'ইভলিন ভ্যান্স'
     },
     motiveDescription: {
-      en: 'Covering up $450,000 in embezzled endowment funds that Mahmudul discovered and planned to report to prosecutors the next morning.',
-      bn: 'ট্রাস্ট ফান্ডের সাড়ে চার লাখ ডলার আত্মসাৎ করার অপরাধ গোপন করা, যা মাহমুদুল সাহেব ধরে ফেলেছিলেন এবং পরদিন সকালে পুলিশের হাতে তুলে দিতে চেয়েছিলেন।'
+      en: 'Suppress an audit of diverted funds',
+      bn: 'সরানো অর্থের নিরীক্ষা চাপা দেওয়া'
     },
     methodDescription: {
-      en: 'Poisoned the Armagnac decanter before delivering it, then escaped via the study window and locked the latch from outside using a loop of waxed nylon bookbinder\'s thread.',
-      bn: 'পরিবেশনের আগেই ব্র্যান্ডির ডিক্যান্টারে সায়ানাইড মেশানো হয়। এরপর জানালা দিয়ে পালিয়ে মোম মাখানো শক্ত নাইলন সুতোর ফাঁস দিয়ে বাইরে থেকে জানালার ছিটকিনি আটকে দেওয়া হয়।'
+      en: 'Contaminated bottle and a catch closed from the garden',
+      bn: 'দূষিত বোতল ও বাগানের দিক থেকে বন্ধ ছিটকিনি'
     },
     approximateTime: {
-      en: '22:14',
-      bn: 'রাত ১০:১৪'
+      en: 'Around 22:14',
+      bn: '২২:১৪ নাগাদ'
     },
     crucialEvidenceIds: [
       'clue-02-audited-ledger',
+      'clue-08-torn-envelope',
+      'clue-10-handwriting-sample',
+      'clue-04-poisoned-decanter',
       'clue-03-stopped-clock',
+      'clue-11-tray-handover',
+      'clue-01-brandy-snifter',
+      'case-001-pulse-strip',
       'clue-05-window-latch',
-      'clue-07-nylon-thread',
-      'clue-08-torn-envelope'
+      'clue-07-nylon-thread'
     ],
     falseAlibiSuspectId: 'suspect-02-evelyn',
     fullCaseDebriefing: {
-      en: 'Nawrin Sultana spent months systematically transferring $450,000 from the Chowdhury Rare Books Endowment into private accounts. When Mahmudul Haque Chowdhury conducted a surprise quarterly audit on the evening of October 14, he discovered the massive shortfall and wrote in his ledger that he would summon the Crown Prosecutor at dawn.\n\nFaced with prison, Nawrin acted swiftly. Having previously acquired potassium cyanide under her antiquarian front company, she intercepted the evening Armagnac tray from housekeeper Shahana Begum at 21:45 and stirred the cyanide directly into the decanter. Mahmudul poured his drink at 22:00 and suffered fatal convulsions at 22:14, his falling body hurling a bronze paperweight into the grandfather clock and stopping it dead.\n\nNawrin had already prepared her "impossible" locked room trick: she entered the study, ensured Mahmudul was dead, bolted the corridor door from inside, and slipped out through the ground-floor leaded window into the rainy garden. Using her professional bookbinder\'s waxed nylon thread looped around the window latch arm, she pulled the thread from outside until the brass latch clicked locked, then pulled the string free. At 22:30, she conspicuously staged a conversation outside the study door for Shahana to hear, fabricating an alibi. But the frozen clock at 22:14, the thread on the rose thorns, and the cyanide purchase receipt irrevocably sealed her guilt.\n\nAlternative Suspect Debriefing:\n• Arman Haque Chowdhury: Deep in gambling debts, quarreled violently with Mahmudul, and stole the signet ring to pawn it at 16:15. However, soot analysis proved the codicil was burnt during his 17:00 quarrel, and he could not match the size 6 footprint.\n• Dr. Farhan Rahman: Feared exposure over experimental prescriptions, but had no access to the photographic reagent cyanide salt or the window thread mechanism.\n• Shahana Begum: Handled the tray originally, but her kitchen assistant corroborated her alibi from 22:00 to 22:45.\n• Rashed Karim: Desperate for the Byzantine Codex, but his size 11 shoes completely exonerated him from the garden footprint, and his 22:20 sighting of the fleeing figure helped corroborate the truth.',
-      bn: 'নওরীন সুলতানা গত কয়েক মাস ধরে পরিকল্পিতভাবে চৌধুরী এস্টেটের ট্রাস্ট থেকে ৪,৫০,০০০ ডলার আত্মসাৎ করে ব্যক্তিগত গোপন অ্যাকাউন্টে পাঠিয়ে আসছিল। ১৪ অক্টোবর সন্ধ্যায় মাহমুদুল হক চৌধুরী আকস্মিক অডিটের মাধ্যমে এই বড় তছরুপ ধরে ফেলেন এবং খাতায় লেখেন যে তিনি পরদিন সকালেই পুলিশে অভিযোগ দায়ের করবেন।\n\nকারাগারে যাওয়ার ভয়ে নওরীন তাৎক্ষণিক হত্যার পরিকল্পনা করে। নিজের এন্টিক বুকশপের আড়ালে সে আগেই পটাশিয়াম সায়ানাইড সংগ্রহ করে রেখেছিল। রাত ৯:৪৫ মিনিটে সে গৃহপরিচারিকার কাছ থেকে ব্র্যান্ডির ট্রে নিয়ে নির্জনে পুরো বোতলে বিষ মিশিয়ে দেয়। রাত ১০:০০ টায় মাহমুদুল সাহেব সেই বিষাক্ত ব্র্যান্ডি পান করেন এবং রাত ১০:১৪ মিনিটে তীব্র খিঁচুনিতে মৃত্যুর কোলে ঢলে পড়েন। পড়ার সময় ছিটকে যাওয়া ব্রোঞ্জের পেপারওয়েটের আঘাতে গ্র্যান্ডফাদার ঘড়ির কাঁটা ১০:১৪-তে স্থায়ীভাবে থেমে যায়।\n\nএরপর নওরীন তার আপাত "অসম্ভব" বদ্ধ ঘরের কৌশল প্রয়োগ করে: ভেতর থেকে ভারী দরজার ছিটকিনি আটকে সে জানালা দিয়ে বাগানে নেমে পড়ে। এরপর নিজের বই বাঁধাইয়ের মোম মাখানো নাইলন সুতো দিয়ে বাইরে থেকে জানালার ছিটকিনি টেনে আটকে দেয় এবং সুতোটি নিজের দিকে টেনে বের করে নেয়। রাত ১০:৩০-এ করিডোরে দাঁড়িয়ে স্যারের সাথে একা একা কথা বলার ভান করে সে একটি মিথ্যা অ্যালিবাই সাজায়। কিন্তু রাত ১০:১৪-তে থেমে যাওয়া ঘড়ি, গোলাপের কাঁটায় আটকে থাকা সুতো এবং সায়ানাইড কেনার রসিদ তার সমস্ত অপরাধের প্রমাণ সন্দেহাতীতভাবে প্রতিষ্ঠিত করেছে।\n\nঅন্যান্য সন্দেহভাজনদের নিষ্পত্তি:\n• আরমান হক চৌধুরী: দেনাগ্রস্ত হয়ে কাকার সাথে ঝগড়া করেছিল এবং বিকেলে আংটি চুরি করে বন্ধক দিয়েছিল। তবে ছাইয়ের বিশ্লেষণ প্রমাণ করে উইলটি বিকেল ৫টার ঝগড়ায় পোড়ানো হয়েছিল এবং জানালার নিচের পদচিহ্ন তার বড় জুতার সাথে মেলেনি।\n• ডা. ফারহান রহমান: প্রেসক্রিপশন বিতর্ক নিয়ে শঙ্কিত ছিলেন, তবে তিনি কোনো বাণিজ্যিক ফটোগ্রাফিক সায়ানাইড কেনেননি।\n• শাহানা বেগম: ট্রে এনেছিলেন, তবে রান্নাঘরের সহকর্মী রাত ১০:০০ থেকে ১০:৪৫ পর্যন্ত তার উপস্থিতি নিশ্চিত করেছে।\n• রাশেদ করিম: বাইজেন্টাইন কোডেক্স নিয়ে ক্ষুব্ধ হলেও তার জুতার সাইজ ১১, যা কার্নিশের ৬ সাইজের মেয়েলি ছাপের সাথে একেবারেই মেলেনি।'
+      en: 'Evelyn Vance controlled V6 throughout the six transfers. Arthur’s morning audit threatened to expose her. The same personal seal marks the torn B4 band. The kitchen witness followed its sole carrier from the sealed handover to the study. The kitchen control was clean. B4, the glass and the marked return strip share the trace.\n\nArthur made his last desk call at 22:13. The monitor records his last pulse one minute later, at the impact that stopped the chime. Evelyn stayed inside, bolted the door and left through the garden window. Matching binding wax on the catch and the thorn accounts for the closed window. Her half-hour chime was impossible and the kitchen heard only the voice outside. Julian’s pawn advance and Kane’s waiting car explain their separate evasions.',
+      bn: 'ছয়টি লেনদেনের সময় V6 ইভলিন ভ্যান্সের হেফাজতে ছিল। সকালের নিরীক্ষায় তা ধরা পড়ত। ছেঁড়া B4 ফিতাতেও তাঁর ব্যক্তিগত সিল। পরিচারিকা সিল করা হস্তান্তর থেকে পাঠকক্ষ পর্যন্ত একমাত্র বাহককে দেখেছেন। রান্নাঘরের নমুনা পরিষ্কার। B4, গ্লাস ও প্রতিচিহ্নযুক্ত ফেরত ফিতায় একই অবশিষ্টাংশ।\n\n২২:১৩-তে আর্থারের শেষ ডাক। এক মিনিট পর মনিটরে শেষ স্পন্দন, একই আঘাতে ঘণ্টা থেমে যায়। ভেতরে থাকা ইভলিন দরজায় খিল দিয়ে বাগানের জানালা দিয়ে বের হন। ছিটকিনি ও কাঁটার মোম তার প্রমাণ। তাঁর কথিত আধঘণ্টার ঘণ্টা বাজেনি, রান্নাঘরে শুধু বাইরের কণ্ঠ শোনা যায়। জুলিয়ানের বন্ধক ও কেইনের অপেক্ষমাণ গাড়ি তাঁদের গোপন আচরণের ব্যাখ্যা দেয়।'
     },
     options: {
       motives: [
         {
           id: 'm-gambling',
           label: {
-            en: 'Desperation to settle $300,000 in high-stakes gambling debts',
-            bn: '৩ লাখ ডলারের জুয়ার জরুরি দেনা পরিশোধের মরিয়া চেষ্টা'
+            en: 'Settle a gambling instalment',
+            bn: 'জুয়ার কিস্তি মেটানো'
           }
         },
         {
           id: 'm-embezzle',
           label: {
-            en: 'Concealing $450,000 in embezzled foundation funds about to be reported to police',
-            bn: 'সাড়ে চার লাখ ডলার আত্মসাতের অপরাধ গোপন করা, যা পুলিশে জানানোর কথা ছিল'
+            en: 'Suppress an audit of diverted funds',
+            bn: 'সরানো অর্থের নিরীক্ষা চাপা দেওয়া'
           }
         },
         {
           id: 'm-codex',
           label: {
-            en: 'Stealing the Byzantine Codex to prevent bankruptcy in the antiquities trade',
-            bn: 'ব্যবসায় দেউলিয়া হওয়া ঠেকাতে বাইজেন্টাইন কোডেক্স চুরির চেষ্টা'
+            en: 'Secure a promised manuscript sale',
+            bn: 'পুঁথির প্রতিশ্রুত বিক্রি নিশ্চিত করা'
           }
         },
         {
           id: 'm-silence',
           label: {
-            en: 'Silencing the victim regarding an illegal narcotics prescription',
-            bn: 'নিষিদ্ধ ঘুমের ওষুধ ব্যবস্থাপত্রের ঘটনা ধামাচাপা দেওয়া'
+            en: 'Hide a disputed prescription',
+            bn: 'বিতর্কিত ব্যবস্থাপত্র লুকানো'
           }
         }
       ],
@@ -1749,29 +1790,29 @@ export const case001: CaseData = {
         {
           id: 'met-decanter-thread',
           label: {
-            en: 'Dissolved cyanide into decanter; escaped window and pulled latch shut with waxed nylon thread',
-            bn: 'বোতলে সায়ানাইড মেশানো; জানালা দিয়ে পালিয়ে মোম মাখানো নাইলন সুতো টেনে ছিটকিনি বন্ধ করা'
+            en: 'Contaminated bottle and a catch closed from the garden',
+            bn: 'দূষিত বোতল ও বাগানের দিক থেকে বন্ধ ছিটকিনি'
           }
         },
         {
           id: 'met-hypodermic',
           label: {
-            en: 'Injected lethal dose of morphine through keyhole while victim slept',
-            bn: 'চাবির ছিদ্র দিয়ে মরফিনের প্রাণঘাতী ইনজেকশন প্রয়োগ করা'
+            en: 'Contaminated glass already on the desk',
+            bn: 'ডেস্কে আগে থেকে দূষিত গ্লাস'
           }
         },
         {
           id: 'met-cigar',
           label: {
-            en: 'Laced Cuban cigars with cyanide gas in the fireplace',
-            bn: 'সিগারে সায়ানাইড মিশিয়ে ফায়ারপ্লেসের ধোঁয়ায় বিষাক্ত গ্যাস তৈরি করা'
+            en: 'A substitution from the clinic after the tray arrived',
+            bn: 'ট্রে পৌঁছানোর পর চিকিৎসাকক্ষের বোতল বদল'
           }
         },
         {
           id: 'met-bludgeon',
           label: {
-            en: 'Struck victim with brass paperweight and staged poisoning afterwards',
-            bn: 'ব্রোঞ্জের পেপারওয়েট দিয়ে মাথায় আঘাত করে পরে বিষ প্রয়োগের নাটক সাজানো'
+            en: 'A later assault after the door was forced',
+            bn: 'দরজা ভাঙার পর আঘাত'
           }
         }
       ],
@@ -1779,32 +1820,75 @@ export const case001: CaseData = {
         {
           id: 't-2115',
           label: {
-            en: 'Between 21:00 and 21:30',
-            bn: 'রাত ৯:০০ থেকে ৯:৩০-এর মধ্যে'
+            en: '21:00–21:30',
+            bn: '২১:০০–২১:৩০'
           }
         },
         {
           id: 't-2214',
           label: {
-            en: 'Precisely at 22:14 (as recorded by the shattered grandfather clock)',
-            bn: 'ঠিক রাত ১০:১৪ মিনিটে (যা ভাঙা গ্র্যান্ডফাদার ঘড়িতে রেকর্ড হয়েছিল)'
+            en: 'Around 22:14',
+            bn: '২২:১৪ নাগাদ'
           }
         },
         {
           id: 't-2230',
           label: {
-            en: 'At 22:30 (during the reported corridor conversation)',
-            bn: 'রাত ১০:৩০ মিনিটে (করিডোরের কথিত কথোপকথনের সময়)'
+            en: 'Around 22:30',
+            bn: '২২:৩০ নাগাদ'
           }
         },
         {
           id: 't-2300',
           label: {
-            en: 'After 23:00 during the breaking of the door',
-            bn: 'রাত ১১:০০ টার পর দরজা ভাঙার সময়'
+            en: 'After 23:00',
+            bn: '২৩:০০-র পর'
           }
         }
       ]
+    },
+    motiveId: 'm-embezzle',
+    methodId: 'met-decanter-thread',
+    timeId: 't-2214'
+  },
+  site: {
+    en: 'Pendelton Manor',
+    bn: 'পেন্ডেলটন ম্যানর'
+  },
+  deductions: [
+    {
+      id: 'inquiry-1',
+      question: {
+        en: 'Whose account mark travelled with the bottle?',
+        bn: 'কার হিসাবের ছাপ বোতলের সঙ্গে গিয়েছিল?'
+      },
+      connectionId: 'conn-03',
+      evidenceIds: [
+        'clue-02-audited-ledger',
+        'clue-08-torn-envelope',
+        'clue-10-handwriting-sample',
+        'clue-04-poisoned-decanter'
+      ],
+      alternativeConnectionIds: ['conn-04', 'case-001-link-6']
+    },
+    {
+      id: 'inquiry-2',
+      question: {
+        en: 'Could the corridor account be timed as claimed?',
+        bn: 'করিডোরের বয়ানের সময় কি মেলে?'
+      },
+      connectionId: 'conn-01',
+      evidenceIds: ['clue-03-stopped-clock', 'clue-11-tray-handover', 'clue-01-brandy-snifter', 'case-001-pulse-strip'],
+      alternativeConnectionIds: ['case-001-link-7']
+    },
+    {
+      id: 'inquiry-3',
+      question: {
+        en: 'How was the room closed at the garden side?',
+        bn: 'বাগানের দিক থেকে ঘরটি কীভাবে বন্ধ ছিল?'
+      },
+      connectionId: 'conn-02',
+      evidenceIds: ['clue-05-window-latch', 'clue-07-nylon-thread']
     }
-  }
+  ]
 };

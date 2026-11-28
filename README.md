@@ -1,114 +1,62 @@
-# CASE FILES — Detective Investigation Game
+# CASE FILES
 
-A dark noir, logic-driven, story-rich interactive detective investigation game built with **React**, **TypeScript**, **Tailwind CSS**, and **Vite**.
+A bilingual English and Bangla detective game for mobile and desktop. React, TypeScript and Tailwind render the archive, crime scenes, interviews, evidence board and final report. The game keeps progress in local storage and synthesises its sound locally with Web Audio.
 
-Players step into the shoes of a homicide investigator tasked with solving complex fictional criminal cases by examining forensic crime scenes, cross-examining suspects, analyzing contradictions, weaving connections on an evidence board, chronologically sequencing timelines, and submitting formal indictments.
+## Play
 
----
+Open a case file and read the chief’s briefing. The archive contains three investigations.
 
-## 🔍 Game Overview
+- **The Last Alibi** takes place in a locked study at Pendelton Manor.
+- **The Missing Witness** follows a missing court witness through Room 404 and the boiler passage below.
+- **The Museum Heist** connects a damaged museum exhibit to the freight dispatch room.
 
-### 1. Visual Direction & Atmosphere
-- **Cinematic Noir Aesthetic**: Dark charcoal background tones (`#08080a`), blood-red accents (`#dc2638`), antique brass and manila folder textures, CRT scanline overlays, and elegant serif typography.
-- **Procedural Web Audio Engine**: 100% synthesized audio via the Web Audio API — low cello sub-bass drone, rain noise, mechanical typewriter keystrokes, camera shutter clicks, pin tack sounds, paper rustles, and dramatic deduction chords. No broken external audio links or dependencies.
+Tap an object in the scene to open its field observation. Collect its exhibit or return to the image. The eye control shows optional markers. Zoom enlarges the photograph and its hit regions together, and the enlarged image can be scrolled. The object index also supports keyboard and assistive navigation.
 
----
+The locker supports search, category filters, pinned exhibits and item-specific lab records. Interview the five suspects, present exhibits, and use **Compare statements** to read two dossiers together. Interviews can produce further records. The timeline admits events as their sources enter the locker.
 
-## 📁 Playable Case Files
+Draw connections on the evidence board by selecting two pins or using **Link Nodes**. Each case has three lines of inquiry. A recorded link and its independent sources substantiate an inquiry. A supported inquiry lists its exhibits for citation. The notebook, links, interview history, report draft and verdict survive reopening the case. The three optional consultation levels cost 50, 100 and 200 points. Field inspections are free.
 
-### **Case 001: THE LAST ALIBI** (Locked Manor Murder)
-- **Victim**: Lord Arthur Pendelton (Industrialist & Rare Antiquities Collector)
-- **Setting**: Pendelton Manor, Private Victorian Study, Blackthorn Ridge
-- **Premise**: Arthur is found dead at his desk, poisoned with potassium cyanide in his vintage brandy. The door is bolted from the inside; the bay window is latched from the inside.
-- **5 Suspects**:
-  1. *Julian Pendelton* (Nephew in massive gambling debt)
-  2. *Evelyn Vance* (Quiet archivist siphoning foundation funds)
-  3. *Dr. Alistair Finch* (Personal physician with toxicological access)
-  4. *Beatrice Morales* (Housekeeper who carried the drink tray)
-  5. *Marcus Kane* (Ruthless commercial antiquities rival)
-- **The Mystery**: How was the room sealed from the outside? The broken grandfather clock at 22:14 shatters Evelyn's claimed 22:30 conversation, and the waxed nylon thread on the rose garden thorn reveals how the latch was pulled from outside.
+File the accusation once the three inquiries have support. A returned report stays open for revision. A supported, accurate report unlocks the reconstruction, grade and career points.
 
-### **Case 002: THE MISSING WITNESS** (Staged Kidnapping)
-- **Subject**: Clara Thorne (Crown whistleblower in the Blackwood Syndicate trial)
-- **Setting**: Federal Safehouse Room 404, St. Jude Apartments
-- **Premise**: Clara vanishes 12 hours before trial. The door was kicked in, furniture overturned, blood on the rug, and her guard knocked out.
-- **5 Suspects**:
-  1. *Detective Ray Navarro* (Protection detail leader with $25k offshore deposit)
-  2. *Thomas Sterling* (Syndicate defense attorney)
-  3. *Maya Lin* (Clara's sister who visited disguised as a courier)
-  4. *Viktor Kozlov* (Syndicate hitman caught on street cameras)
-  5. *Isaac Vance* (Superintendent who holds steam conduit tunnel keys)
-- **The Mystery**: Clara discovered Navarro's betrayal via burner phone radio chatter, staged her own kidnapping with theatrical prop blood, and escaped via the underground boiler conduit to Montreal.
+## Development
 
-### **Case 003: THE MUSEUM HEIST** (Grand Relic Theft)
-- **Subject**: The *Eye of Osiris* ($18,000,000 ancient sapphire scarab)
-- **Setting**: Metropolitan Museum of Antiquities, Sub-Level 2 High-Security Vault
-- **Premise**: The scarab disappears during a 4-minute electrical blackout during the VIP Gala. The pedestal holds only a cracked synthetic resin fake.
-- **5 Suspects**:
-  1. *Dr. Helena Rossi* (Chief Egyptology Curator with $2.4M excavation bankruptcy)
-  2. *Nathan Cross* (Head of Museum Security who bypassed generator relays)
-  3. *Chloe Dupuis* (Laser systems engineer who calibrated optical sensors)
-  4. *Tariq Al-Mansoor* (Billionaire private collector at Table 1)
-  5. *Simon Bell* (Night custodian with master keycard)
-- **The Mystery**: The blackout was an alibi diversion triggered by a timed EMP capacitor. Dr. Rossi swapped the genuine relic 8 hours earlier at 18:00 using a laser-deflecting optical prism.
+Use Node 22.12 or newer from a version supported by Vitest 5. The development and production commands are:
 
----
-
-## 🛠️ Investigation Mechanics & Systems
-
-1. **Interactive Crime Scene Exploration**:
-   - 2D SVG vector scenes for each case (Victorian Study, Safehouse 404, Sub-Level 2 Vault).
-   - Clickable investigation hotspots with pulsing discovery rings.
-   - Flashlight spotlight mode, zoom levels (100% to 200%), and macro-photographic evidence modals.
-2. **Evidence Locker**:
-   - Categorized across: *Physical, Documents, Digital, Witness Statements, Photographs, Forensic Reports*.
-   - Search bar and category filters.
-   - Reagent & mass spectrometry analysis simulator.
-   - Pin key evidence to the top of your locker.
-   - Undiscovered clues remain locked without premature spoilers.
-3. **Suspect Interrogation & Cross-Examination**:
-   - 5 suspects per case with detailed dossiers (motives, alibis, secrets).
-   - Real-time psychological stress meter (0% to 100%).
-   - Branching dialogue tree with mood reactions (*Calm, Nervous, Defensive, Hostile, Surprised*).
-   - **"Present Evidence"** confrontation system: confronting suspects with contradictory clues shatters their defenses and exposes perjuries.
-4. **Interactive Evidence Pinboard**:
-   - Corkboard surface with polaroids and index cards connected by red yarn.
-   - Point-and-click or link builder for desktop and mobile touch devices.
-   - Evaluates links against canonical contradictions and unlocks deductive breakthroughs.
-5. **Timeline Chronology Reconstruction**:
-   - Interactive reordering of timestamps and events.
-   - "Verify Sequence" gives contextual investigative guidance.
-6. **Final Indictment & Scoring**:
-   - 6-part formal indictment: Culprit, Motive, Modus Operandi, Incident Time, Key Evidence, and False Alibi.
-   - Evaluated by the deduction engine: accuracy score, points awarded, and performance grades (`S+`, `A`, `B`, `C`, `F`).
-   - Detective rank progression from **Rookie Detective** to **Legendary Investigator**.
-   - Comprehensive canonical debriefing narrative for each solved case.
-7. **3-Tier Hint System**:
-   - Subtle clue (Tier 1: -50 pts), Comparative clue (Tier 2: -100 pts), Direct deduction (Tier 3: -200 pts).
-8. **Persistence & Autosave**:
-   - Real-time autosave to `localStorage`.
-   - Resume ongoing investigation from the main menu anytime.
-
----
-
-## 🚀 Running the Game
-
-### Development Server
-```bash
+```sh
+npm ci
 npm run dev
-```
-
-### Production Build
-```bash
-npm run build
-```
-
-### Run Tests
-```bash
 npm test
-```
-
-### Preview Production Build
-```bash
+npm run build
 npm run preview
 ```
+
+To exercise the built application in Chromium, run the following after building. The runner starts its own local server and an isolated browser profile. Set `CHROME_BIN` to the Chromium executable if it differs from `google-chrome`.
+
+```sh
+npm run test:browser
+```
+
+The browser suite opens every image region with hints unused, changes viewport and zoom, collects the exhibits, interviews the suspects, builds the board and files both an incorrect and a supported report in all three cases.
+
+## Android
+
+The Capacitor configuration packages `dist`. Images, fonts and sounds work offline using local assets, system typefaces and Web Audio. This source distribution contains the web application and its Capacitor configuration. For an existing Android host, use its registered application ID and its installed Capacitor major. Build the web application and run `npx cap sync android` in that project.
+
+To create a native host from this checkout on a machine with Android Studio and its Android SDK, use matching Capacitor packages. For example, with Capacitor 7:
+
+```sh
+npm install @capacitor/core@7 @capacitor/android@7
+npm install --save-dev @capacitor/cli@7
+npm run build
+npx cap add android
+npx cap sync android
+npx cap open android
+```
+
+The default application ID is `com.casefiles.detective`. Confirm the ID used for an existing Play Store release before creating its host.
+
+## Case authoring
+
+Each file in `src/data/cases` owns its bilingual text, evidence, scene regions, locations, interviews, timeline sources, deductions and solution. Region coordinates are percentages of the complete image. A rectangle uses a centre and dimensions. A polygon uses absolute percentage vertices. Both use the same geometry for interaction and drawing.
+
+Each deduction specifies the supporting exhibit IDs and accepted board connections. Suspect connections can require additional independent evidence before they register as contradictions. The investigation tests check exhibit reachability from an empty save, link references, coverage of the solution, and hotspot hit testing at different sizes and zoom levels.

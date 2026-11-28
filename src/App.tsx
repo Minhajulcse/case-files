@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGame } from './context/GameContext';
 import { MainMenu } from './components/mainmenu/MainMenu';
 import { CaseSelect } from './components/caseselect/CaseSelect';
@@ -13,6 +13,8 @@ import { FinalReport } from './components/finalreport/FinalReport';
 export const AppContent: React.FC = () => {
   const { currentView, investigationTab } = useGame();
 
+  useEffect(() => { window.scrollTo(0,0); }, [currentView, investigationTab]);
+
   if (currentView === 'menu') {
     return <MainMenu />;
   }
@@ -23,9 +25,9 @@ export const AppContent: React.FC = () => {
 
   if (currentView === 'investigation') {
     return (
-      <div className="min-h-screen bg-noir-950 flex flex-col font-mono text-noir-100">
+      <div className="investigation-app min-h-screen flex flex-col text-noir-100">
         <Navbar />
-        <main className="flex-1">
+        <main key={investigationTab} className="work-area flex-1">
           {investigationTab === 'scene' && <CrimeScene />}
           {investigationTab === 'evidence' && <EvidenceRoom />}
           {investigationTab === 'interrogation' && <InterrogationRoom />}

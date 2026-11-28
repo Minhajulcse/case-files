@@ -1,3 +1,4 @@
+import { Dialog } from '../common/Dialog';
 import React, { useState } from 'react';
 import { X, Network, Pin, ArrowRight, AlertTriangle, Sparkles } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -36,7 +37,7 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
   const isBengali = language === 'bn';
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <Dialog label={t('connectCluesTitle')} onClose={onClose}>
       <div className="relative w-full max-w-xl bg-noir-900 border-2 border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
@@ -54,7 +55,7 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -74,8 +75,8 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
                 {t('sourceItem')}
               </label>
               <select
-                value={sourceId}
-                onChange={(e) => setSourceId(e.target.value)}
+                aria-label={t('sourceItem')} value={sourceId}
+                onChange={e=>{setSourceId(e.target.value);if(e.target.value===targetId)setTargetId('');}}
                 className="w-full bg-noir-950 border border-noir-700 rounded p-2.5 text-xs text-white focus:outline-none focus:border-blood-600"
               >
                 <option value="">-- {isBengali ? 'প্রথম সূত্র নির্বাচন করুন' : 'Choose Item A'} --</option>
@@ -93,7 +94,7 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
                 {t('targetItem')}
               </label>
               <select
-                value={targetId}
+                aria-label={t('targetItem')} value={targetId}
                 onChange={(e) => setTargetId(e.target.value)}
                 className="w-full bg-noir-950 border border-noir-700 rounded p-2.5 text-xs text-white focus:outline-none focus:border-blood-600"
               >
@@ -143,6 +144,6 @@ export const AddConnectionModal: React.FC<AddConnectionModalProps> = ({
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

@@ -20,10 +20,10 @@ import { sound } from '../../utils/audio';
 import { getLocalizedCategory } from '../../i18n';
 
 export const EvidenceRoom: React.FC = () => {
-  const { activeCase, caseState, toggleMarkImportant, language, t, getLoc, formatNum } = useGame();
+  const { activeCase, caseState, toggleMarkImportant, selectedClueForInspection, setSelectedClueForInspection, language, t, getLoc, formatNum } = useGame();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedClue, setSelectedClue] = useState<EvidenceItem | null>(null);
+  const selectedClue = activeCase?.evidence.find(e => e.id===selectedClueForInspection && caseState?.discoveredEvidenceIds.includes(e.id));
 
   if (!activeCase || !caseState) return null;
 
@@ -40,6 +40,7 @@ export const EvidenceRoom: React.FC = () => {
 
   // Filter evidence
   const filteredAllEvidence = activeCase.evidence.filter(item => {
+    if (searchQuery.trim() && !discoveredSet.has(item.id)) return false;
     const matchesCat = selectedCategory === 'All' || item.category === selectedCategory;
     const nameStr = getLoc(item.name).toLowerCase();
     const descStr = getLoc(item.description).toLowerCase();
@@ -64,7 +65,7 @@ export const EvidenceRoom: React.FC = () => {
 
   const handleClueClick = (clue: EvidenceItem) => {
     sound.playPaper();
-    setSelectedClue(clue);
+    setSelectedClueForInspection(clue.id);
   };
 
   const getCategoryIcon = (cat: EvidenceCategory) => {
@@ -87,7 +88,7 @@ export const EvidenceRoom: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-105px)] bg-[#0b0d11] p-4 sm:p-6 font-mono select-none">
+    <div className="locker workspace-wrap">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Controls Header: Category Tabs & Search Bar */}
         <div className="bg-[#12151c] border border-[#232936] rounded p-4 space-y-4 shadow-dossier">
@@ -100,7 +101,7 @@ export const EvidenceRoom: React.FC = () => {
                 </h2>
               </div>
               <p className="text-[11px] text-noir-400 mt-0.5">
-                {t('evidenceRepoSubtitle')}
+                {formatNum(discoveredSet.size)} / {formatNum(activeCase.evidence.length)} · {t('evidenceLogged')}
               </p>
             </div>
 
@@ -108,7 +109,7 @@ export const EvidenceRoom: React.FC = () => {
             <div className="relative w-full sm:w-72">
               <Search className="w-4 h-4 text-noir-500 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
-                type="text"
+                type="search" aria-label={t('searchPlaceholder')}
                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -138,6 +139,7 @@ export const EvidenceRoom: React.FC = () => {
 
         {/* Evidence Grid Styled as Police Evidence Bags / Folders */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {sortedEvidence.length===0 && <p role="status">{language==='bn'?'এই নির্বাচনে কোনো আলামত নেই।':'No exhibits match this selection.'}</p>}
           {sortedEvidence.map((item) => {
             const isDiscovered = discoveredSet.has(item.id);
             const isMarked = caseState.markedImportantClueIds.includes(item.id);
@@ -168,14 +170,14 @@ export const EvidenceRoom: React.FC = () => {
                   </div>
 
                   <div className="text-[10px] text-noir-600 text-right">
-                    {t('slotLabel')}{formatNum(item.id.replace('clue-', ''))}
+                    {t('slotLabel')}{formatNum(String(activeCase.evidence.indexOf(item)+1).padStart(2,'0'))}
                   </div>
                 </div>
               );
             }
 
             return (
-              <div
+              <article
                 key={item.id}
                 onClick={() => handleClueClick(item)}
                 className={`group relative bg-[#12151c] border rounded p-4 flex flex-col justify-between min-h-[180px] cursor-pointer transition-all duration-200 shadow hover:shadow-dossier hover:-translate-y-0.5 ${
@@ -192,11 +194,6 @@ export const EvidenceRoom: React.FC = () => {
                   </span>
 
                   <div className="flex items-center space-x-1.5">
-                    {item.isCrucial && (
-                      <span className="text-[10px] text-blood-400 font-bold flex items-center gap-0.5" title="Crucial Key Evidence">
-                        <ShieldAlert className="w-3.5 h-3.5" />
-                      </span>
-                    )}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -207,7 +204,7 @@ export const EvidenceRoom: React.FC = () => {
                           ? 'text-blood-400 hover:text-blood-300'
                           : 'text-noir-600 hover:text-noir-300'
                       }`}
-                      title="Mark as Key Evidence"
+                      title={isMarked ? t('unmarkCrucial') : t('markCrucial')} aria-pressed={isMarked}
                     >
                       <Pin className="w-3.5 h-3.5" />
                     </button>
@@ -227,21 +224,21 @@ export const EvidenceRoom: React.FC = () => {
                 {/* Card Bottom Meta */}
                 <div className="pt-3 border-t border-[#1e232e] flex items-center justify-between text-[10px] text-noir-500">
                   <span className="truncate max-w-[150px]">{getLoc(item.discoveryLocation)}</span>
-                  <span className="text-brass-400 font-mono group-hover:underline">
+                  <button onClick={event=>{event.stopPropagation();handleClueClick(item);}} aria-label={getLoc(item.name)} className="text-brass-400 font-mono group-hover:underline">
                     {t('examinePrompt')}
-                  </span>
+                  </button>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
       </div>
 
       {/* Clue Inspector Modal */}
-      <EvidenceDetailModal
+      {selectedClue && <EvidenceDetailModal key={selectedClue.id}
         evidence={selectedClue}
-        onClose={() => setSelectedClue(null)}
-      />
+        onClose={() => setSelectedClueForInspection(null)}
+      />}
     </div>
   );
 };

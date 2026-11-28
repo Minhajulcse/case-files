@@ -1,5 +1,5 @@
 import React from 'react';
-import { Languages, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { sound } from '../../utils/audio';
 
@@ -54,28 +54,6 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
     );
   }
 
-  return (
-    <div className={`inline-flex items-center bg-noir-900/90 border border-noir-700/70 rounded px-1.5 py-0.5 text-xs font-mono shadow-sm ${className}`}>
-      <Globe className="w-3.5 h-3.5 text-brass-400 mr-1.5" />
-      <button
-        onClick={() => handleSwitch('en')}
-        className={`px-1.5 py-0.5 rounded transition-colors text-[11px] font-bold ${
-          language === 'en' ? 'text-white bg-blood-800/80' : 'text-noir-400 hover:text-noir-200'
-        }`}
-        title="Switch to English"
-      >
-        EN
-      </button>
-      <span className="text-noir-600 px-0.5">/</span>
-      <button
-        onClick={() => handleSwitch('bn')}
-        className={`px-1.5 py-0.5 rounded transition-colors text-[11px] font-bold font-bengali ${
-          language === 'bn' ? 'text-white bg-blood-800/80' : 'text-noir-400 hover:text-noir-200'
-        }`}
-        title="বাংলায় পরিবর্তন করুন"
-      >
-        বাং
-      </button>
-    </div>
-  );
+  return <button className={'language-switch '+className} onClick={()=>handleSwitch(language==='en'?'bn':'en')}
+    aria-label={language==='en'?'বাংলায় পরিবর্তন করুন':'Switch to English'}><Globe size={15}/>{language==='en'?'বাংলা':'English'}</button>;
 };

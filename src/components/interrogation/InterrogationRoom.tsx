@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Users,
+  Users, ArrowLeftRight,
   MessageSquare,
   AlertTriangle,
   Flame,
@@ -18,6 +18,7 @@ import {
 import { useGame } from '../../context/GameContext';
 import { Suspect, DialogueOption } from '../../types/game';
 import { PresentEvidenceModal } from './PresentEvidenceModal';
+import { SuspectComparison } from './SuspectComparison';
 import { sound } from '../../utils/audio';
 
 export const InterrogationRoom: React.FC = () => {
@@ -35,6 +36,7 @@ export const InterrogationRoom: React.FC = () => {
   const [selectedSuspectId, setSelectedSuspectId] = useState<string>(() => {
     return activeCase?.suspects[0]?.id || '';
   });
+  const [compare,setCompare] = useState(false);
   const [isPresentModalOpen, setIsPresentModalOpen] = useState(false);
   const [lastConfrontationResult, setLastConfrontationResult] = useState<{
     reaction: string;
@@ -70,7 +72,7 @@ export const InterrogationRoom: React.FC = () => {
   const isBengali = language === 'bn';
 
   return (
-    <div className={`flex flex-col lg:flex-row h-[calc(100vh-105px)] bg-noir-950 select-none overflow-hidden ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <div className={`interview-room flex flex-col lg:flex-row bg-noir-950 ${isBengali ? 'font-bengali' : 'font-mono'}`}>
       {/* Left Column: Suspect Selector List */}
       <div className="w-full lg:w-72 bg-noir-900 border-b lg:border-b-0 lg:border-r border-noir-800 flex flex-col justify-between overflow-y-auto">
         <div className="p-4 space-y-3">
@@ -83,8 +85,9 @@ export const InterrogationRoom: React.FC = () => {
             </span>
           </div>
 
+          <button className="minor-action w-full" onClick={()=>setCompare(true)}><ArrowLeftRight size={16}/>{isBengali?'বয়ান তুলনা':'Compare statements'}</button>
           {/* Suspect Cards */}
-          <div className="space-y-2">
+          <div className="suspect-choices space-y-2">
             {activeCase.suspects.map((suspect) => {
               const isSelected = suspect.id === currentSuspect.id;
               const stress = caseState.suspectStressLevels[suspect.id] || 15;
@@ -92,14 +95,14 @@ export const InterrogationRoom: React.FC = () => {
               const suspectRole = getLoc(suspect.role);
 
               return (
-                <div
+                <button type="button" aria-pressed={isSelected}
                   key={suspect.id}
                   onClick={() => {
                     sound.playPaper();
                     setSelectedSuspectId(suspect.id);
                     setLastConfrontationResult(null);
                   }}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all ${
+                  className={`w-full text-left p-3 rounded-lg border cursor-pointer transition-all ${
                     isSelected
                       ? 'bg-blood-950/70 border-blood-600 shadow-md ring-1 ring-blood-500/50'
                       : 'bg-noir-950/80 border-noir-800 hover:border-noir-700'
@@ -142,7 +145,7 @@ export const InterrogationRoom: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
@@ -151,10 +154,10 @@ export const InterrogationRoom: React.FC = () => {
         {/* Room Ambient Memo & Recording Indicator */}
         <div className="p-3 bg-noir-950 border-t border-noir-800 text-[11px] text-noir-400 flex items-center justify-between font-mono">
           <span className="flex items-center gap-1.5 text-noir-400 text-[10px]">
-            <Disc3 className="w-3.5 h-3.5 text-amber-500 animate-spin" />
+            <Disc3 className="w-3.5 h-3.5 text-amber-500 " />
             <span>{t('observationMirror')}</span>
           </span>
-          <span className="text-red-500 text-[10px] flex items-center gap-1 animate-pulse font-bold">
+          <span className="text-red-500 text-[10px] flex items-center gap-1  font-bold">
             <Mic className="w-3 h-3" />
             <span>{t('recordingLive')}</span>
           </span>
@@ -302,7 +305,7 @@ export const InterrogationRoom: React.FC = () => {
           {/* Confrontation Result Banner if any */}
           {lastConfrontationResult && (
             <div
-              className={`p-4 rounded-lg border animate-pulse ${
+              className={`p-4 rounded-lg border  ${
                 lastConfrontationResult.lieExposed
                   ? 'bg-blood-950/80 border-blood-600 text-blood-200'
                   : 'bg-amber-950/40 border-amber-700/60 text-amber-200'
@@ -384,31 +387,10 @@ export const InterrogationRoom: React.FC = () => {
             {t('directInquiries')}
           </span>
 
-          <div className="space-y-1.5 max-h-44 overflow-y-auto">
-            {currentSuspect.dialogueTree.map((d) => {
+          <div className="space-y-1.5">
+            {currentSuspect.dialogueTree.filter(d => !d.conditionClueId || caseState.discoveredEvidenceIds.includes(d.conditionClueId)).map((d) => {
               const isAsked = askedDialogueIds.includes(d.id);
-              const isLocked = d.conditionClueId && !caseState.discoveredEvidenceIds.includes(d.conditionClueId);
               const promptText = getLoc(d.prompt);
-
-              if (isLocked) {
-                return (
-                  <div
-                    key={d.id}
-                    className="w-full p-2 rounded-lg text-left text-xs bg-noir-950/60 border border-noir-850 text-noir-600 flex items-center justify-between select-none"
-                    title={`${isBengali ? 'আলামত উন্মোচন প্রয়োজন' : 'Evidence required to unlock'}: #${d.conditionClueId}`}
-                  >
-                    <div className="flex items-center space-x-2 pr-2 min-w-0">
-                      <Lock className="w-3.5 h-3.5 text-noir-600 flex-shrink-0" />
-                      <span className="truncate italic">
-                        {t('requiresClue')} (#{d.conditionClueId})
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-noir-600 font-mono">
-                      {isBengali ? 'লক করা' : 'LOCKED'}
-                    </span>
-                  </div>
-                );
-              }
 
               return (
                 <button
@@ -427,7 +409,7 @@ export const InterrogationRoom: React.FC = () => {
                     ) : (
                       <HelpCircle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
                     )}
-                    <span className="truncate">{promptText}</span>
+                    <span>{promptText}</span>
                   </div>
 
                   <span className="text-[10px] text-noir-500 font-mono flex-shrink-0">
@@ -440,6 +422,7 @@ export const InterrogationRoom: React.FC = () => {
         </div>
       </div>
 
+      {compare && <SuspectComparison initialId={currentSuspect.id} onClose={()=>setCompare(false)}/>}
       {/* Present Evidence Modal */}
       <PresentEvidenceModal
         isOpen={isPresentModalOpen}

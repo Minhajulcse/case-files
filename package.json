@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:browser": "node tests/chromium.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -25,6 +26,6 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
-    "vitest": "^3.0.7"
+    "vitest": "^5.1.1"
   }
 }

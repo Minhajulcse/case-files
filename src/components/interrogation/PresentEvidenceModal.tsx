@@ -1,3 +1,4 @@
+import { Dialog } from '../common/Dialog';
 import React, { useState } from 'react';
 import { X, AlertOctagon } from 'lucide-react';
 import { Suspect } from '../../types/game';
@@ -40,7 +41,7 @@ export const PresentEvidenceModal: React.FC<PresentEvidenceModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md font-mono">
+    <Dialog label={t('confrontEvidenceTitle')} onClose={onClose}>
       <div className="relative w-full max-w-2xl bg-noir-900 border border-noir-700 rounded shadow-2xl overflow-hidden text-noir-200 flex flex-col max-h-[85vh]">
         {/* Header */}
         <div className="bg-[#12161f] px-6 py-4 border-b border-noir-750 flex items-center justify-between">
@@ -58,7 +59,7 @@ export const PresentEvidenceModal: React.FC<PresentEvidenceModalProps> = ({
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -82,10 +83,10 @@ export const PresentEvidenceModal: React.FC<PresentEvidenceModalProps> = ({
               const hasBeenPresented = presentedAlready.includes(clue.id);
 
               return (
-                <div
+                <button type="button" aria-pressed={isSelected}
                   key={clue.id}
                   onClick={() => handleSelect(clue.id)}
-                  className={`p-3.5 rounded border text-xs cursor-pointer transition-all flex items-start justify-between ${
+                  className={`w-full text-left p-3.5 rounded border text-xs cursor-pointer transition-all flex items-start justify-between ${
                     isSelected
                       ? 'bg-blood-950/70 border-blood-500 shadow-sm'
                       : 'bg-[#12151c] border-[#252b38] hover:border-[#384256]'
@@ -119,7 +120,7 @@ export const PresentEvidenceModal: React.FC<PresentEvidenceModalProps> = ({
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                     </div>
                   </div>
-                </div>
+                </button>
               );
             })
           )}
@@ -143,6 +144,6 @@ export const PresentEvidenceModal: React.FC<PresentEvidenceModalProps> = ({
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

@@ -1,3 +1,4 @@
+import { Dialog } from '../common/Dialog';
 import React, { useState } from 'react';
 import { X, Sliders, Volume2, AlertOctagon, RefreshCw, Languages } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -22,16 +23,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const [confirmResetAll, setConfirmResetAll] = useState(false);
   const [confirmResetCase, setConfirmResetCase] = useState(false);
 
-  const [masterVol, setMasterVol] = useState(0.7);
-  const [sfxVol, setSfxVol] = useState(0.8);
-  const [ambienceVol, setAmbienceVol] = useState(0.3);
+  const [masterVol, setMasterVol] = useState(()=>sound.getSettings().masterVolume);
+  const [sfxVol, setSfxVol] = useState(()=>sound.getSettings().sfxVolume);
+  const [ambienceVol, setAmbienceVol] = useState(()=>sound.getSettings().ambienceVolume);
 
+  const [muted,setMuted]=useState(()=>sound.getMuted());
+  const [ambience,setAmbience]=useState(()=>sound.getSettings().ambiencePlaying);
   if (!isOpen) return null;
 
   const isBengali = language === 'bn';
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <Dialog label={t('settingsTitle')} onClose={onClose}>
       <div className="relative w-full max-w-lg bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
@@ -45,7 +48,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -77,6 +80,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             </div>
           </div>
 
+          <div className="flex gap-3 flex-wrap">
+            <button className="minor-action" aria-pressed={muted} onClick={()=>{sound.setMuted(!muted);setMuted(!muted);}}>{muted?(isBengali?'সাউন্ড চালু করুন':'Unmute sound'):(isBengali?'সাউন্ড বন্ধ করুন':'Mute sound')}</button>
+            <button className="minor-action" aria-pressed={ambience} onClick={()=>{if(ambience)sound.stopAmbience();else sound.startAmbience();setAmbience(sound.getSettings().ambiencePlaying);}}>{ambience?t('ambienceActive'):t('ambienceOff')}</button>
+          </div>
           {/* Audio Synthesizer Levels */}
           <div className="space-y-4">
             <h4 className="text-xs uppercase font-bold tracking-wider text-amber-400 flex items-center gap-1.5">
@@ -232,6 +239,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };

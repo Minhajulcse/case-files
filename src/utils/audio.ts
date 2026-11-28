@@ -20,6 +20,7 @@ class SoundSystem {
   private initContext() {
     if (!this.ctx) {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
       this.ctx = new AudioCtx();
 
       this.masterGain = this.ctx.createGain();
@@ -36,7 +37,7 @@ class SoundSystem {
     }
 
     if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
+      void this.ctx.resume().catch(() => {});
     }
   }
 
@@ -75,6 +76,7 @@ class SoundSystem {
   public getSettings() {
     return {
       isMuted: this.isMuted,
+      ambiencePlaying: this.isAmbiencePlaying,
       masterVolume: this.masterVolume,
       sfxVolume: this.sfxVolume,
       ambienceVolume: this.ambienceVolume,

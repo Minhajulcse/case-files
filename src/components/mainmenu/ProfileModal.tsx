@@ -1,3 +1,4 @@
+import { Dialog } from '../common/Dialog';
 import React, { useState } from 'react';
 import { X, Shield, Award, CheckCircle2, Star, Edit3, Check } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -55,7 +56,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
   ];
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm ${isBengali ? 'font-bengali' : 'font-mono'}`}>
+    <Dialog label={t('detectiveProfile')} onClose={onClose}>
       <div className="relative w-full max-w-2xl bg-noir-900 border border-noir-700 rounded-lg shadow-2xl overflow-hidden text-noir-200 flex flex-col max-h-[85vh]">
         {/* Header */}
         <div className="bg-noir-950 px-6 py-4 border-b border-noir-800 flex items-center justify-between">
@@ -71,7 +72,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} aria-label={t('closeBtn')}
             className="p-1 rounded text-noir-400 hover:text-white hover:bg-noir-800 transition-colors"
           >
             <X className="w-5 h-5" />
@@ -205,6 +206,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) =
           </button>
         </div>
       </div>
-    </div>
+    </Dialog>
   );
 };
